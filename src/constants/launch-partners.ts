@@ -12,19 +12,16 @@ export const TESTIMONIALS: Testimonial[] = [
     description: `Polywrap will make it easy for everyone to build on top of Gnosis
     technologies and interact with our contracts and interfaces. This will
     help us achieve our vision of building open platforms and removing
-    gatekeepers`,
+    gatekeepers.`,
     url: "https://gnosis.io/",
   },
-  // {
-  //   logo: process.env.PUBLIC_URL + "/logos/pocket.png",
-  //   persona: "Michael O'Rourke, CEO",
-  //   description: `By creating one single standard for Web3 developers, 
-  //   the complexity and user experience of accessing the basic building 
-  //   blocks for these protocols is massively improved. Pocket aims to 
-  //   provide a neutral networking stack, allowing Polywrap users to easily
-  //   connect to any protocol they are building on.`,
-  //   url: "https://www.pokt.network",
-  // },
+  {
+    logo: process.env.PUBLIC_URL + "/logos/pocket.png",
+    persona: "Michael O'Rourke, Founder",
+    description: `By creating one single standard for web3 developers,
+    Polywrap massively improves the experience of interacting with different protocols.`,
+    url: "https://www.pokt.network",
+  },
   // {
   //   logo: process.env.PUBLIC_URL + "/logos/fleek.png",
   //   persona: "Harrison Hines, CEO",
@@ -38,9 +35,10 @@ export const TESTIMONIALS: Testimonial[] = [
   {
     logo: process.env.PUBLIC_URL + "/logos/gelato.png",
     persona: "Hilmar X, Legendary Member",
-    description: `With the help of Polywrap, Gelato will enable every Web3 developer to easily 
+    description: `With the help of Polywrap, Gelato will enable every 
+    developer to easily 
     automate the execution of transactions on networks like Ethereum, giving them the ability to 
-    provide arbitrary instructions to a decentralized network of bots with a single Web3 api call.`,
+    provide arbitrary instructions to a decentralized network of bots with a single Wrapper call.`,
     url: "https://gelato.network/",
   },
   // {

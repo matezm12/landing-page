@@ -211,6 +211,7 @@ export const Hero = () => {
       container
       justify='center'
       alignItems='center'
+      spacing={6}
       direction={matches ? 'row-reverse' : 'row'}
     >
       <Grid item sm={12} md={6}>

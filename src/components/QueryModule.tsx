@@ -1,8 +1,4 @@
 require('dotenv').config();
-console.log("MY_VARIABLE: " + process.env.REACT_APP_CMS_TOKEN);
-
-// TODO: supportImage is not used yet as the received data is not rightly formatted
-//setSupportImage(data.webContent.supportImage)
 
 export interface webContent {
   title: string;
@@ -16,9 +12,13 @@ export interface webContent {
 export interface wrapperQuery {
   filename: string;
   featured: boolean;
-  query: string;
+  query?: string;
   comment: string;
   source: string;
+  appJs?: string;
+  appTs?: string;
+  appPy?: string;
+  appRs?: any;
 }
 
 export interface wrapper {
@@ -30,6 +30,23 @@ export interface wrapper {
     items : wrapperQuery[];
   }
   docsLink: string;
+}
+
+export interface newWrappersList {
+  wrapperName: string;
+  description: string;
+  featured: boolean;
+  thirdParty: boolean;
+  docsLink: string;
+  query: {
+    featured: boolean;
+    source: string;
+    snippets: {
+      filename: string;
+      language: string;
+      snippet: string;
+    }[];
+  };
 }
 
 export interface polywrapFeature extends webContent{
@@ -61,7 +78,8 @@ export interface Asset {
 }
 
 function ContentfulFetcher(query: string): Promise<any> {
-    //console.log("Heyo, we're about to query the text from Contentful: ~ ")
+  // Simple helper function to query data from the Contentful API
+  // Inputs the cmsQuery string and returns JSON with results.
 
     return window
     .fetch(process.env.REACT_APP_CMS_SITE as string, {
@@ -79,4 +97,3 @@ function ContentfulFetcher(query: string): Promise<any> {
 }
 
 export {ContentfulFetcher}
-//export default CommonComponentsMain
