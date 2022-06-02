@@ -1,3 +1,5 @@
+//import { useHistory } from 'react-router-dom';
+import {useState, useEffect} from 'react';
 import { Parallax } from 'react-scroll-parallax';
 import {
   Box,
@@ -10,6 +12,9 @@ import {
 import { makeStyles } from '@material-ui/core/styles';
 import KeyboardArrowRightOutlined from '@material-ui/icons/KeyboardArrowRightOutlined';
 import { polywrapPalette } from '../theme';
+// TODO: should we deprecate the verbiage folder?
+//import { CTA } from '../constants/verbiage';
+import { webContent, ContentfulFetcher } from './QueryModule';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -147,10 +152,58 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+// CONTENTFUL CMS  INITIAL SET UP BELOW
+const cmsQuery = `query { 
+  webContent(id:"6DWrAojZUdPcTSDXGip5PN") { 
+   title 
+   subtitle
+   description
+   callToAction
+ } 
+}`;
+
+// CONTENTFUL CMS  INITIAL SET UP ABOVE
+
 export const Hero = () => {
   const theme = useTheme();
   const classes = useStyles();
   const matches = useMediaQuery(theme.breakpoints.down('xs'));
+
+  // This was used for pagination
+  //const history = useHistory();
+  //const navigateToPage = (route: string) => history.push(route);
+
+  // CONTENTFUL CMS INTEGRATION BELOW
+  const [someContent, setSomeContent] = useState<webContent> (
+    {
+    "title": "Use Web3 Anywhere.",
+    "subtitle": "PRE-ALPHA",
+    "description": "Polywrap is a development platform that enables easy integration of Web3 protocols into any application. It makes it possible for software on any device, written in any language, to read and write data to Web3 protocols",
+    "callToAction": "JOIN OUR DISCORD"
+    });
+  const [hasFailed, setHasFailed] = useState<boolean>(false);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
+
+  useEffect(() => {
+    /////////// CMS content fetching: Callback version
+    setIsLoading(true);
+
+    ContentfulFetcher(cmsQuery).then(
+      (response) => {
+        //On success        
+        const content: webContent = response.data.webContent;
+        setSomeContent(content);
+      }, 
+      (error) => {
+        //On fail
+        setHasFailed(true);
+      }
+    ).finally(() => {
+      setIsLoading(false);
+    });
+
+  }, []);
+  // CONTENTFUL CMS INTEGREATION ABOVE
 
   return (
     <Grid
@@ -168,21 +221,26 @@ export const Hero = () => {
         >
           <Box className={classes.heroContent}>
             <Typography
+              variant='subtitle2'
+              color='secondary'
+              className={classes.technicalPreview}
+            >
+             {someContent.subtitle}
+            </Typography>
+            <Typography
               className={classes.heroTitle}
               color='textPrimary'
               variant='h1'
             >
-              Use Web3 Anywhere.
+             {someContent.title}
             </Typography>
             <Typography
               className={classes.heroBody}
               color='textSecondary'
               variant='body1'
             >
-              Polywrap is a set of tools that uses Wasm and GraphQL to
-              deliver web3 protocols to any execution environment.
-              Build and publish your protocol wrapper with Polywrap 
-              to be accessible from all types of applications.
+            {someContent.description}
+
             </Typography>
             <Button
               className={classes.heroButton}
@@ -194,7 +252,7 @@ export const Hero = () => {
               type='submit'
               variant='contained'
             >
-              Join Our Discord
+             {someContent.callToAction}
             </Button>
           </Box>
         </Parallax>
@@ -211,6 +269,7 @@ export const Hero = () => {
             y={[80, -80]}
             disabled={window.innerWidth < theme.breakpoints.values.md}
           >
+            {/* // TODO: Pass the supportImage to the <img> div below */}
             <img
               className={classes.heroPolywrapper}
               src={process.env.PUBLIC_URL + '/imgs/polywrapper-hero.png'}
