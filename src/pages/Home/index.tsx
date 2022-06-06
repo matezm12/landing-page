@@ -10,12 +10,10 @@ import { FeaturedWrappersSection } from '../../components/Wrappers';
 //import { WrapperSection } from '../../components/old_WrapperSection';
 import { fetchWrappers, queryFeaturedWrappers } from '../../components/CMScontent';
 
-console.log("///// Wrapper's Data from the API")
-console.log(queryFeaturedWrappers())
-console.log("///// wrapper data after mapping with fetchWrappers()")
-console.log(fetchWrappers())
-//console.log("///// wrapper data after mapping with queryFeaturedQueries()")
-//console.log(queryFeaturedQueries())
+//console.log("///// Wrapper's Data from the API")
+//console.log(queryFeaturedWrappers())
+//console.log("///// wrapper data after mapping with fetchWrappers()")
+//console.log(fetchWrappers())
 
 
 const useStyles = makeStyles((theme) => ({
