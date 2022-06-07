@@ -1,4 +1,3 @@
-//import { useHistory } from 'react-router-dom';
 import {useState, useEffect} from 'react';
 import { Parallax } from 'react-scroll-parallax';
 import {
@@ -12,9 +11,7 @@ import {
 import { makeStyles } from '@material-ui/core/styles';
 import KeyboardArrowRightOutlined from '@material-ui/icons/KeyboardArrowRightOutlined';
 import { polywrapPalette } from '../theme';
-// TODO: should we deprecate the verbiage folder?
-//import { CTA } from '../constants/verbiage';
-import { webContent, ContentfulFetcher } from './QueryModule';
+import { webContent, ContentfulFetcher } from './ContentfulFetcher';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -260,9 +257,13 @@ export const Hero = () => {
             y={[80, -80]}
             disabled={window.innerWidth < theme.breakpoints.values.md}
           >
-            {/* // TODO: Pass the supportImage to the <img> div below */}
             <img
               className={classes.heroPolywrapper}
+              // TODO: Pass the supportImage that is queried on the CMS
+              // This required modifying webContent Type to include the
+              // supportImage data type, similar to the structure used 
+              // for testimonials 
+              // src={someContent.supportImage.url}
               src={process.env.PUBLIC_URL + '/imgs/polywrapper-hero.png'}
               alt='Polywrap Logo'
             />

@@ -2,7 +2,7 @@ import { Box, Container, makeStyles, Typography } from '@material-ui/core';
 import FormatQuoteIcon from '@material-ui/icons/FormatQuote';
 import { filters } from '../theme';
 import {useState, useEffect} from 'react';
-import { launchPartner, ContentfulFetcher, Testimonial } from './QueryModule';
+import { launchPartner, ContentfulFetcher, Testimonial } from './ContentfulFetcher';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -141,7 +141,7 @@ export const Testimonials = () => {
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
   useEffect(() => {
-    /////////// CMS content fetching: Callback version
+    // CMS content fetching: Callback version
     setIsLoading(true);
 
     
@@ -159,13 +159,11 @@ export const Testimonials = () => {
         //On fail
         setHasFailed(true);
         console.log(error)
-        console.log("CMS QUERY FAILED ##################################")
+        console.log(" ### CMS ERROR -> Contentful Query Failed.")
 
       }
     ).finally(() => {
       setIsLoading(false);
-      //console.log("DONE LOADING TESTIMONIALS FROM CMS ##################################")
-
     });
 
 
@@ -185,7 +183,6 @@ export const Testimonials = () => {
       "link": newTestimonials[partner].link,
       "logo": newTestimonials[partner].blackPngLogo.url
     };
-
   };
 
   return (

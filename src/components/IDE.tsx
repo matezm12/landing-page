@@ -6,7 +6,7 @@ import { polywrapPalette } from '../theme';
 import theme from "prism-react-renderer/themes/nightOwl";
 
 // WIP: Try to modularize the CMS query
-import {  webContent, wrapper, ContentfulFetcher } from './QueryModule';
+import {  webContent, wrapper, ContentfulFetcher } from './ContentfulFetcher';
 
 const useStyles = makeStyles((theme) => ({
   root: {

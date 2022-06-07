@@ -2,7 +2,7 @@ import { Parallax } from 'react-scroll-parallax';
 import { Box, Grid, makeStyles, Typography, useTheme } from '@material-ui/core';
 // WIP: modularize the CMS query
 import {useState, useEffect} from 'react';
-import {  webContent, ContentfulFetcher } from './QueryModule';
+import {  webContent, ContentfulFetcher } from './ContentfulFetcher';
 
 const useStyles = makeStyles((theme) => ({
   root: {

@@ -1,7 +1,7 @@
 import { Parallax } from 'react-scroll-parallax';
 import { Box, Grid, makeStyles, Typography, useTheme } from '@material-ui/core';
 import {useState, useEffect} from 'react';
-import { polywrapFeature, ContentfulFetcher } from './QueryModule';
+import { polywrapFeature, ContentfulFetcher } from './ContentfulFetcher';
 
 const useStyles = makeStyles((theme) => ({
   root: {
