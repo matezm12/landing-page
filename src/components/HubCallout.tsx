@@ -62,8 +62,6 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-
-// CONTENTFUL CMS  INITIAL SET UP BELOW
 const cmsQuery = `query { 
   webContent(id:"4QLItvU9WU4CFNCC4c0jf1") { 
    title 
@@ -73,9 +71,6 @@ const cmsQuery = `query {
  } 
 }`;
 
-// CONTENTFUL CMS INITIAL SET UP ABOVE
-
-
 export const HubCallout = () => {
   const theme = useTheme();
   const classes = useStyles();
@@ -83,10 +78,6 @@ export const HubCallout = () => {
     defaultMatches: true
   });
 
-
-
-
-  // CONTENTFUL CMS INTEGRATION BELOW
   const [someContent, setSomeContent] = useState<webContent> (
     {
       "title": "Welcome to the Polywrap Hub",
@@ -98,15 +89,13 @@ export const HubCallout = () => {
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
   useEffect(() => {
-    /////////// CMS content fetching: Callback version
+    // CMS content fetching: Callback version
     setIsLoading(true);
 
     ContentfulFetcher(cmsQuery).then(
       (response) => {
         //On success        
         const content: webContent = response.data.webContent;
-        //console.log("On the arrow func", content)
-
         setSomeContent(content);
       }, 
       (error) => {
@@ -118,7 +107,6 @@ export const HubCallout = () => {
     });
 
   }, []);
-  // CONTENTFUL CMS INTEGREATION ABOVE
 
 
   return (

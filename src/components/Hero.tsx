@@ -152,7 +152,6 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-// CONTENTFUL CMS  INITIAL SET UP BELOW
 const cmsQuery = `query { 
   webContent(id:"6DWrAojZUdPcTSDXGip5PN") { 
    title 
@@ -161,8 +160,6 @@ const cmsQuery = `query {
    callToAction
  } 
 }`;
-
-// CONTENTFUL CMS  INITIAL SET UP ABOVE
 
 export const Hero = () => {
   const theme = useTheme();
@@ -173,7 +170,6 @@ export const Hero = () => {
   //const history = useHistory();
   //const navigateToPage = (route: string) => history.push(route);
 
-  // CONTENTFUL CMS INTEGRATION BELOW
   const [someContent, setSomeContent] = useState<webContent> (
     {
     "title": "Use Web3 Anywhere.",
@@ -185,7 +181,7 @@ export const Hero = () => {
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
   useEffect(() => {
-    /////////// CMS content fetching: Callback version
+    // CMS content fetching: Callback version
     setIsLoading(true);
 
     ContentfulFetcher(cmsQuery).then(
@@ -203,7 +199,6 @@ export const Hero = () => {
     });
 
   }, []);
-  // CONTENTFUL CMS INTEGREATION ABOVE
 
   return (
     <Grid
