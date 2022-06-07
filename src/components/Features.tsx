@@ -76,23 +76,12 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-// CONTENTFUL CMS  INITIAL SET UP BELOW       // v FEATURES v
-
-// TODO : Iterate through myFeatures, and perform all the queries respectively
-// make sure to store the values on a new variable.
-// Consider turning the myFeatures list into a dict                  
-
-// CONTENTFUL CMS INITIAL SET UP ABOVE
 
 
 export const Features = () => {
   const theme = useTheme();
   const classes = useStyles();
 
-
-  //var counter: number = 0;
-  
-  // TODO : Hooks ?
   const [hasFailed, setHasFailed] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [someContent, setSomeContent] = useState<polywrapFeature[]> (
@@ -119,14 +108,6 @@ export const Features = () => {
           ["d4he1KTXgSQLg6BuaY6MA", "Secure"]
         ]
 
-        // var currentFetch: Promise<any> | polywrapFeature = {
-        //   "title": "Welcome to the Polywrap Hub",
-        //   "subtitle": "Our flagship dApp",
-        //   "description": "A developer-centric platform where you can discover, deploy, and interact with any Polywrapper in the ecosystem. We are paving the road, expecting endless collaboration and curation possibilities. Test and Integrate web3 protocols quickly on the browser with our GraphQL Playground, and publish your packages to decentralised hosting. Soon you'll be able to explore an endless ocean of wrappers, by querying tags like `multisig`, `defi`, or `vesting`. A more semantic web3 that's easy to compose together!",
-        //   "callToAction": "Start Coding",
-        //   "slug": "hub"
-        // };
-
         var currentFetch: {
           data: {
             webContent: polywrapFeature
@@ -134,8 +115,7 @@ export const Features = () => {
         };
 
         for(const element of myFeatures) {
-          //console.log(element[0])
-          //console.log(element[1])
+
           var cmsQuery = `query { 
             webContent(id:"${element[0]}") { 
               title
@@ -197,18 +177,6 @@ export const Features = () => {
                         </Typography>
                       </Box>
                     </Grid>
-                // <Grid key={feature.title} xs={12} sm={6} md={4} item className={classes.featureItem}>
-                //     <Box position='relative' display='flex' alignItems='center' justifyContent='center' className={classes.featureIconContainer}>
-                //       <Typography variant='subtitle1' color='textPrimary' align='center' className={classes.featureTitle}>
-                //         <div>
-                //           <div>{feature.title}</div>
-                //           <div>{feature.description}</div>
-                //           <div>{feature.supportImage}</div>
-                //           <img className={classes.featureIcon} width="100%" src={`${process.env.PUBLIC_URL}/imgs/assets/features/${feature['title']}.png`} alt='' />
-                //         </div>
-                //     </Typography>
-                //   </Box>
-                // </Grid>
               )}})
             }
           </Grid>

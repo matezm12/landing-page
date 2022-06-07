@@ -10,12 +10,6 @@ import { FeaturedWrappersSection } from '../../components/Wrappers';
 //import { WrapperSection } from '../../components/old_WrapperSection';
 import { fetchWrappers, queryFeaturedWrappers } from '../../components/CMScontent';
 
-//console.log("///// Wrapper's Data from the API")
-//console.log(queryFeaturedWrappers())
-//console.log("///// wrapper data after mapping with fetchWrappers()")
-//console.log(fetchWrappers())
-
-
 const useStyles = makeStyles((theme) => ({
   root: {
     maxWidth: '1400px',
@@ -35,8 +29,6 @@ export const Home = () => {
     <Box className={classes.root}>
       <Hero />
       <DemoSection />
-    
-      {/*<FeaturedWrappersSection /> */}
       <Features />
       <Testimonials />
 

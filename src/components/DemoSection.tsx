@@ -1,6 +1,6 @@
 import { Parallax } from 'react-scroll-parallax';
 import { Box, Grid, makeStyles, Typography, useTheme } from '@material-ui/core';
-// WIP: Try to modularize the CMS query
+// WIP: modularize the CMS query
 import {useState, useEffect} from 'react';
 import {  webContent, ContentfulFetcher } from './QueryModule';
 
@@ -53,7 +53,6 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-// CONTENTFUL CMS INITIAL SET UP BELOW
 const cmsQuery = `query { 
   webContent(id:"4vlgBuWUl1gJGQPeYogzI4") { 
    title 
@@ -62,7 +61,6 @@ const cmsQuery = `query {
    callToAction
  } 
 }`;
-// CONTENTFUL CMS INITIAL SET UP ABOVE
 
 
 export const DemoSection = () => {
@@ -82,14 +80,13 @@ export const DemoSection = () => {
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
   useEffect(() => {
-    /////////// CMS content fetching: Callback version
+    // CMS content fetching: Callback version
     setIsLoading(true);
 
     ContentfulFetcher(cmsQuery).then(
       (response) => {
         //On success        
         const content: webContent = response.data.webContent;
-        //console.log("On the arrow func", content)
 
         setSomeContent(content);
       }, 
@@ -102,7 +99,6 @@ export const DemoSection = () => {
     });
 
   }, []);
-  // CONTENTFUL CMS INTEGREATION ABOVE
 
 
   return (
