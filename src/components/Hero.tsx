@@ -166,10 +166,6 @@ export const Hero = () => {
   const classes = useStyles();
   const matches = useMediaQuery(theme.breakpoints.down('xs'));
 
-  // This was used for pagination
-  //const history = useHistory();
-  //const navigateToPage = (route: string) => history.push(route);
-
   const [someContent, setSomeContent] = useState<webContent> (
     {
     "title": "Use Web3 Anywhere.",

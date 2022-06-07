@@ -98,13 +98,10 @@ const cmsQuery = `query {
     futurePromise
   }
 }`;
-// CONTENTFUL CMS INITIAL SET UP ABOVE
 
 
 export const Testimonials = () => {
   const classes = useStyles();
-
-  // CONTENTFUL CMS INTEGRATION BELOW
 
   const [gelatoContent, setGelatoContent] = useState<launchPartner> (
     {
@@ -173,16 +170,12 @@ export const Testimonials = () => {
 
 
   }, []);
-  // CONTENTFUL CMS INTEGREATION ABOVE
-  //         console.log(gelatoContent, gnosisContent)
 
   const newTestimonials: launchPartner[] = [gnosisContent, pocketContent, gelatoContent]
   
   var  TESTIMONIALS: Testimonial[] = []
-
   
   for (var partner in newTestimonials) {
-
 
     TESTIMONIALS[partner] = 
     {
@@ -190,14 +183,11 @@ export const Testimonials = () => {
       "testimonial": newTestimonials[partner].testimonial ,
       "persona":newTestimonials[partner].persona ,
       "link": newTestimonials[partner].link,
-      // TODO: This is a hacky way of getting the link to the image, we should be able to fetch 
-      // it all from the CMS, or have this structured in a a way that the .split(' ')[0] doesn't break
       "logo": newTestimonials[partner].blackPngLogo.url
     };
 
   };
 
-  //console.log(TESTIMONIALS)
   return (
     <Box className={classes.root}>
       <Typography className={classes.title} variant='h3' align='center' color='textPrimary'>

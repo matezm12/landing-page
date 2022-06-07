@@ -1,15 +1,8 @@
 import { Parallax } from 'react-scroll-parallax';
 import { Box, Grid, makeStyles, Typography, useMediaQuery, useTheme } from '@material-ui/core';
 import { polywrapPalette } from '../theme';
-// WIP: Try to modularize the CMS query
 import {useState, useEffect} from 'react';
 import {  webContent, ContentfulFetcher } from './QueryModule';
-
-//These imports are for multiple slides/caroussel effect
-//import { useHistory } from 'react-router-dom';
-//import { KeyboardArrowRightOutlined } from '@material-ui/icons';
-//import { CTA } from '../constants/verbiage';
-//import Button from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
   root: {
