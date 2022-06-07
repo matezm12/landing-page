@@ -21,12 +21,10 @@ const useStyles = makeStyles((theme) => ({
     mixBlendMode: "hard-light",
   },
   blurredPoly1: {
-    // filter: "blur(20px)",
     transform: "scale(2) translate(5%, 35%) rotate(125deg)",
     opacity: "0.25",
   },
   blurredPoly2: {
-    // filter: "blur(35px)",
     transform: "scale(0.5) rotate(-75deg)",
     opacity: "0.3",
     [theme.breakpoints.between('xs','md')]: {
@@ -41,7 +39,6 @@ const useStyles = makeStyles((theme) => ({
     }
   },
   blurredPoly3: {
-    // filter: "blur(50px)",
     transform: "scale(0.25) translate(650%, 300%) rotate(65deg)",
     opacity: "0.4",
   },

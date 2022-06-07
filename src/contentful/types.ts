@@ -1,15 +1,12 @@
-require('dotenv').config();
-
-export interface webContent {
+export interface WebContent {
   title: string;
   subtitle: string | null;
   callToAction: string | null;
   description?: string | null;
   supportImage?: any | null;
-  
 }
 
-export interface wrapperQuery {
+export interface WrapperQuery {
   filename: string;
   featured: boolean;
   query?: string;
@@ -21,20 +18,19 @@ export interface wrapperQuery {
   appRs?: any;
 }
 
-export interface wrapper {
+export interface Wrapper {
   wrapperName: string;
   featured: boolean;
   thirdParty: boolean;
   description: string;
   queriesCollection: {
-    items : wrapperQuery[];
+    items: WrapperQuery[];
   }
   docsLink: string;
 }
 
-export interface newListOfFeaturedQueries {
+export interface NewListOfFeaturedQueries {
   wrapperName: string;
-  //filename: string;
   description: string;
   featuredWrapper: boolean;
   thirdParty: boolean;
@@ -51,7 +47,7 @@ export interface newListOfFeaturedQueries {
   };
 }
 
-export interface listOfFeaturedQueries {
+export interface ListOfFeaturedQueries {
   wrapperName: string;
   description: string;
   featured: boolean;
@@ -62,21 +58,17 @@ export interface listOfFeaturedQueries {
     source: string;
     snippets: {
       filename: string;
-
       language: string;
       snippet: string;
     }[];
   };
 }
 
-export interface listOfFeaturedQueries {
-}
-
-export interface polywrapFeature extends webContent{
+export interface PolywrapFeature extends WebContent{
   slug: string; 
 }
 
-export interface launchPartner {
+export interface LaunchPartner {
   name: string;
   link: string | null;
   testimonial: string | null;
@@ -90,7 +82,6 @@ export interface launchPartner {
 export interface Testimonial {
   name: string;
   testimonial: string | null;
-  //futurePromise: string;
   persona: string;
   link: string | null | undefined;
   logo: string;
@@ -99,24 +90,3 @@ export interface Testimonial {
 export interface Asset {
   name: string;
 }
-
-function ContentfulFetcher(query: string): Promise<any> {
-  // Simple helper function to query data from the Contentful API
-  // Inputs the cmsQuery string and returns JSON with results.
-
-    return window
-    .fetch(process.env.REACT_APP_CMS_SITE as string, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "Authorization": process.env.REACT_APP_CMS_TOKEN as string,
-      },
-      body: JSON.stringify({ "query":query }),
-    })
-    .then((response) => response.json());
-
-    // Could be useful to add some error handling 
-    // if response.json.error != undefined, console.log(response.json.error)
-}
-
-export {ContentfulFetcher}

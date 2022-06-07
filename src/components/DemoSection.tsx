@@ -1,8 +1,10 @@
 import { Parallax } from 'react-scroll-parallax';
 import { Box, Grid, makeStyles, Typography, useTheme } from '@material-ui/core';
-// WIP: modularize the CMS query
 import {useState, useEffect} from 'react';
-import {  webContent, ContentfulFetcher } from './ContentfulFetcher';
+import {
+  WebContent,
+  queries,
+} from '../contentful';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -52,24 +54,14 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-
-const cmsQuery = `query { 
-  webContent(id:"4vlgBuWUl1gJGQPeYogzI4") { 
-   title 
-   subtitle
-   description
-   callToAction
- } 
-}`;
-
+const demoWebContentId = "4vlgBuWUl1gJGQPeYogzI4";
+const demoWebContentQuery = queries.webContent(demoWebContentId);
 
 export const DemoSection = () => {
   const theme = useTheme();
   const classes = useStyles();
 
-
-  // CONTENTFUL CMS INTEGRATION BELOW
-  const [someContent, setSomeContent] = useState<webContent> (
+  const [content, setContent] = useState<WebContent> (
     {
       "title": "Solving the Web3 Integration Problem",
       "subtitle": ".",
@@ -83,23 +75,17 @@ export const DemoSection = () => {
     // CMS content fetching: Callback version
     setIsLoading(true);
 
-    ContentfulFetcher(cmsQuery).then(
+    demoWebContentQuery.send().then(
       (response) => {
-        //On success        
-        const content: webContent = response.data.webContent;
-
-        setSomeContent(content);
+        setContent(response.data.webContent);
       }, 
       (error) => {
-        //On fail
         setHasFailed(true);
       }
     ).finally(() => {
       setIsLoading(false);
     });
-
   }, []);
-
 
   return (
     <Box position='relative' className={classes.root}>
@@ -126,7 +112,7 @@ export const DemoSection = () => {
               color='textPrimary'
               className={classes.title}
             >
-              {someContent.title}
+              {content.title}
             </Typography>
             <Typography
               variant='body1'
@@ -135,7 +121,7 @@ export const DemoSection = () => {
               // TODO: Fix the formatting of description below, this section should allow us somehow to show line
               // breaks and bold sections for example, but it's not working right now. All text is output as a continuous string
             >
-              {someContent.description}
+              {content.description}
             </Typography>
           </Grid>
         </Grid>

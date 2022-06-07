@@ -1,4 +1,7 @@
-import {useState, useEffect} from 'react';
+import {
+  useState,
+  useEffect
+} from 'react';
 import { Parallax } from 'react-scroll-parallax';
 import {
   Box,
@@ -11,7 +14,7 @@ import {
 import { makeStyles } from '@material-ui/core/styles';
 import KeyboardArrowRightOutlined from '@material-ui/icons/KeyboardArrowRightOutlined';
 import { polywrapPalette } from '../theme';
-import { webContent, ContentfulFetcher } from './ContentfulFetcher';
+import { WebContent, queries } from '../contentful';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -149,21 +152,15 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const cmsQuery = `query { 
-  webContent(id:"6DWrAojZUdPcTSDXGip5PN") { 
-   title 
-   subtitle
-   description
-   callToAction
- } 
-}`;
+const heroWebContentId = "6DWrAojZUdPcTSDXGip5PN";
+const heroWebContentQuery = queries.webContent(heroWebContentId);
 
 export const Hero = () => {
   const theme = useTheme();
   const classes = useStyles();
   const matches = useMediaQuery(theme.breakpoints.down('xs'));
 
-  const [someContent, setSomeContent] = useState<webContent> (
+  const [content, setContent] = useState<WebContent> (
     {
     "title": "Use Web3 Anywhere.",
     "subtitle": "PRE-ALPHA",
@@ -174,23 +171,18 @@ export const Hero = () => {
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
   useEffect(() => {
-    // CMS content fetching: Callback version
     setIsLoading(true);
 
-    ContentfulFetcher(cmsQuery).then(
+    heroWebContentQuery.send().then(
       (response) => {
-        //On success        
-        const content: webContent = response.data.webContent;
-        setSomeContent(content);
+        setContent(response.data.webContent);
       }, 
       (error) => {
-        //On fail
         setHasFailed(true);
       }
     ).finally(() => {
       setIsLoading(false);
     });
-
   }, []);
 
   return (
@@ -213,21 +205,21 @@ export const Hero = () => {
               color='secondary'
               className={classes.technicalPreview}
             >
-             {someContent.subtitle}
+             {content.subtitle}
             </Typography>
             <Typography
               className={classes.heroTitle}
               color='textPrimary'
               variant='h1'
             >
-             {someContent.title}
+             {content.title}
             </Typography>
             <Typography
               className={classes.heroBody}
               color='textSecondary'
               variant='body1'
             >
-            {someContent.description}
+            {content.description}
 
             </Typography>
             <Button
@@ -240,7 +232,7 @@ export const Hero = () => {
               type='submit'
               variant='contained'
             >
-             {someContent.callToAction}
+             {content.callToAction}
             </Button>
           </Box>
         </Parallax>
@@ -259,11 +251,6 @@ export const Hero = () => {
           >
             <img
               className={classes.heroPolywrapper}
-              // TODO: Pass the supportImage that is queried on the CMS
-              // This required modifying webContent Type to include the
-              // supportImage data type, similar to the structure used 
-              // for testimonials 
-              // src={someContent.supportImage.url}
               src={process.env.PUBLIC_URL + '/imgs/polywrapper-hero.png'}
               alt='Polywrap Logo'
             />

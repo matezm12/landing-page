@@ -2,7 +2,7 @@ import { Parallax } from 'react-scroll-parallax';
 import { Box, Grid, makeStyles, Typography, useMediaQuery, useTheme } from '@material-ui/core';
 import { polywrapPalette } from '../theme';
 import {useState, useEffect} from 'react';
-import {  webContent, ContentfulFetcher } from './ContentfulFetcher';
+import { WebContent, queries } from '../contentful';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -55,14 +55,8 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const cmsQuery = `query { 
-  webContent(id:"4QLItvU9WU4CFNCC4c0jf1") { 
-   title 
-   subtitle
-   description
-   callToAction
- } 
-}`;
+const hubWebContentId = "4QLItvU9WU4CFNCC4c0jf1";
+const hubWebContentQuery = queries.webContent(hubWebContentId);
 
 export const HubCallout = () => {
   const theme = useTheme();
@@ -71,7 +65,7 @@ export const HubCallout = () => {
     defaultMatches: true
   });
 
-  const [someContent, setSomeContent] = useState<webContent> (
+  const [content, setContent] = useState<WebContent> (
     {
       "title": "Welcome to the Polywrap Hub",
       "subtitle": "Our flagship dApp",
@@ -82,25 +76,20 @@ export const HubCallout = () => {
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
   useEffect(() => {
-    // CMS content fetching: Callback version
     setIsLoading(true);
 
-    ContentfulFetcher(cmsQuery).then(
+    hubWebContentQuery.send().then(
       (response) => {
-        //On success        
-        const content: webContent = response.data.webContent;
-        setSomeContent(content);
+        const content: WebContent = response.data.webContent;
+        setContent(content);
       }, 
       (error) => {
-        //On fail
         setHasFailed(true);
       }
     ).finally(() => {
       setIsLoading(false);
     });
-
   }, []);
-
 
   return (
     <Box position='relative' className={classes.root}>
@@ -114,25 +103,13 @@ export const HubCallout = () => {
           <Grid container spacing={isMobile ? 6 : 10} alignItems='stretch' >
             <Grid item xs={12} sm={6}>
               <Typography variant="h3">
-                {someContent.title}
+                {content.title}
               </Typography>
               <Box marginTop={2}>
                 <Typography variant="body1">
-                  {someContent.description}
+                  {content.description}
                 </Typography>
               </Box>
-              {/* <Box marginTop={2}>
-                <Button
-                  component="button"
-                  color='primary'
-                  href='https://discord.gg/bGsqQrNhqd'
-                  endIcon={<KeyboardArrowRightOutlined />}
-                  type='submit'
-                  variant='contained'
-                >
-                  {CTA}
-                </Button>
-              </Box> */}
             </Grid>
             <Grid item xs={12} sm={6}>
               <Parallax y={[24, -24]} disabled={isMobile}>

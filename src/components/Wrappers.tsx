@@ -1,11 +1,9 @@
+import { useState, useEffect } from 'react';
 import { Parallax } from 'react-scroll-parallax';
 import { Box, Grid, makeStyles, Typography, useTheme, Button } from '@material-ui/core';
-// WIP: Try to modularize the CMS query
-import {useState, useEffect} from 'react';
-import {  newListOfFeaturedQueries, webContent } from './ContentfulFetcher';
+import { WebContent, fetchWrappers } from '../contentful';
 import { DemoFunctions } from './DemoFunctions';
 import { IDE } from './IDE';
-import { fetchWrappers }from './CMScontent';
 import KeyboardArrowRightOutlined from '@material-ui/icons/KeyboardArrowRightOutlined';
 
 const useStyles = makeStyles((theme) => ({
@@ -79,7 +77,7 @@ export const FeaturedWrappersSection = () => {
   const classes = useStyles();
 
   // set initial react states
-  const [aboutThisSection, setAboutThisSection] = useState<webContent> (
+  const [aboutThisSection, setAboutThisSection] = useState<WebContent> (
     {
       "title": "Blazing fast development",
       "subtitle": "",
@@ -90,33 +88,14 @@ export const FeaturedWrappersSection = () => {
   const [featuredQueries, setFeaturedQueries] = useState<string[]>(['swapToken','functionNameB','funcNameC','...'])
   const [transitionID, setTransitionID] = useState<number>(0)
 
-  // TODO: try using this state to move the function names into the DataCard
-  const [queriesData, setQueriesData] = useState<newListOfFeaturedQueries[] | null>(null)
-  
-  // TODO: Get the "aboutThisSection" content from the CMS
-  // 26XK8ENo5y1MgwpY7CDRlb
-  // https://app.contentful.com/spaces/tmv21jqhvpr2/entries/26XK8ENo5y1MgwpY7CDRlb
-
-  // update wrapper data with CMS integration
   useEffect(() => {
-    async function fetchWrapperData() {
-
-      // query the CMS and store the wrappers in the react state
-      setWrappersData(await fetchWrappers())
-      
-    }
-
-    const getFunctions = (wrappersData:newListOfFeaturedQueries[]) => {
-      console.log(wrappersData)
-      //wrappersData.forEach(wrapper => console.log(wrapper))
-      return []
-    };
-    fetchWrapperData() //=> {getFunctions(wrappersData)};
-
+    fetchWrappers().then(
+      (response) => {
+        setWrappersData(response)
+      }
+    );
   }, []);
 
-  
-  // set UI transition effects for the component
   useEffect(() => {
     let rotationInterval = setInterval(() => {
       if (transitionID === wrappersData.length - 1 ) {
@@ -125,14 +104,11 @@ export const FeaturedWrappersSection = () => {
       else {
         setTransitionID(transitionID => transitionID + 1)
       }
-    }, 10000) // Timer for switching between wrappers (10000 -> 10 seconds)
-    
+    }, 10000)
     return () => {
       clearInterval(rotationInterval);
     }
   }, [transitionID, wrappersData])
-  
-
 
   return (
     <Box position='relative' className={classes.root}>
@@ -140,15 +116,9 @@ export const FeaturedWrappersSection = () => {
         y={[20, -35]}
         disabled={window.innerWidth < theme.breakpoints.values.md}
       >
-
-      {/* The lines below are used to check
-            1. that wrappersData exists
-            2. maps all the data to render the component*/}
-      { wrappersData && 
+      {
+        wrappersData && 
         wrappersData.map((wrapper: any, index: number) =>
-        
-
-          // This grid is for the entire featured wrapper component
           <Grid
             key={index}
             container
@@ -163,45 +133,24 @@ export const FeaturedWrappersSection = () => {
               position: 'absolute'
             }}
           >
-            {/* // this grid is used to showcase the IDE and the CMS card */}
             <Grid item xs={12} md={6}>
               <Box className={classes.IDEWrapper}>
-
-                {/* Card section for listing names of new functions */}
                 <Box className={classes.demoFunctionWrapper}>
                   <Parallax
                     y={[140, -13]}
                     disabled={window.innerWidth < theme.breakpoints.values.md}
                   >
-                    {/* TODO: use this section to map all the name of the functions 
-                        Also consider a way of setting the active function on "accent",
-                        while the other ones not being displayed could look grey.
-                     */}
-
                     <DemoFunctions 
                       content={
                           featuredQueries
                         } 
                     />
-
                   </Parallax>
                 </Box>
-
-                {/* This is the section that displays the entire IDE window.
-                    it includes both the code snippet and the tabs on top of the window
-                */}
                 <IDE queriesData={wrapper.queries} />
               </Box>
-
             </Grid>
-
-            {/* This section is used to display the name of the wrapper, a description of the wrapper,
-                additional copy to generate engagement, and a CTA button that takes users to docs of the
-                specified wrappert
-            */}
             <Grid item xs={12} md={6}>
-
-              {/* exciting title for the section */}
               <Typography
                 variant='h3'
                 color='textPrimary'
@@ -209,8 +158,6 @@ export const FeaturedWrappersSection = () => {
               >
                 {aboutThisSection.title}
               </Typography>
-
-              {/* description about the wrapper dev experience */}
               <Typography
                 variant='body1'
                 color='textSecondary'
@@ -218,8 +165,6 @@ export const FeaturedWrappersSection = () => {
               >
                 {aboutThisSection.description  }
               </Typography>
-
-              {/* The name of the wrapper currently displayed */}
               <Typography
                 variant='h4'
                 color='textPrimary'
@@ -227,25 +172,17 @@ export const FeaturedWrappersSection = () => {
               >
                 {wrapper.wrapperName}
               </Typography>
-
-              {/* CTA to get people to use the specific wrapper */}
               <Button
-              // still dunno what to calll this
-              //className={classes.heroButton}
-              color='primary'
-              href={wrapper.docsLink}
-              target="_blank"
-              rel="noredirect"
-              endIcon={<KeyboardArrowRightOutlined />}
-              type='submit'
-              variant='contained'
-            >
-              wrap with it
-             {/* {someContent.callToAction} */}
-            </Button>
-
-
-              {/* Description of the wrapper being displayed */}
+                color='primary'
+                href={wrapper.docsLink}
+                target="_blank"
+                rel="noredirect"
+                endIcon={<KeyboardArrowRightOutlined />}
+                type='submit'
+                variant='contained'
+              >
+                wrap with it
+              </Button>
               <Typography
                 variant='body1'
                 color='textSecondary'
@@ -253,12 +190,10 @@ export const FeaturedWrappersSection = () => {
               >
                 {wrapper.description } 
               </Typography>
-
-
             </Grid>
           </Grid>
-        )}
-
+        )
+      }
       </Parallax>
     </Box>
   );

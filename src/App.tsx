@@ -12,7 +12,6 @@ import { Header } from './components/Header';
 import { Footer } from './components/Footer';
 import './App.css';
 
-
 const useStyles = makeStyles((theme) => ({
   wrapper: {
     [theme.breakpoints.down('sm')]: {
@@ -29,9 +28,6 @@ const useStyles = makeStyles((theme) => ({
 
 const App: React.FC = () => {
   const classes = useStyles();
-
-
-
 
   return (
     <ThemeProvider theme={theme}>

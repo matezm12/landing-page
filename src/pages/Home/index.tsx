@@ -6,9 +6,6 @@ import { DemoSection } from '../../components/DemoSection';
 import { Features } from '../../components/Features';
 import { Testimonials } from '../../components/Testimonials';
 import ReactGA from 'react-ga';
-import { FeaturedWrappersSection } from '../../components/Wrappers';
-//import { WrapperSection } from '../../components/old_WrapperSection';
-import { fetchWrappers, queryFeaturedWrappers } from '../../components/CMScontent';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -31,7 +28,6 @@ export const Home = () => {
       <DemoSection />
       <Features />
       <Testimonials />
-
     </Box>
   );
 };

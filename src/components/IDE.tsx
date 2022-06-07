@@ -1,12 +1,11 @@
 import React from 'react';
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Highlight, { defaultProps } from "prism-react-renderer";
 import { Box, makeStyles, styled } from '@material-ui/core';
 import { polywrapPalette } from '../theme';
 import theme from "prism-react-renderer/themes/nightOwl";
 
-// WIP: Try to modularize the CMS query
-import {  webContent, wrapper, ContentfulFetcher } from './ContentfulFetcher';
+import { WebContent, Wrapper, queries } from '../contentful';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -92,13 +91,10 @@ const LineContent = styled('span')({
   display: 'table-cell',
 });
 
-
 export const Tabs = ({queriesData, activeQuery, setActiveQuery}: any) => {
   const classes = useStyles();
 
-
-  // CONTENTFUL CMS INTEGRATION BELOW
-  const [wrapperContent, setWrapperContent] = useState<wrapper> (
+  const [wrapperContent, setWrapperContent] = useState<Wrapper> (
     {
       "wrapperName": "Uniswap",
       "featured": false,
@@ -123,7 +119,6 @@ export const Tabs = ({queriesData, activeQuery, setActiveQuery}: any) => {
         ]
       },
       "docsLink":""
-
   });
   const [hasFailed, setHasFailed] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState<boolean>(true);

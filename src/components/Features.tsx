@@ -1,7 +1,7 @@
+import { useState, useEffect } from 'react';
 import { Parallax } from 'react-scroll-parallax';
 import { Box, Grid, makeStyles, Typography, useTheme } from '@material-ui/core';
-import {useState, useEffect} from 'react';
-import { polywrapFeature, ContentfulFetcher } from './ContentfulFetcher';
+import { PolywrapFeature, queries, queryContentful } from '../contentful';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -76,15 +76,13 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-
-
 export const Features = () => {
   const theme = useTheme();
   const classes = useStyles();
 
   const [hasFailed, setHasFailed] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState<boolean>(true);
-  const [someContent, setSomeContent] = useState<polywrapFeature[]> (
+  const [content, setContent] = useState<PolywrapFeature[]> (
     [{
     "title": "Interoperability.",
     "subtitle": "Your app, everywhere",
@@ -93,55 +91,33 @@ export const Features = () => {
     "slug":"cms-error"
     }]);
 
-    useEffect(() => {
-      (async () => {
-        var newFeatures: polywrapFeature[] = [];
+  useEffect(() => {
+    (async () => {
+      const newFeatures: PolywrapFeature[] = [];
 
-        /////////// CMS content fetching: Callback version
-        setIsLoading(true);
-        const myFeatures = [
-          ["7LYHglxrDEqHwa23xPbrEo", "Multiplatform"],
-          ["7g5q14hzPYzLhwos7IVik1", "UserFriendly"],
-          ["5NjaWIMhQlair2k0dVDsXC", "Composable"],
-          ["3aV4XbTikwD2bIdKAsmShv", "Scalable"],
-          ["1i96gjazTJVQVxMdbDbfNm", "Upgradable"],
-          ["d4he1KTXgSQLg6BuaY6MA", "Secure"]
-        ]
+      setIsLoading(true);
+      const features = [
+        "7LYHglxrDEqHwa23xPbrEo", // Multiplatform
+        "7g5q14hzPYzLhwos7IVik1", // UserFriendly
+        "5NjaWIMhQlair2k0dVDsXC", // Composable
+        "3aV4XbTikwD2bIdKAsmShv", // Scalable
+        "1i96gjazTJVQVxMdbDbfNm", // Upgradable
+        "d4he1KTXgSQLg6BuaY6MA",  // Secure
+      ];
 
-        var currentFetch: {
-          data: {
-            webContent: polywrapFeature
-          }
-        };
+      for(const feature of features) {
+        const result = await queries.webContentWithImage(
+          feature
+        ).send();
+        newFeatures.push(result.data.webContent);
+        setContent((oldFeatures) => [...oldFeatures, result.data.webContent]);
 
-        for(const element of myFeatures) {
-
-          var cmsQuery = `query { 
-            webContent(id:"${element[0]}") { 
-              title
-              subtitle
-              supportImage {
-                title
-                description
-                contentType
-                fileName
-                size
-                url
-                width
-                height
-              }
-              description
-          }
-          }`;
-          
-          currentFetch = await ContentfulFetcher(cmsQuery);
-          newFeatures.push(currentFetch.data.webContent);
-          setSomeContent((oldFeatures) => [...oldFeatures, currentFetch.data.webContent]);
+        if (isLoading) {
           setIsLoading(false);
         }
-      })();
-    }, []);
-
+      }
+    })();
+  }, []);
 
   return (
     <Box display='flex' alignItems='center' className={classes.root}>
@@ -157,8 +133,7 @@ export const Features = () => {
         <Box className={classes.cell}>
           <Grid container spacing={6} alignItems='flex-start' className={classes.featureGrid}>
             {
-              
-              someContent.map((feature, index) => {
+              content.map((feature, index) => {
                 if (feature.slug !== 'cms-error') {
                   
                   return (

@@ -2,7 +2,7 @@ import { Box, Container, makeStyles, Typography } from '@material-ui/core';
 import FormatQuoteIcon from '@material-ui/icons/FormatQuote';
 import { filters } from '../theme';
 import {useState, useEffect} from 'react';
-import { launchPartner, ContentfulFetcher, Testimonial } from './ContentfulFetcher';
+import { LaunchPartner, queries } from '../contentful';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -62,48 +62,10 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-
-// CONTENTFUL CMS  INITIAL SET UP BELOW
-// TO ADD A NEW TESTIMONIAL BLOCK YOU SHOULD 
-// JUST REPLICATE THE QUERY AND ADD THE CORRECT ID
-const cmsQuery = `query { 
-  gelato: launchPartners(id:"4NuUSkl1u6JPVA7QNiM4iS") { 
-   name 
-   link
-   testimonial
-   blackPngLogo {
-    url
-  }
-   persona
-   futurePromise
- }, 
-  gnosis:  launchPartners(id: "4wW7f4q1VU7Y0VoHIYKJDK") {
-    name 
-    link
-    testimonial
-    blackPngLogo {
-      url
-    }
-    persona
-    futurePromise
-  }, 
-  pocket:  launchPartners(id: "2a9WNhIMlaMmbgUBO5fRiR") {
-    name 
-    link
-    testimonial
-    blackPngLogo {
-      url
-    }
-    persona
-    futurePromise
-  }
-}`;
-
-
 export const Testimonials = () => {
   const classes = useStyles();
 
-  const [gelatoContent, setGelatoContent] = useState<launchPartner> (
+  const [gelatoContent, setGelatoContent] = useState<LaunchPartner> (
     {
       "name": "Gelato Network",
       "link": "https://gelato.network",
@@ -114,7 +76,7 @@ export const Testimonials = () => {
         "url":"https://polywrap.io/logos/gelato.png"
       }
     });
-  const [gnosisContent, setGnosisContent] = useState<launchPartner> (
+  const [gnosisContent, setGnosisContent] = useState<LaunchPartner> (
     {
       "name": "Gnosis",
       "link": "https://gnosis.io",
@@ -126,7 +88,7 @@ export const Testimonials = () => {
       }
     });
 
-  const [pocketContent, setPocketContent] = useState<launchPartner> (
+  const [pocketContent, setPocketContent] = useState<LaunchPartner> (
       {
         "name": "Pocket Network",
         "link": "https://pokt.network/",
@@ -141,49 +103,27 @@ export const Testimonials = () => {
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
   useEffect(() => {
-    // CMS content fetching: Callback version
     setIsLoading(true);
 
-    
-    ContentfulFetcher(cmsQuery).then(
+    queries.launchPartners.send().then(
       (response) => {
         //On success      
-        const gelato: launchPartner = response.data.gelato;
+        const gelato: LaunchPartner = response.data.gelato;
         setGelatoContent(gelato);
-        const gnosis: launchPartner = response.data.gnosis;
+        const gnosis: LaunchPartner = response.data.gnosis;
         setGnosisContent(gnosis)
-        const pocket: launchPartner = response.data.pocket;
+        const pocket: LaunchPartner = response.data.pocket;
         setPocketContent(pocket)
       }, 
       (error) => {
-        //On fail
         setHasFailed(true);
-        console.log(error)
-        console.log(" ### CMS ERROR -> Contentful Query Failed.")
-
       }
     ).finally(() => {
       setIsLoading(false);
     });
-
-
   }, []);
 
-  const newTestimonials: launchPartner[] = [gnosisContent, pocketContent, gelatoContent]
-  
-  var  TESTIMONIALS: Testimonial[] = []
-  
-  for (var partner in newTestimonials) {
-
-    TESTIMONIALS[partner] = 
-    {
-      "name": newTestimonials[partner].name,
-      "testimonial": newTestimonials[partner].testimonial ,
-      "persona":newTestimonials[partner].persona ,
-      "link": newTestimonials[partner].link,
-      "logo": newTestimonials[partner].blackPngLogo.url
-    };
-  };
+  const testimonials: LaunchPartner[] = [gnosisContent, pocketContent, gelatoContent]
 
   return (
     <Box className={classes.root}>
@@ -202,8 +142,8 @@ export const Testimonials = () => {
           position="relative"
           zIndex={2}
         >
-          {TESTIMONIALS.map(
-            (testimonial: Testimonial, index: number) =>
+          {testimonials.map(
+            (testimonial: LaunchPartner, index: number) =>
               <Box className={classes.testimonial} key={`testimonial-${index}`}>
                 <Box>
                   <FormatQuoteIcon className={classes.testimonialQuote} />
@@ -216,9 +156,7 @@ export const Testimonials = () => {
                     </Typography>
                   </Box>
                   <Box marginTop={2}>
-                    {/* <Link href={testimonial.link} target='_blank'> */}
-                      <img src={testimonial.logo} className={classes.logo} alt=""/>
-                    {/* </Link> */}
+                      <img src={testimonial.blackPngLogo.url} className={classes.logo} alt=""/>
                   </Box>
                 </Box>
               </Box>
