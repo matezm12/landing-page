@@ -132,7 +132,8 @@ export const DemoSection = () => {
               variant='body1'
               color='textSecondary'
               className={classes.description}
-              // TODO: Fix the formatting of description below, this should allow us somehow to show line breaks and bold sections for example
+              // TODO: Fix the formatting of description below, this section should allow us somehow to show line
+              // breaks and bold sections for example, but it's not working right now. All text is output as a continuous string
             >
               {someContent.description}
             </Typography>

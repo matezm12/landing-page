@@ -128,8 +128,6 @@ export const Tabs = ({queriesData, activeQuery, setActiveQuery}: any) => {
   const [hasFailed, setHasFailed] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
-
-
   return (
     <Box className={classes.tabs} display='flex'>
       { queriesData.snippets &&
@@ -152,7 +150,6 @@ export const Tabs = ({queriesData, activeQuery, setActiveQuery}: any) => {
     </Box>
   );
 };
-
 
 export const IDE = ({queriesData}: any) => {
   const classes = useStyles();

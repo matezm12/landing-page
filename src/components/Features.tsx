@@ -86,11 +86,11 @@ export const Features = () => {
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [someContent, setSomeContent] = useState<polywrapFeature[]> (
     [{
-    "title": "Fake Content.",
-    "subtitle": "PRE-ALPHA",
+    "title": "Interoperability.",
+    "subtitle": "Your app, everywhere",
     "description": "Polywrap is a development platform that enables easy integration of Web3 protocols into any application. It makes it possible for software on any device, written in any language, to read and write data to Web3 protocols",
-    "callToAction": "ERROR Happened",
-    "slug":"fake"
+    "callToAction": "ERROR occurred",
+    "slug":"cms-error"
     }]);
 
     useEffect(() => {
@@ -141,7 +141,6 @@ export const Features = () => {
         }
       })();
     }, []);
-    // CONTENTFUL CMS INTEGREATION ABOVE
 
 
   return (
@@ -160,7 +159,7 @@ export const Features = () => {
             {
               
               someContent.map((feature, index) => {
-                if (feature.slug !== 'fake') {
+                if (feature.slug !== 'cms-error') {
                   
                   return (
                     <Grid key={feature.title} xs={12} sm={6} md={4} item className={classes.featureItem}>

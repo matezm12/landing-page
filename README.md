@@ -18,7 +18,7 @@ Part of the content of the site is fed through a Headless CMS system named ([Con
 To be able to query the content, you must configure the correct environment variables. 
 - Register and get access to the Polywrap space
 - Rename `.env.example` to `.env` and add the API keys. Ask an admin for API keys if you dont have them.
-- Use the functions in the [`QueryModule.tsx`](./src/components/QueryModule.tsx)
+- Use the functions in the [`ContentfulFetcher.tsx`](./src/components/ContentfulFetcher.tsx)
 - [Learn to use GraphQL](https://devhints.io/graphql)
 
 #### To se a sample of how the CMS is being used to query text and images:
