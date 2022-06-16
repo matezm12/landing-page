@@ -67,35 +67,47 @@ const useStyles = makeStyles((theme) => ({
 // TO ADD A NEW TESTIMONIAL BLOCK YOU SHOULD 
 // JUST REPLICATE THE QUERY AND ADD THE CORRECT ID
 const cmsQuery = `query { 
-  gelato: launchPartners(id:"4NuUSkl1u6JPVA7QNiM4iS") { 
-   name 
-   link
-   testimonial
-   blackPngLogo {
-    url
-  }
-   persona
-   futurePromise
- }, 
-  gnosis:  launchPartners(id: "4wW7f4q1VU7Y0VoHIYKJDK") {
-    name 
+  gelato: newLaunchPartners (id: "63v8JNnRgDKZUD7A9wwiAs") {
+    partnerName
     link
-    testimonial
+    categories
+    testimonialsCollection { 
+      items {
+    		persona
+        testimonialShortVersion
+      }
+    }
     blackPngLogo {
       url
     }
-    persona
-    futurePromise
-  }, 
-  pocket:  launchPartners(id: "2a9WNhIMlaMmbgUBO5fRiR") {
-    name 
+  },
+  pocket: newLaunchPartners (id: "31RjlLdRrfTh4ADJYIpvtA") {
+    partnerName
     link
-    testimonial
+    categories
+    testimonialsCollection { 
+      items {
+    		persona
+        testimonialShortVersion
+      }
+    }
     blackPngLogo {
       url
     }
-    persona
-    futurePromise
+  },
+  gnosis: newLaunchPartners (id: "65O7AQSCKcgObD89isOZVZ") {
+    partnerName
+    link
+    categories
+    testimonialsCollection { 
+      items {
+    		persona
+        testimonialShortVersion
+      }
+    }
+    blackPngLogo {
+      url 
+    }
   }
 }`;
 
@@ -105,7 +117,7 @@ export const Testimonials = () => {
 
   const [gelatoContent, setGelatoContent] = useState<launchPartner> (
     {
-      "name": "Gelato Network",
+      "partnerName": "Gelato Network",
       "link": "https://gelato.network",
       "testimonial": "With the help of Polywrap, Gelato will enable every developer to easily automate the execution of transactions on networks like Ethereum, giving them the ability to provide arbitrary instructions to a decentralized network of bots with a single Wrapper call.",
       "persona": "Hilmar X, Legendary Member",
@@ -116,7 +128,7 @@ export const Testimonials = () => {
     });
   const [gnosisContent, setGnosisContent] = useState<launchPartner> (
     {
-      "name": "Gnosis",
+      "partnerName": "Gnosis",
       "link": "https://gnosis.io",
       "testimonial": "Polywrap will make it easy for everyone to build on top of Gnosis technologies and interact with our contracts and interfaces. This will help us achieve our vision of building open platforms and removing gatekeepers.",
       "persona": "Team Gnosis",
@@ -128,7 +140,7 @@ export const Testimonials = () => {
 
   const [pocketContent, setPocketContent] = useState<launchPartner> (
       {
-        "name": "Pocket Network",
+        "partnerName": "Pocket Network",
         "link": "https://pokt.network/",
         "testimonial": "By creating one single standard for web3 developers, Polywrap massively improves the experience of interacting with different protocols.",
         "persona": "Michael O'Rourke, Founder",

@@ -20,6 +20,24 @@ export interface TagLine {
 }
 
 
+export interface launchPartner {
+  partnerName: string;
+  link: string | null;
+  categories: string;
+  blackPngLogo: {
+    url: string;
+  }
+  partnerSince?: string | number;
+}
+
+export interface Testimonial extends launchPartner {
+  persona: string;
+  testimonialShortVersion: string | null;
+  testimonialLongVersion?: string;
+  futurePromise?: string;
+}
+
+
 /// Older data models below
 
 
@@ -77,29 +95,9 @@ export interface newListOfFeaturedQueries {
 export interface polywrapFeature extends webContent{
 }
 
-export interface launchPartner {
-  name: string;
-  link: string | null;
-  testimonial: string | null;
-  persona: string;
-  futurePromise: string;
-  blackPngLogo: {
-    url: string;
-  }
-}
 
-export interface Testimonial {
-  name: string;
-  testimonial: string | null;
-  //futurePromise: string;
-  persona: string;
-  link: string | null | undefined;
-  logo: string;
-}
 
-export interface Asset {
-  name: string;
-}
+
 
 function ContentfulFetcher(query: string): Promise<any> {
   // Simple helper function to query data from the Contentful API
@@ -121,3 +119,9 @@ function ContentfulFetcher(query: string): Promise<any> {
 }
 
 export {ContentfulFetcher}
+
+/// Types which are apparently not used
+
+export interface Asset {
+  name: string;
+}
