@@ -75,7 +75,6 @@ export interface newListOfFeaturedQueries {
 }
 
 export interface polywrapFeature extends webContent{
-  slug: string; 
 }
 
 export interface launchPartner {

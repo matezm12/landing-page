@@ -89,8 +89,8 @@ export const Features = () => {
     "title": "Interoperability.",
     "subtitle": "Your app, everywhere",
     "description": "Polywrap is a development platform that enables easy integration of Web3 protocols into any application. It makes it possible for software on any device, written in any language, to read and write data to Web3 protocols",
-    "callToAction": "ERROR occurred",
-    "slug":"cms-error"
+    "callToAction": "Whoops, an error occurred",
+//    "slug":"cms-error"
     }]);
 
     useEffect(() => {
@@ -159,7 +159,7 @@ export const Features = () => {
             {
               
               someContent.map((feature, index) => {
-                if (feature.slug !== 'cms-error') {
+                if (feature.callToAction !== 'Whoops, an error occurred') {
                   
                   return (
                     <Grid key={feature.title} xs={12} sm={6} md={4} item className={classes.featureItem}>
