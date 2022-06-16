@@ -100,7 +100,7 @@ export const Features = () => {
 
         /////////// CMS content fetching: Callback version
         setIsLoading(true);
-        const myFeatures = [
+        const featureIds = [
           ["2rq0jIAj9hvVXVtqPDAHrO"], // "Multiplatform" 
           ["4W8dI7XSnRgPt2ya1y14Kf"], // "UserFriendly" 
           ["48pwTCnNtLzuA3W9qQYKDf"], // "Composable" 
@@ -115,7 +115,7 @@ export const Features = () => {
           }
         };
 
-        for(const element of myFeatures) {
+        for(const element of featureIds) {
 
           var cmsQuery = `query { 
             coreBenefits(id:"${element[0]}") { 
