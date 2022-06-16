@@ -149,7 +149,7 @@ export const CoreBenefits = () => {
       </Box>
       <Parallax y={[-5,5]} disabled={window.innerWidth < theme.breakpoints.values.md}>
         <Typography variant='h3' color='textPrimary' align='center'>
-          Core Benefits
+          Why should you use Polywrap?
         </Typography>
         <Box className={classes.cell}>
           <Grid container spacing={6} alignItems='flex-start' className={classes.benefitGrid}>
