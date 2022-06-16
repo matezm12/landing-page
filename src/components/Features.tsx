@@ -111,7 +111,7 @@ export const Features = () => {
 
         var currentFetch: {
           data: {
-            webContent: coreBenefit
+            coreBenefits: coreBenefit
           }
         };
 
@@ -130,8 +130,10 @@ export const Features = () => {
           }`;
           
           currentFetch = await ContentfulFetcher(cmsQuery);
-          newFeatures.push(currentFetch.data.webContent);
-          setCoreBenefits((oldFeatures) => [...oldFeatures, currentFetch.data.webContent]);
+          console.log(currentFetch)
+
+          newFeatures.push(currentFetch.data.coreBenefits);
+          setCoreBenefits((oldFeatures) => [...oldFeatures, currentFetch.data.coreBenefits]);
           setIsLoading(false);
         }
       })();
