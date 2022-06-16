@@ -38,6 +38,14 @@ export interface launchPartner {
   
 }
 
+export interface coreBenefit {
+  title: string;
+  subtitle: string | null;
+  description: string | null;
+  supportImage: {
+    url: string;
+  }
+}
 
 
 

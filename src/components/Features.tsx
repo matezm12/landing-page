@@ -1,7 +1,7 @@
 import { Parallax } from 'react-scroll-parallax';
 import { Box, Grid, makeStyles, Typography, useTheme } from '@material-ui/core';
-import {useState, useEffect} from 'react';
-import { polywrapFeature, ContentfulFetcher } from './ContentfulFetcher';
+import { useState, useEffect } from 'react';
+import { coreBenefit, ContentfulFetcher } from './ContentfulFetcher';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -84,33 +84,34 @@ export const Features = () => {
 
   const [hasFailed, setHasFailed] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState<boolean>(true);
-  const [someContent, setSomeContent] = useState<polywrapFeature[]> (
+  const [coreBenefits, setCoreBenefits] = useState<coreBenefit[]> (
     [{
     "title": "Interoperability.",
     "subtitle": "Your app, everywhere",
     "description": "Polywrap is a development platform that enables easy integration of Web3 protocols into any application. It makes it possible for software on any device, written in any language, to read and write data to Web3 protocols",
-    "callToAction": "Whoops, an error occurred",
-//    "slug":"cms-error"
+    "supportImage": {
+      "url": "Whoops, an error occurred"
+    }
     }]);
 
     useEffect(() => {
       (async () => {
-        var newFeatures: polywrapFeature[] = [];
+        var newFeatures: coreBenefit[] = [];
 
         /////////// CMS content fetching: Callback version
         setIsLoading(true);
         const myFeatures = [
-          ["7LYHglxrDEqHwa23xPbrEo", "Multiplatform"],
-          ["7g5q14hzPYzLhwos7IVik1", "UserFriendly"],
-          ["5NjaWIMhQlair2k0dVDsXC", "Composable"],
-          ["3aV4XbTikwD2bIdKAsmShv", "Scalable"],
-          ["1i96gjazTJVQVxMdbDbfNm", "Upgradable"],
-          ["d4he1KTXgSQLg6BuaY6MA", "Secure"]
+          ["7LYHglxrDEqHwa23xPbrEo"], // "Multiplatform"
+          ["7g5q14hzPYzLhwos7IVik1"], // "UserFriendly"
+          ["5NjaWIMhQlair2k0dVDsXC"], // "Composable"
+          ["3aV4XbTikwD2bIdKAsmShv"], // "Scalable"
+          ["1i96gjazTJVQVxMdbDbfNm"], // "Upgradable"
+          ["d4he1KTXgSQLg6BuaY6MA"]   // "Secure"
         ]
 
         var currentFetch: {
           data: {
-            webContent: polywrapFeature
+            webContent: coreBenefit
           }
         };
 
@@ -136,7 +137,7 @@ export const Features = () => {
           
           currentFetch = await ContentfulFetcher(cmsQuery);
           newFeatures.push(currentFetch.data.webContent);
-          setSomeContent((oldFeatures) => [...oldFeatures, currentFetch.data.webContent]);
+          setCoreBenefits((oldFeatures) => [...oldFeatures, currentFetch.data.webContent]);
           setIsLoading(false);
         }
       })();
@@ -158,8 +159,8 @@ export const Features = () => {
           <Grid container spacing={6} alignItems='flex-start' className={classes.featureGrid}>
             {
               
-              someContent.map((feature, index) => {
-                if (feature.callToAction !== 'Whoops, an error occurred') {
+              coreBenefits.map((feature, index) => {
+                if (feature.supportImage.url !== 'Whoops, an error occurred') {
                   
                   return (
                     <Grid key={feature.title} xs={12} sm={6} md={4} item className={classes.featureItem}>
