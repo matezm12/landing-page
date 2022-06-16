@@ -115,10 +115,10 @@ export const Features = () => {
           }
         };
 
-        for(const element of featureIds) {
+        for(const featureId of featureIds) {
 
           var cmsQuery = `query { 
-            coreBenefits(id:"${element[0]}") { 
+            coreBenefits(id:"${featureId[0]}") { 
               title
               subtitle
               description
