@@ -115,7 +115,7 @@ const cmsQuery = `query {
 export const Testimonials = () => {
   const classes = useStyles();
 
-  const [gelatoContent, setGelatoContent] = useState<Testimonial> (
+  const [gelatoTestimonial, setGelatoTestimonial] = useState<Testimonial> (
     {
       "persona": "Hilmar X, Legendary Member",
       "testimonialShortVersion": "With Polywrap, Gelato will enable every developer to easily automate the execution of transactions on networks like Ethereum, giving them the ability to provide arbitrary instructions to a decentralized network of bots with a single Wrapper call.",
@@ -132,7 +132,7 @@ export const Testimonials = () => {
         }
       }
     });
-  const [gnosisContent, setGnosisContent] = useState<Testimonial> (
+  const [gnosisTestimonial, setGnosisTestimonial] = useState<Testimonial> (
     {
       "persona": "Team Gnosis",
       "testimonialShortVersion": "Polywrap will make it easy for everyone to build on top of Gnosis technologies and interact with our contracts and interfaces. This will help us achieve our vision of building open platforms and removing gatekeepers.",
@@ -149,7 +149,7 @@ export const Testimonials = () => {
       }
     });
 
-  const [pocketContent, setPocketContent] = useState<Testimonial> (
+  const [pocketTestimonial, setPocketTestimonial] = useState<Testimonial> (
     {
       "persona": "Michael O'Rourke, Founder",
       "testimonialShortVersion": "By creating one single standard for web3 developers, Polywrap massively improves the experience of interacting with different protocols.",
@@ -175,12 +175,12 @@ export const Testimonials = () => {
     ContentfulFetcher(cmsQuery).then(
       (response) => {
         //On success      
-        const gelato: launchPartner = response.data.gelato;
-        setGelatoContent(gelato);
-        const gnosis: launchPartner = response.data.gnosis;
-        setGnosisContent(gnosis)
-        const pocket: launchPartner = response.data.pocket;
-        setPocketContent(pocket)
+        const gelato: Testimonial = response.data.gelato;
+        setGelatoTestimonial(gelato);
+        const gnosis: Testimonial  = response.data.gnosis;
+        setGnosisTestimonial(gnosis)
+        const pocket: Testimonial = response.data.pocket;
+        setPocketTestimonial(pocket)
       }, 
       (error) => {
         //On fail
@@ -197,7 +197,7 @@ export const Testimonials = () => {
   }, []);
 
   // Set an array with all launchpartners
-  const featuredTestimonials: launchPartner[] = [gnosisContent, pocketContent, gelatoContent]
+  const featuredTestimonials: Testimonial[] = [gnosisTestimonial, pocketTestimonial, gelatoTestimonial]
   
   // empty array where we'll fill all testimonials
   var TESTIMONIALS: Testimonial[] = []
