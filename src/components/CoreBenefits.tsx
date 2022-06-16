@@ -31,18 +31,18 @@ const useStyles = makeStyles((theme) => ({
     maxWidth: theme.breakpoints.values.md,
     position: 'relative',
   },
-  featureGrid: {
+  benefitGrid: {
     justifyContent: 'center',
   },
-  featureItem: {
+  benefitItem: {
     position: 'relative',
   },
-  featureIconContainer: {
+  benefitIconContainer: {
     height: 96,
     margin: 'auto',
     width: 96,
   },
-  featureIconBg: {
+  benefitIconBg: {
     height: '140%',
     left: '-20%',
     opacity: 0,
@@ -51,15 +51,15 @@ const useStyles = makeStyles((theme) => ({
     width: '140%',
     zIndex: -1,
   },
-  featureIcon: {
+  benefitIcon: {
     width: '100%',
   },
-  featureTitle: {
+  benefitTitle: {
     margin: '20px auto',
     lineHeight: 1,
     whiteSpace: 'nowrap',
   },
-  featureDescription: {
+  benefitDescription: {
     marginTop: 20,
   },
   animatedBlob: {
@@ -96,11 +96,11 @@ export const CoreBenefits = () => {
 
     useEffect(() => {
       (async () => {
-        var newFeatures: coreBenefit[] = [];
+        var newCoreBenefits: coreBenefit[] = [];
 
         /////////// CMS content fetching: Callback version
         setIsLoading(true);
-        const featureIds = [
+        const coreBenefitsIds = [
           ["2rq0jIAj9hvVXVtqPDAHrO"], // "Multiplatform" 
           ["4W8dI7XSnRgPt2ya1y14Kf"], // "UserFriendly" 
           ["48pwTCnNtLzuA3W9qQYKDf"], // "Composable" 
@@ -115,10 +115,10 @@ export const CoreBenefits = () => {
           }
         };
 
-        for(const featureId of featureIds) {
+        for(const Id of coreBenefitsIds) {
 
           var cmsQuery = `query { 
-            coreBenefits(id:"${featureId[0]}") { 
+            coreBenefits(id:"${Id[0]}") { 
               title
               subtitle
               description
@@ -132,8 +132,8 @@ export const CoreBenefits = () => {
           currentFetch = await ContentfulFetcher(cmsQuery);
           console.log(currentFetch)
 
-          newFeatures.push(currentFetch.data.coreBenefits);
-          setCoreBenefits((oldFeatures) => [...oldFeatures, currentFetch.data.coreBenefits]);
+          newCoreBenefits.push(currentFetch.data.coreBenefits);
+          setCoreBenefits((oldCoreBenefits) => [...oldCoreBenefits, currentFetch.data.coreBenefits]);
           setIsLoading(false);
         }
       })();
@@ -149,27 +149,27 @@ export const CoreBenefits = () => {
       </Box>
       <Parallax y={[-5,5]} disabled={window.innerWidth < theme.breakpoints.values.md}>
         <Typography variant='h3' color='textPrimary' align='center'>
-          Next-Gen SDKs for Web3
+          Core Benefits
         </Typography>
         <Box className={classes.cell}>
-          <Grid container spacing={6} alignItems='flex-start' className={classes.featureGrid}>
+          <Grid container spacing={6} alignItems='flex-start' className={classes.benefitGrid}>
             {
               
-              coreBenefits.map((feature, index) => {
-                if (feature.supportImage.url !== 'Whoops, an error occurred') {
+              coreBenefits.map((benefit, index) => {
+                if (benefit.supportImage.url !== 'Whoops, an error occurred') {
                   
                   return (
-                    <Grid key={feature.title} xs={12} sm={6} md={4} item className={classes.featureItem}>
+                    <Grid key={benefit.title} xs={12} sm={6} md={4} item className={classes.benefitItem}>
                       <Box position='relative'>
-                        <Box position='relative' display='flex' alignItems='center' justifyContent='center' className={classes.featureIconContainer}>
-                          <img className={classes.featureIconBg} width="100%" src={`${process.env.PUBLIC_URL}/imgs/assets/blob-1.png`} alt='' />
-                          <img className={classes.featureIcon} width="100%" src={`${feature.supportImage.url}`} alt='' />
+                        <Box position='relative' display='flex' alignItems='center' justifyContent='center' className={classes.benefitIconContainer}>
+                          <img className={classes.benefitIconBg} width="100%" src={`${process.env.PUBLIC_URL}/imgs/assets/blob-1.png`} alt='' />
+                          <img className={classes.benefitIcon} width="100%" src={`${benefit.supportImage.url}`} alt='' />
                         </Box>
-                        <Typography variant='subtitle1' color='textPrimary' align='center' className={classes.featureTitle}>
-                          {feature.title}
+                        <Typography variant='subtitle1' color='textPrimary' align='center' className={classes.benefitTitle}>
+                          {benefit.title}
                         </Typography>
-                        <Typography variant='body1' color='textSecondary' align='center' className={classes.featureDescription}>
-                          {feature.subtitle}
+                        <Typography variant='body1' color='textSecondary' align='center' className={classes.benefitDescription}>
+                          {benefit.subtitle}
                         </Typography>
                       </Box>
                     </Grid>
