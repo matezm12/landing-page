@@ -101,12 +101,12 @@ export const Features = () => {
         /////////// CMS content fetching: Callback version
         setIsLoading(true);
         const myFeatures = [
-          ["7LYHglxrDEqHwa23xPbrEo"], // "Multiplatform"
-          ["7g5q14hzPYzLhwos7IVik1"], // "UserFriendly"
-          ["5NjaWIMhQlair2k0dVDsXC"], // "Composable"
-          ["3aV4XbTikwD2bIdKAsmShv"], // "Scalable"
-          ["1i96gjazTJVQVxMdbDbfNm"], // "Upgradable"
-          ["d4he1KTXgSQLg6BuaY6MA"]   // "Secure"
+          ["2rq0jIAj9hvVXVtqPDAHrO"], // "Multiplatform" 
+          ["4W8dI7XSnRgPt2ya1y14Kf"], // "UserFriendly" 
+          ["48pwTCnNtLzuA3W9qQYKDf"], // "Composable" 
+          ["1G5VpsglgPhjHjBD286sGd"], // "Scalable" 
+          ["5cl8qkg6qFN2iransZ9Ihy"], // "Upgradable" 
+          ["3VuSiA0nx6KEmJVsOucVqa"]   // "Secure" 
         ]
 
         var currentFetch: {
@@ -118,20 +118,14 @@ export const Features = () => {
         for(const element of myFeatures) {
 
           var cmsQuery = `query { 
-            webContent(id:"${element[0]}") { 
+            coreBenefits(id:"${element[0]}") { 
               title
               subtitle
-              supportImage {
-                title
-                description
-                contentType
-                fileName
-                size
-                url
-                width
-                height
-              }
               description
+              supportImage {
+                url
+              }
+
           }
           }`;
           
