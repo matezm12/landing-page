@@ -20,6 +20,7 @@ export interface TagLine {
 }
 
 export interface Testimonial {
+  launchPartner: launchPartner
   persona: string;
   testimonialShortVersion: string | null;
   testimonialLongVersion?: string;
@@ -34,7 +35,6 @@ export interface launchPartner {
     url: string;
   }
   partnerSince?: string | number;
-  testimonialsCollection?: any
   
 }
 

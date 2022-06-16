@@ -115,65 +115,53 @@ const cmsQuery = `query {
 export const Testimonials = () => {
   const classes = useStyles();
 
-  const [gelatoContent, setGelatoContent] = useState<launchPartner> (
+  const [gelatoContent, setGelatoContent] = useState<Testimonial> (
     {
-      "partnerName": "Gelato",
-      "link": "https://gelato.network",
-      "categories": [
-        "DeFi",
-        "Automation",
-        "Nodes"
-      ],
-      "testimonialsCollection": {
-        "items": [
-          {
-            "persona": "Hilmar X, Legendary Member",
-            "testimonialShortVersion": "With Polywrap, Gelato will enable every developer to easily automate the execution of transactions on networks like Ethereum, giving them the ability to provide arbitrary instructions to a decentralized network of bots with a single Wrapper call."
-          }
-        ]
-      },
-      "blackPngLogo": {
-        "url": "https://images.ctfassets.net/tmv21jqhvpr2/2h7XQpzYlvdPAxMu5qtRaK/eebd5d0932c8133a9b3ac8cfa1c4a663/gelato.png"
+      "persona": "Hilmar X, Legendary Member",
+      "testimonialShortVersion": "With Polywrap, Gelato will enable every developer to easily automate the execution of transactions on networks like Ethereum, giving them the ability to provide arbitrary instructions to a decentralized network of bots with a single Wrapper call.",
+      "launchPartner": {
+        "partnerName": "Gelato",
+        "link": "https://gelato.network",
+        "categories": [
+          "DeFi",
+          "Automation",
+          "Nodes"
+        ],
+        "blackPngLogo": {
+          "url": "https://images.ctfassets.net/tmv21jqhvpr2/2h7XQpzYlvdPAxMu5qtRaK/eebd5d0932c8133a9b3ac8cfa1c4a663/gelato.png"
+        }
       }
     });
-  const [gnosisContent, setGnosisContent] = useState<launchPartner> (
+  const [gnosisContent, setGnosisContent] = useState<Testimonial> (
     {
-      "partnerName": "Gnosis",
-      "link": "https://gnosis.io/",
-      "categories": [
-        "DeFi",
-        "Governance"
-      ],
-      "testimonialsCollection": {
-        "items": [
-          {
-            "persona": "Team Gnosis",
-            "testimonialShortVersion": "Polywrap will make it easy for everyone to build on top of Gnosis technologies and interact with our contracts and interfaces. This will help us achieve our vision of building open platforms and removing gatekeepers."
-          }
-        ]
-      },
-      "blackPngLogo": {
-        "url": "https://images.ctfassets.net/tmv21jqhvpr2/ONnoPajg3HChr9L1dWdu0/039a0a562779536c49bf5b335fd774b1/gnosis.png"
+      "persona": "Team Gnosis",
+      "testimonialShortVersion": "Polywrap will make it easy for everyone to build on top of Gnosis technologies and interact with our contracts and interfaces. This will help us achieve our vision of building open platforms and removing gatekeepers.",
+      "launchPartner": {
+        "partnerName": "Gnosis",
+        "link": "https://gnosis.io/",
+        "categories": [
+          "DeFi",
+          "Governance"
+        ],
+        "blackPngLogo": {
+          "url": "https://images.ctfassets.net/tmv21jqhvpr2/ONnoPajg3HChr9L1dWdu0/039a0a562779536c49bf5b335fd774b1/gnosis.png"
+        }
       }
     });
 
-  const [pocketContent, setPocketContent] = useState<launchPartner> (
+  const [pocketContent, setPocketContent] = useState<Testimonial> (
     {
-      "partnerName": "Pocket Network",
-      "link": "https://www.pokt.network/",
-      "categories": [
-        "Nodes"
-      ],
-      "testimonialsCollection": {
-        "items": [
-          {
-            "persona": "Michael O'Rourke, Founder",
-            "testimonialShortVersion": "By creating one single standard for web3 developers, Polywrap massively improves the experience of interacting with different protocols."
-          }
-        ]
-      },
-      "blackPngLogo": {
-        "url": "https://images.ctfassets.net/tmv21jqhvpr2/6gyGLKFgEaoaPH76IA2guJ/53796cd3a35f90995ef058aa134ea14c/pocket.png"
+      "persona": "Michael O'Rourke, Founder",
+      "testimonialShortVersion": "By creating one single standard for web3 developers, Polywrap massively improves the experience of interacting with different protocols.",
+      "launchPartner": {
+        "partnerName": "Pocket Network",
+        "link": "https://www.pokt.network/",
+        "categories": [
+          "Nodes"
+        ],
+        "blackPngLogo": {
+          "url": "https://images.ctfassets.net/tmv21jqhvpr2/6gyGLKFgEaoaPH76IA2guJ/53796cd3a35f90995ef058aa134ea14c/pocket.png"
+        }
       }
     });
   const [hasFailed, setHasFailed] = useState<boolean>(false);
@@ -208,19 +196,21 @@ export const Testimonials = () => {
 
   }, []);
 
-  const newTestimonials: launchPartner[] = [gnosisContent, pocketContent, gelatoContent]
+  // Set an array with all launchpartners
+  const featuredTestimonials: launchPartner[] = [gnosisContent, pocketContent, gelatoContent]
   
-  var  TESTIMONIALS: Testimonial[] = []
+  // empty array where we'll fill all testimonials
+  var TESTIMONIALS: Testimonial[] = []
   
-  for (var partner in newTestimonials) {
+  for (var partner in featuredTestimonials) {
 
     TESTIMONIALS[partner] = 
     {
-      "partnerName": newTestimonials[partner].name,
-      "testimonial": newTestimonials[partner].testimonial ,
-      "persona":newTestimonials[partner].persona ,
-      "link": newTestimonials[partner].link,
-      "logo": newTestimonials[partner].blackPngLogo.url
+//      "partnerName": featuredTestimonials[partner].name,
+      "testimonialShortVersion": featuredTestimonials[partner].testimonialsCollection.items[0].testimonialShortVersion ,
+      "persona":featuredTestimonials[partner].testimonialsCollection.items[0].persona ,
+      "link": featuredTestimonials[partner].link,
+      "logo": featuredTestimonials[partner].testimonialsCollection.items[0].blackPngLogo.url
     };
   };
 
