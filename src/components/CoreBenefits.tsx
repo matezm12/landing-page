@@ -78,7 +78,7 @@ const useStyles = makeStyles((theme) => ({
 
 
 
-export const Features = () => {
+export const CoreBenefits = () => {
   const theme = useTheme();
   const classes = useStyles();
 
