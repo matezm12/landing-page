@@ -30,7 +30,7 @@ export interface Testimonial {
 export interface launchPartner {
   partnerName: string;
   link: string | null;
-  categories: string[];
+  categories?: string[];
   blackPngLogo: {
     url: string;
   }

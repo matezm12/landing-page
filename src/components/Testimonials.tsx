@@ -67,46 +67,40 @@ const useStyles = makeStyles((theme) => ({
 // TO ADD A NEW TESTIMONIAL BLOCK YOU SHOULD 
 // JUST REPLICATE THE QUERY AND ADD THE CORRECT ID
 const cmsQuery = `query { 
-  gelato: newLaunchPartners (id: "63v8JNnRgDKZUD7A9wwiAs") {
-    partnerName
-    link
-    categories
-    testimonialsCollection { 
-      items {
-    		persona
-        testimonialShortVersion
+  gnosis: testimonials (id: "7G2LsOHb6OALHlhww2MTqt") {
+    persona
+    testimonialShortVersion
+   	launchPartner {
+      partnerName
+      link
+      categories
+      blackPngLogo {
+        url
       }
-    }
-    blackPngLogo {
-      url
     }
   },
-  pocket: newLaunchPartners (id: "31RjlLdRrfTh4ADJYIpvtA") {
-    partnerName
-    link
-    categories
-    testimonialsCollection { 
-      items {
-    		persona
-        testimonialShortVersion
+  gelato: testimonials (id: "5QZbh3QPNFEWgA25QsMNqg") {
+    persona
+    testimonialShortVersion
+   	launchPartner {
+      partnerName
+      link
+      categories
+      blackPngLogo {
+        url
       }
-    }
-    blackPngLogo {
-      url
     }
   },
-  gnosis: newLaunchPartners (id: "65O7AQSCKcgObD89isOZVZ") {
-    partnerName
-    link
-    categories
-    testimonialsCollection { 
-      items {
-    		persona
-        testimonialShortVersion
+  pocket: testimonials (id: "FbElQFNHmc4dTzoPd8INQ") {
+    persona
+    testimonialShortVersion
+   	launchPartner {
+      partnerName
+      link
+      categories
+      blackPngLogo {
+        url
       }
-    }
-    blackPngLogo {
-      url 
     }
   }
 }`;
@@ -206,11 +200,15 @@ export const Testimonials = () => {
 
     TESTIMONIALS[partner] = 
     {
-//      "partnerName": featuredTestimonials[partner].name,
       "testimonialShortVersion": featuredTestimonials[partner].testimonialShortVersion,
-      "persona":featuredTestimonials[partner].persona ,
-      "link": featuredTestimonials[partner].launchPartner.link,
-      "logo": featuredTestimonials[partner].launchPartner.blackPngLogo.url
+      "persona":featuredTestimonials[partner].persona,
+      "launchPartner": {
+        "partnerName": featuredTestimonials[partner].launchPartner.partnerName,
+        "link": featuredTestimonials[partner].launchPartner.link,
+        "blackPngLogo": {
+          "url": featuredTestimonials[partner].launchPartner.blackPngLogo.url
+        } 
+      }
     };
   };
 
@@ -237,7 +235,7 @@ export const Testimonials = () => {
                 <Box>
                   <FormatQuoteIcon className={classes.testimonialQuote} />
                   <Typography variant='subtitle1' style={{ fontSize: 20 }} color='textSecondary'>
-                    {testimonial.testimonial}
+                    {testimonial.testimonialShortVersion}
                   </Typography>
                   <Box marginTop={2}>
                     <Typography variant='body1' color='textSecondary'>
@@ -246,7 +244,7 @@ export const Testimonials = () => {
                   </Box>
                   <Box marginTop={2}>
                     {/* <Link href={testimonial.link} target='_blank'> */}
-                      <img src={testimonial.logo} className={classes.logo} alt=""/>
+                      <img src={testimonial.launchPartner.blackPngLogo.url} className={classes.logo} alt=""/>
                     {/* </Link> */}
                   </Box>
                 </Box>
