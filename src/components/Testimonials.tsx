@@ -117,38 +117,65 @@ export const Testimonials = () => {
 
   const [gelatoContent, setGelatoContent] = useState<launchPartner> (
     {
-      "partnerName": "Gelato Network",
+      "partnerName": "Gelato",
       "link": "https://gelato.network",
-      "testimonial": "With the help of Polywrap, Gelato will enable every developer to easily automate the execution of transactions on networks like Ethereum, giving them the ability to provide arbitrary instructions to a decentralized network of bots with a single Wrapper call.",
-      "persona": "Hilmar X, Legendary Member",
-      "futurePromise": "Gelato and other node networks will leverage Polywrap to have sdk’s that dynamically update upon governance decisions instead of needing to contact all the operators to restart their nodes and install the new package.",
+      "categories": [
+        "DeFi",
+        "Automation",
+        "Nodes"
+      ],
+      "testimonialsCollection": {
+        "items": [
+          {
+            "persona": "Hilmar X, Legendary Member",
+            "testimonialShortVersion": "With Polywrap, Gelato will enable every developer to easily automate the execution of transactions on networks like Ethereum, giving them the ability to provide arbitrary instructions to a decentralized network of bots with a single Wrapper call."
+          }
+        ]
+      },
       "blackPngLogo": {
-        "url":"https://polywrap.io/logos/gelato.png"
+        "url": "https://images.ctfassets.net/tmv21jqhvpr2/2h7XQpzYlvdPAxMu5qtRaK/eebd5d0932c8133a9b3ac8cfa1c4a663/gelato.png"
       }
     });
   const [gnosisContent, setGnosisContent] = useState<launchPartner> (
     {
       "partnerName": "Gnosis",
-      "link": "https://gnosis.io",
-      "testimonial": "Polywrap will make it easy for everyone to build on top of Gnosis technologies and interact with our contracts and interfaces. This will help us achieve our vision of building open platforms and removing gatekeepers.",
-      "persona": "Team Gnosis",
-      "futurePromise": "Gnosis is creating wrappers that will encapsulate their business logic in secure, language-agnostic modules that interact with many chains, storage networks, oracles, and services. This growing ecosystem of Gnosis apps will be auto-updated in a securely.",
+      "link": "https://gnosis.io/",
+      "categories": [
+        "DeFi",
+        "Governance"
+      ],
+      "testimonialsCollection": {
+        "items": [
+          {
+            "persona": "Team Gnosis",
+            "testimonialShortVersion": "Polywrap will make it easy for everyone to build on top of Gnosis technologies and interact with our contracts and interfaces. This will help us achieve our vision of building open platforms and removing gatekeepers."
+          }
+        ]
+      },
       "blackPngLogo": {
-        "url":"https://polywrap.io/logos/gnosis.png"
+        "url": "https://images.ctfassets.net/tmv21jqhvpr2/ONnoPajg3HChr9L1dWdu0/039a0a562779536c49bf5b335fd774b1/gnosis.png"
       }
     });
 
   const [pocketContent, setPocketContent] = useState<launchPartner> (
-      {
-        "partnerName": "Pocket Network",
-        "link": "https://pokt.network/",
-        "testimonial": "By creating one single standard for web3 developers, Polywrap massively improves the experience of interacting with different protocols.",
-        "persona": "Michael O'Rourke, Founder",
-        "futurePromise": "Pocket aims to provide a neutral networking stack for Polywrap users to connect to any protocol they want.",
-        "blackPngLogo": {
-          "url":"https://polywrap.io/logos/pocket.png"
-        }
-      });
+    {
+      "partnerName": "Pocket Network",
+      "link": "https://www.pokt.network/",
+      "categories": [
+        "Nodes"
+      ],
+      "testimonialsCollection": {
+        "items": [
+          {
+            "persona": "Michael O'Rourke, Founder",
+            "testimonialShortVersion": "By creating one single standard for web3 developers, Polywrap massively improves the experience of interacting with different protocols."
+          }
+        ]
+      },
+      "blackPngLogo": {
+        "url": "https://images.ctfassets.net/tmv21jqhvpr2/6gyGLKFgEaoaPH76IA2guJ/53796cd3a35f90995ef058aa134ea14c/pocket.png"
+      }
+    });
   const [hasFailed, setHasFailed] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
@@ -189,7 +216,7 @@ export const Testimonials = () => {
 
     TESTIMONIALS[partner] = 
     {
-      "name": newTestimonials[partner].name,
+      "partnerName": newTestimonials[partner].name,
       "testimonial": newTestimonials[partner].testimonial ,
       "persona":newTestimonials[partner].persona ,
       "link": newTestimonials[partner].link,

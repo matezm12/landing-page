@@ -19,23 +19,26 @@ export interface TagLine {
   subtext: string
 }
 
-
-export interface launchPartner {
-  partnerName: string;
-  link: string | null;
-  categories: string;
-  blackPngLogo: {
-    url: string;
-  }
-  partnerSince?: string | number;
-}
-
-export interface Testimonial extends launchPartner {
+export interface Testimonial {
   persona: string;
   testimonialShortVersion: string | null;
   testimonialLongVersion?: string;
   futurePromise?: string;
 }
+
+export interface launchPartner {
+  partnerName: string;
+  link: string | null;
+  categories: string[];
+  blackPngLogo: {
+    url: string;
+  }
+  partnerSince?: string | number;
+  testimonialsCollection?: any
+  
+}
+
+
 
 
 /// Older data models below
