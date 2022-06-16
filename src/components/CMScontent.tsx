@@ -1,5 +1,5 @@
 import {useState, useEffect} from 'react';
-import {  webContent, wrapper,  newListOfFeaturedQueries, listOfFeaturedQueries, ContentfulFetcher } from './ContentfulFetcher';
+import {wrapper,  newListOfFeaturedQueries, ContentfulFetcher } from './ContentfulFetcher';
 
 export function queryFeaturedWrappers() {
     // GraphQL query to get data from Contentful CMS API

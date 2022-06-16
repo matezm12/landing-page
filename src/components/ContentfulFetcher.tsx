@@ -7,15 +7,17 @@ export interface writtenContent {
 }
 
 export interface callToAction {
-  title: string;
-  url: string;
+  callToAction: string;
+  urlForTheCTA: string;
 }
-export interface heroContent {
-  writtenContent: writtenContent;
-  callToAction: callToAction;
+export interface heroContent extends writtenContent, callToAction {
   supportImage?: any | null;
 }
 
+export interface TagLine {
+  text: string
+  subtext: string
+}
 
 
 /// Older data models below
@@ -70,27 +72,6 @@ export interface newListOfFeaturedQueries {
       snippet: string;
     }[];
   };
-}
-
-export interface listOfFeaturedQueries {
-  wrapperName: string;
-  description: string;
-  featured: boolean;
-  thirdParty: boolean;
-  docsLink: string;
-  query: {
-    featured: true;
-    source: string;
-    snippets: {
-      filename: string;
-
-      language: string;
-      snippet: string;
-    }[];
-  };
-}
-
-export interface listOfFeaturedQueries {
 }
 
 export interface polywrapFeature extends webContent{
