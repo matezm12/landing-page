@@ -196,7 +196,7 @@ export const Testimonials = () => {
 
   }, []);
 
-  // Set an array with all launchpartners
+  // Set an array with all the testimonials
   const featuredTestimonials: Testimonial[] = [gnosisTestimonial, pocketTestimonial, gelatoTestimonial]
   
   // empty array where we'll fill all testimonials
@@ -207,10 +207,10 @@ export const Testimonials = () => {
     TESTIMONIALS[partner] = 
     {
 //      "partnerName": featuredTestimonials[partner].name,
-      "testimonialShortVersion": featuredTestimonials[partner].testimonialsCollection.items[0].testimonialShortVersion ,
-      "persona":featuredTestimonials[partner].testimonialsCollection.items[0].persona ,
-      "link": featuredTestimonials[partner].link,
-      "logo": featuredTestimonials[partner].testimonialsCollection.items[0].blackPngLogo.url
+      "testimonialShortVersion": featuredTestimonials[partner].testimonialShortVersion,
+      "persona":featuredTestimonials[partner].persona ,
+      "link": featuredTestimonials[partner].launchPartner.link,
+      "logo": featuredTestimonials[partner].launchPartner.blackPngLogo.url
     };
   };
 
