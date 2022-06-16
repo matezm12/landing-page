@@ -1,5 +1,26 @@
 require('dotenv').config();
 
+export interface writtenContent {
+  title: string;
+  subtitle: string | null;
+  description?: string | null;
+}
+
+export interface callToAction {
+  title: string;
+  url: string;
+}
+export interface heroContent {
+  writtenContent: writtenContent;
+  callToAction: callToAction;
+  supportImage?: any | null;
+}
+
+
+
+/// Older data models below
+
+
 export interface webContent {
   title: string;
   subtitle: string | null;
