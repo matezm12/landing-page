@@ -71,7 +71,7 @@ export const HubCallout = () => {
     defaultMatches: true
   });
 
-  const [someContent, setSomeContent] = useState<webContent> (
+  const [thirdHeroContent, setThirdHeroContent] = useState<webContent> (
     {
       "title": "Welcome to the Polywrap Hub",
       "subtitle": "Our flagship dApp",
@@ -89,7 +89,7 @@ export const HubCallout = () => {
       (response) => {
         //On success        
         const content: webContent = response.data.webContent;
-        setSomeContent(content);
+        setThirdHeroContent(content);
       }, 
       (error) => {
         //On fail
@@ -114,11 +114,11 @@ export const HubCallout = () => {
           <Grid container spacing={isMobile ? 6 : 10} alignItems='stretch' >
             <Grid item xs={12} sm={6}>
               <Typography variant="h3">
-                {someContent.title}
+                {thirdHeroContent.title}
               </Typography>
               <Box marginTop={2}>
                 <Typography variant="body1">
-                  {someContent.description}
+                  {thirdHeroContent.description}
                 </Typography>
               </Box>
               {/* <Box marginTop={2}>

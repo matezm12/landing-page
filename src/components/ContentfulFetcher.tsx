@@ -89,6 +89,7 @@ export interface wrapper {
 }
 
 export interface newListOfFeaturedQueries {
+  // this one might use a better name than "newListOfFeaturedQueries"
   wrapperName: string;
   //filename: string;
   description: string;
@@ -106,11 +107,6 @@ export interface newListOfFeaturedQueries {
     }[];
   };
 }
-
-export interface polywrapFeature extends webContent{
-}
-
-
 
 
 
@@ -134,9 +130,3 @@ function ContentfulFetcher(query: string): Promise<any> {
 }
 
 export {ContentfulFetcher}
-
-/// Types which are apparently not used
-
-export interface Asset {
-  name: string;
-}

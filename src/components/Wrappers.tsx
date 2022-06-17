@@ -241,7 +241,6 @@ export const FeaturedWrappersSection = () => {
               variant='contained'
             >
               wrap with it
-             {/* {someContent.callToAction} */}
             </Button>
 
 
