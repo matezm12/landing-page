@@ -34,5 +34,5 @@ const cmsQuery = `query {
  } 
 }`;
 ```
-3. Follow a similar pattern to the one used [in this file](https://github.com/polywrap/landing-page/blob/99c1e7977a371e4744ab59c4f513cfe2b0ef0e97/src/components/DemoSection.tsx#L76-L108) to query the data.
-4. Use formatted strings to unpack the data in the JSX return that will rendered on the web [like so](https://github.com/polywrap/landing-page/blob/99c1e7977a371e4744ab59c4f513cfe2b0ef0e97/src/components/DemoSection.tsx#L136)
+3. Follow a similar pattern to the one used [in this file](https://github.com/polywrap/landing-page/blob/99c1e7977a371e4744ab59c4f513cfe2b0ef0e97/src/components/SecondHero.tsx#L76-L108) to query the data.
+4. Use formatted strings to unpack the data in the JSX return that will rendered on the web [like so](https://github.com/polywrap/landing-page/blob/99c1e7977a371e4744ab59c4f513cfe2b0ef0e97/src/components/SecondHero.tsx#L136)
