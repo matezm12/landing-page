@@ -96,7 +96,7 @@ export const CoreBenefits = () => {
 
     useEffect(() => {
       (async () => {
-        var newCoreBenefits: coreBenefit[] = [];
+        var listOfCoreBenefits: coreBenefit[] = [];
 
         /////////// CMS content fetching: Callback version
         setIsLoading(true);
@@ -130,9 +130,7 @@ export const CoreBenefits = () => {
           }`;
           
           currentFetch = await ContentfulFetcher(cmsQuery);
-          console.log(currentFetch)
-
-          newCoreBenefits.push(currentFetch.data.coreBenefits);
+          listOfCoreBenefits.push(currentFetch.data.coreBenefits);
           setCoreBenefits((oldCoreBenefits) => [...oldCoreBenefits, currentFetch.data.coreBenefits]);
           setIsLoading(false);
         }
