@@ -96,9 +96,9 @@ export const CoreBenefits = () => {
 
     useEffect(() => {
       (async () => {
-        var newCoreBenefits: coreBenefit[] = [];
+        var listOfCoreBenefits: coreBenefit[] = [];
 
-        /////////// CMS content fetching: Callback version
+        // CMS content fetching: Callback version
         setIsLoading(true);
         const coreBenefitsIds = [
           ["2rq0jIAj9hvVXVtqPDAHrO"], // "Multiplatform" 
@@ -106,7 +106,7 @@ export const CoreBenefits = () => {
           ["48pwTCnNtLzuA3W9qQYKDf"], // "Composable" 
           ["1G5VpsglgPhjHjBD286sGd"], // "Scalable" 
           ["5cl8qkg6qFN2iransZ9Ihy"], // "Upgradable" 
-          ["3VuSiA0nx6KEmJVsOucVqa"]   // "Secure" 
+          ["3VuSiA0nx6KEmJVsOucVqa"]  // "Secure" 
         ]
 
         var currentFetch: {
@@ -130,9 +130,7 @@ export const CoreBenefits = () => {
           }`;
           
           currentFetch = await ContentfulFetcher(cmsQuery);
-          console.log(currentFetch)
-
-          newCoreBenefits.push(currentFetch.data.coreBenefits);
+          listOfCoreBenefits.push(currentFetch.data.coreBenefits);
           setCoreBenefits((oldCoreBenefits) => [...oldCoreBenefits, currentFetch.data.coreBenefits]);
           setIsLoading(false);
         }

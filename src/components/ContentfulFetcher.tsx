@@ -11,7 +11,9 @@ export interface callToAction {
   urlForTheCTA: string;
 }
 export interface heroContent extends writtenContent, callToAction {
-  supportImage?: any | null;
+  supportImage?: {
+    "url": string;
+  }
 }
 
 export interface TagLine {

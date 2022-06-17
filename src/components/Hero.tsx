@@ -11,7 +11,8 @@ import {
 import { makeStyles } from '@material-ui/core/styles';
 import KeyboardArrowRightOutlined from '@material-ui/icons/KeyboardArrowRightOutlined';
 import { polywrapPalette } from '../theme';
-import { webContent, ContentfulFetcher } from './ContentfulFetcher';
+import { heroContent, ContentfulFetcher } from './ContentfulFetcher';
+import { cloneNode } from 'domhandler';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -149,27 +150,24 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const cmsQuery = `query { 
-  webContent(id:"6DWrAojZUdPcTSDXGip5PN") { 
-   title 
-   subtitle
-   description
-   callToAction
- } 
-}`;
 
-export const Hero = () => {
+export const MainHero = () => {
   const theme = useTheme();
   const classes = useStyles();
   const matches = useMediaQuery(theme.breakpoints.down('xs'));
 
-  const [someContent, setSomeContent] = useState<webContent> (
+  const [heroContent, setHero] = useState<heroContent> (
     {
     "title": "Use Web3 Anywhere.",
     "subtitle": "PRE-ALPHA",
     "description": "Polywrap is a development platform that enables easy integration of Web3 protocols into any application. It makes it possible for software on any device, written in any language, to read and write data to Web3 protocols",
-    "callToAction": "JOIN OUR DISCORD"
-    });
+    "supportImage": {
+      "url": "whhoops"
+    },
+    "callToAction": "JOIN DISCORD!",
+    "urlForTheCTA": "whoops",
+    
+  });
   const [hasFailed, setHasFailed] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
@@ -177,11 +175,33 @@ export const Hero = () => {
     // CMS content fetching: Callback version
     setIsLoading(true);
 
+
+    const cmsQuery = `query  {
+  
+      heroContent(id:"7M4197Qo7DnQ4DWWtBKt7k") { 
+        callToAction{
+          url
+          callToAction
+        }
+        supportImage {
+          url
+        }
+        writtenContent{
+          title
+          subtitle
+          description
+        
+        }    
+      }
+    } 
+    `;
+
     ContentfulFetcher(cmsQuery).then(
       (response) => {
         //On success        
-        const content: webContent = response.data.webContent;
-        setSomeContent(content);
+        const fetchedData: heroContent = response.data.heroContent;
+        console.log(fetchedData)
+        setHero(fetchedData);
       }, 
       (error) => {
         //On fail
@@ -213,21 +233,21 @@ export const Hero = () => {
               color='secondary'
               className={classes.technicalPreview}
             >
-             {someContent.subtitle}
+             {heroContent.subtitle}
             </Typography>
             <Typography
               className={classes.heroTitle}
               color='textPrimary'
               variant='h1'
             >
-             {someContent.title}
+             {heroContent.title}
             </Typography>
             <Typography
               className={classes.heroBody}
               color='textSecondary'
               variant='body1'
             >
-            {someContent.description}
+            {heroContent.description}
 
             </Typography>
             <Button
@@ -240,7 +260,7 @@ export const Hero = () => {
               type='submit'
               variant='contained'
             >
-             {someContent.callToAction}
+             {heroContent.callToAction}
             </Button>
           </Box>
         </Parallax>
@@ -260,7 +280,7 @@ export const Hero = () => {
             <img
               className={classes.heroPolywrapper}
               // TODO: Pass the supportImage that is queried on the CMS
-              // This required modifying webContent Type to include the
+              // This required modifying hero Type to include the
               // supportImage data type, similar to the structure used 
               // for testimonials 
               // src={someContent.supportImage.url}

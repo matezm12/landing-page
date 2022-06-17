@@ -1,7 +1,7 @@
 import React from 'react';
 import { Box } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-import { Hero } from '../../components/Hero';
+import { MainHero } from '../../components/Hero';
 import { DemoSection } from '../../components/DemoSection';
 import { CoreBenefits } from '../../components/CoreBenefits';
 import { Testimonials } from '../../components/Testimonials';
@@ -27,8 +27,8 @@ export const Home = () => {
 
   return (
     <Box className={classes.root}>
-      <Hero />
-      <DemoSection />
+      <MainHero />
+      {/* <DemoSection /> */}
       <CoreBenefits />
       <Testimonials />
 
