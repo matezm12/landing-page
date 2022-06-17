@@ -1,8 +1,7 @@
 import { Parallax } from 'react-scroll-parallax';
 import { Box, Grid, makeStyles, Typography, useTheme, Button } from '@material-ui/core';
-// WIP: Try to modularize the CMS query
 import {useState, useEffect} from 'react';
-import {  newListOfFeaturedQueries, webContent } from './ContentfulFetcher';
+import {  newListOfFeaturedQueries, webContent, writtenContent } from './ContentfulFetcher';
 import { DemoFunctions } from './DemoFunctions';
 import { IDE } from './IDE';
 import { fetchWrappers }from './CMScontent';
@@ -79,12 +78,12 @@ export const FeaturedWrappersSection = () => {
   const classes = useStyles();
 
   // set initial react states
-  const [aboutThisSection, setAboutThisSection] = useState<webContent> (
+  const [aboutThisSection, setAboutThisSection] = useState<writtenContent> (
     {
       "title": "Blazing fast development",
       "subtitle": "",
       "description": " Write queries in minutes rather than hours.\n\nUsing the polywrap toolchain, you'll be able to hit any protocol endpoint from any device that can run a Polywrap client.",
-      "callToAction": "Execute Query"
+      
   });  
   const [wrappersData, setWrappersData] = useState<any>(null)
   const [featuredQueries, setFeaturedQueries] = useState<string[]>(['swapToken','functionNameB','funcNameC','...'])
