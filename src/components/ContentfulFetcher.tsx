@@ -13,7 +13,9 @@ export interface callToAction {
 }
 
 export interface heroContent {
-  supportImage?: any | null;
+  supportImage?: {
+    url: string;
+  };
   callToAction: callToAction;
   writtenContent: writtenContent;
 }
