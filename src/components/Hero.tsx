@@ -198,7 +198,6 @@ export const Hero = () => {
       (response) => {
         //On success        
         const fetchedHeroContent: heroContent = response.data.heroContent;
-        console.log(fetchedHeroContent)
         setHeroContent(fetchedHeroContent);
       }, 
       (error) => {

@@ -2,7 +2,7 @@ import { Parallax } from 'react-scroll-parallax';
 import { Box, Grid, makeStyles, Typography, useTheme } from '@material-ui/core';
 // WIP: modularize the CMS query
 import {useState, useEffect} from 'react';
-import {  webContent, ContentfulFetcher } from './ContentfulFetcher';
+import {  heroContent, ContentfulFetcher } from './ContentfulFetcher';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -53,14 +53,23 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-const cmsQuery = `query { 
-  webContent(id:"4vlgBuWUl1gJGQPeYogzI4") { 
-   title 
-   subtitle
-   description
-   callToAction
- } 
-}`;
+const cmsQuery = `query {
+  
+  heroContent(id:"3idJZ5kmgHfAdLyto26cjR") { 
+    callToAction{
+  		url
+      cta
+    }
+    supportImage {
+      url
+    }
+		writtenContent{
+      title
+      subtitle
+      description
+    }    
+  }
+} `;
 
 
 export const DemoSection = () => {
@@ -69,13 +78,21 @@ export const DemoSection = () => {
 
 
   // CONTENTFUL CMS INTEGRATION BELOW
-  const [someContent, setSomeContent] = useState<webContent> (
+  const [heroContent, setHeroContent] = useState<heroContent> (
     {
-      "title": "Solving the Web3 Integration Problem",
-      "subtitle": ".",
-      "description": "Web3 relies on SDKs to integrate virtually every type of protocol: DeFi, NFTs, DAOs, P2P Networks\n\nDue to traditional SDKs’ short-comings, Web3’s technical debt is growing day by day.\n\nTraditional SDKs are:\nInsecure, Bloated, Incompatible, and Language-Specific",
-      "callToAction": "Read the Docs"
-  });
+      "callToAction": {
+        "url": "https://docs.polywrap.io",
+        "cta": "START CODING!"
+      },
+      "supportImage": {
+        "url": "https://images.ctfassets.net/tmv21jqhvpr2/X96Lie1TSf4GzDOvGt3Of/910ab4a1255f005e21081943dd6b095d/wrappers-white-wave-transparent.svg"
+      },
+      "writtenContent": {
+        "title": "Say Goodbye to Javascript Wrappers",
+        "subtitle": null,
+        "description": "Today, teams are architecting and maintaining custom SDKs, mostly in Javascript. This breaks composability and severely restricts the types of software that can interact with web3 securely and efficiently."
+      }
+    });
   const [hasFailed, setHasFailed] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
@@ -86,9 +103,8 @@ export const DemoSection = () => {
     ContentfulFetcher(cmsQuery).then(
       (response) => {
         //On success        
-        const content: webContent = response.data.webContent;
-
-        setSomeContent(content);
+        const fetchedHeroContent: heroContent = response.data.heroContent;
+        setHeroContent(fetchedHeroContent);
       }, 
       (error) => {
         //On fail
@@ -126,7 +142,7 @@ export const DemoSection = () => {
               color='textPrimary'
               className={classes.title}
             >
-              {someContent.title}
+              {heroContent.writtenContent.title}
             </Typography>
             <Typography
               variant='body1'
@@ -135,7 +151,7 @@ export const DemoSection = () => {
               // TODO: Fix the formatting of description below, this section should allow us somehow to show line
               // breaks and bold sections for example, but it's not working right now. All text is output as a continuous string
             >
-              {someContent.description}
+              {heroContent.writtenContent.description}
             </Typography>
           </Grid>
         </Grid>
