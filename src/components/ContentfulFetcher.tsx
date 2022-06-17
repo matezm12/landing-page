@@ -7,11 +7,15 @@ export interface writtenContent {
 }
 
 export interface callToAction {
-  callToAction: string;
-  urlForTheCTA: string;
+  cta: string;
+  url: string;
+
 }
-export interface heroContent extends writtenContent, callToAction {
+
+export interface heroContent {
   supportImage?: any | null;
+  callToAction: callToAction;
+  writtenContent: writtenContent;
 }
 
 export interface TagLine {

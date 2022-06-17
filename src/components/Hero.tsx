@@ -11,7 +11,7 @@ import {
 import { makeStyles } from '@material-ui/core/styles';
 import KeyboardArrowRightOutlined from '@material-ui/icons/KeyboardArrowRightOutlined';
 import { polywrapPalette } from '../theme';
-import { webContent, ContentfulFetcher } from './ContentfulFetcher';
+import { heroContent, ContentfulFetcher } from './ContentfulFetcher';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -129,7 +129,7 @@ const useStyles = makeStyles((theme) => ({
       transitionTimingFunction: 'ease-out',
     },
   },
-  heroContent: {
+  heroContentClass: {
     animation: `$fadeInUp 1s 1s forwards ease-in`,
     opacity: 0,
     [theme.breakpoints.down('sm')]: {
@@ -149,26 +149,43 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const cmsQuery = `query { 
-  webContent(id:"6DWrAojZUdPcTSDXGip5PN") { 
-   title 
-   subtitle
-   description
-   callToAction
- } 
-}`;
+const cmsQuery = `query  {
+  
+  heroContent(id:"7M4197Qo7DnQ4DWWtBKt7k") { 
+    callToAction{
+  		url
+      cta
+    }
+    supportImage {
+      url
+    }
+		writtenContent{
+      title
+      subtitle
+      description
+    }    
+  }
+} `;
 
 export const Hero = () => {
   const theme = useTheme();
   const classes = useStyles();
   const matches = useMediaQuery(theme.breakpoints.down('xs'));
 
-  const [heroContent, setHeroContent] = useState<webContent> (
+  const [heroContent, setHeroContent] = useState<heroContent> (
     {
-    "title": "Use Web3 Anywhere.",
-    "subtitle": "PRE-ALPHA",
-    "description": "Polywrap is a development platform that enables easy integration of Web3 protocols into any application. It makes it possible for software on any device, written in any language, to read and write data to Web3 protocols",
-    "callToAction": "JOIN OUR DISCORD"
+      "callToAction": {
+        "url": "https://discord.gg/SZQqv7e9fK",
+        "cta": "Join Discord"
+      },
+      "supportImage": {
+        "url": "https://images.ctfassets.net/tmv21jqhvpr2/NRXtH7lf7ucdy2zMVX2qF/600ff9db7b28752e9ee03663fd7f8dc5/polywrapper-hero.png"
+      },
+      "writtenContent": {
+        "title": "Use Web3 Anywhere.",
+        "subtitle": "Origin Release",
+        "description": "Polywrap is a set of tools that uses Wasm and GraphQL to deliver web3 protocols to any execution environment. Build and publish your protocol wrapper with Polywrap to be accessible from all types of applications."
+      }
     });
   const [hasFailed, setHasFailed] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState<boolean>(true);
@@ -180,8 +197,9 @@ export const Hero = () => {
     ContentfulFetcher(cmsQuery).then(
       (response) => {
         //On success        
-        const content: webContent = response.data.webContent;
-        setHeroContent(content);
+        const fetchedHeroContent: heroContent = response.data.heroContent;
+        console.log(fetchedHeroContent)
+        setHeroContent(fetchedHeroContent);
       }, 
       (error) => {
         //On fail
@@ -207,27 +225,27 @@ export const Hero = () => {
           y={[60, -60]}
           disabled={window.innerWidth < theme.breakpoints.values.md}
         >
-          <Box className={classes.heroContent}>
+          <Box className={classes.heroContentClass}>
             <Typography
               variant='subtitle2'
               color='secondary'
               className={classes.technicalPreview}
             >
-             {heroContent.subtitle}
+             {heroContent.writtenContent.subtitle}
             </Typography>
             <Typography
               className={classes.heroTitle}
               color='textPrimary'
               variant='h1'
             >
-             {heroContent.title}
+             {heroContent.writtenContent.title}
             </Typography>
             <Typography
               className={classes.heroBody}
               color='textSecondary'
               variant='body1'
             >
-            {heroContent.description}
+            {heroContent.writtenContent.description}
 
             </Typography>
             <Button
@@ -240,7 +258,7 @@ export const Hero = () => {
               type='submit'
               variant='contained'
             >
-             {heroContent.callToAction}
+             {heroContent.callToAction.cta}
             </Button>
           </Box>
         </Parallax>
@@ -260,7 +278,7 @@ export const Hero = () => {
             <img
               className={classes.heroPolywrapper}
               // TODO: Pass the supportImage that is queried on the CMS
-              // This required modifying webContent Type to include the
+              // This required modifying heroContent Type to include the
               // supportImage data type, similar to the structure used 
               // for testimonials 
               // src={heroContent.supportImage.url}
