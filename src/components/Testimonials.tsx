@@ -2,7 +2,7 @@ import { Box, Container, makeStyles, Typography } from '@material-ui/core';
 import FormatQuoteIcon from '@material-ui/icons/FormatQuote';
 import { filters } from '../theme';
 import {useState, useEffect} from 'react';
-import { launchPartner, ContentfulFetcher, Testimonial } from './ContentfulFetcher';
+import { ContentfulFetcher, Testimonial } from './ContentfulFetcher';
 
 const useStyles = makeStyles((theme) => ({
   root: {

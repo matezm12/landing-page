@@ -72,7 +72,7 @@ const cmsQuery = `query {
 } `;
 
 
-export const DemoSection = () => {
+export const SecondHero = () => {
   const theme = useTheme();
   const classes = useStyles();
 

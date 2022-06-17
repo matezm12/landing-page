@@ -2,7 +2,7 @@ import React from 'react';
 import { Box } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import { Hero } from '../../components/Hero';
-import { DemoSection } from '../../components/DemoSection';
+import { SecondHero } from '../../components/SecondHero';
 import { CoreBenefits } from '../../components/CoreBenefits';
 import { Testimonials } from '../../components/Testimonials';
 import ReactGA from 'react-ga';
@@ -28,7 +28,7 @@ export const Home = () => {
   return (
     <Box className={classes.root}>
       <Hero />
-      <DemoSection />
+      <SecondHero />
       <CoreBenefits />
       <Testimonials />
 
