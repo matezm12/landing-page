@@ -163,7 +163,7 @@ export const Hero = () => {
   const classes = useStyles();
   const matches = useMediaQuery(theme.breakpoints.down('xs'));
 
-  const [someContent, setSomeContent] = useState<webContent> (
+  const [heroContent, setHeroContent] = useState<webContent> (
     {
     "title": "Use Web3 Anywhere.",
     "subtitle": "PRE-ALPHA",
@@ -181,7 +181,7 @@ export const Hero = () => {
       (response) => {
         //On success        
         const content: webContent = response.data.webContent;
-        setSomeContent(content);
+        setHeroContent(content);
       }, 
       (error) => {
         //On fail
@@ -213,21 +213,21 @@ export const Hero = () => {
               color='secondary'
               className={classes.technicalPreview}
             >
-             {someContent.subtitle}
+             {heroContent.subtitle}
             </Typography>
             <Typography
               className={classes.heroTitle}
               color='textPrimary'
               variant='h1'
             >
-             {someContent.title}
+             {heroContent.title}
             </Typography>
             <Typography
               className={classes.heroBody}
               color='textSecondary'
               variant='body1'
             >
-            {someContent.description}
+            {heroContent.description}
 
             </Typography>
             <Button
@@ -240,7 +240,7 @@ export const Hero = () => {
               type='submit'
               variant='contained'
             >
-             {someContent.callToAction}
+             {heroContent.callToAction}
             </Button>
           </Box>
         </Parallax>
@@ -263,7 +263,7 @@ export const Hero = () => {
               // This required modifying webContent Type to include the
               // supportImage data type, similar to the structure used 
               // for testimonials 
-              // src={someContent.supportImage.url}
+              // src={heroContent.supportImage.url}
               src={process.env.PUBLIC_URL + '/imgs/polywrapper-hero.png'}
               alt='Polywrap Logo'
             />
