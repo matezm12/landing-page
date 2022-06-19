@@ -54,7 +54,7 @@ export interface coreBenefit {
 }
 
 export interface polywrapApplication {
-  writtenContent: writtenContent;
+  writtenCopy: writtenContent;
   callToAction: callToAction;
   uiScreenshot: {
     url: string;

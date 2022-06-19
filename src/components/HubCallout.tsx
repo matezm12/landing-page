@@ -98,7 +98,7 @@ export const HubCallout = () => {
 // TODO set this hook witht he correct data type
   const [polywrapApplicationsList, setPolywrapApplicationsList] = useState<polywrapApplication> (
     {
-        "writtenContent": {
+        "writtenCopy": {
           "title": "Uniswap v2 Demo",
           "subtitle": "Decentralised AMM",
           "description": "The Leading Ethereum-based DeFi exchange enables low slippage token trades through automated market makers and liquidity pools. The Uni V2 wrapper was developed to cover all existing functionality of the official Javascript SDK, and should be compatible to all uniswap forks also with a few tweaks. This project was co-sponsored by the Uniswap Grants DAO and the Polywrap DAO in 2021."
@@ -156,18 +156,31 @@ export const HubCallout = () => {
       <Box className={classes.cell}>
         <Box className={classes.blurredGraphicContainer}>
           <Parallax y={[-15, 10]} disabled={isMobile}>
+            
             <img src={process.env.PUBLIC_URL + '/imgs/polywrapper-callout-spot.png'} alt='polywrap blurred'/>
           </Parallax>
         </Box>
         <Box className={classes.container}>
+          <Grid
+            className={classes.root}
+            justify='center'
+            alignItems='center'
+            spacing={1}
+          >
+            <Typography variant="h2">
+                  {thirdHeroContent.title}
+            </Typography>
+          </Grid>
+
           <Grid container spacing={isMobile ? 6 : 10} alignItems='stretch' >
             <Grid item xs={12} sm={6}>
               <Typography variant="h3">
-                {thirdHeroContent.title}
+                {polywrapApplicationsList.writtenCopy.title}
               </Typography>
+              
               <Box marginTop={2}>
                 <Typography variant="body1">
-                  {thirdHeroContent.description}
+                  {polywrapApplicationsList.writtenCopy.description}
                 </Typography>
               </Box>
               {/* <Box marginTop={2}>
@@ -186,7 +199,7 @@ export const HubCallout = () => {
             <Grid item xs={12} sm={6}>
               <Parallax y={[24, -24]} disabled={isMobile}>
                 <Box>
-                  <img className={classes.hubWireframeImg} src={process.env.PUBLIC_URL + '/imgs/assets/polywrap-hub-wireframe.png'} alt='Polywrap Hub'/>
+                  <img className={classes.hubWireframeImg} src={polywrapApplicationsList.uiScreenshot.url} alt='Polywrap Hub'/>
                 </Box>
               </Parallax>
             </Grid>
