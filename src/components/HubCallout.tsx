@@ -56,7 +56,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const cmsQuery = `query {
-  writtenContent(id:"49TfeHuJUvF4jtBuxqm3tq") { 
+  writtenCopy(id:"4pto10YnpvRkuIEQDkIBnG") { 
     title
     subtitle
     description
@@ -65,13 +65,12 @@ const cmsQuery = `query {
 `
 
 const applicationsQuery = `query {
-  applications (id: "4YQIn61S9M8LWaDdtmaZjM") {
-    wrapperName
-    writtenContent {
-      title
-      subtitle
-      description
-    }
+	applications (id:"4YQIn61S9M8LWaDdtmaZjM") {
+  	writtenCopy {
+  	  title
+  	  subtitle
+  	  description
+  	}
     callToAction {
       cta
       url
@@ -103,7 +102,7 @@ export const HubCallout = () => {
       "data": {
         "applications": {
           "wrapperName": "Uniswap V2",
-          "writtenContent": {
+          "writtenCopy": {
             "title": "Uniswap v2 Demo",
             "subtitle": "Decentralised AMM",
             "description": "The Leading Ethereum-based DeFi exchange enables low slippage token trades through automated market makers and liquidity pools. The Uni V2 wrapper was developed to cover all existing functionality of the official Javascript SDK, and should be compatible to all uniswap forks also with a few tweaks. This project was co-sponsored by the Uniswap Grants DAO and the Polywrap DAO in 2021."
@@ -129,7 +128,7 @@ export const HubCallout = () => {
     ContentfulFetcher(cmsQuery).then(
       (response) => {
         //On success        
-        const content: writtenContent = response.data.writtenContent;
+        const content: writtenContent = response.data.writtenCopy;
         console.log(content)
         setThirdHeroContent(content);
       }, 
