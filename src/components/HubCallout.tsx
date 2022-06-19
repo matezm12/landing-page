@@ -84,31 +84,6 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const cmsQuery = `query {
-  writtenCopy(id:"4pto10YnpvRkuIEQDkIBnG") { 
-    title
-    subtitle
-    description
-  }
-}
-`
-
-const applicationsQuery = `query {
-	applications (id:"4YQIn61S9M8LWaDdtmaZjM") {
-  	writtenCopy {
-  	  title
-  	  subtitle
-  	  description
-  	}
-    callToAction {
-      cta
-      url
-    }
-    uiScreenshot {
-      url
-    }
-  }
-}`;
 
 export const HubCallout = () => {
   const theme = useTheme();
@@ -125,8 +100,8 @@ export const HubCallout = () => {
   });
 
 // TODO set this hook witht he correct data type
-  const [polywrapApplicationsList, setPolywrapApplicationsList] = useState<polywrapApplication> (
-    {
+  const [polywrapApplicationsList, setPolywrapApplicationsList] = useState<polywrapApplication[]> (
+    [{
         "writtenCopy": {
           "title": "Uniswap v2 Demo",
           "subtitle": "Decentralised AMM",
@@ -139,15 +114,23 @@ export const HubCallout = () => {
         "uiScreenshot": {
           "url": "https://images.ctfassets.net/tmv21jqhvpr2/5Cx8SWJjdGUNTakXt0hOZa/01434e806285f03eb60077ea4c7d1c89/Screenshot_2022-06-19_at_16.31.12.png"
         }
-    }
+    }]
   )
   const [hasFailed, setHasFailed] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
   useEffect(() => {
     // CMS content fetching: Callback version
-    setIsLoading(true);
+    // setIsLoading(true);
 
+    const cmsQuery = `query {
+      writtenCopy(id:"4pto10YnpvRkuIEQDkIBnG") { 
+        title
+        subtitle
+        description
+      }
+    }
+    `
     ContentfulFetcher(cmsQuery).then(
       (response) => {
         //On success        
@@ -161,6 +144,68 @@ export const HubCallout = () => {
     ).finally(() => {
       setIsLoading(false);
     });
+
+
+    (async () => {
+      var listOfApplications: polywrapApplication[] = [];
+
+      /////////// CMS content fetching: Callback version
+      setIsLoading(true);
+      const applicationsIds = [
+        ["46Z1SN9tFSozigaRPrW0JR"], // "Polyfolio" 
+        ["4YQIn61S9M8LWaDdtmaZjM"], // Uniswap V2
+        ["6SGBoFOxJNsAuEcLfWW1l4"]  // Poolsharks
+      ]
+  
+
+      var currentFetch: {
+        data: {
+          applications: polywrapApplication
+        }
+      };
+
+      for(const Id of applicationsIds) {
+
+ 
+        var applicationsQuery = `query {
+          applications (id:"${Id[0]}") {
+            writtenCopy {
+              title
+              subtitle
+              description
+            }
+            callToAction {
+              cta
+              url
+            }
+            uiScreenshot {
+              url
+            }
+          }
+        }`;
+
+        
+        currentFetch = await ContentfulFetcher(applicationsQuery);
+        listOfApplications.push(currentFetch.data.applications);
+        setPolywrapApplicationsList((oldAppList) => [...oldAppList, currentFetch.data.applications]);
+        setIsLoading(false);
+      }
+    })();
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
 
     ContentfulFetcher(applicationsQuery).then(
       (response) => {
@@ -213,9 +258,7 @@ export const HubCallout = () => {
           <Grid container spacing={isMobile ? 6 : 10} alignItems='stretch' >
             <Grid item xs={12} sm={6}>
               <Typography 
-                variant="subtitle2"
-                color='secondary'
-                className={classes.heroSubtitle}
+                variant="h4"
               >
                 {polywrapApplicationsList.writtenCopy.title}
               </Typography>

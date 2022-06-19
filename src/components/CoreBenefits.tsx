@@ -117,7 +117,7 @@ export const CoreBenefits = () => {
 
         for(const Id of coreBenefitsIds) {
 
-          var cmsQuery = `query { 
+          var benefitsQuery = `query { 
             coreBenefits(id:"${Id[0]}") { 
               title
               subtitle
@@ -129,7 +129,7 @@ export const CoreBenefits = () => {
           }
           }`;
           
-          currentFetch = await ContentfulFetcher(cmsQuery);
+          currentFetch = await ContentfulFetcher(benefitsQuery);
           listOfCoreBenefits.push(currentFetch.data.coreBenefits);
           setCoreBenefits((oldCoreBenefits) => [...oldCoreBenefits, currentFetch.data.coreBenefits]);
           setIsLoading(false);
