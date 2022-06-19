@@ -27,7 +27,7 @@ To be able to query the content, you must configure the correct environment vari
 2. Set up your graphql query with the parameters you need to fetch
 ```
 const cmsQuery = `query { 
-  writtenContent(id:"4QLItvU9WU4CFNCC4c0jf1") { 
+  writtenCopy(id:"4QLItvU9WU4CFNCC4c0jf1") { 
    title 
    subtitle
    description

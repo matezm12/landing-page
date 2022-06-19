@@ -1,7 +1,7 @@
 import { Parallax } from 'react-scroll-parallax';
 import { Box, Grid, makeStyles, Typography, useTheme, Button } from '@material-ui/core';
 import {useState, useEffect} from 'react';
-import {  newListOfFeaturedQueries, writtenContent } from './ContentfulFetcher';
+import {  newListOfFeaturedQueries, writtenCopy } from './ContentfulFetcher';
 import { DemoFunctions } from './DemoFunctions';
 import { IDE } from './IDE';
 import { fetchWrappers }from './CMScontent';
@@ -78,7 +78,7 @@ export const FeaturedWrappersSection = () => {
   const classes = useStyles();
 
   // set initial react states
-  const [aboutThisSection, setAboutThisSection] = useState<writtenContent> (
+  const [aboutThisSection, setAboutThisSection] = useState<writtenCopy> (
     {
       "title": "Blazing fast development",
       "subtitle": "",

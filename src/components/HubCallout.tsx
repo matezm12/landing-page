@@ -2,7 +2,7 @@ import { Parallax } from 'react-scroll-parallax';
 import { Box, Button, Grid, makeStyles, Typography, useMediaQuery, useTheme } from '@material-ui/core';
 import { polywrapPalette } from '../theme';
 import {useState, useEffect} from 'react';
-import {  ContentfulFetcher, writtenContent, polywrapApplication } from './ContentfulFetcher';
+import {  ContentfulFetcher, writtenCopy, polywrapApplication } from './ContentfulFetcher';
 import { KeyboardArrowRightOutlined } from '@material-ui/icons';
 
 const useStyles = makeStyles((theme) => ({
@@ -95,7 +95,7 @@ export const HubCallout = () => {
   });
   const [hasFailed, setHasFailed] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState<boolean>(true);
-  const [thirdHeroContent, setThirdHeroContent] = useState<writtenContent> (
+  const [thirdHeroContent, setThirdHeroContent] = useState<writtenCopy> (
     {
       "title": "Extend the functionality of you applications",
       "subtitle": "a more composable web3",
@@ -177,7 +177,7 @@ export const HubCallout = () => {
     ContentfulFetcher(applicationsQuery).then(
       (response) => {
         //On success        
-        const heroWrittenCopy: writtenContent = response.data.writtenCopy;
+        const heroWrittenCopy: writtenCopy = response.data.writtenCopy;
         console.log(heroWrittenCopy)
         setThirdHeroContent(heroWrittenCopy);
       }, 

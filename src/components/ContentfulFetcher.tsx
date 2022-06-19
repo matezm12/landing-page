@@ -1,6 +1,6 @@
 require('dotenv').config();
 
-export interface writtenContent {
+export interface writtenCopy {
   title: string;
   subtitle: string | null;
   description?: string | null;
@@ -17,7 +17,7 @@ export interface heroContent {
     url: string;
   };
   callToAction: callToAction;
-  writtenContent: writtenContent;
+  writtenContent: writtenCopy;
 }
 
 export interface TagLine {
@@ -54,7 +54,7 @@ export interface coreBenefit {
 }
 
 export interface polywrapApplication {
-  writtenCopy: writtenContent;
+  writtenCopy: writtenCopy;
   callToAction: callToAction;
   uiScreenshot: {
     url: string;
