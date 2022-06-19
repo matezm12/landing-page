@@ -6,10 +6,10 @@ import { SecondHero } from '../../components/SecondHero';
 import { CoreBenefits } from '../../components/CoreBenefits';
 import { Testimonials } from '../../components/Testimonials';
 import ReactGA from 'react-ga';
-import { FeaturedWrappersSection } from '../../components/Wrappers';
+import { FeaturedWrappersSection } from '../../components/WrappersHero';
 //import { WrapperSection } from '../../components/old_WrapperSection';
 import { fetchWrappers, queryFeaturedWrappers } from '../../components/CMScontent';
-import { FeaturedApps } from '../../components/FeaturedApplications';
+import { FeaturedApps } from '../../components/ApplicationsHero';
 
 const useStyles = makeStyles((theme) => ({
   root: {
