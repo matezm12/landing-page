@@ -2,7 +2,7 @@ import { Parallax } from 'react-scroll-parallax';
 import { Box, Grid, makeStyles, Typography, useMediaQuery, useTheme } from '@material-ui/core';
 import { polywrapPalette } from '../theme';
 import {useState, useEffect} from 'react';
-import {  webContent, ContentfulFetcher } from './ContentfulFetcher';
+import {  ContentfulFetcher, writtenContent } from './ContentfulFetcher';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -55,13 +55,31 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const cmsQuery = `query { 
-  webContent(id:"4QLItvU9WU4CFNCC4c0jf1") { 
-   title 
-   subtitle
-   description
-   callToAction
- } 
+const cmsQuery = `query {
+  writtenContent(id:"49TfeHuJUvF4jtBuxqm3tq") { 
+    title
+    subtitle
+    description
+  }
+}
+`
+
+const applicationsQuery = `query {
+  applications (id: "4YQIn61S9M8LWaDdtmaZjM") {
+    wrapperName
+    writtenContent {
+      title
+      subtitle
+      description
+    }
+    callToAction {
+      cta
+      url
+    }
+    uiScreenshot {
+      url
+    }
+  }
 }`;
 
 export const HubCallout = () => {
@@ -71,13 +89,36 @@ export const HubCallout = () => {
     defaultMatches: true
   });
 
-  const [thirdHeroContent, setThirdHeroContent] = useState<webContent> (
+  const [thirdHeroContent, setThirdHeroContent] = useState<writtenContent> (
     {
       "title": "Welcome to the Polywrap Hub",
       "subtitle": "Our flagship dApp",
       "description": "A developer-centric platform where you can discover, deploy, and interact with any Polywrapper in the ecosystem. We are paving the road, expecting endless collaboration and curation possibilities. Test and Integrate web3 protocols quickly on the browser with our GraphQL Playground, and publish your packages to decentralised hosting. Soon you'll be able to explore an endless ocean of wrappers, by querying tags like `multisig`, `defi`, or `vesting`. A more semantic web3 that's easy to compose together!",
-      "callToAction": "Start Coding"
+      //      "callToAction": "Start Coding"
   });
+
+// TODO set this hook witht he correct data type
+  const [polywrapApplicationsList, setPolywrapApplicationsList] = useState<any> (
+    {
+      "data": {
+        "applications": {
+          "wrapperName": "Uniswap V2",
+          "writtenContent": {
+            "title": "Uniswap v2 Demo",
+            "subtitle": "Decentralised AMM",
+            "description": "The Leading Ethereum-based DeFi exchange enables low slippage token trades through automated market makers and liquidity pools. The Uni V2 wrapper was developed to cover all existing functionality of the official Javascript SDK, and should be compatible to all uniswap forks also with a few tweaks. This project was co-sponsored by the Uniswap Grants DAO and the Polywrap DAO in 2021."
+          },
+          "callToAction": {
+            "cta": "Try the Uniswap V2 Demo",
+            "url": "https://demo.uniswapv2.polywrap.io/#/swap"
+          },
+          "uiScreenshot": {
+            "url": "https://images.ctfassets.net/tmv21jqhvpr2/5Cx8SWJjdGUNTakXt0hOZa/01434e806285f03eb60077ea4c7d1c89/Screenshot_2022-06-19_at_16.31.12.png"
+          }
+        }
+      }
+    }
+  )
   const [hasFailed, setHasFailed] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
@@ -88,7 +129,8 @@ export const HubCallout = () => {
     ContentfulFetcher(cmsQuery).then(
       (response) => {
         //On success        
-        const content: webContent = response.data.webContent;
+        const content: writtenContent = response.data.writtenContent;
+        console.log(content)
         setThirdHeroContent(content);
       }, 
       (error) => {
