@@ -238,42 +238,54 @@ export const FeaturedApps = () => {
             
           </Grid>
 
-          <Grid container spacing={isMobile ? 6 : 10} alignItems='stretch' >
-            <Grid item xs={12} sm={6}>
-              <Typography 
-                variant="h4"
-              >
-                {polywrapApplicationsList[1].writtenCopy.title}
-              </Typography>
-              
-              
-              
-              <Box marginTop={2}>
-                <Typography variant="body1">
-                  {polywrapApplicationsList[1].writtenCopy.description}
-                </Typography>
-              </Box>
-              <Box marginTop={2}>
-                <Button
-                  component="button"
-                  color='primary'
-                  href={polywrapApplicationsList[1].callToAction.url}
-                  endIcon={<KeyboardArrowRightOutlined />}
-                  type='submit'
-                  variant='contained'
+          { polywrapApplicationsList && 
+          polywrapApplicationsList.map((PolywrapApp: any, index: number) =>
+
+            <Grid container spacing={isMobile ? 6 : 10}
+            alignItems='stretch' 
+            style={{
+              opacity: appsTransitionID === index ? '100%': '0%',
+              // visibility: wrappersTransitionID === index ? 'initial': 'hidden',
+              zIndex : appsTransitionID === index ? 99: -1,
+              transition: "all 1s ease-in",
+              position: 'absolute'
+            }}>
+              <Grid item xs={12} sm={6}>
+                <Typography 
+                  variant="h4"
                 >
-                  {polywrapApplicationsList[1].callToAction.cta}
-                </Button>
-              </Box>
-            </Grid>
-            <Grid item xs={12} sm={6}>
-              <Parallax y={[24, -24]} disabled={isMobile}>
-                <Box>
-                  <img className={classes.hubWireframeImg} src={polywrapApplicationsList[1].uiScreenshot.url} alt='Polywrap Hub'/>
+                  {PolywrapApp.writtenCopy.title}
+                </Typography>
+                
+                
+                
+                <Box marginTop={2}>
+                  <Typography variant="body1">
+                    {PolywrapApp.writtenCopy.description}
+                  </Typography>
                 </Box>
-              </Parallax>
+                <Box marginTop={2}>
+                  <Button
+                    component="button"
+                    color='primary'
+                    href={PolywrapApp.callToAction.url}
+                    endIcon={<KeyboardArrowRightOutlined />}
+                    type='submit'
+                    variant='contained'
+                  >
+                    {PolywrapApp.callToAction.cta}
+                  </Button>
+                </Box>
+              </Grid>
+              <Grid item xs={12} sm={6}>
+                <Parallax y={[24, -24]} disabled={isMobile}>
+                  <Box>
+                    <img className={classes.hubWireframeImg} src={PolywrapApp.uiScreenshot.url} alt='Polywrap Hub'/>
+                  </Box>
+                </Parallax>
+              </Grid>
             </Grid>
-          </Grid>
+          )}
         </Box>
       </Box>
     </Box>
