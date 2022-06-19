@@ -8,7 +8,6 @@ import { Testimonials } from '../../components/Testimonials';
 import ReactGA from 'react-ga';
 import { FeaturedWrappersSection } from '../../components/WrappersHero';
 //import { WrapperSection } from '../../components/old_WrapperSection';
-import { fetchWrappers, queryFeaturedWrappers } from '../../components/CMScontent';
 import { FeaturedApps as AppsHero } from '../../components/ApplicationsHero';
 
 const useStyles = makeStyles((theme) => ({
@@ -29,14 +28,11 @@ export const Home = () => {
   return (
     <Box className={classes.root}>
       <Hero />
-
       <AppsHero/>
       <CoreBenefits />
-
       <FeaturedWrappersSection />
       <SecondHero />
       <Testimonials />
-
     </Box>
   );
 };

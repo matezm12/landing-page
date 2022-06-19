@@ -253,14 +253,9 @@ export const FeaturedApps = () => {
               position: 'absolute'
             }}>
               <Grid item xs={12} sm={6}>
-                <Typography 
-                  variant="h4"
-                >
+                <Typography variant="h4">
                   {PolywrapApp.writtenCopy.title}
                 </Typography>
-                
-                
-                
                 <Box marginTop={2}>
                   <Typography variant="body1">
                     {PolywrapApp.writtenCopy.description}

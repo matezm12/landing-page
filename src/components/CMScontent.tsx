@@ -2,7 +2,6 @@ import {useState, useEffect} from 'react';
 import {wrapper,  newListOfFeaturedQueries, ContentfulFetcher } from './ContentfulFetcher';
 
 export function queryFeaturedWrappers() {
-    // GraphQL query to get data from Contentful CMS API
     const cmsQuery = `query { 
         featuredWrapperCollection(where: {featured: true}) { 
           items {
@@ -24,10 +23,7 @@ export function queryFeaturedWrappers() {
           }
         }
       }`
-
     return ContentfulFetcher(cmsQuery)
-
-
 }
 
 export async function fetchWrappers() {
