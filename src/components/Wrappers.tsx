@@ -1,7 +1,7 @@
 import { Parallax } from 'react-scroll-parallax';
 import { Box, Grid, makeStyles, Typography, useTheme, Button } from '@material-ui/core';
 import {useState, useEffect} from 'react';
-import {  newListOfFeaturedQueries, webContent, writtenContent } from './ContentfulFetcher';
+import {  newListOfFeaturedQueries, writtenContent } from './ContentfulFetcher';
 import { DemoFunctions } from './DemoFunctions';
 import { IDE } from './IDE';
 import { fetchWrappers }from './CMScontent';
@@ -83,7 +83,6 @@ export const FeaturedWrappersSection = () => {
       "title": "Blazing fast development",
       "subtitle": "",
       "description": " Write queries in minutes rather than hours.\n\nUsing the polywrap toolchain, you'll be able to hit any protocol endpoint from any device that can run a Polywrap client.",
-      
   });  
   const [wrappersData, setWrappersData] = useState<any>(null)
   const [featuredQueries, setFeaturedQueries] = useState<string[]>(['swapToken','functionNameB','funcNameC','...'])
@@ -172,16 +171,19 @@ export const FeaturedWrappersSection = () => {
                     y={[140, -13]}
                     disabled={window.innerWidth < theme.breakpoints.values.md}
                   >
-                    {/* TODO: use this section to map all the name of the functions 
+                    {/* TODO: later down the road, use this section to map all the name
+                        of the functions within the wrapper and display them on a card.
                         Also consider a way of setting the active function on "accent",
                         while the other ones not being displayed could look grey.
-                     */}
 
                     <DemoFunctions 
                       content={
                           featuredQueries
                         } 
                     />
+
+                                         */}
+
 
                   </Parallax>
                 </Box>
