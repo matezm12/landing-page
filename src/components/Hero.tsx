@@ -159,7 +159,7 @@ const cmsQuery = `query  {
     supportImage {
       url
     }
-		writtenContent{
+		writtenCopy{
       title
       subtitle
       description
@@ -181,7 +181,7 @@ export const Hero = () => {
       "supportImage": {
         "url": "https://images.ctfassets.net/tmv21jqhvpr2/NRXtH7lf7ucdy2zMVX2qF/600ff9db7b28752e9ee03663fd7f8dc5/polywrapper-hero.png"
       },
-      "writtenContent": {
+      "writtenCopy": {
         "title": "Use Web3 Anywhere.",
         "subtitle": "Origin Release",
         "description": "Polywrap is a set of tools that uses Wasm and GraphQL to deliver web3 protocols to any execution environment. Build and publish your protocol wrapper with Polywrap to be accessible from all types of applications."
@@ -230,21 +230,21 @@ export const Hero = () => {
               color='secondary'
               className={classes.technicalPreview}
             >
-             {heroContent.writtenContent.subtitle}
+             {heroContent.writtenCopy.subtitle}
             </Typography>
             <Typography
               className={classes.heroTitle}
               color='textPrimary'
               variant='h1'
             >
-             {heroContent.writtenContent.title}
+             {heroContent.writtenCopy.title}
             </Typography>
             <Typography
               className={classes.heroBody}
               color='textSecondary'
               variant='body1'
             >
-            {heroContent.writtenContent.description}
+            {heroContent.writtenCopy.description}
 
             </Typography>
             <Button

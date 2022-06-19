@@ -63,7 +63,7 @@ const cmsQuery = `query {
     supportImage {
       url
     }
-		writtenContent{
+		writtenCopy{
       title
       subtitle
       description
@@ -87,7 +87,7 @@ export const SecondHero = () => {
       "supportImage": {
         "url": "https://images.ctfassets.net/tmv21jqhvpr2/X96Lie1TSf4GzDOvGt3Of/910ab4a1255f005e21081943dd6b095d/wrappers-white-wave-transparent.svg"
       },
-      "writtenContent": {
+      "writtenCopy": {
         "title": "Say Goodbye to Javascript Wrappers",
         "subtitle": null,
         "description": "Today, teams are architecting and maintaining custom SDKs, mostly in Javascript. This breaks composability and severely restricts the types of software that can interact with web3 securely and efficiently."
@@ -142,7 +142,7 @@ export const SecondHero = () => {
               color='textPrimary'
               className={classes.title}
             >
-              {heroContent.writtenContent.title}
+              {heroContent.writtenCopy.title}
             </Typography>
             <Typography
               variant='body1'
@@ -151,7 +151,7 @@ export const SecondHero = () => {
               // TODO: Fix the formatting of description below, this section should allow us somehow to show line
               // breaks and bold sections for example, but it's not working right now. All text is output as a continuous string
             >
-              {heroContent.writtenContent.description}
+              {heroContent.writtenCopy.description}
             </Typography>
           </Grid>
         </Grid>

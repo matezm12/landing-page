@@ -17,7 +17,7 @@ export interface heroContent {
     url: string;
   };
   callToAction: callToAction;
-  writtenContent: writtenCopy;
+  writtenCopy: writtenCopy;
 }
 
 export interface TagLine {
