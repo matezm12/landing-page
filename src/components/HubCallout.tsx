@@ -77,7 +77,9 @@ const useStyles = makeStyles((theme) => ({
     maxHeight: '400px',
     maxWidth: '100%',
     [theme.breakpoints.down('sm')]: {
-      boxShadow: `0 4px 32px ${polywrapPalette.primary.mid}85`,
+      //TODO: This used to look very good with green colored shadow,
+      // but when trying other images, the outline looks broken in the UI
+      //boxShadow: `0 4px 32px ${polywrapPalette.primary.mid}85`,
       width: '100%',
       transform: 'none',
     },
@@ -91,15 +93,14 @@ export const HubCallout = () => {
   const isMobile = useMediaQuery(theme.breakpoints.down('xs'), {
     defaultMatches: true
   });
-
+  const [hasFailed, setHasFailed] = useState<boolean>(false);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
   const [thirdHeroContent, setThirdHeroContent] = useState<writtenContent> (
     {
       "title": "Extend the functionality of you applications",
       "subtitle": "a more composable web3",
       "description": "Polywrap allows more application functionality with a lower development overhead, fewer requirements for protocol-specific knowledge, and a long list of perks that come along with WebAssembly. "
   });
-
-// TODO set this hook witht he correct data type
   const [polywrapApplicationsList, setPolywrapApplicationsList] = useState<polywrapApplication[]> (
     [{
         "writtenCopy": {
@@ -116,47 +117,18 @@ export const HubCallout = () => {
         }
     }]
   )
-  const [hasFailed, setHasFailed] = useState<boolean>(false);
-  const [isLoading, setIsLoading] = useState<boolean>(true);
 
   useEffect(() => {
-    // CMS content fetching: Callback version
-    // setIsLoading(true);
-
-    const cmsQuery = `query {
-      writtenCopy(id:"4pto10YnpvRkuIEQDkIBnG") { 
-        title
-        subtitle
-        description
-      }
-    }
-    `
-    ContentfulFetcher(cmsQuery).then(
-      (response) => {
-        //On success        
-        const content: writtenContent = response.data.writtenCopy;
-        setThirdHeroContent(content);
-      }, 
-      (error) => {
-        //On fail
-        setHasFailed(true);
-      }
-    ).finally(() => {
-      setIsLoading(false);
-    });
-
-
     (async () => {
       var listOfApplications: polywrapApplication[] = [];
 
       /////////// CMS content fetching: Callback version
       setIsLoading(true);
       const applicationsIds = [
-        ["46Z1SN9tFSozigaRPrW0JR"], // "Polyfolio" 
-        ["4YQIn61S9M8LWaDdtmaZjM"], // Uniswap V2
-        ["6SGBoFOxJNsAuEcLfWW1l4"]  // Poolsharks
+        "46Z1SN9tFSozigaRPrW0JR", // "Polyfolio" 
+        "4YQIn61S9M8LWaDdtmaZjM", // Uniswap V2
+        "6SGBoFOxJNsAuEcLfWW1l4"  // Poolsharks
       ]
-  
 
       var currentFetch: {
         data: {
@@ -166,9 +138,8 @@ export const HubCallout = () => {
 
       for(const Id of applicationsIds) {
 
- 
         var applicationsQuery = `query {
-          applications (id:"${Id[0]}") {
+          applications (id:"${Id}") {
             writtenCopy {
               title
               subtitle
@@ -184,35 +155,31 @@ export const HubCallout = () => {
           }
         }`;
 
-        
+        console.log(applicationsQuery)
         currentFetch = await ContentfulFetcher(applicationsQuery);
         listOfApplications.push(currentFetch.data.applications);
-        setPolywrapApplicationsList((oldAppList) => [...oldAppList, currentFetch.data.applications]);
+        console.log(listOfApplications)
+        //setPolywrapApplicationsList((oldAppList) => [...oldAppList, currentFetch.data.applications]);
         setIsLoading(false);
       }
     })();
 
 
-
-
-
-
-
-
-
-
-
-
-
-    
-
+    const applicationsQuery = `query {
+      writtenCopy(id:"4pto10YnpvRkuIEQDkIBnG") { 
+        title
+        subtitle
+        description
+      }
+    }
+    `
 
     ContentfulFetcher(applicationsQuery).then(
       (response) => {
         //On success        
-        const appDetails: polywrapApplication = response.data.applications;
-        console.log(appDetails)
-        setPolywrapApplicationsList(appDetails);
+        const heroWrittenCopy: writtenContent = response.data.writtenCopy;
+        console.log(heroWrittenCopy)
+        setThirdHeroContent(heroWrittenCopy);
       }, 
       (error) => {
         //On fail
@@ -260,33 +227,33 @@ export const HubCallout = () => {
               <Typography 
                 variant="h4"
               >
-                {polywrapApplicationsList.writtenCopy.title}
+                {polywrapApplicationsList[0].writtenCopy.title}
               </Typography>
               
               
               
               <Box marginTop={2}>
                 <Typography variant="body1">
-                  {polywrapApplicationsList.writtenCopy.description}
+                  {polywrapApplicationsList[0].writtenCopy.description}
                 </Typography>
               </Box>
               <Box marginTop={2}>
                 <Button
                   component="button"
                   color='primary'
-                  href={polywrapApplicationsList.callToAction.url}
+                  href={polywrapApplicationsList[0].callToAction.url}
                   endIcon={<KeyboardArrowRightOutlined />}
                   type='submit'
                   variant='contained'
                 >
-                  {polywrapApplicationsList.callToAction.cta}
+                  {polywrapApplicationsList[0].callToAction.cta}
                 </Button>
               </Box>
             </Grid>
             <Grid item xs={12} sm={6}>
               <Parallax y={[24, -24]} disabled={isMobile}>
                 <Box>
-                  <img className={classes.hubWireframeImg} src={polywrapApplicationsList.uiScreenshot.url} alt='Polywrap Hub'/>
+                  <img className={classes.hubWireframeImg} src={polywrapApplicationsList[0].uiScreenshot.url} alt='Polywrap Hub'/>
                 </Box>
               </Parallax>
             </Grid>
