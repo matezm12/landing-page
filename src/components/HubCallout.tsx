@@ -19,6 +19,32 @@ const useStyles = makeStyles((theme) => ({
       marginBottom: 80,
     },
   },
+  heroTitle: {
+    justifyContent: 'center',
+    display: 'flex',
+    flexDirection: 'column',
+    minHeight: '10vh',
+    position: 'relative',
+    zIndex: 2,
+    marginBottom: 30,
+    //marginTop: 140,
+    [theme.breakpoints.down('md')]: {
+      marginTop: 10,
+      marginBottom: 30,
+    },
+  },
+
+  heroSubtitle: {
+    color: polywrapPalette.secondary.end,
+    fontWeight: 700,
+    letterSpacing: 1.5,
+    textTransform: 'uppercase',
+    paddingLeft: 2, // Optical alignment with 'A' below
+    [theme.breakpoints.down('sm')]: {
+      textAlign: 'center',
+      fontSize: 12,
+    },
+  },
   cell: {
     margin: 'auto',
     maxWidth: '90vw'
@@ -42,7 +68,9 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   hubWireframeImg: {
-    boxShadow: `0 4px 64px ${polywrapPalette.primary.mid}85`,
+    //TODO: This used to look very good with green colored shadow,
+    // but when trying other images, the outline looks broken in the UI
+    // boxShadow: `0 4px 64px ${polywrapPalette.primary.mid}85`,
     borderRadius: 4,
     transformOrigin: 'top left',
     transform: `translateY(-8px)`,
@@ -162,21 +190,37 @@ export const HubCallout = () => {
         </Box>
         <Box className={classes.container}>
           <Grid
-            className={classes.root}
+            className={classes.heroTitle}
             justify='center'
             alignItems='center'
             spacing={1}
           >
-            <Typography variant="h2">
+            <Typography variant="h3">
                   {thirdHeroContent.title}
             </Typography>
+            <Box marginTop={2}>
+                <Typography 
+                  variant="subtitle2"
+                  color='secondary'
+                  className={classes.heroSubtitle}
+                >
+                  {thirdHeroContent.subtitle}
+                </Typography>
+            </Box>
+            
           </Grid>
 
           <Grid container spacing={isMobile ? 6 : 10} alignItems='stretch' >
             <Grid item xs={12} sm={6}>
-              <Typography variant="h3">
+              <Typography 
+                variant="subtitle2"
+                color='secondary'
+                className={classes.heroSubtitle}
+              >
                 {polywrapApplicationsList.writtenCopy.title}
               </Typography>
+              
+              
               
               <Box marginTop={2}>
                 <Typography variant="body1">

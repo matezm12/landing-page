@@ -31,9 +31,10 @@ export const Home = () => {
       <Hero />
 
       <HubCallout/>
+      <CoreBenefits />
+
       <FeaturedWrappersSection />
       {/* <SecondHero /> */}
-      <CoreBenefits />
       <Testimonials />
 
     </Box>
