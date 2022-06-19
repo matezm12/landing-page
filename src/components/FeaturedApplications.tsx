@@ -155,11 +155,10 @@ export const FeaturedApps = () => {
           }
         }`;
 
-        console.log(applicationsQuery)
         currentFetch = await ContentfulFetcher(applicationsQuery);
         listOfApplications.push(currentFetch.data.applications);
-        console.log(listOfApplications)
-        //setPolywrapApplicationsList((oldAppList) => [...oldAppList, currentFetch.data.applications]);
+        // this would make the list longer
+        setPolywrapApplicationsList((oldAppList) => [...oldAppList, currentFetch.data.applications]);
         setIsLoading(false);
       }
     })();
@@ -178,7 +177,6 @@ export const FeaturedApps = () => {
       (response) => {
         //On success        
         const heroWrittenCopy: writtenCopy = response.data.writtenCopy;
-        console.log(heroWrittenCopy)
         setThirdHeroContent(heroWrittenCopy);
       }, 
       (error) => {
@@ -227,33 +225,33 @@ export const FeaturedApps = () => {
               <Typography 
                 variant="h4"
               >
-                {polywrapApplicationsList[0].writtenCopy.title}
+                {polywrapApplicationsList[1].writtenCopy.title}
               </Typography>
               
               
               
               <Box marginTop={2}>
                 <Typography variant="body1">
-                  {polywrapApplicationsList[0].writtenCopy.description}
+                  {polywrapApplicationsList[1].writtenCopy.description}
                 </Typography>
               </Box>
               <Box marginTop={2}>
                 <Button
                   component="button"
                   color='primary'
-                  href={polywrapApplicationsList[0].callToAction.url}
+                  href={polywrapApplicationsList[1].callToAction.url}
                   endIcon={<KeyboardArrowRightOutlined />}
                   type='submit'
                   variant='contained'
                 >
-                  {polywrapApplicationsList[0].callToAction.cta}
+                  {polywrapApplicationsList[1].callToAction.cta}
                 </Button>
               </Box>
             </Grid>
             <Grid item xs={12} sm={6}>
               <Parallax y={[24, -24]} disabled={isMobile}>
                 <Box>
-                  <img className={classes.hubWireframeImg} src={polywrapApplicationsList[0].uiScreenshot.url} alt='Polywrap Hub'/>
+                  <img className={classes.hubWireframeImg} src={polywrapApplicationsList[1].uiScreenshot.url} alt='Polywrap Hub'/>
                 </Box>
               </Parallax>
             </Grid>

@@ -86,7 +86,7 @@ export const FeaturedWrappersSection = () => {
   });  
   const [wrappersData, setWrappersData] = useState<any>(null)
   const [featuredQueries, setFeaturedQueries] = useState<string[]>(['swapToken','functionNameB','funcNameC','...'])
-  const [transitionID, setTransitionID] = useState<number>(0)
+  const [wrappersTransitionID, setWrappersTransitionID] = useState<number>(0)
 
   // TODO: try using this state to move the function names into the DataCard
   const [queriesData, setQueriesData] = useState<newListOfFeaturedQueries[] | null>(null)
@@ -104,31 +104,31 @@ export const FeaturedWrappersSection = () => {
       
     }
 
-    const getFunctions = (wrappersData:newListOfFeaturedQueries[]) => {
-      console.log(wrappersData)
-      //wrappersData.forEach(wrapper => console.log(wrapper))
-      return []
-    };
+    // const getFunctions = (wrappersData:newListOfFeaturedQueries[]) => {
+    //   console.log(wrappersData)
+    //   //wrappersData.forEach(wrapper => console.log(wrapper))
+    //   return []
+    // };
     fetchWrapperData() //=> {getFunctions(wrappersData)};
 
   }, []);
 
-  
-  // set UI transition effects for the component
+
+  // Setting UI transition effects for the component
   useEffect(() => {
     let rotationInterval = setInterval(() => {
-      if (transitionID === wrappersData.length - 1 ) {
-        setTransitionID(0)
+      if (wrappersTransitionID === wrappersData.length - 1 ) {
+        setWrappersTransitionID(0)
       }
       else {
-        setTransitionID(transitionID => transitionID + 1)
+        setWrappersTransitionID(wrappersTransitionID => wrappersTransitionID + 1)
       }
     }, 10000) // Timer for switching between wrappers (10000 -> 10 seconds)
     
     return () => {
       clearInterval(rotationInterval);
     }
-  }, [transitionID, wrappersData])
+  }, [wrappersTransitionID, wrappersData])
   
 
 
@@ -154,9 +154,9 @@ export const FeaturedWrappersSection = () => {
             alignItems='flex-start'
             className={classes.grid}
             style={{
-              opacity: transitionID === index ? '100%': '0%',
-              // visibility: transitionID === index ? 'initial': 'hidden',
-              zIndex : transitionID === index ? 99: -1,
+              opacity: wrappersTransitionID === index ? '100%': '0%',
+              // visibility: wrappersTransitionID === index ? 'initial': 'hidden',
+              zIndex : wrappersTransitionID === index ? 99: -1,
               transition: "all 1s ease-in",
               position: 'absolute'
             }}
