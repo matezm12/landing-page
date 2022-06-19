@@ -87,7 +87,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-export const HubCallout = () => {
+export const FeaturedApps = () => {
   const theme = useTheme();
   const classes = useStyles();
   const isMobile = useMediaQuery(theme.breakpoints.down('xs'), {
