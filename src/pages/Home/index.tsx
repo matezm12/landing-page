@@ -9,7 +9,7 @@ import ReactGA from 'react-ga';
 import { FeaturedWrappersSection } from '../../components/WrappersHero';
 //import { WrapperSection } from '../../components/old_WrapperSection';
 import { fetchWrappers, queryFeaturedWrappers } from '../../components/CMScontent';
-import { FeaturedApps } from '../../components/ApplicationsHero';
+import { FeaturedApps as AppsHero } from '../../components/ApplicationsHero';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -30,11 +30,11 @@ export const Home = () => {
     <Box className={classes.root}>
       <Hero />
 
-      <FeaturedApps/>
+      <AppsHero/>
       <CoreBenefits />
 
       <FeaturedWrappersSection />
-      {/* <SecondHero /> */}
+      <SecondHero />
       <Testimonials />
 
     </Box>
