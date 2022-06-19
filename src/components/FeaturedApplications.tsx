@@ -95,6 +95,7 @@ export const FeaturedApps = () => {
   });
   const [hasFailed, setHasFailed] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [appsTransitionID, setAppsTransitionID] = useState<number>(0)
   const [thirdHeroContent, setThirdHeroContent] = useState<writtenCopy> (
     {
       "title": "Extend the functionality of you applications",
@@ -188,6 +189,23 @@ export const FeaturedApps = () => {
     });
 
   }, []);
+
+
+  // Setting UI transition effects for the component
+  useEffect(() => {
+    let rotationInterval = setInterval(() => {
+      if (appsTransitionID === polywrapApplicationsList.length - 1 ) {
+        setAppsTransitionID(0)
+      }
+      else {
+        setAppsTransitionID(appsTransitionID => appsTransitionID + 1)
+      }
+    }, 10000) // Timer for switching between wrappers (10000 -> 10 seconds)
+    
+    return () => {
+      clearInterval(rotationInterval);
+    }
+  }, [appsTransitionID, polywrapApplicationsList])
 
 
   return (

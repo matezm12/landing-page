@@ -181,8 +181,7 @@ export const FeaturedWrappersSection = () => {
                           featuredQueries
                         } 
                     />
-
-                                         */}
+                   */}
 
 
                   </Parallax>
