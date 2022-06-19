@@ -136,7 +136,8 @@ export const HubCallout = () => {
     ContentfulFetcher(applicationsQuery).then(
       (response) => {
         //On success        
-        const appDetails: polywrapApplication = response.data;
+        const appDetails: polywrapApplication = response.data.applications;
+        console.log(appDetails)
         setPolywrapApplicationsList(appDetails);
       }, 
       (error) => {
