@@ -90,10 +90,9 @@ export const HubCallout = () => {
 
   const [thirdHeroContent, setThirdHeroContent] = useState<writtenContent> (
     {
-      "title": "Welcome to the Polywrap Hub",
-      "subtitle": "Our flagship dApp",
-      "description": "A developer-centric platform where you can discover, deploy, and interact with any Polywrapper in the ecosystem. We are paving the road, expecting endless collaboration and curation possibilities. Test and Integrate web3 protocols quickly on the browser with our GraphQL Playground, and publish your packages to decentralised hosting. Soon you'll be able to explore an endless ocean of wrappers, by querying tags like `multisig`, `defi`, or `vesting`. A more semantic web3 that's easy to compose together!",
-      //      "callToAction": "Start Coding"
+      "title": "Extend the functionality of you applications",
+      "subtitle": "a more composable web3",
+      "description": "Polywrap allows more application functionality with a lower development overhead, fewer requirements for protocol-specific knowledge, and a long list of perks that come along with WebAssembly. "
   });
 
 // TODO set this hook witht he correct data type
@@ -124,8 +123,21 @@ export const HubCallout = () => {
       (response) => {
         //On success        
         const content: writtenContent = response.data.writtenCopy;
-        console.log(content)
         setThirdHeroContent(content);
+      }, 
+      (error) => {
+        //On fail
+        setHasFailed(true);
+      }
+    ).finally(() => {
+      setIsLoading(false);
+    });
+
+    ContentfulFetcher(applicationsQuery).then(
+      (response) => {
+        //On success        
+        const appDetails: polywrapApplication = response.data;
+        setPolywrapApplicationsList(appDetails);
       }, 
       (error) => {
         //On fail
