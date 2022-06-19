@@ -33,7 +33,6 @@ const useStyles = makeStyles((theme) => ({
       marginBottom: 30,
     },
   },
-
   heroSubtitle: {
     color: polywrapPalette.secondary.end,
     fontWeight: 700,
@@ -62,9 +61,12 @@ const useStyles = makeStyles((theme) => ({
     borderRadius: 8,
     boxShadow: `0 64px 96px -24px rgba(0,0,0,0.5)`,
     padding: 72,
+    paddingBottom: 450,
     position: 'relative',
     [theme.breakpoints.down('sm')]: {
       padding: 32,
+      paddingBottom: 420,
+
     },
   },
   hubWireframeImg: {
@@ -190,7 +192,6 @@ export const FeaturedApps = () => {
 
   }, []);
 
-
   // Setting UI transition effects for the component
   useEffect(() => {
     let rotationInterval = setInterval(() => {
@@ -216,7 +217,8 @@ export const FeaturedApps = () => {
             <img src={process.env.PUBLIC_URL + '/imgs/polywrapper-callout-spot.png'} alt='polywrap blurred'/>
           </Parallax>
         </Box>
-        <Box className={classes.container}>
+        <Box className={classes.container}
+          >
           <Grid
             className={classes.heroTitle}
             justify='center'
