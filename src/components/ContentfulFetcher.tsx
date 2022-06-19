@@ -53,6 +53,13 @@ export interface coreBenefit {
   }
 }
 
+export interface polywrapApplication {
+  writtenContent: writtenContent;
+  callToAction: callToAction;
+  uiScreenshot: {
+    url: string;
+  };
+}
 
 
 /// Older data models below

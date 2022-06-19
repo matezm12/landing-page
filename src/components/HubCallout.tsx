@@ -2,7 +2,7 @@ import { Parallax } from 'react-scroll-parallax';
 import { Box, Grid, makeStyles, Typography, useMediaQuery, useTheme } from '@material-ui/core';
 import { polywrapPalette } from '../theme';
 import {useState, useEffect} from 'react';
-import {  ContentfulFetcher, writtenContent } from './ContentfulFetcher';
+import {  ContentfulFetcher, writtenContent, polywrapApplication } from './ContentfulFetcher';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -97,25 +97,20 @@ export const HubCallout = () => {
   });
 
 // TODO set this hook witht he correct data type
-  const [polywrapApplicationsList, setPolywrapApplicationsList] = useState<any> (
+  const [polywrapApplicationsList, setPolywrapApplicationsList] = useState<polywrapApplication> (
     {
-      "data": {
-        "applications": {
-          "wrapperName": "Uniswap V2",
-          "writtenCopy": {
-            "title": "Uniswap v2 Demo",
-            "subtitle": "Decentralised AMM",
-            "description": "The Leading Ethereum-based DeFi exchange enables low slippage token trades through automated market makers and liquidity pools. The Uni V2 wrapper was developed to cover all existing functionality of the official Javascript SDK, and should be compatible to all uniswap forks also with a few tweaks. This project was co-sponsored by the Uniswap Grants DAO and the Polywrap DAO in 2021."
-          },
-          "callToAction": {
-            "cta": "Try the Uniswap V2 Demo",
-            "url": "https://demo.uniswapv2.polywrap.io/#/swap"
-          },
-          "uiScreenshot": {
-            "url": "https://images.ctfassets.net/tmv21jqhvpr2/5Cx8SWJjdGUNTakXt0hOZa/01434e806285f03eb60077ea4c7d1c89/Screenshot_2022-06-19_at_16.31.12.png"
-          }
+        "writtenContent": {
+          "title": "Uniswap v2 Demo",
+          "subtitle": "Decentralised AMM",
+          "description": "The Leading Ethereum-based DeFi exchange enables low slippage token trades through automated market makers and liquidity pools. The Uni V2 wrapper was developed to cover all existing functionality of the official Javascript SDK, and should be compatible to all uniswap forks also with a few tweaks. This project was co-sponsored by the Uniswap Grants DAO and the Polywrap DAO in 2021."
+        },
+        "callToAction": {
+          "cta": "Try the Uniswap V2 Demo",
+          "url": "https://demo.uniswapv2.polywrap.io/#/swap"
+        },
+        "uiScreenshot": {
+          "url": "https://images.ctfassets.net/tmv21jqhvpr2/5Cx8SWJjdGUNTakXt0hOZa/01434e806285f03eb60077ea4c7d1c89/Screenshot_2022-06-19_at_16.31.12.png"
         }
-      }
     }
   )
   const [hasFailed, setHasFailed] = useState<boolean>(false);
