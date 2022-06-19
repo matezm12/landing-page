@@ -1,8 +1,9 @@
 import { Parallax } from 'react-scroll-parallax';
-import { Box, Grid, makeStyles, Typography, useMediaQuery, useTheme } from '@material-ui/core';
+import { Box, Button, Grid, makeStyles, Typography, useMediaQuery, useTheme } from '@material-ui/core';
 import { polywrapPalette } from '../theme';
 import {useState, useEffect} from 'react';
 import {  ContentfulFetcher, writtenContent, polywrapApplication } from './ContentfulFetcher';
+import { KeyboardArrowRightOutlined } from '@material-ui/icons';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -156,7 +157,6 @@ export const HubCallout = () => {
       <Box className={classes.cell}>
         <Box className={classes.blurredGraphicContainer}>
           <Parallax y={[-15, 10]} disabled={isMobile}>
-            
             <img src={process.env.PUBLIC_URL + '/imgs/polywrapper-callout-spot.png'} alt='polywrap blurred'/>
           </Parallax>
         </Box>
@@ -183,18 +183,18 @@ export const HubCallout = () => {
                   {polywrapApplicationsList.writtenCopy.description}
                 </Typography>
               </Box>
-              {/* <Box marginTop={2}>
+              <Box marginTop={2}>
                 <Button
                   component="button"
                   color='primary'
-                  href='https://discord.gg/bGsqQrNhqd'
+                  href={polywrapApplicationsList.callToAction.url}
                   endIcon={<KeyboardArrowRightOutlined />}
                   type='submit'
                   variant='contained'
                 >
-                  {CTA}
+                  {polywrapApplicationsList.callToAction.cta}
                 </Button>
-              </Box> */}
+              </Box>
             </Grid>
             <Grid item xs={12} sm={6}>
               <Parallax y={[24, -24]} disabled={isMobile}>
