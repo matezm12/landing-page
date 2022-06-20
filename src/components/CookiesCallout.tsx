@@ -39,18 +39,18 @@ export const CookiesCallout = () => {
     <Box className={classes.root}>
       <Container maxWidth="lg">
         <Box display="flex" alignItems="center" justifyContent="space-between">
-          <Box display="flex">
-            We use cookies from google and X to collect anonimized data to improve your experience.
+          <Box display="flex" fontSize="3">
+            Accepting cookies improves your experience. All data collected is anonimized data.
             <Link underline="always" color="textPrimary" className={classes.link}>
-              View Cookie Policy
+              Privacy Policy
             </Link>
           </Box>
           <Box display="flex" alignItems="center">
             <Button variant="outlined" color="primary" size="small">
-              Accept Cookies
+              Accept
             </Button>
             <Link underline="always" className={classes.link}>
-              Decline Cookies
+              Decline
             </Link>
           </Box>
         </Box>
