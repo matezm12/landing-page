@@ -116,6 +116,10 @@ export const theme = createMuiTheme({
       fontSize: 16,
       lineHeight: 1.75
     },
+    body2: {
+      fontSize: 12,
+      lineHeight: 1.5
+    },
   },
   overrides: {
     MuiCssBaseline: {
