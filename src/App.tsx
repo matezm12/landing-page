@@ -10,6 +10,7 @@ import { SignUp } from './pages/SignUp';
 import { MembraneBg } from './components/MembraneBg'
 import { Header } from './components/Header';
 import { Footer } from './components/Footer';
+import { CookiesCallout } from './components/CookiesCallout';
 import './App.css';
 
 const useStyles = makeStyles((theme) => ({
@@ -28,12 +29,13 @@ const useStyles = makeStyles((theme) => ({
 
 const App: React.FC = () => {
   const classes = useStyles();
+  const showCookies = true;
 
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <ParallaxProvider>
-        <Box width='100%' minHeight='100vh' overflow="hidden">
+        <Box width='100%' minHeight='100vh' overflow="hidden" pb={showCookies ? 6 : 0}>
           <HashRouter>
             <Grid container className={classes.wrapper}>
               <Box
@@ -59,6 +61,7 @@ const App: React.FC = () => {
           </HashRouter>
         </Box>
       </ParallaxProvider>
+      {showCookies && <CookiesCallout/>}
     </ThemeProvider>
   );
 };
