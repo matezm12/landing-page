@@ -32,10 +32,17 @@ const useStyles = makeStyles((theme) => ({
       color: 'rgba(255,255,255,0.8)',
       cursor: 'pointer',
     },
+    '& img': {
+      marginRight: 4,
+      opacity: 0.5,
+    },
     '&.is-active': {
       backgroundColor: 'rgba(255,255,255,0.05)',
       boxShadow: `inset 0 -2px 0 ${theme.palette.primary.main}`,
       color: 'rgba(255,255,255,0.8)',
+      '& img': {
+        opacity: 1,
+      }
     },
   },
   tabImage: {

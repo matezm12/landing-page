@@ -127,7 +127,7 @@ export const FeaturedWrappersSection = () => {
   });  
   const [wrappersData, setWrappersData] = useState<any>(null)
   const [featuredQueries, setFeaturedQueries] = useState<string[]>(['swapToken','functionNameB','funcNameC','...'])
-  const [wrappersTransitionID, setWrappersTransitionID] = useState<number>(0)
+  const [activeWrapper, setActiveWrapper] = useState<number>(0)
 
   // TODO: try using this state to move the function names into the DataCard
   const [queriesData, setQueriesData] = useState<newListOfFeaturedQueries[] | null>(null)
@@ -155,22 +155,9 @@ export const FeaturedWrappersSection = () => {
   }, []);
 
 
-  // Setting UI transition effects for the component
-  useEffect(() => {
-    let rotationInterval = setInterval(() => {
-      if (wrappersTransitionID === wrappersData.length - 1 ) {
-        setWrappersTransitionID(0)
-      }
-      else {
-        setWrappersTransitionID(wrappersTransitionID => wrappersTransitionID + 1)
-      }
-    }, 10000) // Timer for switching between wrappers (10000 -> 10 seconds)
-    
-    return () => {
-      clearInterval(rotationInterval);
-    }
-  }, [wrappersTransitionID, wrappersData])
-  
+  const handleWrapperSelection = (wrapper: number) => {
+    setActiveWrapper(wrapper)
+  }
 
 
   return (
@@ -204,13 +191,14 @@ export const FeaturedWrappersSection = () => {
         justifyContent={wrappersData?.length >= 5 ? "space-between" : "center"}
         mt={6}
       >
-        { wrappersData.map((wrapper: any, index: number) => {
+        { wrappersData?.map((wrapper: any, index: number) => {
             return (
               <Box
                 key={index}
                 ml={index !== 0 ? 2 : 0} mr={index !== wrappersData.length - 1 ? 2 : 0}
+                onClick={() => handleWrapperSelection(index)}
               >
-                <Box className={classnames(classes.wrapperSelection, wrappersTransitionID === index && "is-active")}>
+                <Box className={classnames(classes.wrapperSelection, activeWrapper === index && "is-active")}>
                   <Box className={classes.wrapperSelectionIcon}/>
                   {wrapper.wrapperName}
                 </Box>
@@ -222,13 +210,12 @@ export const FeaturedWrappersSection = () => {
       {/* The lines below are used to check
             1. that wrappersData exists
             2. maps all the data to render the component*/}
-        { wrappersData && 
-        wrappersData.map((wrapper: any, index: number) =>
+        { wrappersData?.map((wrapper: any, index: number) =>
           <Box 
             key={index}
             mb={24}
             style={{
-              display: wrappersTransitionID === index ? "block" : "none",
+              display: activeWrapper === index ? "block" : "none",
             }}
           >
             <Grid
@@ -298,11 +285,8 @@ export const FeaturedWrappersSection = () => {
                           } 
                       />
                     */}
-
-
                     </Parallax>
                   </Box>
-
                   {/* This is the section that displays the entire IDE window.
                       it includes both the code snippet and the tabs on top of the window
                   */}
