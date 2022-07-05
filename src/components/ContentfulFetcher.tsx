@@ -32,7 +32,7 @@ export interface callToAction {
 }
 
 export interface heroContent {
-  supportImage?: {
+  supportImage: {
     url: string;
   };
   callToAction: callToAction;

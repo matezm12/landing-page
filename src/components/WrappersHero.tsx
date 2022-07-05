@@ -192,6 +192,8 @@ export const FeaturedWrappersSection = () => {
         mt={6}
       >
         { wrappersData?.map((wrapper: any, index: number) => {
+          console.log(wrapper.svgLogo)
+
             return (
               <Box
                 key={index}
@@ -199,7 +201,8 @@ export const FeaturedWrappersSection = () => {
                 onClick={() => handleWrapperSelection(index)}
               >
                 <Box className={classnames(classes.wrapperSelection, activeWrapper === index && "is-active")}>
-                  <Box className={classes.wrapperSelectionIcon}/>
+                  <Box className={classes.wrapperSelectionIcon}>
+                  </Box>
                   {wrapper.wrapperName}
                 </Box>
               </Box>
