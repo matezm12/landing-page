@@ -179,7 +179,7 @@ export const Hero = () => {
         "cta": "Join Discord"
       },
       "supportImage": {
-        "url": "https://images.ctfassets.net/tmv21jqhvpr2/NRXtH7lf7ucdy2zMVX2qF/600ff9db7b28752e9ee03663fd7f8dc5/polywrapper-hero.png"
+        "url": "https://user-images.githubusercontent.com/12145726/177427555-ca30c47e-869f-4547-a9b8-ed2ce4d1eb30.svg"
       },
       "writtenCopy": {
         "title": "Use Web3 Anywhere.",
