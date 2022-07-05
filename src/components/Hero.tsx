@@ -280,8 +280,8 @@ export const Hero = () => {
               // This required modifying heroContent Type to include the
               // supportImage data type, similar to the structure used 
               // for testimonials 
-              // src={heroContent.supportImage.url}
-              src={process.env.PUBLIC_URL + '/imgs/polywrapper-hero.png'}
+              src={heroContent.supportImage.url}
+              //src={process.env.PUBLIC_URL + '/imgs/polywrapper-hero.png'}
               alt='Polywrap Logo'
             />
           </Parallax>
