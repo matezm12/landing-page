@@ -111,6 +111,7 @@ export const Tabs = ({queriesData, activeQuery, setActiveQuery}: any) => {
       "featured": false,
       "thirdParty": false,
       "description": "Read the Docs",
+      "svgLogo":{"url":"fakesvg"},
       "queriesCollection": {
         "items": [
           {

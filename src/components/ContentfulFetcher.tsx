@@ -102,6 +102,7 @@ export interface wrapper {
     items : wrapperQuery[];
   }
   docsLink: string;
+  svgLogo: { url: string; }
 }
 
 export interface newListOfFeaturedQueries {
@@ -112,6 +113,7 @@ export interface newListOfFeaturedQueries {
   featuredWrapper: boolean;
   thirdParty: boolean;
   docsLink: string;
+  svgLogo: { url: string; }
   queries: {
     queryName: string;
     featuredQuery: boolean;

@@ -9,6 +9,9 @@ export function queryFeaturedWrappers() {
             description
             featured
             thirdParty
+            svgLogo {
+              url
+            }
             queriesCollection {
               items {
                 filename
@@ -43,7 +46,6 @@ export async function fetchWrappers() {
             
             // Check if this is a featured QUERY or not
             if (item.featured){
-                
                 // If it is, add the relevant data to the array `newWrappersList`
                 listOfFeaturedQueries.push({
                   wrapperName: wrapper.wrapperName,
@@ -51,6 +53,7 @@ export async function fetchWrappers() {
                   featuredWrapper: wrapper.featured,
                   thirdParty: wrapper.thirdParty,
                   docsLink: wrapper.docsLink,
+                  svgLogo:  wrapper.svgLogo,
                   queries: {
                       queryName: item.filename,
                       featuredQuery: item.featured,
