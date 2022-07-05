@@ -80,10 +80,16 @@ const useStyles = makeStyles((theme) => ({
     }
   },
   wrapperSelectionIcon: {
-    backgroundColor: "currentColor",
     marginBottom: theme.spacing(1),
-    minHeight: theme.spacing(5),
+    height: theme.spacing(5),
     width: theme.spacing(5),
+    filter: `invert(75%) sepia(67%) saturate(430%) hue-rotate(153deg) brightness(96%) contrast(94%)`,
+    "& img": {
+      filter: `saturate(0%) brightness(0%)`,
+      objectFit: 'contain',
+      height: '100%',
+      width: '100%',
+    }
   },
   wrapperCTAButton: {
     marginTop: theme.spacing(2),
@@ -198,8 +204,11 @@ export const FeaturedWrappersSection = () => {
                 ml={index !== 0 ? 2 : 0} mr={index !== wrappersData.length - 1 ? 2 : 0}
                 onClick={() => handleWrapperSelection(index)}
               >
+                {console.log(wrapper)}
                 <Box className={classnames(classes.wrapperSelection, activeWrapper === index && "is-active")}>
-                  <Box className={classes.wrapperSelectionIcon}/>
+                  <Box className={classes.wrapperSelectionIcon} >
+                    <img src={wrapper.svgLogo?.url} />
+                  </Box>
                   {wrapper.wrapperName}
                 </Box>
               </Box>
