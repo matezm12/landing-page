@@ -1,7 +1,7 @@
 import React from 'react';
 import { Box } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-import { Hero } from '../../components/Hero';
+import { MainHero } from '../../components/MainHero';
 import { SecondHero } from '../../components/SecondHero';
 import { CoreBenefits } from '../../components/CoreBenefits';
 import { Testimonials } from '../../components/Testimonials';
@@ -27,7 +27,7 @@ export const Home = () => {
 
   return (
     <Box className={classes.root}>
-      <Hero />
+      <MainHero />
       <AppsHero/>
       <CoreBenefits />
       <FeaturedWrappersSection />

@@ -167,7 +167,7 @@ const cmsQuery = `query  {
   }
 } `;
 
-export const Hero = () => {
+export const MainHero = () => {
   const theme = useTheme();
   const classes = useStyles();
   const matches = useMediaQuery(theme.breakpoints.down('xs'));
