@@ -207,7 +207,6 @@ export const FeaturedWrappersSection = () => {
                 ml={index !== 0 ? 2 : 0} mr={index !== wrappersData.length - 1 ? 2 : 0}
                 onClick={() => handleWrapperSelection(index)}
               >
-                {console.log(wrapper)}
                 <Box className={classnames(classes.wrapperSelection, activeWrapper === index && "is-active")}>
                   <Box className={classes.wrapperSelectionIcon} >
                     <img src={wrapper.svgLogo?.url} />

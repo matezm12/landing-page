@@ -8,6 +8,8 @@ import theme from "prism-react-renderer/themes/nightOwl";
 // WIP: Try to modularize the CMS query
 import {  wrapper, ContentfulFetcher } from './ContentfulFetcher';
 
+const SPACE_CHARACTER = "º";
+
 const useStyles = makeStyles((theme) => ({
   root: {
     boxShadow: `0 24px 80px rgba(0,0,0,0.25)`,
@@ -176,9 +178,15 @@ export const IDE = ({queriesData}: any) => {
                 <Line key={i} {...getLineProps({ line, key: i })}>
                   <LineNo className={classes.lineNumber}>{i + 1}</LineNo>
                   <LineContent>
-                    {line.map((token, key) => (
-                      <span key={key} {...getTokenProps({ token, key })} />
-                    ))}
+                    {line.map((token, key) => {
+                      let spaces = token.content.split(SPACE_CHARACTER).length - 1;
+                      token.content = token.content.replaceAll(SPACE_CHARACTER, "");
+                      return (
+                        <div style={{display: "inline", paddingLeft: `${spaces}em` }} >
+                          <span key={key} {...getTokenProps({ token, key })} />
+                        </div>
+                      )
+                    })}
                   </LineContent>
                 </Line>
               ))}
