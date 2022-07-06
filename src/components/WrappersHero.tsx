@@ -199,8 +199,6 @@ export const FeaturedWrappersSection = () => {
         mt={6}
       >
         { wrappersData?.map((wrapper: any, index: number) => {
-          console.log(wrapper.svgLogo)
-
             return (
               <Box
                 key={index}
