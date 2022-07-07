@@ -120,7 +120,7 @@ export const SecondHero = () => {
   return (
     <Box position='relative' className={classes.root}>
       <Parallax
-        y={[20, -35]}
+        y={[40, 0]}
         disabled={window.innerWidth < theme.breakpoints.values.md}
       >
         <Grid
