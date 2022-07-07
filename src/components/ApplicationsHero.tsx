@@ -107,12 +107,12 @@ export const FeaturedApps = () => {
   const [polywrapApplicationsList, setPolywrapApplicationsList] = useState<polywrapApplication[]> (
     [{
         "writtenCopy": {
-          "title": "Uniswap v2 Demo",
+          "title": "Uniswap v2",
           "subtitle": "Decentralised AMM",
           "description": "The Leading Ethereum-based DeFi exchange enables low slippage token trades through automated market makers and liquidity pools. The Uni V2 wrapper was developed to cover all existing functionality of the official Javascript SDK, and should be compatible to all uniswap forks also with a few tweaks. This project was co-sponsored by the Uniswap Grants DAO and the Polywrap DAO in 2021."
         },
         "callToAction": {
-          "cta": "Try the Uniswap V2 Demo",
+          "cta": "Live Demo",
           "url": "https://demo.uniswapv2.polywrap.io/#/swap"
         },
         "uiScreenshot": {
