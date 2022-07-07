@@ -130,7 +130,7 @@ export const FeaturedApps = () => {
       const applicationsIds = [
         "46Z1SN9tFSozigaRPrW0JR", // "Polyfolio" 
         "4YQIn61S9M8LWaDdtmaZjM", // Uniswap V2
-        "6SGBoFOxJNsAuEcLfWW1l4"  // Poolsharks
+        //"6SGBoFOxJNsAuEcLfWW1l4"  // Poolsharks
       ]
 
       var currentFetch: {
