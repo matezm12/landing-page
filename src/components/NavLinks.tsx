@@ -77,7 +77,7 @@ export const NavLinks = (props: NavLinkProps) => {
         Blog
       </Link>
       <Button
-        href='https://jobs.ashbyhq.com/polywrap'
+        href='https://contribute.polywrap.io/'
         target="_blank"
         rel="noredirect"
         variant='contained'
