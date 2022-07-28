@@ -1,10 +1,10 @@
+import { useEffect, useState } from 'react';
 import { Box, Button, Container, Grid, Link, Typography, makeStyles, useMediaQuery, useTheme } from '@material-ui/core';
 import { polywrapPalette } from '../theme';
 import classnames from "classnames"
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    animation: `$slideUp 0.5s 2s forwards`,
     backgroundColor: `${polywrapPalette.secondary[1000]}e0`,
     backdropFilter: "blur(4px)",
     position: "fixed",
@@ -14,6 +14,7 @@ const useStyles = makeStyles((theme) => ({
     paddingBottom: theme.spacing(3),
     paddingTop: theme.spacing(3),
     zIndex: 9999,
+    transition: "transform 0.25s ease-in-out",
     transform: "translateY(100%)",
   },
   link: {
@@ -26,14 +27,6 @@ const useStyles = makeStyles((theme) => ({
   linkDecline: {
     marginLeft: theme.spacing(2),
   },
-  '@keyframes slideUp': {
-    '0%': {
-      transform: 'translateY(100%)',
-    },
-    '100%': {
-      transform: 'translateY(0%)',
-    },
-  },
 }));
 
 export const CookiesCallout = () => {
@@ -42,9 +35,33 @@ export const CookiesCallout = () => {
   const isMobile = useMediaQuery(theme.breakpoints.down('xs'), {
     defaultMatches: true
   });
+  const [showCookies, setShowCookies] = useState<boolean>(true);
+  const [triggerBannerFadeOut, setBannerFadeOut] = useState<boolean>(false);
+  const [initialFadeIn, setInitialFadeIn] = useState<boolean>(false);
+  const [cookiePreference, setCookiePreference] = useState<"accept" | "decline" | undefined>(undefined);
 
-  return (
-    <Box className={classes.root}>
+  const handleApproveClick = () => {
+    setCookiePreference("accept");
+    setBannerFadeOut(true);
+  }
+
+  const handleDeclineClick = () => {
+    setCookiePreference("decline");
+    setBannerFadeOut(true);
+  }
+
+  useEffect(() => {
+    window.setTimeout(() => {
+      triggerBannerFadeOut ? (
+        setShowCookies(false)
+      ) : (
+        setInitialFadeIn(true)
+      )
+    }, 500)
+  });
+
+  return showCookies ? (
+    <Box className={classes.root} style={{transform: !initialFadeIn || triggerBannerFadeOut ? "translateY(100%)" : "translateY(0%)"}}>
       <Container maxWidth="sm">
         <Grid container spacing={2} alignItems="center" justify="space-between">
           <Grid item xs={12} sm>
@@ -58,10 +75,10 @@ export const CookiesCallout = () => {
           </Grid>
           <Grid item xs={12} sm={4}>
             <Box display="flex" justifyContent={isMobile ? "flex-start" : "flex-end"} alignItems="center" width="100%">
-              <Button variant="outlined" color="primary" size="small">
+              <Button variant="outlined" color="primary" size="small" onClick={handleApproveClick}>
                 Accept
               </Button>
-              <Link underline="always" className={classnames(classes.link, classes.linkDecline)}>
+              <Link underline="always" className={classnames(classes.link, classes.linkDecline)} onClick={handleDeclineClick}>
                 Decline
               </Link>
             </Box>
@@ -69,5 +86,7 @@ export const CookiesCallout = () => {
         </Grid>
       </Container>
     </Box>
+  ) : (
+    <></>
   );
 };
