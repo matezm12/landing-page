@@ -176,7 +176,7 @@ export const GetStartedHero = () => {
     {
       "callToAction": {
         "url": "link-to-notion-flow",
-        "cta": "Read guide"
+        "cta": "Read the guide"
       },
       "supportImage": {
         "url": "https://user-images.githubusercontent.com/12145726/177427555-ca30c47e-869f-4547-a9b8-ed2ce4d1eb30.svg"
@@ -196,7 +196,7 @@ export const GetStartedHero = () => {
 
     ContentfulFetcher(cmsQuery).then(
       (response) => {
-        //On success        
+        //On success, the 2 lines below when uncommented would query the CMS data        
         //const fetchedHeroContent: heroContent = response.data.heroContent;
         //setHeroContent(fetchedHeroContent);
       }, 
