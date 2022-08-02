@@ -118,7 +118,7 @@ export const SignUp = () => {
             Sign up today for your chance to try it out early and help us improve.
           </Typography>
           <Box marginTop={4}>
-            <EmailForm location="signup"/>
+            <EmailForm />
           </Box>
           <Box marginTop={4}>
             <Typography component="div" variant="body2">

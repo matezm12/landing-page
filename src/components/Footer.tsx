@@ -206,7 +206,7 @@ export const Footer = () => {
           <Grid item xs={12} md={5}>
             <Typography variant='h4'>Get Wrapped</Typography>
             <Box marginTop={5}>
-              <EmailForm location='footer' />
+              <EmailForm />
             </Box>
           </Grid>
         </Grid>
