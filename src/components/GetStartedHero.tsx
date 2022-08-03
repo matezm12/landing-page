@@ -175,7 +175,7 @@ export const GetStartedHero = () => {
   const [heroContent, setHeroContent] = useState<heroContent> (
     {
       "callToAction": {
-        "url": "link-to-notion-flow",
+        "url": "https://docs.polywrap.io/quick-start/integrate-wrappers/install-client", 
         "cta": "Read the guide"
       },
       "supportImage": {
