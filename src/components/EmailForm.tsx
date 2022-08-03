@@ -66,7 +66,13 @@ export const EmailForm = () => {
       substackUrl: 'blog.polywrap.io',
       placeholder: 'example@gmail.com',
       buttonText: 'Subscribe',
-      theme: 'green',
+      theme: "custom",
+      colors: {
+        primary: "#FFE272",
+        input: "#020F13A3",
+        email: "#FFFFFF",
+        text: "#000000",
+      }
     };
 
     const script = document.createElement('script');
