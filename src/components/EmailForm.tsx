@@ -70,8 +70,10 @@ export const EmailForm = ({location}: EmailFormProps) => {
   const [signupSuccess, setSignupSuccess] = useState(false);
   const [email, setEmail] = useState('');
   const [emailError, setEmailError] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
 
   const onSubmit = async () => {
+    setIsLoading(true);
     const re = /^(([^<>()[\]\\.,;:\s@\']+(\.[^<>()[\]\\.,;:\s@\']+)*)|(\'.+\'))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
     if (!re.test(email)) {
@@ -81,29 +83,30 @@ export const EmailForm = ({location}: EmailFormProps) => {
       setEmailError('');
     }
 
-    let uri = 'https://tech.us17.list-manage.com/subscribe/post-json?u=7515d8292da68c0a33f4c7e7e&amp;id=48ff512e96&c=jQuery34108557665382199082_1607465109249&b_7515d8292da68c0a33f4c7e7e_48ff512e96=&_=1607465109250';
-    uri = uri + `&Email=${email}&EMAIL=${email}`;
-    uri = encodeURI(uri);
-
     try {
-      await fetch(uri, {
-        mode: 'no-cors'
+      const result = await fetch('https://us-central1-substackapi.cloudfunctions.net/subscribe', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: email, domain:'blog.polywrap.io' }),
       });
 
       ReactGA.event({
         category: `Button-${location}`,
-        action: CTA,
-        label: 'Early Access'
+        action: 'Newsletter Sign Up',
+        label: 'Origin Release'
       });
+      
+      const signupSuccess = result.status === 200;
 
-      setSignupSuccess(true);
+      setSignupSuccess(signupSuccess);
     } catch (e) {
       setEmailError(`Sign-up failed... please use the "contract" form above.`);
     }
+    setIsLoading(false);
   }
 
   return (
-    <form>
+    <form onSubmit={onSubmit}>
       <Box className={classes.heroSignUpFlex} display='flex' alignItems='center'>
         {!signupSuccess ? (
           <>
@@ -120,6 +123,7 @@ export const EmailForm = ({location}: EmailFormProps) => {
               type='button'
               variant='contained'
               onClick={onSubmit}
+              disabled={isLoading}
             >
               {location === 'signup' ? CTA : 'Subscribe'}
             </Button>
