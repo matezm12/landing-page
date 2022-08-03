@@ -66,7 +66,7 @@ export const CookiesCallout = () => {
         <Grid container spacing={2} alignItems="center" justify="space-between">
           <Grid item xs={12} sm>
             <Typography variant={"body2"}>
-              Accepting cookies improves your experience. All data collected is anonimized data.
+              This site collects anonimized traffic metadata, by clicking accept you helps us build bettter open source tools 💚
               {` `}
               <Link underline="always" color="textPrimary" className={classes.link}>
                 Privacy Policy
