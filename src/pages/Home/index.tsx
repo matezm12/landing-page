@@ -5,6 +5,7 @@ import { MainHero } from '../../components/MainHero';
 import { SecondHero } from '../../components/SecondHero';
 import { CoreBenefits } from '../../components/CoreBenefits';
 import { Testimonials } from '../../components/Testimonials';
+import { GetStartedHero } from '../../components/GetStartedHero';
 import ReactGA from 'react-ga';
 import { FeaturedWrappersSection } from '../../components/WrappersHero';
 //import { WrapperSection } from '../../components/old_WrapperSection';
@@ -31,6 +32,7 @@ export const Home = () => {
       <AppsHero/>
       <CoreBenefits />
       <FeaturedWrappersSection />
+      <GetStartedHero />
       <SecondHero />
       <Testimonials />
     </Box>
