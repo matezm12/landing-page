@@ -100,7 +100,7 @@ export const EmailForm = ({location}: EmailFormProps) => {
 
       setSignupSuccess(signupSuccess);
     } catch (e) {
-      setEmailError(`Sign-up failed... please use the "contract" form above.`);
+      setEmailError(`Sign-up failed... please let us know through Discord.`);
     }
     setIsLoading(false);
   }
@@ -131,7 +131,7 @@ export const EmailForm = ({location}: EmailFormProps) => {
         ) : (
           <Box>
             <Typography className={classes.heroSignupSuccess} align='center' color='textPrimary'>
-              Thank you for signing up {email}! More details coming soon.
+              One more step {email}! Check your email and confirm your subscription to Polywrap's Newsletter.
             </Typography>
             {location === 'signup' ? (
               <Link href="/" className={classes.backToPolywrap}>
