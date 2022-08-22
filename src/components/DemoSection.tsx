@@ -85,10 +85,10 @@ export const DemoSection = () => {
               color='textSecondary'
               className={classes.description}
             >
-              Today, teams are architecting and maintaining custom SDKs,
-              mostly in Javascript. This breaks composability and severely
-              restricts the types of software that can interact with web3
-              securely and efficiently.
+              Today, teams are architecting and maintaining custom SDKs, mostly
+              in Javascript. This breaks composability and severely restricts
+              the types of software that can interact with web3 securely and
+              efficiently.
             </Typography>
           </Grid>
         </Grid>

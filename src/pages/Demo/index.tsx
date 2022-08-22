@@ -26,8 +26,8 @@ const useStyles = makeStyles((theme) => ({
     zIndex: 2,
     [theme.breakpoints.down('sm')]: {
       minHeight: 'unset',
-      padding: '0'
-    }
+      padding: '0',
+    },
   },
   technicalPreview: {
     color: polywrapPalette.secondary.end,
@@ -37,7 +37,7 @@ const useStyles = makeStyles((theme) => ({
     paddingLeft: 2, // Optical alignment with 'A' below
     [theme.breakpoints.down('sm')]: {
       textAlign: 'center',
-    }
+    },
   },
   heroPolywrapper: {
     display: 'flex',
@@ -56,7 +56,7 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.down('xs')]: {
       marginBottom: 20,
       marginTop: 100,
-    }
+    },
   },
   heroTitle: {
     fontWeight: 900,
@@ -79,7 +79,7 @@ const useStyles = makeStyles((theme) => ({
   heroSignUpFlex: {
     [theme.breakpoints.down('md')]: {
       justifyContent: 'center',
-    }
+    },
   },
   heroTextField: {
     borderRadius: '99px 16px 16px 99px',
@@ -105,7 +105,7 @@ const useStyles = makeStyles((theme) => ({
     width: '100%',
   },
   errorText: {
-    color: '#f44336'
+    color: '#f44336',
   },
   polywrapLink: {
     textDecoration: 'underline',
@@ -120,24 +120,24 @@ const useStyles = makeStyles((theme) => ({
     '50%': {
       transform: 'translateY(-3%)',
       transitionTimingFunction: 'ease-out',
-    }
+    },
   },
   heroIllustration: {
     animation: `$float 6s infinite`,
     [theme.breakpoints.down('sm')]: {
-      order: -1
-    }
+      order: -1,
+    },
   },
-}))
+}));
 
 export const Demo = () => {
-
   const [signupSuccess, setSignupSuccess] = useState(false);
   const [email, setEmail] = useState('');
   const [emailError, setEmailError] = useState('');
 
   const onSubmit = async () => {
-    const re = /^(([^<>()[\]\\.,;:\s@\']+(\.[^<>()[\]\\.,;:\s@\']+)*)|(\'.+\'))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    const re =
+      /^(([^<>()[\]\\.,;:\s@\']+(\.[^<>()[\]\\.,;:\s@\']+)*)|(\'.+\'))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
     if (!re.test(email)) {
       setEmailError('Invalid email address...');
@@ -146,34 +146,41 @@ export const Demo = () => {
       setEmailError('');
     }
 
-    let uri = 'https://tech.us17.list-manage.com/subscribe/post-json?u=7515d8292da68c0a33f4c7e7e&amp;id=48ff512e96&c=jQuery34108557665382199082_1607465109249&b_7515d8292da68c0a33f4c7e7e_48ff512e96=&_=1607465109250';
+    let uri =
+      'https://tech.us17.list-manage.com/subscribe/post-json?u=7515d8292da68c0a33f4c7e7e&amp;id=48ff512e96&c=jQuery34108557665382199082_1607465109249&b_7515d8292da68c0a33f4c7e7e_48ff512e96=&_=1607465109250';
     uri = uri + `&Email=${email}&EMAIL=${email}`;
     uri = encodeURI(uri);
 
     try {
       await fetch(uri, {
-        mode: 'no-cors'
+        mode: 'no-cors',
       });
 
       ReactGA.event({
         category: 'Button-hero',
         action: CTA,
-        label: 'Early Access'
+        label: 'Early Access',
       });
 
       setSignupSuccess(true);
     } catch (e) {
       setEmailError(`Sign-up failed... please use the "contract" form above.`);
     }
-  }
+  };
 
-  const theme = useTheme()
+  const theme = useTheme();
   const classes = useStyles();
-  const matches = useMediaQuery(theme.breakpoints.down('xs'))
+  const matches = useMediaQuery(theme.breakpoints.down('xs'));
 
   return (
     <>
-      <Grid className={classes.root} container justify='center' alignItems='center' direction={matches? 'row-reverse': 'row'}>
+      <Grid
+        className={classes.root}
+        container
+        justify='center'
+        alignItems='center'
+        direction={matches ? 'row-reverse' : 'row'}
+      >
         <DemoSection />
       </Grid>
     </>

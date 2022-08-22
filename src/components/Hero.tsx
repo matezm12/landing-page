@@ -172,24 +172,24 @@ export const Hero = () => {
               color='textPrimary'
               variant='h1'
             >
-              Use Web3 Anywhere.
+              Composable Wasm Made Easy.
             </Typography>
             <Typography
               className={classes.heroBody}
               color='textSecondary'
               variant='body1'
             >
-              Polywrap is a set of tools that uses Wasm and GraphQL to
-              deliver web3 protocols to any execution environment.
-              Build and publish your protocol wrapper with Polywrap 
-              to be accessible from all types of applications.
+              Polywrap is a developer toolchain that leverages WebAssembly to
+              enable interoperability across platforms. Build and publish your
+              WebAssembly wrapper with Polywrap to be accessible from all types
+              of applications.
             </Typography>
             <Button
               className={classes.heroButton}
               color='primary'
               href='https://discord.gg/bGsqQrNhqd'
-              target="_blank"
-              rel="noredirect"
+              target='_blank'
+              rel='noredirect'
               endIcon={<KeyboardArrowRightOutlined />}
               type='submit'
               variant='contained'
