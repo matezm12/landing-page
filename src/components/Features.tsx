@@ -78,7 +78,7 @@ const features = [
   {
     slug: 'multi_platform',
     title: 'Multi-Platform',
-    description: 'Write your wrapper once, use it anywhere. Simply add the Polywrap Client to your user applications.',
+    description: 'Wrappers are universal, use them in any app, written in any language.',
   },
   {
     slug: 'user_friendly',
@@ -93,7 +93,7 @@ const features = [
   {
     slug: 'scalable',
     title: 'Scalable',
-    description: 'Keep apps lightweight and efficient. Only download what you need, when you need it.',
+    description: 'Keep apps lightweight and efficient, download wrappers on-demand as needed.',
   },
   {
     slug: 'composable',
