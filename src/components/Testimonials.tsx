@@ -67,8 +67,8 @@ export const Testimonials = () => {
   return (
     <Box className={classes.root}>
       <Typography className={classes.title} variant='h3' align='center' color='textPrimary'>
-        Protocols{` `}
-        <span role="img" aria-label="yellow heart">💛</span>
+        Web3{` `}
+        <span role="img" aria-label="yellow heart">💛s</span>
         {` `}Polywrap
       </Typography>
       <Container maxWidth="lg">

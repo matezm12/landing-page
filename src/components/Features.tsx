@@ -78,12 +78,12 @@ const features = [
   {
     slug: 'multi_platform',
     title: 'Multi-Platform',
-    description: 'Write your SDK once, use it anywhere. Simply add the Polywrap Client to your user applications.',
+    description: 'Write your wrapper once, use it anywhere. Simply add the Polywrap Client to your user applications.',
   },
   {
     slug: 'user_friendly',
     title: 'User-Friendly',
-    description: 'Integrating Web3 is finally as easy as Web2, thanks to GraphQL syntax.',
+    description: 'Integrating complex SDKs is finally as easy as interacting with web APIs.',
   },
   {
     slug: 'secure',
@@ -98,7 +98,7 @@ const features = [
   {
     slug: 'composable',
     title: 'Composable',
-    description: 'Endlessly compose and extend protocols with imports and standard interfaces.',
+    description: 'Endlessly compose and extend wrappers with imports and standard interfaces.',
   },
   {
     slug: 'upgradable',
@@ -120,7 +120,7 @@ export const Features = () => {
       </Box>
       <Parallax y={[-5,5]} disabled={window.innerWidth < theme.breakpoints.values.md}>
         <Typography variant='h3' color='textPrimary' align='center'>
-          Next-Gen SDKs for Web3
+          Wrappers are Next-Gen SDKs
         </Typography>
         <Box className={classes.cell}>
           <Grid container spacing={6} alignItems='flex-start' className={classes.featureGrid}>
