@@ -78,7 +78,7 @@ export const DemoSection = () => {
               color='textPrimary'
               className={classes.title}
             >
-              Say Goodbye to Javascript Wrappers
+              Say Goodbye to Trad SDKs
             </Typography>
             <Typography
               variant='body1'

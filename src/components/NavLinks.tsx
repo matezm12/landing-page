@@ -85,7 +85,7 @@ export const NavLinks = (props: NavLinkProps) => {
         className={classes.navButton}
         style={{ display: `${showButton ? 'flex' : 'none'}` }}
       >
-        {!isMobile ? "Join and Contribute" : "Join Us"}
+        Opportunities
       </Button>
     </Box>
   );

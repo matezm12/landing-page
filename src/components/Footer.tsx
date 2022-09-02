@@ -98,30 +98,39 @@ export const Footer = () => {
                     <Box className={classes.footerDivider} />
                     <Link
                       className={`${classes.navLink} ${classes.footerLink}`}
-                      href='https://github.com/polywrap/monorepo'
-                      target='_blank'
-                      color='textPrimary'
-                      variant='body1'
-                    >
-                      Toolchain
-                    </Link>
-                    <Link
-                      className={`${classes.navLink} ${classes.footerLink}`}
-                      href='https://github.com/polywrap/hub'
-                      target='_blank'
-                      color='textPrimary'
-                      variant='body1'
-                    >
-                      The Hub
-                    </Link>
-                    <Link
-                      className={`${classes.navLink} ${classes.footerLink}`}
                       href='https://docs.polywrap.io/'
                       target='_blank'
                       color='textPrimary'
                       variant='body1'
                     >
                       Docs
+                    </Link>
+                    <Link
+                      className={`${classes.navLink} ${classes.footerLink}`}
+                      href='https://github.com/polywrap/demos'
+                      target='_blank'
+                      color='textPrimary'
+                      variant='body1'
+                    >
+                      Demos
+                    </Link>
+                    <Link
+                      className={`${classes.navLink} ${classes.footerLink}`}
+                      href='https://github.com/polywrap/integrations'
+                      target='_blank'
+                      color='textPrimary'
+                      variant='body1'
+                    >
+                      Integrations
+                    </Link>
+                    <Link
+                      className={`${classes.navLink} ${classes.footerLink}`}
+                      href='https://github.com/polywrap/monorepo'
+                      target='_blank'
+                      color='textPrimary'
+                      variant='body1'
+                    >
+                      Toolchain
                     </Link>
                   </Box>
                 </Grid>
@@ -156,6 +165,15 @@ export const Footer = () => {
                     >
                       Blog
                     </Link>
+                    <Link
+                      className={`${classes.navLink} ${classes.footerLink}`}
+                      href='https://eyes.polywrap.io/'
+                      target='_blank'
+                      color='textPrimary'
+                      variant='body1'
+                    >
+                      Eyes
+                    </Link>
                   </Box>
                 </Grid>
                 <Grid item xs={6} sm={3}>
@@ -173,12 +191,12 @@ export const Footer = () => {
                     </Link>
                     <Link
                       className={`${classes.navLink} ${classes.footerLink}`}
-                      href='https://gnosis-safe.io/app/#/safes/0x8c3FA50473065f1D90f186cA8ba1Aa76Aee409Bb/balances'
+                      href='https://forum.polywrap.io'
                       target='_blank'
                       color='textPrimary'
                       variant='body1'
                     >
-                      Funds
+                      Forum
                     </Link>
                     <Link
                       className={`${classes.navLink} ${classes.footerLink}`}
@@ -191,12 +209,12 @@ export const Footer = () => {
                     </Link>
                     <Link
                       className={`${classes.navLink} ${classes.footerLink}`}
-                      href='https://forum.polywrap.io'
+                      href='https://gnosis-safe.io/app/#/safes/0x8c3FA50473065f1D90f186cA8ba1Aa76Aee409Bb/balances'
                       target='_blank'
                       color='textPrimary'
                       variant='body1'
                     >
-                      Forum
+                      Funds
                     </Link>
                   </Box>
                 </Grid>

@@ -24,7 +24,6 @@ export const Home = () => {
   return (
     <Box className={classes.root}>
       <Hero />
-      <DemoSection />
       <Features />
       <Testimonials />
     </Box>
