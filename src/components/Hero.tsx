@@ -172,16 +172,16 @@ export const Hero = () => {
               color='textPrimary'
               variant='h1'
             >
-              Composability Made Easy
+              Empower Your Dev Ecosystem
             </Typography>
             <Typography
               className={classes.heroBody}
               color='textSecondary'
               variant='body1'
             >
-              Polywrap leverages WebAssembly to make code portable, secure, and easy
-              to integrate across platforms. Use Polywrap to develop composable modules,
-              called wrappers, and integrate them on-demand in any application.
+              Polywrap is building a unified execution environment for the
+              internet that is safe, open, and user-owned. Use Polywrap to
+              create endlessly extensible software that runs anywhere.
             </Typography>
             <Button
               className={classes.heroButton}
