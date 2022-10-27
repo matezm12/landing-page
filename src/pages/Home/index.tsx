@@ -28,8 +28,9 @@ export const Home = () => {
     <Box className={classes.root}>
       <MainHero />
       {/* <AppsHero/> */}
-      <CoreBenefits />
       <FeaturedWrappersSection />
+
+      <CoreBenefits />
       {/* <GetStartedHero /> */}
       {/* <SecondHero /> */}
 
