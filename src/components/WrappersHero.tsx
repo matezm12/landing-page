@@ -1,10 +1,10 @@
 import { Parallax } from 'react-scroll-parallax';
 import { Box, BoxProps, Container, Grid, makeStyles, Typography, useTheme, Button } from '@material-ui/core';
 import {useState, useEffect} from 'react';
-import {  newListOfFeaturedQueries, writtenCopy } from './DataModels';
-import { DemoFunctions } from './DemoFunctions';
+import {  writtenCopy } from './DataModels';
+// import { DemoFunctions } from './DemoFunctions';
 import { IDE } from './IDE';
-import { fetchWrappers }from './WrapperExamples';
+import { loadWrappers }from './WrapperExamples';
 import KeyboardArrowRightOutlined from '@material-ui/icons/KeyboardArrowRightOutlined';
 import { polywrapPalette } from '../theme';
 import classnames from "classnames";
@@ -128,31 +128,26 @@ export const FeaturedWrappersSection = () => {
   // set initial react states
   const [aboutThisSection, setAboutThisSection] = useState<writtenCopy> (
     {
-      "title": "Blazing fast development",
+      "title": "Blazing fast development 🔥",
       "subtitle": "",
-      "description": " Write queries in minutes rather than hours.\n\nUsing the polywrap toolchain, you'll be able to hit any protocol endpoint from any device that can run a Polywrap client.",
+      "description": "Write queries in minutes rather than hours.\n\nUsing the polywrap clients in JavaScript, Python, Go and Rust, you'll be able to hit any protocol endpoint from any device that can run a Polywrap client. Invoking a protocol functionality is now this simple.",
   });  
   const [wrappersData, setWrappersData] = useState<any>(null)
-  const [featuredQueries, setFeaturedQueries] = useState<string[]>(['swapToken','functionNameB','funcNameC','...'])
   const [activeWrapper, setActiveWrapper] = useState<number>(0)
-
-  const [queriesData, setQueriesData] = useState<newListOfFeaturedQueries[] | null>(null)
+  // TODO: This state below is used for the hovering cards which outline specific functions from the featured wrapper
+  // const [featuredQueries, setFeaturedQueries] = useState<string[]>(['swapToken','functionNameB','funcNameC','...'])
 
   useEffect(() => {
-    async function fetchWrapperData() {
-      setWrappersData(fetchWrappers)
+    async function loadWrapperData() {
+      setWrappersData(loadWrappers)
     }
-
-
-    fetchWrapperData()
-
+    loadWrapperData()
   }, []);
 
 
   const handleWrapperSelection = (wrapper: number) => {
     setActiveWrapper(wrapper)
   }
-
 
   return (
     <Box position='relative' className={classes.root}>
@@ -194,7 +189,7 @@ export const FeaturedWrappersSection = () => {
               >
                 <Box className={classnames(classes.wrapperSelection, activeWrapper === index && "is-active")}>
                   <Box className={classes.wrapperSelectionIcon} >
-                    <img src={wrapper.svgLogo?.url} />
+                    <img src={wrapper.svgLogo?.url} alt={wrapper.language}/>
                   </Box>
                   {wrapper.wrapperName}
                 </Box>
@@ -271,7 +266,8 @@ export const FeaturedWrappersSection = () => {
                       disabled={window.innerWidth < theme.breakpoints.values.md}
                     >
                       {/* TODO: later down the road, use this section to map all the name
-                          of the functions within the wrapper and display them on a card.
+                          of the functions within the wrapper and display them on a hovering
+                          card.
                           Also consider a way of setting the active function on "accent",
                           while the other ones not being displayed could look grey.
 

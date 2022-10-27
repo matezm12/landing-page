@@ -102,36 +102,6 @@ const LineContent = styled('span')({
 
 export const Tabs = ({queriesData, activeQuery, setActiveQuery}: any) => {
   const classes = useStyles();
-  const [wrapperContent, setWrapperContent] = useState<wrapper> (
-    {
-      "wrapperName": "Uniswap",
-      "featured": false,
-      "thirdParty": false,
-      "description": "Read the Docs",
-      "svgLogo":{"url":"https://polywrap.io/imgs/polywrapper-hero-blurred.png"},
-      "queriesCollection": {
-        "items": [
-          {
-            "filename": "calcTradeOutput",
-            "featured": true,
-            "query": "client.invoke({\n  uri: \"wrap://ens/v3.uniswap.polywrap.eth\",\n  module: \"query\",\n  method: \"bestTradeExactIn\",\n  input: {\n    pools,\n    amountIn,\n    tokenOut,\n    ...\n  }\n});",
-            "comment": "// Compute Trade Outputs w/ Uniswap V3",
-            "source": "https://github.com/polywrap/integrations/blob/2282781a2ba46ef99c41f093b9985487c8a1e98e/uniswapv3/wrapper/src/query/schema.graphql#L470-L479"
-          },
-          {
-            "filename": "executeSwap",
-            "featured": true,
-            "query": "client.invoke({\n  uri: \"wrap://ens/v3.uniswap.polywrap.eth\",\n  module: \"mutation\",\n  method: \"swap\",\n  input: {\n    inToken,\n    outToken,\n    amount,\n    ...\n  }\n});",
-            "comment": "// Execute Token Swaps w/ Uniswap V3",
-            "source": "https://github.com/polywrap/integrations/blob/2282781a2ba46ef99c41f093b9985487c8a1e98e/uniswapv3/wrapper/src/mutation/schema.graphql#L46-L61"
-          }
-        ]
-      },
-      "docsLink":""
-
-  });
-  const [hasFailed, setHasFailed] = useState<boolean>(false);
-  const [isLoading, setIsLoading] = useState<boolean>(true);
 
   return (
     <Box className={classes.tabs} display='flex'>

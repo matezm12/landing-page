@@ -1,4 +1,4 @@
-export const fetchWrappers = [
+export const loadWrappers = [
     {
         "wrapperName": "Defi wrapper",
         "description": "Defiwrapper is a collection of various DeFi  wrappers like defi-sdk, coingecko, and more. With Defiwrapper, you can enable a wide range of  DeFi usecases for a suite of cross-chain and multi-platform innovations.",
