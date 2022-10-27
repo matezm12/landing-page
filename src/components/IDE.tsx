@@ -4,7 +4,7 @@ import Highlight, { defaultProps } from "prism-react-renderer";
 import { Box, makeStyles, styled } from '@material-ui/core';
 import { polywrapPalette } from '../theme';
 import theme from "prism-react-renderer/themes/nightOwl";
-import {  wrapper } from './ContentfulFetcher';
+import {  wrapper } from './DataModels';
 
 const SPACE_CHARACTER = "º";
 
@@ -102,16 +102,13 @@ const LineContent = styled('span')({
 
 export const Tabs = ({queriesData, activeQuery, setActiveQuery}: any) => {
   const classes = useStyles();
-
-
-  // CONTENTFUL CMS INTEGRATION BELOW
   const [wrapperContent, setWrapperContent] = useState<wrapper> (
     {
       "wrapperName": "Uniswap",
       "featured": false,
       "thirdParty": false,
       "description": "Read the Docs",
-      "svgLogo":{"url":"fakesvg"},
+      "svgLogo":{"url":"https://polywrap.io/imgs/polywrapper-hero-blurred.png"},
       "queriesCollection": {
         "items": [
           {

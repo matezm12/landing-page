@@ -1,7 +1,7 @@
 import { Parallax } from 'react-scroll-parallax';
 import { Box, BoxProps, Container, Grid, makeStyles, Typography, useTheme, Button } from '@material-ui/core';
 import {useState, useEffect} from 'react';
-import {  newListOfFeaturedQueries, writtenCopy } from './ContentfulFetcher';
+import {  newListOfFeaturedQueries, writtenCopy } from './DataModels';
 import { DemoFunctions } from './DemoFunctions';
 import { IDE } from './IDE';
 import { fetchWrappers }from './WrapperExamples';
@@ -136,28 +136,15 @@ export const FeaturedWrappersSection = () => {
   const [featuredQueries, setFeaturedQueries] = useState<string[]>(['swapToken','functionNameB','funcNameC','...'])
   const [activeWrapper, setActiveWrapper] = useState<number>(0)
 
-  // TODO: try using this state to move the function names into the DataCard
   const [queriesData, setQueriesData] = useState<newListOfFeaturedQueries[] | null>(null)
-  
-  // TODO: Get the "aboutThisSection" content from the CMS
-  // 26XK8ENo5y1MgwpY7CDRlb
-  // https://app.contentful.com/spaces/tmv21jqhvpr2/entries/26XK8ENo5y1MgwpY7CDRlb
 
-  // update wrapper data with CMS integration
   useEffect(() => {
     async function fetchWrapperData() {
-
-      // query the CMS and store the wrappers in the react state
       setWrappersData(fetchWrappers)
-      
     }
 
-    // const getFunctions = (wrappersData:newListOfFeaturedQueries[]) => {
-    //   console.log(wrappersData)
-    //   //wrappersData.forEach(wrapper => console.log(wrapper))
-    //   return []
-    // };
-    fetchWrapperData() //=> {getFunctions(wrappersData)};
+
+    fetchWrapperData()
 
   }, []);
 
