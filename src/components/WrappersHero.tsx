@@ -299,7 +299,7 @@ export const FeaturedWrappersSection = () => {
                   {/* This is the section that displays the entire IDE window.
                       it includes both the code snippet and the tabs on top of the window
                   */}
-                  {/* <IDE queriesData={wrapper.queries} /> */}
+                  <IDE queriesData={wrapper.queries} />
                 </Box>
 
               </Grid>

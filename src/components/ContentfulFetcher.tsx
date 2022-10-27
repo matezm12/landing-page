@@ -1,23 +1,3 @@
-require('dotenv').config();
-
-// export function ContentfulFetcher(query: string): Promise<any> {
-//   // Simple helper function to query data from the Contentful API
-//   // Inputs the cmsQuery string and returns JSON with results.
-//   return window
-//   .fetch(process.env.REACT_APP_CMS_SITE as string, {
-//     method: "POST",
-//     headers: {
-//       "Content-Type": "application/json",
-//       "Authorization": process.env.REACT_APP_CMS_TOKEN as string,
-//     },
-//     body: JSON.stringify({ "query":query }),
-//   })
-//   .then((response) => response.json());
-
-//   // Could be useful to add some error handling 
-//   // if response.json.error != undefined, console.log(response.json.error)
-// }
-
 
 // Newer data models below
 export interface writtenCopy {
