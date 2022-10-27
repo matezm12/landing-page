@@ -13,7 +13,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import KeyboardArrowRightOutlined from '@material-ui/icons/KeyboardArrowRightOutlined';
 import { polywrapPalette } from '../../theme';
 import { CTA } from '../../constants/verbiage';
-import { DemoSection } from '../../components/DemoSection';
+import { SecondHero } from '../../components/SecondHero';
 import { useState } from 'react';
 import ReactGA from 'react-ga';
 
@@ -174,7 +174,7 @@ export const Demo = () => {
   return (
     <>
       <Grid className={classes.root} container justify='center' alignItems='center' direction={matches? 'row-reverse': 'row'}>
-        <DemoSection />
+        <SecondHero />
       </Grid>
     </>
   );
