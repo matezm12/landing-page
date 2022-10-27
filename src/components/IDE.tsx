@@ -4,7 +4,6 @@ import Highlight, { defaultProps } from "prism-react-renderer";
 import { Box, makeStyles, styled } from '@material-ui/core';
 import { polywrapPalette } from '../theme';
 import theme from "prism-react-renderer/themes/nightOwl";
-import {  wrapper } from './DataModels';
 
 const SPACE_CHARACTER = "º";
 
