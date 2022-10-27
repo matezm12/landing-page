@@ -1,8 +1,8 @@
 import { Box } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import { MainHero } from '../../components/MainHero';
-import { CoreBenefits } from '../../components/CoreBenefits';
 import { FeaturedWrappersSection } from '../../components/WrappersHero';
+import { CoreBenefits } from '../../components/CoreBenefits';
 //import { GetStartedHero } from '../../components/GetStartedHero';
 // import { SecondHero } from '../../components/DemoSection';
 

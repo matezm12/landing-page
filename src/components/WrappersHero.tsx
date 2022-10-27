@@ -134,7 +134,7 @@ export const FeaturedWrappersSection = () => {
   });  
   const [wrappersData, setWrappersData] = useState<any>(null)
   const [activeWrapper, setActiveWrapper] = useState<number>(0)
-  // TODO: This state below is used for the hovering cards which outline specific functions from the featured wrapper
+  // TODO: This state below is used for the hovering cards (`DemoFunctions.tsx`) which outline specific functions from the featured wrapper
   // const [featuredQueries, setFeaturedQueries] = useState<string[]>(['swapToken','functionNameB','funcNameC','...'])
 
   useEffect(() => {
