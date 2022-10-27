@@ -4,7 +4,7 @@ import { MainHero } from '../../components/MainHero';
 import { FeaturedWrappersSection } from '../../components/WrappersHero';
 import { CoreBenefits } from '../../components/CoreBenefits';
 //import { GetStartedHero } from '../../components/GetStartedHero';
-// import { SecondHero } from '../../components/DemoSection';
+import { FeaturedApps } from '../../components/ApplicationsHero';
 
 import { Testimonials } from '../../components/Testimonials';
 import ReactGA from 'react-ga';
@@ -27,7 +27,7 @@ export const Home = () => {
   return (
     <Box className={classes.root}>
       <MainHero />
-      {/* <AppsHero/> */}
+      <FeaturedApps/>
       <FeaturedWrappersSection />
 
       <CoreBenefits />
