@@ -58,7 +58,7 @@ export const loadWrappers = [
                 {
                     "filename": "executeSwap.ts",
                     "language": "typescript",
-                    "snippet": "// import envs and other configs for the client\nimport * into GetTransactions\n\n// Execute Token Swaps w/ Uniswap V3\nclient.invoke({\nººuri: \"wrap://ens/v3.uniswap.polywrap.eth\",\nººmethod: \"swap\",\nººargs: {\nººººinToken,\nººººoutToken,\nººººamount,\nºººº...\nºº}\n});"
+                    "snippet": "// Execute Token Swaps w/ Uniswap V3\nclient.invoke({\nººuri: \"wrap://ens/v3.uniswap.polywrap.eth\",\nººmethod: \"swap\",\nººargs: {\nººººinToken,\nººººoutToken,\nººººamount,\nºººº...\nºº}\n});"
                 },
                 {
                     "filename": "executeSwap.py",
