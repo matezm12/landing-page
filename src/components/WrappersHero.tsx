@@ -4,7 +4,7 @@ import {useState, useEffect} from 'react';
 import {  newListOfFeaturedQueries, writtenCopy } from './ContentfulFetcher';
 import { DemoFunctions } from './DemoFunctions';
 import { IDE } from './IDE';
-// import { fetchWrappers }from './CMScontent';
+import { fetchWrappers }from './WrapperExamples';
 import KeyboardArrowRightOutlined from '@material-ui/icons/KeyboardArrowRightOutlined';
 import { polywrapPalette } from '../theme';
 import classnames from "classnames";
@@ -148,7 +148,7 @@ export const FeaturedWrappersSection = () => {
     async function fetchWrapperData() {
 
       // query the CMS and store the wrappers in the react state
-      setWrappersData(await fetchWrappers())
+      setWrappersData(fetchWrappers)
       
     }
 
@@ -299,7 +299,7 @@ export const FeaturedWrappersSection = () => {
                   {/* This is the section that displays the entire IDE window.
                       it includes both the code snippet and the tabs on top of the window
                   */}
-                  <IDE queriesData={wrapper.queries} />
+                  {/* <IDE queriesData={wrapper.queries} /> */}
                 </Box>
 
               </Grid>
