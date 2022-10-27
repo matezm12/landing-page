@@ -1,23 +1,23 @@
-import { Box } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
-import { Hero } from '../../components/Hero';
-import { DemoSection } from '../../components/DemoSection';
-import { Features } from '../../components/Features';
-import { Testimonials } from '../../components/Testimonials';
-import ReactGA from 'react-ga';
+import { Box } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core/styles";
+import { Hero } from "../../components/Hero";
+import { Features } from "../../components/Features";
+import { Testimonials } from "../../components/Testimonials";
+import { WrappersShowcase } from "../../components/WrappersShowcase";
+import ReactGA from "react-ga";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    maxWidth: '1400px',
-    position: 'relative',
-    [theme.breakpoints.up('sm')]: {
-      margin: 'auto',
+    maxWidth: "1400px",
+    position: "relative",
+    [theme.breakpoints.up("sm")]: {
+      margin: "auto",
     },
   },
 }));
 
 export const Home = () => {
-  ReactGA.pageview('home');
+  ReactGA.pageview("home");
 
   const classes = useStyles();
 
@@ -25,6 +25,7 @@ export const Home = () => {
     <Box className={classes.root}>
       <Hero />
       <Features />
+      <WrappersShowcase />
       <Testimonials />
     </Box>
   );

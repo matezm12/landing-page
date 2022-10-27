@@ -1,45 +1,51 @@
-import { Box, Container, Link, makeStyles, Typography } from '@material-ui/core';
-import { TESTIMONIALS, Testimonial } from '../constants/launch-partners';
-import FormatQuoteIcon from '@material-ui/icons/FormatQuote';
-import { filters } from '../theme';
+import {
+  Box,
+  Container,
+  Link,
+  makeStyles,
+  Typography,
+} from "@material-ui/core";
+import { TESTIMONIALS, Testimonial } from "../constants/launch-partners";
+import FormatQuoteIcon from "@material-ui/icons/FormatQuote";
+import { filters } from "../theme";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    flexDirection: 'column',
-    minHeight: '60vh',
-    justifyContent: 'center',
+    flexDirection: "column",
+    minHeight: "60vh",
+    justifyContent: "center",
     marginBottom: 100,
     marginTop: 140,
-    position: 'relative',
-    padding: '0 20px',
+    position: "relative",
+    padding: "0 20px",
     zIndex: 0,
-    [theme.breakpoints.down('sm')]: {
-      minHeight: 'unset',
+    [theme.breakpoints.down("sm")]: {
+      minHeight: "unset",
     },
   },
   title: {
-    display: 'block',
-    margin: 'auto',
-    [theme.breakpoints.down('sm')]: {
+    display: "block",
+    margin: "auto",
+    [theme.breakpoints.down("sm")]: {
       fontSize: 32,
-    }
+    },
   },
   testimonialText: {
-    display: 'block',
-    margin: 'auto',
+    display: "block",
+    margin: "auto",
     marginBottom: 20,
-    [theme.breakpoints.down('sm')]: {
+    [theme.breakpoints.down("sm")]: {
       fontSize: 32,
-    }
+    },
   },
   testimonial: {
     padding: theme.spacing(8),
     paddingBottom: theme.spacing(0),
-    position: 'relative',
-    width: '50%',
-    [theme.breakpoints.down('sm')]: {
-      width: '100%',
-      '& h6': {
+    position: "relative",
+    width: "50%",
+    [theme.breakpoints.down("sm")]: {
+      width: "100%",
+      "& h6": {
         fontSize: 20,
       },
     },
@@ -48,16 +54,16 @@ const useStyles = makeStyles((theme) => ({
     color: theme.palette.text.secondary,
     fontSize: 80,
     opacity: 0.2,
-    transform: 'translate(-16px, 12px)',
+    transform: "translate(-16px, 12px)",
   },
   logo: {
     filter: filters.textSecondary,
     height: 50,
     minWidth: 120,
-    objectFit: 'contain',
-    '&:hover': {
+    objectFit: "contain",
+    "&:hover": {
       filter: filters.secondary,
-    }
+    },
   },
 }));
 
@@ -66,9 +72,16 @@ export const Testimonials = () => {
 
   return (
     <Box className={classes.root}>
-      <Typography className={classes.title} variant='h3' align='center' color='textPrimary'>
+      <Typography
+        className={classes.title}
+        variant="h3"
+        align="center"
+        color="textPrimary"
+      >
         Web3{` `}
-        <span role="img" aria-label="yellow heart">💛s</span>
+        <span role="img" aria-label="yellow heart">
+          💛s
+        </span>
         {` `}Polywrap
       </Typography>
       <Container maxWidth="lg">
@@ -81,27 +94,34 @@ export const Testimonials = () => {
           position="relative"
           zIndex={2}
         >
-          {TESTIMONIALS.map(
-            (testimonial: Testimonial, index: number) =>
-              <Box className={classes.testimonial} key={`testimonial-${index}`}>
-                <Box>
-                  <FormatQuoteIcon className={classes.testimonialQuote} />
-                  <Typography variant='subtitle1' style={{ fontSize: 20 }} color='textSecondary'>
-                    {testimonial.description}
+          {TESTIMONIALS.map((testimonial: Testimonial, index: number) => (
+            <Box className={classes.testimonial} key={`testimonial-${index}`}>
+              <Box>
+                <FormatQuoteIcon className={classes.testimonialQuote} />
+                <Typography
+                  variant="subtitle1"
+                  style={{ fontSize: 20 }}
+                  color="textSecondary"
+                >
+                  {testimonial.description}
+                </Typography>
+                <Box marginTop={2}>
+                  <Typography variant="body1" color="textSecondary">
+                    {testimonial.persona}
                   </Typography>
-                  <Box marginTop={2}>
-                    <Typography variant='body1' color='textSecondary'>
-                      {testimonial.persona}
-                    </Typography>
-                  </Box>
-                  <Box marginTop={2}>
-                    <Link href={testimonial.url} target='_blank'>
-                      <img src={testimonial.logo} className={classes.logo} alt=""/>
-                    </Link>
-                  </Box>
+                </Box>
+                <Box marginTop={2}>
+                  <Link href={testimonial.url} target="_blank">
+                    <img
+                      src={testimonial.logo}
+                      className={classes.logo}
+                      alt=""
+                    />
+                  </Link>
                 </Box>
               </Box>
-          )}
+            </Box>
+          ))}
         </Box>
       </Container>
     </Box>

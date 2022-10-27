@@ -1,168 +1,185 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Highlight, { defaultProps } from "prism-react-renderer";
-import { Box, makeStyles, styled } from '@material-ui/core';
-import { polywrapPalette } from '../theme';
+import { Box, makeStyles, styled } from "@material-ui/core";
+import { polywrapPalette } from "../theme";
+import theme from "prism-react-renderer/themes/nightOwl";
+
+const SPACE_CHARACTER = "º";
 
 const useStyles = makeStyles((theme) => ({
   root: {
     boxShadow: `0 24px 80px rgba(0,0,0,0.25)`,
     borderRadius: 8,
-    position: 'relative',
-    width: '100%',
+    position: "relative",
+    width: "100%",
   },
   tabs: {
     background: polywrapPalette.secondary[900],
-    borderRadius: '8px 8px 0 0',
-    overflowX: 'hidden',
+    borderRadius: "8px 8px 0 0",
+    overflowX: "hidden",
   },
   tab: {
     borderRight: `1px solid rgba(255,255,255,0.05)`,
-    color: 'rgba(255,255,255,0.5)',
-    cursor: 'default',
+    color: "rgba(255,255,255,0.5)",
+    cursor: "default",
     padding: `12px 16px`,
+    display: "flex",
     transition: `background 0.25s ease-in-out`,
-    '&:hover': {
-      backgroundColor: 'rgba(255,255,255,0.05)',
-      color: 'rgba(255,255,255,0.8)',
+    "&:hover": {
+      backgroundColor: "rgba(255,255,255,0.05)",
+      color: "rgba(255,255,255,0.8)",
+      cursor: "pointer",
     },
-    '&.is-active': {
-      backgroundColor: 'rgba(255,255,255,0.05)',
+    "& img": {
+      marginRight: 4,
+      opacity: 0.5,
+    },
+    "&.is-active": {
+      backgroundColor: "rgba(255,255,255,0.05)",
       boxShadow: `inset 0 -2px 0 ${theme.palette.primary.main}`,
-      color: 'rgba(255,255,255,0.8)',
+      color: "rgba(255,255,255,0.8)",
+      "& img": {
+        opacity: 1,
+      },
     },
+  },
+  tabImage: {
+    marginRight: 5,
+    height: "fit-content",
+    alignSelf: "center",
   },
   main: {
     background: polywrapPalette.secondary[800],
-    borderRadius: '0 0 8px 8px',
-    maxHeight: '400px',
-    overflowY: 'scroll',
+    borderRadius: "0 0 8px 8px",
+    maxHeight: "400px",
+    overflowY: "auto",
   },
   pre: {
-    textAlign: 'left',
+    textAlign: "left",
     margin: 0,
     padding: 24,
+    whiteSpace: "initial",
   },
   line: {
-    color: 'white',
-    display: 'table-row',
+    color: "white",
+    display: "table-row",
     fontFamily: `'Space Mono', 'PT Mono', mono`,
     fontSize: 18,
     fontWeight: 500,
   },
   lineNumber: {
-    color: 'rgba(255,255,255,0.5)',
-    textAlign: 'right',
-    display: 'table-cell',
+    color: "rgba(255,255,255,0.5)",
+    textAlign: "right",
+    display: "table-cell",
     paddingRight: 16,
-    userSelect: 'none',
-    opacity: '0.5',
+    userSelect: "none",
+    opacity: "0.5",
   },
   lineContent: {
-    display: 'table-cell',
+    display: "table-cell",
   },
 }));
 
-const Line = styled('div')({
-  display: 'table-row',
+const Line = styled("div")({
+  display: "table-row",
   fontFamily: `Space Mono, Ubuntu Mono, Courier New`,
 });
 
-const LineNo = styled('span')({
-  display: 'table-cell',
-  textAlign: 'right',
-  paddingRight: '1em',
-  userSelect: 'none',
-  opacity: '0.5',
+const LineNo = styled("span")({
+  display: "table-cell",
+  textAlign: "right",
+  paddingRight: "1em",
+  userSelect: "none",
+  opacity: "0.5",
 });
 
-const LineContent = styled('span')({
-  display: 'table-cell',
+const LineContent = styled("span")({
+  display: "table-cell",
 });
 
-const queries = 
-[
-  `Web3Api.query({
-    uri: ensUri,
-    query: \`query {
-      bestTradeExactIn(
-        pairs: $pairs
-        amountIn: $amountIn
-        tokenOut: $tokenOut
-        options: $options
-        )
-      }\`,
-    })
-  })`,
-  `Web4Api.query({
-    uri: ensUri,
-    query: \`query {
-      bestTradeExactIn(
-        pairs: $pairs
-        amountIn: $amountIn
-        tokenOut: $tokenOut
-        options: $options
-        )
-      }\`,
-    })
-  })`,
-  `Web5Api.query({
-    uri: ensUri,
-    query: \`query {
-      bestTradeExactIn(
-        pairs: $pairs
-        amountIn: $amountIn
-        tokenOut: $tokenOut
-        options: $options
-        )
-      }\`,
-    })
-  })`,
-]
-
-export const Tabs = () => {
+export const Tabs = ({ queriesData, activeQuery, setActiveQuery }: any) => {
   const classes = useStyles();
 
   return (
-    <Box className={classes.tabs} display='flex'>
-      <Box data-id={0} className={`${classes.tab} is-active`}>simplestorage.ts</Box>
-      {/* <Box data-id={1} className={classes.tab}>Tab.js</Box>
-      <Box data-id={2} className={classes.tab}>Tab.py</Box> */}
+    <Box className={classes.tabs} display="flex">
+      {queriesData.snippets &&
+        queriesData.snippets.map(
+          (
+            snippetObj: { filename: string; language: string; snippet: string },
+            index: number
+          ) => {
+            return (
+              snippetObj.snippet && (
+                <Box
+                  key={index}
+                  data-id={index}
+                  className={`${classes.tab} ${
+                    activeQuery === index && "is-active"
+                  }`}
+                  onClick={() => setActiveQuery(index)}
+                >
+                  <img
+                    className={classes.tabImage}
+                    src={`${process.env.PUBLIC_URL}/imgs/file-icons/${snippetObj.language}.png`}
+                    alt={snippetObj.language}
+                  />
+                  {snippetObj.filename}
+                </Box>
+              )
+            );
+          }
+        )}
     </Box>
   );
 };
 
-export const IDE = () => {
+export const IDE = ({ queriesData }: any) => {
   const classes = useStyles();
-
-  // const [activeQuery, setActiveQuery] = useState(queries[0]);
-  // const handleClick = (e: Event) => {
-  //     console.log(e.target);
-  //     const query = e.target?.dataset?.id;
-  //     setActiveQuery(query);
-  // };
-  
-  // useEffect(() => {
-  //   window.addEventListener('click', handleClick, { passive: true });
-  
-  //   return () => {
-  //     window.removeEventListener('click', handleClick);
-  //   };
-  // }, []);
+  const firstSnippet = queriesData.snippets.findIndex(
+    (snippetObj: { snippet: string }) => snippetObj.snippet
+  );
+  const [activeQuery, setActiveQuery] = useState(firstSnippet);
 
   return (
     <Box className={classes.root}>
-      <Tabs />
+      <Tabs
+        queriesData={queriesData}
+        activeQuery={activeQuery}
+        setActiveQuery={setActiveQuery}
+      />
+
       <Box className={classes.main}>
-        <Highlight {...defaultProps} code={queries[0]} theme={undefined} language="javascript">
+        <Highlight
+          {...defaultProps}
+          code={queriesData.snippets[activeQuery].snippet}
+          theme={theme}
+          language={queriesData.snippets[activeQuery].language}
+        >
           {({ tokens, getLineProps, getTokenProps }) => (
             <pre className={classes.pre}>
               {tokens.map((line, i) => (
                 <Line key={i} {...getLineProps({ line, key: i })}>
                   <LineNo className={classes.lineNumber}>{i + 1}</LineNo>
                   <LineContent>
-                    {line.map((token, key) => (
-                      <span key={key} {...getTokenProps({ token, key })} />
-                    ))}
+                    {line.map((token, key) => {
+                      let spaces =
+                        token.content.split(SPACE_CHARACTER).length - 1;
+                      token.content = token.content.replaceAll(
+                        SPACE_CHARACTER,
+                        ""
+                      );
+                      return (
+                        <div
+                          key={key}
+                          style={{
+                            display: "inline",
+                            paddingLeft: `${spaces}em`,
+                          }}
+                        >
+                          <span key={key} {...getTokenProps({ token, key })} />
+                        </div>
+                      );
+                    })}
                   </LineContent>
                 </Line>
               ))}
