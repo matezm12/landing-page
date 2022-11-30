@@ -2,7 +2,6 @@ import { Parallax } from 'react-scroll-parallax';
 import { Box, Button, Grid, makeStyles, Typography, useMediaQuery, useTheme } from '@material-ui/core';
 import { polywrapPalette } from '../theme';
 import {useState, useEffect} from 'react';
-// import {  ContentfulFetcher, writtenCopy, polywrapApplication } from './ContentfulFetcher';
 import { KeyboardArrowRightOutlined } from '@material-ui/icons';
 import { writtenCopy, polywrapApplication} from './DataModels';
 
@@ -117,7 +116,7 @@ export const FeaturedApps = () => {
           "url": "https://demo.uniswapv2.polywrap.io/#/swap"
         },
         "uiScreenshot": {
-          "url": "https://images.ctfassets.net/tmv21jqhvpr2/5Cx8SWJjdGUNTakXt0hOZa/01434e806285f03eb60077ea4c7d1c89/Screenshot_2022-06-19_at_16.31.12.png"
+          "url": process.env.PUBLIC_URL + "/imgs/uniswap-app.png",
         }
     },{
       "writtenCopy": {
@@ -127,22 +126,14 @@ export const FeaturedApps = () => {
       },
       "callToAction": {
         "cta": "Live Demo",
-        "url": "https://polyfolio.polywrap.io/"
+        "url": "https://polyfolio.vercel.app/"
       },
       "uiScreenshot": {
-        "url": "https://images.ctfassets.net/tmv21jqhvpr2/5Cx8SWJjdGUNTakXt0hOZa/01434e806285f03eb60077ea4c7d1c89/Screenshot_2022-06-19_at_16.31.12.png"
+        "url": process.env.PUBLIC_URL + "/imgs/polyfolio-app.png"
       }
   }]
   )
 
-  useEffect(() => {
-    (async () => {
-      var listOfApplications: polywrapApplication[] = [];
-
-    })();
-
-
-  }, []);
 
   // Setting UI transition effects for the component
   useEffect(() => {
