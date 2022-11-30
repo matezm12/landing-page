@@ -25,6 +25,7 @@ const useStyles = makeStyles((theme) => ({
     cursor: 'default',
     padding: `12px 16px`,
     display: 'flex',
+    fontSize: 14,
     transition: `background 0.25s ease-in-out`,
     '&:hover': {
       backgroundColor: 'rgba(255,255,255,0.05)',
@@ -54,6 +55,7 @@ const useStyles = makeStyles((theme) => ({
     borderRadius: '0 0 8px 8px',
     maxHeight: '400px',
     overflowY: 'auto',
+    fontSize: 14,
   },
   pre: {
     textAlign: 'left',
@@ -65,7 +67,7 @@ const useStyles = makeStyles((theme) => ({
     color: 'white',
     display: 'table-row',
     fontFamily: `'Space Mono', 'PT Mono', mono`,
-    fontSize: 18,
+    fontSize: 50,
     fontWeight: 500,
   },
   lineNumber: {
