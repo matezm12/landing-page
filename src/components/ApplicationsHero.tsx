@@ -4,6 +4,7 @@ import { polywrapPalette } from '../theme';
 import {useState, useEffect} from 'react';
 // import {  ContentfulFetcher, writtenCopy, polywrapApplication } from './ContentfulFetcher';
 import { KeyboardArrowRightOutlined } from '@material-ui/icons';
+import { writtenCopy, polywrapApplication} from './DataModels';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -118,77 +119,28 @@ export const FeaturedApps = () => {
         "uiScreenshot": {
           "url": "https://images.ctfassets.net/tmv21jqhvpr2/5Cx8SWJjdGUNTakXt0hOZa/01434e806285f03eb60077ea4c7d1c89/Screenshot_2022-06-19_at_16.31.12.png"
         }
-    }]
+    },{
+      "writtenCopy": {
+        "title": "Polyfolio",
+        "subtitle": "Defi Portfolio Tracker",
+        "description": "Polyfolio is a portfolio tracker for DeFi assets. It allows you to track your assets across multiple wallets and networks. It also allows you to track your assets in a single wallet across multiple networks. This project was co-sponsored by the Polywrap DAO in 2021."
+      },
+      "callToAction": {
+        "cta": "Live Demo",
+        "url": "https://polyfolio.polywrap.io/"
+      },
+      "uiScreenshot": {
+        "url": "https://images.ctfassets.net/tmv21jqhvpr2/5Cx8SWJjdGUNTakXt0hOZa/01434e806285f03eb60077ea4c7d1c89/Screenshot_2022-06-19_at_16.31.12.png"
+      }
+  }]
   )
 
   useEffect(() => {
     (async () => {
       var listOfApplications: polywrapApplication[] = [];
 
-      /////////// CMS content fetching: Callback version
-      setIsLoading(true);
-      const applicationsIds = [
-        "46Z1SN9tFSozigaRPrW0JR", // "Polyfolio" 
-        "4YQIn61S9M8LWaDdtmaZjM", // Uniswap V2
-        //"6SGBoFOxJNsAuEcLfWW1l4"  // Poolsharks
-      ]
-
-      var currentFetch: {
-        data: {
-          applications: polywrapApplication
-        }
-      };
-
-      for(const Id of applicationsIds) {
-
-        var applicationsQuery = `query {
-          applications (id:"${Id}") {
-            writtenCopy {
-              title
-              subtitle
-              description
-            }
-            callToAction {
-              cta
-              url
-            }
-            uiScreenshot {
-              url
-            }
-          }
-        }`;
-
-        currentFetch = await ContentfulFetcher(applicationsQuery);
-        listOfApplications.push(currentFetch.data.applications);
-        // this would make the list longer
-        setPolywrapApplicationsList((oldAppList) => [...oldAppList, currentFetch.data.applications]);
-        setIsLoading(false);
-      }
     })();
 
-
-    const applicationsQuery = `query {
-      writtenCopy(id:"4pto10YnpvRkuIEQDkIBnG") { 
-        title
-        subtitle
-        description
-      }
-    }
-    `
-
-    ContentfulFetcher(applicationsQuery).then(
-      (response) => {
-        //On success        
-        const heroWrittenCopy: writtenCopy = response.data.writtenCopy;
-        setThirdHeroContent(heroWrittenCopy);
-      }, 
-      (error) => {
-        //On fail
-        setHasFailed(true);
-      }
-    ).finally(() => {
-      setIsLoading(false);
-    });
 
   }, []);
 
