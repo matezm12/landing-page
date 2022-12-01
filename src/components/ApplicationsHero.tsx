@@ -10,7 +10,7 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'center',
     display: 'flex',
     flexDirection: 'column',
-    minHeight: '60vh',
+    minHeight:  '90vh',
     position: 'relative',
     zIndex: 2,
     marginTop: 140,
@@ -61,12 +61,24 @@ const useStyles = makeStyles((theme) => ({
     borderRadius: 8,
     boxShadow: `0 64px 96px -24px rgba(0,0,0,0.5)`,
     padding: 72,
-    paddingBottom: 450,
+    paddingBottom: 230,
     position: 'relative',
+    [theme.breakpoints.up('lg')]: {
+      height: '65vh',
+      minHeight: '500px'
+    },
+    [theme.breakpoints.down('md')]: {
+      padding: 32,
+      height: '80vh',
+      minHeight: 500,
+      maxHeight: 800,
+    },
     [theme.breakpoints.down('sm')]: {
       padding: 32,
-      paddingBottom: 420,
-
+      height: '75vh',
+    },
+    [theme.breakpoints.down('xs')]: {
+      height: '100vh',
     },
   },
   hubWireframeImg: {
@@ -84,6 +96,14 @@ const useStyles = makeStyles((theme) => ({
       //boxShadow: `0 4px 32px ${polywrapPalette.primary.mid}85`,
       width: '100%',
       transform: 'none',
+    },
+  },
+  descriptionText: {
+    [theme.breakpoints.down('sm')]: {
+      fontSize: 16
+    },
+    [theme.breakpoints.down('xs')]: {
+      fontSize: 12
     },
   },
 }));
@@ -153,7 +173,9 @@ export const FeaturedApps = () => {
 
 
   return (
-    <Box position='relative' className={classes.root}>
+    <Box position='relative' className={classes.root}
+    paddingBottom = {isMobile ? 20 : 50}
+    >
       <Box className={classes.cell}>
         <Box className={classes.blurredGraphicContainer}>
           <Parallax y={[-15, 10]} disabled={isMobile}>
@@ -199,8 +221,13 @@ export const FeaturedApps = () => {
                 <Typography variant="h4">
                   {PolywrapApp.writtenCopy.title}
                 </Typography>
-                <Box marginTop={2}>
-                  <Typography variant="body1">
+                <Box marginTop={2}
+                      width={isMobile ? '80%' : '100%'}
+                                    >
+                  <Typography variant="body1"
+                              className={classes.descriptionText}
+
+                      >
                     {PolywrapApp.writtenCopy.description}
                   </Typography>
                 </Box>

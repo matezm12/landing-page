@@ -119,7 +119,7 @@ export const Tabs = ({queriesData, activeQuery, setActiveQuery}: any) => {
                 className={classes.tabImage}
                 src={`${process.env.PUBLIC_URL}/imgs/file-icons/${snippetObj.language}.png`}
                 alt={snippetObj.language} />
-              {snippetObj.filename}
+              {/* {snippetObj.filename} */}
           </Box>
         }
       )}
