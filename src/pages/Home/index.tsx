@@ -1,8 +1,11 @@
 import { Box } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-import { Hero } from '../../components/Hero';
-import { DemoSection } from '../../components/DemoSection';
-import { Features } from '../../components/Features';
+import { MainHero } from '../../components/MainHero';
+import { FeaturedWrappersSection } from '../../components/WrappersHero';
+import { CoreBenefits } from '../../components/CoreBenefits';
+//import { GetStartedHero } from '../../components/GetStartedHero';
+import { FeaturedApps } from '../../components/ApplicationsHero';
+
 import { Testimonials } from '../../components/Testimonials';
 import ReactGA from 'react-ga';
 
@@ -23,9 +26,16 @@ export const Home = () => {
 
   return (
     <Box className={classes.root}>
-      <Hero />
-      <Features />
+      <MainHero />
+      <FeaturedApps/>
+
+      <CoreBenefits />
+      {/* <GetStartedHero /> */}
+      {/* <SecondHero /> */}
+      <FeaturedWrappersSection />
+
       <Testimonials />
+
     </Box>
   );
 };
