@@ -79,18 +79,6 @@ export const HubCallout = () => {
                 <Typography variant="body1">
                   A developer-centric platform where you can discover, deploy, and interact with any Polywrapper in the ecosystem. We are paving the road, expecting endless collaboration and curation possibilities. Test and Integrate web3 protocols quickly on the browser with our GraphQL Playground, and publish your packages to decentralised hosting. Soon you'll be able to explore an endless ocean of wrappers, by querying tags like `multisig`, `defi`, or `vesting`. A more semantic web3 that's easy to compose together!                </Typography>
               </Box>
-              {/* <Box marginTop={2}>
-                <Button
-                  component="button"
-                  color='primary'
-                  href='https://discord.gg/bGsqQrNhqd'
-                  endIcon={<KeyboardArrowRightOutlined />}
-                  type='submit'
-                  variant='contained'
-                >
-                  {CTA}
-                </Button>
-              </Box> */}
             </Grid>
             <Grid item xs={12} sm={6}>
               <Parallax y={[24, -24]} disabled={isMobile}>

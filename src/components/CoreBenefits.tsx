@@ -1,6 +1,8 @@
 import { Parallax } from 'react-scroll-parallax';
 import { Box, Grid, makeStyles, Typography, useTheme } from '@material-ui/core';
 
+import { CORE_BENEFITS } from "../constants";
+
 const useStyles = makeStyles((theme) => ({
   root: {
     flexDirection: 'column',
@@ -74,39 +76,6 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const features = [
-  {
-    slug: 'multi_platform',
-    title: 'Multi-Platform',
-    description: 'Wrappers are universal, use them in any app, written in any language.',
-  },
-  {
-    slug: 'user_friendly',
-    title: 'User-Friendly',
-    description: 'Integrating complex SDKs is finally as easy as interacting with web APIs.',
-  },
-  {
-    slug: 'secure',
-    title: 'Secure',
-    description: 'Sandboxing keeps users safe by isolating wrappers from application memory.',
-  },
-  {
-    slug: 'scalable',
-    title: 'Scalable',
-    description: 'Keep apps lightweight and efficient, download wrappers on-demand as needed.',
-  },
-  {
-    slug: 'composable',
-    title: 'Composable',
-    description: 'Endlessly compose and extend wrappers with imports and standard interfaces.',
-  },
-  {
-    slug: 'upgradable',
-    title: 'Upgradable',
-    description: 'Ditch the rebuilds with configurable run-time updates.',
-  },
-]
-
 export const CoreBenefits = () => {
   const theme = useTheme();
   const classes = useStyles();
@@ -125,19 +94,19 @@ export const CoreBenefits = () => {
         <Box className={classes.cell}>
           <Grid container spacing={6} alignItems='flex-start' className={classes.featureGrid}>
             {
-              features.map((feature, index) => {
+              CORE_BENEFITS.map((benefit, index) => {
                 return (
-                <Grid key={feature.slug} xs={12} sm={6} md={4} item className={classes.featureItem}>
+                <Grid key={benefit.slug} xs={12} sm={6} md={4} item className={classes.featureItem}>
                   <Box position='relative'>
                     <Box position='relative' display='flex' alignItems='center' justifyContent='center' className={classes.featureIconContainer}>
                       <img className={classes.featureIconBg} width="100%" src={`${process.env.PUBLIC_URL}/imgs/assets/blob-1.png`} alt='' />
-                      <img className={classes.featureIcon} width="100%" src={`${process.env.PUBLIC_URL}/imgs/assets/features/${feature.slug}.png`} alt='' />
+                      <img className={classes.featureIcon} width="100%" src={`${process.env.PUBLIC_URL}/imgs/assets/features/${benefit.slug}.png`} alt='' />
                     </Box>
                     <Typography variant='subtitle1' color='textPrimary' align='center' className={classes.featureTitle}>
-                      {feature.title}
+                      {benefit.title}
                     </Typography>
                     <Typography variant='body1' color='textSecondary' align='center' className={classes.featureDescription}>
-                      {feature.description}
+                      {benefit.description}
                     </Typography>
                   </Box>
                 </Grid>

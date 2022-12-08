@@ -1,11 +1,11 @@
 import React from 'react';
-import { useEffect, useState } from "react";
-import Highlight, { defaultProps } from "prism-react-renderer";
+import { useState } from "react";
 import { Box, makeStyles, styled } from '@material-ui/core';
-import { polywrapPalette } from '../theme';
+import Highlight, { defaultProps, Language } from "prism-react-renderer";
 import theme from "prism-react-renderer/themes/nightOwl";
 
-const SPACE_CHARACTER = "º";
+import { polywrapPalette } from '../theme';
+import { CodeSnippet, SPACE_CHARACTER } from "../constants";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -100,44 +100,36 @@ const LineContent = styled('span')({
   display: 'table-cell',
 });
 
-
-export const Tabs = ({queriesData, activeQuery, setActiveQuery}: any) => {
+export const IDE = (props: {
+  snippets: CodeSnippet[];
+}) => {
   const classes = useStyles();
-
-  return (
-    <Box className={classes.tabs} display='flex'>
-      { queriesData.snippets &&
-        queriesData.snippets.map((snippetObj: { filename: string, language: string, snippet: string }, index: number) => {
-          return snippetObj.snippet &&
-          <Box
-              key={index}
-              data-id={index}
-              className={`${classes.tab} ${activeQuery === index && 'is-active'}`}
-              onClick={() => setActiveQuery(index)}
-          >
-              <img
-                className={classes.tabImage}
-                src={`${process.env.PUBLIC_URL}/imgs/file-icons/${snippetObj.language}.png`}
-                alt={snippetObj.language} />
-              {/* {snippetObj.filename} */}
-          </Box>
-        }
-      )}
-    </Box>
-  );
-};
-
-export const IDE = ({queriesData}: any) => {
-  const classes = useStyles();
-  const firstSnippet = queriesData.snippets.findIndex((snippetObj: { snippet: string; }) => snippetObj.snippet);
-  const [activeQuery, setActiveQuery] = useState(firstSnippet);
+  const [activeSnippet, setActiveSnippet] = useState(0);
+  const snippets = props.snippets;
+  const snippet = snippets[activeSnippet];
 
   return (
     <Box className={classes.root}>
-      <Tabs queriesData={queriesData} activeQuery={activeQuery} setActiveQuery={setActiveQuery} />
+      {/* Language Tabs */}
+      <Box className={classes.tabs} display='flex'>
+        {snippets.map((snippet, index) => (
+          <Box
+            key={index}
+            data-id={index}
+            className={`${classes.tab} ${activeSnippet === index && 'is-active'}`}
+            onClick={() => setActiveSnippet(index)}
+          >
+            <img
+              className={classes.tabImage}
+              src={`${process.env.PUBLIC_URL}/imgs/file-icons/${snippet.language}.png`}
+              alt={snippet.language} />
+          </Box>
+        ))}
+      </Box>
 
+      {/* Code Snippet */}
       <Box className={classes.main}>
-        <Highlight {...defaultProps} code={queriesData.snippets[activeQuery].snippet} theme={theme} language={queriesData.snippets[activeQuery].language}>
+        <Highlight {...defaultProps} code={snippet.code} theme={theme} language={snippet.language as Language}>
           {({ tokens, getLineProps, getTokenProps }) => (
             <pre className={classes.pre}>
               {tokens.map((line, i) => (

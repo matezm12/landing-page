@@ -1,5 +1,5 @@
 import { Box, Container, Link, makeStyles, Typography } from '@material-ui/core';
-import { TESTIMONIALS, Testimonial } from '../constants/launch-partners';
+import { TESTIMONIALS, Testimonial } from '../constants';
 import FormatQuoteIcon from '@material-ui/icons/FormatQuote';
 import { filters } from '../theme';
 

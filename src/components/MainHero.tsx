@@ -54,7 +54,7 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.down('sm')]: {
       textAlign: 'center',
       marginTop: 10,
-      fontSize: 28,
+      fontSize: 42,
     },
   },
   heroBody: {

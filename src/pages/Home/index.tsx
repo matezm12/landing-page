@@ -27,15 +27,9 @@ export const Home = () => {
   return (
     <Box className={classes.root}>
       <MainHero />
-      <FeaturedApps/>
-
       <CoreBenefits />
-      {/* <GetStartedHero /> */}
-      {/* <SecondHero /> */}
       <FeaturedWrappersSection />
-
       <Testimonials />
-
     </Box>
   );
 };
