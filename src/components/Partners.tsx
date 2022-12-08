@@ -1,4 +1,4 @@
-import { launchPartners } from '../constants/launch-partners';
+import { LAUNCH_PARTNERS} from '../constants';
 import { Parallax } from 'react-scroll-parallax';
 import { filters } from '../theme';
 import {
@@ -97,7 +97,7 @@ export const Partners = () => {
           </Typography>
           <Grid className={classes.launchPartnersContainer} container justify='center'>
             {
-              launchPartners.map(({logo, url}) => {
+              LAUNCH_PARTNERS.map(({logo, url}) => {
                 return (
                   <Grid  item key={url}>
                     <Link className={classes.logoContainer} href={url} target='_blank' onClick={() => {

@@ -3,7 +3,7 @@ import { Box, Button, Grid, makeStyles, Typography, useMediaQuery, useTheme } fr
 import { polywrapPalette } from '../theme';
 import {useState, useEffect} from 'react';
 import { KeyboardArrowRightOutlined } from '@material-ui/icons';
-import { writtenCopy, polywrapApplication} from './DataModels';
+import { WrittenCopy, POLYWRAP_APPLICATIONS } from '../constants';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -27,7 +27,6 @@ const useStyles = makeStyles((theme) => ({
     position: 'relative',
     zIndex: 2,
     marginBottom: 30,
-    //marginTop: 140,
     [theme.breakpoints.down('md')]: {
       marginTop: 10,
       marginBottom: 30,
@@ -108,6 +107,11 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+const thirdHeroContent: WrittenCopy = {
+  title: "Extend the functionality of you applications",
+  subtitle: "a more composable web3",
+  description: "Polywrap allows more application functionality with a lower development overhead, fewer requirements for protocol-specific knowledge, and a long list of perks that come along with WebAssembly. "
+};
 
 export const FeaturedApps = () => {
   const theme = useTheme();
@@ -115,50 +119,12 @@ export const FeaturedApps = () => {
   const isMobile = useMediaQuery(theme.breakpoints.down('xs'), {
     defaultMatches: true
   });
-  const [hasFailed, setHasFailed] = useState<boolean>(false);
-  const [isLoading, setIsLoading] = useState<boolean>(true);
-  const [appsTransitionID, setAppsTransitionID] = useState<number>(0)
-  const [thirdHeroContent, setThirdHeroContent] = useState<writtenCopy> (
-    {
-      "title": "Extend the functionality of you applications",
-      "subtitle": "a more composable web3",
-      "description": "Polywrap allows more application functionality with a lower development overhead, fewer requirements for protocol-specific knowledge, and a long list of perks that come along with WebAssembly. "
-  });
-  const [polywrapApplicationsList, setPolywrapApplicationsList] = useState<polywrapApplication[]> (
-    [{
-        "writtenCopy": {
-          "title": "Uniswap v2",
-          "subtitle": "Decentralised AMM",
-          "description": "The Leading Ethereum-based DeFi exchange enables low slippage token trades through automated market makers and liquidity pools. The Uni V2 wrapper was developed to cover all existing functionality of the official Javascript SDK, and should be compatible to all uniswap forks also with a few tweaks. This project was co-sponsored by the Uniswap Grants DAO and the Polywrap DAO in 2021."
-        },
-        "callToAction": {
-          "cta": "Live Demo",
-          "url": "https://demo.uniswapv2.polywrap.io/#/swap"
-        },
-        "uiScreenshot": {
-          "url": process.env.PUBLIC_URL + "/imgs/uniswap-app.png",
-        }
-    },{
-      "writtenCopy": {
-        "title": "Polyfolio",
-        "subtitle": "Defi Portfolio Tracker",
-        "description": "Polyfolio is a portfolio tracker for DeFi assets. It allows you to track your assets across multiple wallets and networks. It also allows you to track your assets in a single wallet across multiple networks. This project was co-sponsored by the Polywrap DAO in 2021."
-      },
-      "callToAction": {
-        "cta": "Live Demo",
-        "url": "https://polyfolio.vercel.app/"
-      },
-      "uiScreenshot": {
-        "url": process.env.PUBLIC_URL + "/imgs/polyfolio-app.png"
-      }
-  }]
-  )
-
+  const [appsTransitionID, setAppsTransitionID] = useState<number>(0);
 
   // Setting UI transition effects for the component
   useEffect(() => {
     let rotationInterval = setInterval(() => {
-      if (appsTransitionID === polywrapApplicationsList.length - 1 ) {
+      if (appsTransitionID === POLYWRAP_APPLICATIONS.length - 1 ) {
         setAppsTransitionID(0)
       }
       else {
@@ -169,8 +135,7 @@ export const FeaturedApps = () => {
     return () => {
       clearInterval(rotationInterval);
     }
-  }, [appsTransitionID, polywrapApplicationsList])
-
+  }, [appsTransitionID, POLYWRAP_APPLICATIONS])
 
   return (
     <Box position='relative' className={classes.root}
@@ -205,9 +170,7 @@ export const FeaturedApps = () => {
             
           </Grid>
 
-          { polywrapApplicationsList && 
-          polywrapApplicationsList.map((PolywrapApp: any, index: number) =>
-
+          {POLYWRAP_APPLICATIONS.map((PolywrapApp: any, index: number) =>
             <Grid container spacing={isMobile ? 6 : 10}
             alignItems='stretch' 
             style={{

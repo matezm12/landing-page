@@ -1,10 +1,8 @@
 import { Parallax } from 'react-scroll-parallax';
-import { Box, BoxProps, Container, Grid, makeStyles, Typography, useTheme, Button } from '@material-ui/core';
-import {useState, useEffect} from 'react';
-import {  writtenCopy } from './DataModels';
-// import { DemoFunctions } from './DemoFunctions';
+import { Box, Container, Grid, makeStyles, Typography, useTheme, Button } from '@material-ui/core';
+import { useState } from 'react';
 import { IDE } from './IDE';
-import { loadWrappers }from './WrapperExamples';
+import { WRAPPER_INTEGRATIONS }from '../constants';
 import KeyboardArrowRightOutlined from '@material-ui/icons/KeyboardArrowRightOutlined';
 import { polywrapPalette } from '../theme';
 import classnames from "classnames";
@@ -124,26 +122,7 @@ const useStyles = makeStyles((theme) => ({
 export const FeaturedWrappersSection = () => {
   const theme = useTheme();
   const classes = useStyles();
-
-  // set initial react states
-  const [aboutThisSection, setAboutThisSection] = useState<writtenCopy> (
-    {
-      "title": "Blazing fast development 🔥",
-      "subtitle": "",
-      "description": "Write queries in minutes rather than hours.\n\nUsing the polywrap clients in JavaScript, Python, Go and Rust, you'll be able to hit any protocol endpoint from any device that can run a Polywrap client. Invoking a protocol functionality is now this simple.",
-  });  
-  const [wrappersData, setWrappersData] = useState<any>(null)
-  const [activeWrapper, setActiveWrapper] = useState<number>(0)
-  // TODO: This state below is used for the hovering cards (`DemoFunctions.tsx`) which outline specific functions from the featured wrapper
-  // const [featuredQueries, setFeaturedQueries] = useState<string[]>(['swapToken','functionNameB','funcNameC','...'])
-
-  useEffect(() => {
-    async function loadWrapperData() {
-      setWrappersData(loadWrappers)
-    }
-    loadWrapperData()
-  }, []);
-
+  const [activeWrapper, setActiveWrapper] = useState<number>(0);
 
   const handleWrapperSelection = (wrapper: number) => {
     setActiveWrapper(wrapper)
@@ -153,56 +132,47 @@ export const FeaturedWrappersSection = () => {
     <Box position='relative' className={classes.root}>
 
       <Container maxWidth="md">
-        {/* exciting title for the section */}
-        <Typography
-          variant='h3'
-          align="center"
-          color='textPrimary'
-          className={classes.title}
-        >
-          {aboutThisSection.title}
+        <Typography variant='h3' color='textPrimary' align='center'>
+          Easy Integration
         </Typography>
-
-        {/* description about the wrapper dev experience */}
         <Typography
           variant='body1'
           align="center"
           color='textSecondary'
           className={classes.description}
         >
-          {aboutThisSection.description  }
+          Integrate wrappers into your favorate programming languages in minutes. Simply install a Polywrap Client, and invoke any wrappers methods given its URI.
         </Typography>
       </Container>
 
       <Box
         display="flex"
         flexWrap="wrap"
-        justifyContent={wrappersData?.length >= 5 ? "space-between" : "center"}
+        justifyContent={WRAPPER_INTEGRATIONS.length >= 5 ? "space-between" : "center"}
         mt={6}
       >
-        { wrappersData?.map((wrapper: any, index: number) => {
-            return (
-              <Box
-                key={index}
-                ml={index !== 0 ? 2 : 0} mr={index !== wrappersData.length - 1 ? 2 : 0}
-                onClick={() => handleWrapperSelection(index)}
-              >
-                <Box className={classnames(classes.wrapperSelection, activeWrapper === index && "is-active")}>
-                  <Box className={classes.wrapperSelectionIcon} >
-                    <img src={wrapper.svgLogo?.url} alt={wrapper.language}/>
-                  </Box>
-                  {wrapper.wrapperName}
+        {WRAPPER_INTEGRATIONS.map((wrapper, index) => {
+          return (
+            <Box
+              key={index}
+              ml={index !== 0 ? 2 : 0} mr={index !== WRAPPER_INTEGRATIONS.length - 1 ? 2 : 0}
+              onClick={() => handleWrapperSelection(index)}
+            >
+              <Box className={classnames(classes.wrapperSelection, activeWrapper === index && "is-active")}>
+                <Box className={classes.wrapperSelectionIcon} >
+                  <img src={wrapper.logo} alt={wrapper.wrapperName}/>
                 </Box>
+                {wrapper.wrapperName}
               </Box>
-            )
-          })
-        }
+            </Box>
+          )
+        })}
       </Box>
       {/* The lines below are used to check
-            1. that wrappersData exists
-            2. maps all the data to render the component*/}
-        { wrappersData?.map((wrapper: any, index: number) =>
-          <Box 
+          1. that wrappersData exists
+          2. maps all the data to render the component*/}
+        {WRAPPER_INTEGRATIONS.map((wrapper, index) =>
+          <Box
             key={index}
             mb={24}
             style={{
@@ -244,7 +214,7 @@ export const FeaturedWrappersSection = () => {
                   // still dunno what to calll this
                   className={classes.wrapperCTAButton}
                   color='primary'
-                  href={wrapper.docsLink}
+                  href={wrapper.link}
                   target="_blank"
                   rel="noredirect"
                   endIcon={<KeyboardArrowRightOutlined />}
@@ -265,24 +235,12 @@ export const FeaturedWrappersSection = () => {
                       y={[140, -13]}
                       disabled={window.innerWidth < theme.breakpoints.values.md}
                     >
-                      {/* TODO: later down the road, use this section to map all the name
-                          of the functions within the wrapper and display them on a hovering
-                          card.
-                          Also consider a way of setting the active function on "accent",
-                          while the other ones not being displayed could look grey.
-
-                      <DemoFunctions 
-                        content={
-                            featuredQueries
-                          } 
-                      />
-                    */}
                     </Parallax>
                   </Box>
                   {/* This is the section that displays the entire IDE window.
                       it includes both the code snippet and the tabs on top of the window
                   */}
-                  <IDE queriesData={wrapper.queries} />
+                  <IDE snippets={wrapper.snippets} />
                 </Box>
 
               </Grid>
