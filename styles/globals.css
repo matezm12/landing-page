@@ -1,0 +1,46 @@
+@font-face {
+  font-family: Colton Primary;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  src: url("../public/fonts/HDColton-Regular.woff");
+}
+@font-face {
+  font-family: Colton Primary;
+  font-weight: 800;
+  font-stretch: normal;
+  font-style: normal;
+  src: url("../public/fonts/HDColton-Bold.woff");
+}
+@font-face {
+  font-family: Colton Primary;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: italic;
+  src: url("../public/fonts/HDColton-RegularItalic.woff");
+}
+@font-face {
+  font-family: Colton Primary;
+  font-weight: 800;
+  font-stretch: normal;
+  font-style: italic;
+  src: url("../public/fonts/HDColton-BoldItalic.woff");
+}
+@font-face {
+  font-family: Colton Display;
+  font-weight: 400;
+  font-stretch: expanded;
+  font-style: normal;
+  src: url("../public/fonts/HDColton-XWideRegular.woff");
+}
+@font-face {
+  font-family: Colton Display;
+  font-weight: 800;
+  font-stretch: expanded;
+  font-style: normal;
+  src: url("../public/fonts/HDColton-XWideBold.woff");
+}
+
+#__next {
+  overflow: clip;
+}
