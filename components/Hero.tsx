@@ -2,6 +2,7 @@ import React from "react";
 import { alpha, Box, Button, Container, Typography } from "@mui/material";
 import { colors, typography } from "../styles/theme";
 import Blobs from "./Blobs";
+import MetaverseBackground from "./MetaverseBackground";
 
 const Hero = () => {
   return (
@@ -17,6 +18,7 @@ const Hero = () => {
         zIndex: 1,
       }}
     >
+      <MetaverseBackground />
       <Blobs />
       <Container
         sx={{

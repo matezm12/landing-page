@@ -17,6 +17,7 @@ import Blob1 from "../public/images/blobs/1.png";
 import Blob2 from "../public/images/blobs/2.png";
 import Blob3 from "../public/images/blobs/3.png";
 import shadows from "@mui/material/styles/shadows";
+import MetaverseBackground from "./MetaverseBackground";
 
 const CTASection = () => {
   return (
@@ -34,6 +35,7 @@ const CTASection = () => {
         zIndex: 1,
       }}
     >
+      <MetaverseBackground />
       <Container>
         <Box sx={{ position: "relative" }}>
           <Box
