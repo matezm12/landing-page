@@ -19,11 +19,11 @@ export const colors = {
   green: tokens.Primary.Green.value,
 }
 
-const _gradients = {};
-Object.keys(tokens.Gradients).forEach((gradient) => {
- _gradients[gradient] = tokens.Gradients[gradient].value
-})
-export const gradients = {..._gradients}
+export const gradients = {
+  "Iris-Black": "linear-gradient(180deg, #06071a 39.58%, #1e2567 100%)",
+  "Linear": "linear-gradient(135deg, #05d3fb 0%, #5361f8 14.58%, #d362df 41.15%, #f8ba26 67.19%, #49f128 85.42%, #05d3fb 100%)",
+  "Button": "linear-gradient(180deg, #161839 0%, #06071a 100%)",
+}
 
 export const gradientBorderStyles = {
   border: `solid 2px transparent`,
