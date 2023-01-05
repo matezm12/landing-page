@@ -1,10 +1,10 @@
 import React from "react";
-import { Box, Button, Container, Grid, Stack } from "@mui/material";
+import { Box, Container, Stack } from "@mui/material";
 import Image from "next/image";
 import Link from "next/link";
 import Navlink from "../components/Navlink";
 import Logo from "../components/Logo";
-import Logomark from "../public/images/logomark.png";
+import Logomark from "../public/images/Logomark.png";
 import useIsDesktop from "../hooks/useIsDesktop";
 
 const Header = () => {
