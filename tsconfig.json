@@ -22,7 +22,7 @@
     "jsx": "preserve",
     "incremental": true
   },
-  "include": ["src", "next-env.d.ts", "**/*.ts", "**/*.tsx", "declaration.d.ts"],
+  "include": ["src", "next-env.d.ts", "**/*.ts", "**/*.tsx", "declaration.d.ts", "lib/lamina/vanilla.js"],
   "exclude": [
     "node_modules"
   ]

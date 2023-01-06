@@ -78,6 +78,7 @@ const WrapperGraphic = ({
     >
       <Noise opacity={0.5} />
       <Box
+        component="div"
         sx={{
           background: color ? color : colors.iris[900],
           position: "absolute",
@@ -88,6 +89,7 @@ const WrapperGraphic = ({
       >
         {icon && (
           <Box
+            component="div"
             sx={{
               width: "100%",
               height: "100%",
@@ -110,6 +112,7 @@ const WrapperGraphic = ({
           </Box>
         )}
         <Box
+          component="div"
           sx={{
             borderRadius: 999,
             background: wrapperBackground,

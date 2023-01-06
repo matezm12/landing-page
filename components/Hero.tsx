@@ -46,6 +46,7 @@ const Hero = () => {
             Enter The
           </Box>
           <Box
+            component="div"
             sx={{
               textShadow: `0 4px 64px rgba(255,255,255,0.3)`,
               display: "block",

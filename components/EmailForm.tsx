@@ -49,7 +49,7 @@ export const EmailForm = () => {
 
   return (
     <form onSubmit={onSubmit}>
-      <Box display="flex" alignItems="center">
+      <Box component="div" display="flex" alignItems="center">
         {!signupSuccess ? (
           <>
             <Input
@@ -82,7 +82,7 @@ export const EmailForm = () => {
             />
           </>
         ) : (
-          <Box>
+          <Box component="div">
             <Typography align="center" color="textPrimary">
               One more step {email}! Check your email and confirm your
               subscription to Polywrap's Newsletter.

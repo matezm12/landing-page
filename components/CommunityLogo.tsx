@@ -8,6 +8,7 @@ const CommunityLogo = ({ link, icon, title }: CommunityProps) => {
   return (
     <Link href={link ? link : "#"} target="_blank" rel="noredirect">
       <Box
+        component="div"
         sx={{
           height: 40,
           width: "100%",

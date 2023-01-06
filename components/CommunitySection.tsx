@@ -22,6 +22,7 @@ const CommunitySection = () => {
     >
       <Container sx={{ position: "relative" }}>
         <Box
+          component="div"
           sx={{
             width: "100%",
             position: "relative",
@@ -58,7 +59,10 @@ const CommunitySection = () => {
             return <WrapperGraphic key={protocol.title} {...protocol} />;
           })}
         </Box>
-        <Box sx={{ position: "relative", top: [-24, -48, -72, -96] }}>
+        <Box
+          component="div"
+          sx={{ position: "relative", top: [-24, -48, -72, -96] }}
+        >
           <SectionTitle top="Leading" bottom="The Charge" alignment="center" />
           <DividerTitle>Builders</DividerTitle>
           <Grid

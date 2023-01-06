@@ -21,8 +21,9 @@ const blobs: BlobProps = {
 
 const BenefitCard = ({ slug, color, title, description }: BenefitCardProps) => {
   return (
-    <Box sx={{ position: "relative" }}>
+    <Box component="div" sx={{ position: "relative" }}>
       <Box
+        component="div"
         sx={{
           position: "absolute",
           left: "50%",
@@ -33,6 +34,7 @@ const BenefitCard = ({ slug, color, title, description }: BenefitCardProps) => {
         }}
       >
         <Box
+          component="div"
           sx={{
             "@keyframes shadow": {
               "0%, 100%": {
@@ -58,6 +60,7 @@ const BenefitCard = ({ slug, color, title, description }: BenefitCardProps) => {
           }}
         />
         <Box
+          component="div"
           sx={{
             "@keyframes float": {
               "0%, 100%": {
@@ -80,6 +83,7 @@ const BenefitCard = ({ slug, color, title, description }: BenefitCardProps) => {
         </Box>
       </Box>
       <Box
+        component="div"
         sx={{
           position: "absolute",
           background: colors[color],
@@ -90,6 +94,7 @@ const BenefitCard = ({ slug, color, title, description }: BenefitCardProps) => {
         }}
       />
       <Box
+        component="div"
         sx={{
           background: `linear-gradient(180deg, ${colors.iris[800]} 0%, #0F1031 97.92%)`,
           px: 4,

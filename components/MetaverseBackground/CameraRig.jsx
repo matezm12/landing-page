@@ -18,6 +18,7 @@ const initPosition = [1.771423577047188, 1.2, -3.4364543723730123];
 
 const CameraRig = () => {
   const { camera } = useThree();
+  ``;
   const mouse = useLerpedMouse();
   useFrame(() => {
     camera.position.fromArray(initPosition);

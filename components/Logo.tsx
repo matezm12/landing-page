@@ -9,6 +9,7 @@ interface LogoProps {
 const Logo = ({ height = 48, animateBorderWidth = false }) => {
   return (
     <Box
+      component="div"
       sx={{
         height: height,
         position: "relative",

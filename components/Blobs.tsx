@@ -33,6 +33,7 @@ export const Blob = ({
 }: BlobProps) => {
   return (
     <Box
+      component="div"
       sx={{
         "@keyframes float": {
           "0%, 100%": {
@@ -139,7 +140,10 @@ const blobs = [
 
 const Blobs = () => {
   return (
-    <Box sx={{ position: "absolute", inset: 0, pointerEvents: "none" }}>
+    <Box
+      component="div"
+      sx={{ position: "absolute", inset: 0, pointerEvents: "none" }}
+    >
       {blobs.map((blob, i) => (
         <Blob key={i} animationDelay={i} {...blob} />
       ))}

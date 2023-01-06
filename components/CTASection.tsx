@@ -37,8 +37,9 @@ const CTASection = () => {
     >
       <MetaverseBackground fade="top" />
       <Container>
-        <Box sx={{ position: "relative" }}>
+        <Box component="div" sx={{ position: "relative" }}>
           <Box
+            component="div"
             sx={{
               backgroundColor: alpha(colors.black, 0.8),
               backdropFilter: "blur(8px)",
@@ -66,6 +67,7 @@ const CTASection = () => {
             </Stack>
           </Box>
           <Box
+            component="div"
             sx={{
               position: "absolute",
               borderRadius: 4,

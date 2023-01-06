@@ -9,6 +9,7 @@ interface NoiseProps {
 const Noise = ({ opacity }: NoiseProps) => {
   return (
     <Box
+      component="div"
       sx={{
         backgroundImage: `url(${NoiseImg.src})`,
         backgroundSize: 600,

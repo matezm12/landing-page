@@ -15,6 +15,7 @@ const dividerStyles = {
 const DividerTitle = ({ children }: DividerTitleProps) => {
   return (
     <Box
+      component="div"
       sx={{
         alignItems: "center",
         display: "flex",
@@ -24,7 +25,7 @@ const DividerTitle = ({ children }: DividerTitleProps) => {
         width: "100%",
       }}
     >
-      <Box sx={{ ...dividerStyles }} />
+      <Box component="div" sx={{ ...dividerStyles }} />
       <Typography
         variant="h6"
         sx={{
@@ -36,7 +37,7 @@ const DividerTitle = ({ children }: DividerTitleProps) => {
       >
         {children}
       </Typography>
-      <Box sx={{ ...dividerStyles }} />
+      <Box component="div" sx={{ ...dividerStyles }} />
     </Box>
   );
 };

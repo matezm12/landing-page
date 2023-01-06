@@ -15,14 +15,17 @@ import { footerLinks } from "../constants/footer";
 import { colors, gradients, typography } from "../styles/theme";
 
 const GradientDivider = () => (
-  <Box sx={{ width: "100%", height: 2, background: gradients.Linear }} />
+  <Box
+    component="div"
+    sx={{ width: "100%", height: 2, background: gradients.Linear }}
+  />
 );
 
 const Header = () => {
   return (
     <footer>
       <GradientDivider />
-      <Box sx={{ py: 20 }}>
+      <Box component="div" sx={{ py: 20 }}>
         <Container>
           <Grid container spacing={6}>
             <Grid item xs={12} lg={4}>
@@ -39,7 +42,7 @@ const Header = () => {
                   return (
                     <Grid key={i} item xs={12} md={4}>
                       <Stack spacing={3}>
-                        <Box>
+                        <Box component="div">
                           <Typography
                             component="h2"
                             fontWeight={800}

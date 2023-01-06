@@ -16,6 +16,7 @@ const Header = () => {
     >
       <Container>
         <Box
+          component="div"
           sx={{
             display: "flex",
             alignItems: "center",

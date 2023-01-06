@@ -1,4 +1,4 @@
-import { Vector3 } from 'three'
+import { LayerProps } from 'lamina/types'
 
 export const NoiseTypes: {
   [key: string]: string
@@ -27,5 +27,5 @@ export interface DisplaceProps extends LayerProps {
   scale?: number
   mapping?: MappingType
   type?: NoiseType
-  offset?: THREE.Vector3 | [number, number, number]
+  offset?: [number, number, number] | any
 }
