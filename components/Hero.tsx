@@ -18,7 +18,7 @@ const Hero = () => {
         zIndex: 1,
       }}
     >
-      <MetaverseBackground fade="bottom" />
+      <MetaverseBackground fade="bottom" opacity={0.4} />
       <Blobs />
       <Container
         sx={{
