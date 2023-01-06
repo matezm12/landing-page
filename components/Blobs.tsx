@@ -139,7 +139,7 @@ const blobs = [
 
 const Blobs = () => {
   return (
-    <Box sx={{ zIndex: -1, position: "absolute", inset: 0 }}>
+    <Box sx={{ position: "absolute", inset: 0, pointerEvents: "none" }}>
       {blobs.map((blob, i) => (
         <Blob key={i} animationDelay={i} {...blob} />
       ))}

@@ -44,3 +44,7 @@
 #__next {
   overflow: clip;
 }
+
+#leva__root {
+  display: none;
+}

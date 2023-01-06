@@ -14,14 +14,27 @@
     "@mui/icons-material": "^5.11.0",
     "@mui/material": "^5.10.15",
     "@mui/styles": "^5.10.15",
+    "@react-three/drei": "^9.51.13",
+    "@react-three/fiber": "^8.10.0",
     "@types/node": "18.11.9",
     "@types/react": "18.0.25",
     "@types/react-dom": "18.0.9",
     "eslint": "8.28.0",
     "eslint-config-next": "13.0.4",
+    "glslify": "^7.1.1",
+    "lamina": "^1.1.23",
+    "leva": "^0.9.34",
+    "maath": "^0.5.1",
     "next": "13.0.4",
+    "randomish": "^0.1.6",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "typescript": "4.9.3"
+    "three": "^0.148.0",
+    "three-custom-shader-material": "^5.0.0",
+    "typescript": "4.9.3",
+    "vfx-composer-r3f": "^0.4.0"
+  },
+  "devDependencies": {
+    "r3f-perf": "^6.6.3"
   }
 }
