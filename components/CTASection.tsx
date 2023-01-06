@@ -35,7 +35,7 @@ const CTASection = () => {
         zIndex: 1,
       }}
     >
-      <MetaverseBackground fade="top" />
+      <MetaverseBackground fade="top" opacity={0.7} />
       <Container>
         <Box component="div" sx={{ position: "relative" }}>
           <Box

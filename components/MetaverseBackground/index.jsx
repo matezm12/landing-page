@@ -25,7 +25,7 @@ const fades = {
   )} 15%, ${colors.black}, ${alpha(colors.black, 0)} 85%)`,
 };
 
-const MetaverseBackground = ({ fade }) => {
+const MetaverseBackground = ({ fade, opacity }) => {
   const { intensity, radius } = useControls({
     intensity: { value: 2.4, min: 0, max: 4, step: 0.01 },
     radius: { value: 1.2, min: 0, max: 2, step: 0.01 },
@@ -37,7 +37,7 @@ const MetaverseBackground = ({ fade }) => {
       sx={{
         inset: 0,
         position: "absolute",
-        opacity: 0.4,
+        opacity: opacity ? opacity : 0.4,
         zIndex: -1,
         "&:after": {
           position: "absolute",
