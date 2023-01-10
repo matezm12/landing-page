@@ -5,6 +5,19 @@ export const easings = {
   cubic: "cubic-bezier(0.35, 1.5, 0.65, 1)",
 }
 
+export const animations = {
+  float: {
+    "@keyframes float": {
+      "0%, 100%": {
+        transform: "translateY(-3%)",
+      },
+      "50%": {
+        transform: "translateY(0%)",
+      },
+    },
+  }
+}
+
 export const colors = {
   white: tokens.White[1000].value,
   black: tokens.Primary.Black.value,

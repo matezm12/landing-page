@@ -4,7 +4,7 @@ import Image, { StaticImageData } from "next/image";
 import MagentaBlob from "../public/images/blobs/multi.png";
 import CyanBlob from "../public/images/blobs/user-friendly.png";
 import GreenBlob from "../public/images/blobs/secure.png";
-import { colors, easings } from "../styles/theme";
+import { animations, colors } from "../styles/theme";
 import { BenefitCardProps } from "../constants/benefits";
 
 interface BlobProps {
@@ -62,14 +62,7 @@ const BenefitCard = ({ slug, color, title, description }: BenefitCardProps) => {
         <Box
           component="div"
           sx={{
-            "@keyframes float": {
-              "0%, 100%": {
-                transform: "translateY(-3%)",
-              },
-              "50%": {
-                transform: "translateY(0%)",
-              },
-            },
+            ...animations.float,
             animation: `float 5s ease-in-out infinite`,
             animationDelay:
               color === "cyan" ? `700ms` : color === "green" ? `1400ms` : 0,

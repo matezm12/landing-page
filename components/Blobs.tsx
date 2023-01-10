@@ -13,6 +13,7 @@ import Blob9 from "../public/images/hero/blobs/9.webp";
 import Blob10 from "../public/images/hero/blobs/10.webp";
 import Blob11 from "../public/images/hero/blobs/11.webp";
 import Blob12 from "../public/images/hero/blobs/12.webp";
+import { animations } from "../styles/theme";
 
 export interface BlobProps {
   src: StaticImageData;
@@ -35,14 +36,7 @@ export const Blob = ({
     <Box
       component="div"
       sx={{
-        "@keyframes float": {
-          "0%, 100%": {
-            transform: `translateY(0)`,
-          },
-          "50%": {
-            transform: `translateY(4%)`,
-          },
-        },
+        ...animations.float,
         animation: `float 8s infinite ease-in-out`,
         animationDelay: animationDelay ? `${animationDelay * 500}ms` : null,
         width: width,
