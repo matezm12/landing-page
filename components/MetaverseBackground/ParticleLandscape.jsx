@@ -5,8 +5,8 @@ import React, { useEffect, useRef, useMemo } from "react";
 import { useFrame, extend, useThree } from "@react-three/fiber";
 import { Color as ColorLayer } from "lamina";
 import { mergeBufferGeometries } from "three/examples/jsm/utils/BufferGeometryUtils";
-import Displace from "../../lib/lamina/Displace";
-import LayerMaterial from "../../lib/lamina/LayerMaterial";
+import Displace from "./lib/lamina/Displace";
+import LayerMaterial from "./lib/lamina/LayerMaterial";
 extend({ Displace });
 
 const ParticleLandscape = () => {
@@ -92,7 +92,8 @@ const ParticleLandscape = () => {
         depthTest={false}
         toneMapped={false}
       >
-        <ColorLayer color={new Color("#A114C3").multiplyScalar(10)} />
+        {/* Brightness */}
+        <ColorLayer color={new Color("#A114C3").multiplyScalar(15)} />
         <displace
           strength={noiseStrength}
           strengthHeight={noiseStrengthHeight}

@@ -104,7 +104,7 @@ class LayerMaterial extends CustomShaderMaterial {
           vec4 _mvPosition = modelViewMatrix * vec4(position, 1.);
           vDistance = abs(uFocus - -_mvPosition.z);
 
-          gl_PointSize = 4.0 * viewport;
+          gl_PointSize = 2.0 * viewport;
 
           float dofBlur = (step(0.0, position.y)) * vDistance * uBlur;
           v_dofBlur = dofBlur;

@@ -14,6 +14,7 @@ const BenefitsSection = () => {
         justifyContent: "center",
         minHeight: "100vh",
         width: "100%",
+        mt: [8, 8, 0],
         position: "relative",
         zIndex: 1,
       }}
