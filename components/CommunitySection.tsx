@@ -24,7 +24,8 @@ const CommunitySection = () => {
         <Box
           component="div"
           sx={{
-            width: "100%",
+            width: ["100%", "100%"],
+            ml: ["0%", 0],
             position: "relative",
           }}
         >

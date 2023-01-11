@@ -63,9 +63,17 @@ const Header = () => {
                               target="_blank"
                               rel="noredirect"
                               underline="none"
-                              sx={{ "&:hover": { color: colors.white } }}
+                              sx={{
+                                width: "fit-content",
+                                display: "inline",
+                                "&:hover": {
+                                  color: colors.white,
+                                },
+                              }}
                             >
-                              <Typography>{link.name}</Typography>
+                              <Typography sx={{ color: "inherit" }}>
+                                {link.name}
+                              </Typography>
                             </Link>
                           ))}
                         </Stack>
