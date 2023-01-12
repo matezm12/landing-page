@@ -113,8 +113,8 @@ const SolutionSection = () => {
       <Container sx={{ position: "relative" }}>
         <Stack spacing={4}>
           <SectionTitle top="Polywrap" bottom="Solves This..." />
-          <Typography
-            variant="body1"
+          <Box
+            component="div"
             sx={{
               color: alpha(colors.white, 0.8),
               maxWidth: 550,
@@ -139,13 +139,15 @@ const SolutionSection = () => {
                   top: "-4.2%",
                   right: "-25.4%",
                   width: "58%",
+                  aspectRatio: "1230/1202",
                   opacity: [0, 1],
                 }}
               >
                 <Image
                   src={SolutionsBlobCyan}
                   alt=""
-                  style={{ width: "100%", height: "auto" }}
+                  fill
+                  sizes="max-width(1200px) 464px, max-width(768px) 380px"
                 />
               </Box>
               <Box
@@ -175,7 +177,7 @@ const SolutionSection = () => {
             Polywrap lets you compose software like never before. With Polywrap
             you can turn your project into a set of endlessly extensible
             software modules that run anywhere.
-          </Typography>
+          </Box>
         </Stack>
         <Box
           component="div"

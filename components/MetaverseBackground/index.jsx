@@ -62,4 +62,4 @@ const MetaverseBackground = ({ fade, opacity }) => {
   );
 };
 
-export default MetaverseBackground;
+export default React.memo(MetaverseBackground);

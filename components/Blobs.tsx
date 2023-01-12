@@ -15,6 +15,10 @@ import Blob11 from "../public/images/hero/blobs/11.webp";
 import Blob12 from "../public/images/hero/blobs/12.webp";
 import { animations } from "../styles/theme";
 
+interface BlobsProps {
+  section?: string;
+}
+
 export interface BlobProps {
   src: StaticImageData;
   width: string | string[];
@@ -22,6 +26,7 @@ export interface BlobProps {
   top: string | string[];
   animationDelay?: number;
   blur?: string | string[];
+  priority?: boolean;
 }
 
 export const Blob = ({
@@ -31,6 +36,7 @@ export const Blob = ({
   top,
   blur,
   animationDelay,
+  priority,
 }: BlobProps) => {
   return (
     <Box
@@ -46,7 +52,12 @@ export const Blob = ({
         filter: `blur(${blur})`,
       }}
     >
-      <Image src={src} alt="" style={{ width: "100%", height: "auto" }} />
+      <Image
+        src={src}
+        alt=""
+        style={{ width: "100%", height: "auto" }}
+        priority={priority}
+      />
     </Box>
   );
 };
@@ -132,14 +143,19 @@ const blobs = [
   },
 ];
 
-const Blobs = () => {
+const Blobs = ({ section }: BlobsProps) => {
   return (
     <Box
       component="div"
       sx={{ position: "absolute", inset: 0, pointerEvents: "none" }}
     >
       {blobs.map((blob, i) => (
-        <Blob key={i} animationDelay={i} {...blob} />
+        <Blob
+          key={i}
+          animationDelay={i}
+          {...blob}
+          priority={section === "hero"}
+        />
       ))}
     </Box>
   );

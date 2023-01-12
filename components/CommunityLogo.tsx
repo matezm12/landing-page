@@ -11,11 +11,13 @@ const CommunityLogo = ({ link, icon, title }: CommunityProps) => {
         component="div"
         sx={{
           height: 40,
-          width: "100%",
+          width: "80%",
+          ml: "10%",
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
           opacity: 0.8,
+          position: "relative",
           transform: "scale(1)",
           transition: `opacity 0.5s ${easings.cubic}, transform 0.5s ${easings.cubic}`,
           "&:hover": {
@@ -27,12 +29,8 @@ const CommunityLogo = ({ link, icon, title }: CommunityProps) => {
         <Image
           src={icon}
           alt={title}
-          style={{
-            objectFit: "contain",
-            height: "auto",
-            maxHeight: "100%",
-            maxWidth: "80%",
-          }}
+          fill
+          sizes="max-width(1268px) 180px, max-width(550px) 150px"
         />
       </Box>
     </Link>

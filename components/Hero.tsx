@@ -19,7 +19,7 @@ const Hero = () => {
       }}
     >
       <MetaverseBackground fade="bottom" opacity={0.4} />
-      <Blobs />
+      <Blobs section="hero" />
       <Container
         sx={{
           alignItems: "center",

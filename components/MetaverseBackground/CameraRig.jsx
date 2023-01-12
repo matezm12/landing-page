@@ -8,7 +8,6 @@ function useLerpedMouse() {
   const previous = new Vector2();
   useFrame((state) => {
     previous.copy(lerped.current);
-    console.log(mouse);
     lerped.current.lerp(mouse, 0.005);
   });
   return lerped;

@@ -1,6 +1,6 @@
 import { StaticImageData } from "next/image";
 
-import AscensiveAssets from "../public/images/community/Ascensive Assets.svg"
+import AscensiveAssets from "../public/images/community/Ascensive-Assets.svg"
 import Atka from "../public/images/community/Atka.svg"
 import Blockwatch from "../public/images/community/Blockwatch.svg"
 import Chainsafe from "../public/images/community/Chainsafe.svg"
