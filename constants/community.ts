@@ -148,7 +148,7 @@ export const community: CommunityProps[] = [
     position: {
       x: 81,
       y: 45,
-      r: ["8vmin","8vmin","8vmin","14vmin"],
+      r: ["calc(var(--vmin, 1vmin) * 8)","calc(var(--vmin, 1vmin) * 8)","calc(var(--vmin, 1vmin) * 8)","calc(var(--vmin, 1vmin) * 14)"],
       rot: -28,
     }
   },
@@ -161,7 +161,7 @@ export const community: CommunityProps[] = [
     position: {
       x: 61,
       y: 18,
-      r: ["12vmin","12vmin","12vmin","18vmin"],
+      r: ["calc(var(--vmin, 1vmin) * 12)","calc(var(--vmin, 1vmin) * 12)","calc(var(--vmin, 1vmin) * 12)","calc(var(--vmin, 1vmin) * 18)"],
       rot: -12,
     }
   },
@@ -174,7 +174,7 @@ export const community: CommunityProps[] = [
     position: {
       x: 71,
       y: 35,
-      r: ["7vmin","7vmin","7vmin","11vmin"],
+      r: ["calc(var(--vmin, 1vmin) * 7)","calc(var(--vmin, 1vmin) * 7)","calc(var(--vmin, 1vmin) * 7)","calc(var(--vmin, 1vmin) * 11)"],
       rot: 7,
     }
   },
@@ -187,7 +187,7 @@ export const community: CommunityProps[] = [
     position: {
       x: 37,
       y: 29,
-      r: ["9vmin","9vmin","9vmin","13vmin"],
+      r: ["calc(var(--vmin, 1vmin) * 9)","calc(var(--vmin, 1vmin) * 9)","calc(var(--vmin, 1vmin) * 9)","calc(var(--vmin, 1vmin) * 13)"],
       rot: 4,
     }
   },
@@ -200,7 +200,7 @@ export const community: CommunityProps[] = [
     position: {
       x: 22,
       y: 66,
-      r: ["12vmin","12vmin","12vmin","18vmin"],
+      r: ["calc(var(--vmin, 1vmin) * 12)","calc(var(--vmin, 1vmin) * 12)","calc(var(--vmin, 1vmin) * 12)","calc(var(--vmin, 1vmin) * 18)"],
       rot: 8,
     }
   },
@@ -213,7 +213,7 @@ export const community: CommunityProps[] = [
     position: {
       x: 40,
       y: 78,
-      r: ["6vmin","6vmin","6vmin","10vmin"],
+      r: ["calc(var(--vmin, 1vmin) * 6)","calc(var(--vmin, 1vmin) * 6)","calc(var(--vmin, 1vmin) * 6)","calc(var(--vmin, 1vmin) * 10)"],
       rot: 18,
     }
   },
@@ -226,7 +226,7 @@ export const community: CommunityProps[] = [
     position: {
       x: 66,
       y: 57,
-      r: ["6vmin","6vmin","6vmin","11vmin"],
+      r: ["calc(var(--vmin, 1vmin) * 6)","calc(var(--vmin, 1vmin) * 6)","calc(var(--vmin, 1vmin) * 6)","calc(var(--vmin, 1vmin) * 11)"],
       rot: -30,
     }
   },
@@ -239,7 +239,7 @@ export const community: CommunityProps[] = [
     position: {
       x: 70,
       y: 73,
-      r: ["12vmin","12vmin","12vmin","17vmin"],
+      r: ["calc(var(--vmin, 1vmin) * 12)","calc(var(--vmin, 1vmin) * 12)","calc(var(--vmin, 1vmin) * 12)","calc(var(--vmin, 1vmin) * 17)"],
       rot: -16,
     }
   },
@@ -252,7 +252,7 @@ export const community: CommunityProps[] = [
     position: {
       x: 15,
       y: 43,
-      r: ["10vmin","10vmin","10vmin","16vmin"],
+      r: ["calc(var(--vmin, 1vmin) * 10)","calc(var(--vmin, 1vmin) * 10)","calc(var(--vmin, 1vmin) * 10)","calc(var(--vmin, 1vmin) * 16)"],
       rot: -31,
     }
   },

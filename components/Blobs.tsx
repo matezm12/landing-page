@@ -78,7 +78,7 @@ const blobs = [
     src: Blob1, // green
     aspect: "711/720",
     render: [181, 152],
-    width: ["33vmin", "20vmin"],
+    width: ["calc(var(--vmin, 1vmin) * 33)", "calc(var(--vmin, 1vmin) * 20)"],
     left: ["-10%", "-7%", "-6%", "-5%"],
     top: ["15%", "12%"],
   },
@@ -86,7 +86,7 @@ const blobs = [
     src: Blob5, // yellow
     aspect: "618/616",
     render: [190, 160],
-    width: "21vmin",
+    width: "calc(var(--vmin, 1vmin) * 21)",
     left: ["25%", "15%"],
     top: ["89%", "72%"],
     blur: "2px",
@@ -95,7 +95,7 @@ const blobs = [
     src: Blob2, // cyan
     aspect: "1305/1598",
     render: [453, 381],
-    width: "50vmin",
+    width: "calc(var(--vmin, 1vmin) * 50)",
     left: "-12%",
     top: ["79%", "55%"],
   },
@@ -103,7 +103,7 @@ const blobs = [
     src: Blob3, // magenta
     aspect: "236/236",
     render: [73, 61],
-    width: "8vmin",
+    width: "calc(var(--vmin, 1vmin) * 8)",
     left: ["8%", "16%"],
     top: ["65%", "45%"],
     blur: "3px",
@@ -112,7 +112,7 @@ const blobs = [
     src: Blob4, // magenta
     aspect: "347/349",
     render: [91, 77],
-    width: "10vmin",
+    width: "calc(var(--vmin, 1vmin) * 10)",
     left: ["13%", "18%"],
     top: ["68%", "50%"],
     blur: "2px",
@@ -121,7 +121,7 @@ const blobs = [
     src: Blob6, // green
     aspect: "461/447",
     render: [136, 114],
-    width: ["18vmin", "15vmin"],
+    width: ["calc(var(--vmin, 1vmin) * 18)", "calc(var(--vmin, 1vmin) * 15)"],
     left: ["36%", "27%"],
     top: ["76%", "62%"],
   },
@@ -129,7 +129,7 @@ const blobs = [
     src: Blob7, // yellow
     aspect: "502/430",
     render: [163, 137],
-    width: ["29vmin", "18vmin"],
+    width: ["calc(var(--vmin, 1vmin) * 29)", "calc(var(--vmin, 1vmin) * 18)"],
     left: ["66%", "68%"],
     top: ["66%", "70%"],
   },
@@ -137,7 +137,7 @@ const blobs = [
     src: Blob8, // cyan
     aspect: "236/242",
     render: [55, 53],
-    width: ["11vmin", "6vmin"],
+    width: ["calc(var(--vmin, 1vmin) * 11)", "calc(var(--vmin, 1vmin) * 6)"],
     left: ["87%", "74%"],
     top: ["67%", "64%"],
     blur: "4px",
@@ -146,7 +146,7 @@ const blobs = [
     src: Blob9, // green
     aspect: "301/334",
     render: [64, 54],
-    width: ["9vmin", "7vmin"],
+    width: ["calc(var(--vmin, 1vmin) * 9)", "calc(var(--vmin, 1vmin) * 7)"],
     left: ["93%", "74%"],
     top: ["53%", "25%"],
     blur: "3px",
@@ -155,7 +155,7 @@ const blobs = [
     src: Blob11, // yellow
     aspect: "222/230",
     render: [63, 54],
-    width: "7vmin",
+    width: "calc(var(--vmin, 1vmin) * 7)",
     left: "90%",
     top: ["94%", "73%"],
     blur: "2px",
@@ -164,7 +164,7 @@ const blobs = [
     src: Blob10, // magenta
     aspect: "720/776",
     render: [245, 205],
-    width: ["35vmin", "27vmin"],
+    width: ["calc(var(--vmin, 1vmin) * 35)", "calc(var(--vmin, 1vmin) * 27)"],
     left: ["64%", "79%"],
     top: ["83%", "50%"],
   },
@@ -172,7 +172,7 @@ const blobs = [
     src: Blob12, // cyan
     aspect: "520/608",
     render: [227, 190],
-    width: ["31vmin", "25vmin"],
+    width: ["calc(var(--vmin, 1vmin) * 31)", "calc(var(--vmin, 1vmin) * 25)"],
     left: ["76%", "90%"],
     top: ["16%", "20%"],
   },

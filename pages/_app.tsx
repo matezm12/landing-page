@@ -20,6 +20,7 @@ export default function App({ Component, pageProps }: AppProps) {
     let vw = window.innerWidth * 0.01;
     document.body.style.setProperty("--vh", `${vh}px`);
     document.body.style.setProperty("--vw", `${vw}px`);
+    document.body.style.setProperty("--vmin", `${Math.min(vw, vh)}px`);
     console.log(vw, vh);
 
     window.addEventListener("resize", () => {
@@ -27,6 +28,7 @@ export default function App({ Component, pageProps }: AppProps) {
       vw = window.innerWidth * 0.01;
       document.body.style.setProperty("--vh", `${vh}px`);
       document.body.style.setProperty("--vw", `${vw}px`);
+      document.body.style.setProperty("--vmin", `${Math.min(vw, vh)}px`);
     });
   }, []);
 

@@ -32,7 +32,7 @@ const CommunitySection = () => {
           {[...Array(12)].map((unknownWrapper, i) => {
             unknownWrapper = {
               position: {
-                r: `${Math.random() * 18 + 1}vmin`,
+                r: `${Math.random() * 18 + 1}calc(var(--vmin, 1vmin) * )`,
                 x: Math.random() * 80 + 10,
                 y: Math.random() * 80 + 10,
               },

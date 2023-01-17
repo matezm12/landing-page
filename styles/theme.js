@@ -82,7 +82,7 @@ const leading = {
 const letterSpacing = {
   PrimaryHeading: tokens["Primary Heading"].value,
   PrimaryText: tokens["Primary Text"].value,
-  UppercaseDisplay: "1vmin",
+  UppercaseDisplay: "calc(var(--vmin, 1vmin) * 1)",
 }
 
 const displayHeadingProps = {
@@ -99,27 +99,27 @@ export const typography = {
   letterSpacing: {...letterSpacing},
   display: {
     h1: {
-      fontSize: `clamp(7vmin, ${fontSizes[14]}px, 8vmin)`,
+      fontSize: `clamp(calc(var(--vmin, 1vmin) * 7), ${fontSizes[14]}px, calc(var(--vmin, 1vmin) * 8))`,
       ...displayHeadingProps,
     },
     h2: {
-      fontSize: `clamp(6vmin, ${fontSizes[13]}px, 7vmin)`,
+      fontSize: `clamp(calc(var(--vmin, 1vmin) * 6), ${fontSizes[13]}px, calc(var(--vmin, 1vmin) * 7))`,
       ...displayHeadingProps,
     },
     h3: {
-      fontSize: `clamp(5vmin, ${fontSizes[12]}px, 6vmin)`,
+      fontSize: `clamp(calc(var(--vmin, 1vmin) * 5), ${fontSizes[12]}px, calc(var(--vmin, 1vmin) * 6))`,
       ...displayHeadingProps,
     },
     h4: {
-      fontSize: `clamp(4vmin, ${fontSizes[11]}px, 5vmin)`,
+      fontSize: `clamp(calc(var(--vmin, 1vmin) * 4), ${fontSizes[11]}px, calc(var(--vmin, 1vmin) * 5))`,
       ...displayHeadingProps,
     },
     h5: {
-      fontSize: `clamp(3vmin, ${fontSizes[10]}px, 4vmin)`,
+      fontSize: `clamp(calc(var(--vmin, 1vmin) * 3), ${fontSizes[10]}px, calc(var(--vmin, 1vmin) * 4))`,
       ...displayHeadingProps,
     },
     h6: {
-      fontSize: `clamp(2vmin, ${fontSizes[9]}px, 3vmin)`,
+      fontSize: `clamp(calc(var(--vmin, 1vmin) * 2), ${fontSizes[9]}px, calc(var(--vmin, 1vmin) * 3))`,
       ...displayHeadingProps,
     },
   }
@@ -173,7 +173,7 @@ export const theme = createTheme(defaultTheme, {
           fontFamily: fontFamilies.extended,
           fontSize: "1rem",
           fontWeight: 800,
-          letterSpacing: "0.25vmin",
+          letterSpacing: "0.calc(var(--vmin, 1vmin) * 25)",
           lineHeight: 1,
           transitionDuration: "350ms",
           transitionTimingFunction: easings.cubic,
