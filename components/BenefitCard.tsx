@@ -27,9 +27,9 @@ const BenefitCard = ({ slug, color, title, description }: BenefitCardProps) => {
         sx={{
           position: "absolute",
           left: "50%",
-          top: -72,
+          top: ["-20%", "-40%", -72],
           transform: "translateX(-50%)",
-          width: "50%",
+          width: ["45%", "35%", "50%"],
           zIndex: 1,
         }}
       >
@@ -91,9 +91,9 @@ const BenefitCard = ({ slug, color, title, description }: BenefitCardProps) => {
         sx={{
           background: `linear-gradient(180deg, ${colors.iris[800]} 0%, #0F1031 97.92%)`,
           px: 4,
-          pt: 16,
+          pt: [14, 10, 16],
           pb: 8,
-          minHeight: 320,
+          minHeight: [null, null, 320],
           borderRadius: 6,
           clipPath: `polygon(100% 0%, 0% 0%, 0% 100%, 100% 100%, 100% 56px, calc(100% - 48px) 0)`,
           boxShadow: shadows[24],
