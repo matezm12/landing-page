@@ -17,7 +17,17 @@ export default function App({ Component, pageProps }: AppProps) {
     }
 
     let vh = window.innerHeight * 0.01;
+    let vw = window.innerWidth * 0.01;
     document.body.style.setProperty("--vh", `${vh}px`);
+    document.body.style.setProperty("--vw", `${vw}px`);
+    console.log(vw, vh);
+
+    window.addEventListener("resize", () => {
+      vh = window.innerHeight * 0.01;
+      vw = window.innerWidth * 0.01;
+      document.body.style.setProperty("--vh", `${vh}px`);
+      document.body.style.setProperty("--vw", `${vw}px`);
+    });
   }, []);
 
   return (

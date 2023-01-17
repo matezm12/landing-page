@@ -21,7 +21,7 @@ const SolutionSection = () => {
         alignItems: "center",
         display: "flex",
         justifyContent: "center",
-        minHeight: "100vh",
+        minHeight: "calc(var(--vh, 1vh) * 100)",
         width: "100%",
         position: "relative",
         zIndex: 1,
@@ -117,6 +117,7 @@ const SolutionSection = () => {
             component="div"
             sx={{
               color: alpha(colors.white, 0.8),
+              fontSize: 18,
               maxWidth: 550,
               position: "relative",
             }}

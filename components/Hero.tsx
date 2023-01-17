@@ -12,7 +12,8 @@ const Hero = () => {
         alignItems: "center",
         display: "flex",
         justifyContent: "center",
-        minHeight: "100vh",
+        height: "calc(var(--vh, 1vh) * 100)",
+        minHeight: "calc(var(--vh, 1vh) * 100)",
         width: "100%",
         position: "relative",
         zIndex: 1,
@@ -25,6 +26,7 @@ const Hero = () => {
           alignItems: "center",
           display: "flex",
           flexDirection: "column",
+          zIndex: 1,
         }}
       >
         <Typography

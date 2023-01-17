@@ -12,7 +12,7 @@ const BenefitsSection = () => {
         alignItems: "center",
         display: "flex",
         justifyContent: "center",
-        minHeight: "100vh",
+        minHeight: "calc(var(--vh, 1vh) * 100)",
         width: "100%",
         mt: [8, 8, 0],
         position: "relative",

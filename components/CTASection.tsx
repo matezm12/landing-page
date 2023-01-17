@@ -12,7 +12,7 @@ import SectionTitle from "./SectionTitle";
 import { colors, gradientBorderStyles, theme } from "../styles/theme";
 import Image from "next/image";
 import { Blob } from "./Blobs";
-import IDE from "../public/images/temp/IDE.png";
+import IDE from "../public/images/IDE.png";
 import Blob1 from "../public/images/blobs/1.png";
 import Blob2 from "../public/images/blobs/2.png";
 import Blob3 from "../public/images/blobs/3.png";
@@ -27,7 +27,7 @@ const CTASection = () => {
         alignItems: "center",
         display: "flex",
         justifyContent: "center",
-        minHeight: "100vh",
+        minHeight: "calc(var(--vh, 1vh) * 100)",
         py: 20,
         pb: [44, 20],
         width: "100%",

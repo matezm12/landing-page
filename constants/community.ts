@@ -23,7 +23,8 @@ import Safe from "../public/images/community/Safe.svg"
 import Swidge from "../public/images/community/Swidge.png"
 import Tezos from "../public/images/community/Tezos.svg"
 import TRGC from "../public/images/community/TRGC.svg"
-import Zeeprime from "../public/images/community/Zeeprime.svg"
+import TrueVentures from "../public/images/community/True-Ventures.png"
+import Zeeprime from "../public/images/community/Zeeprime.png"
 
 export interface CommunityProps {
   icon: StaticImageData;
@@ -94,6 +95,12 @@ export const community: CommunityProps[] = [
     icon: TRGC,
     link: "https://trgc.io/",
     title: "TRGC",
+    type: "backer"
+  },
+  {
+    icon: TrueVentures,
+    link: "https://trueventures.com/",
+    title: "True Ventures",
     type: "backer"
   },
   {

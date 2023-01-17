@@ -38,7 +38,7 @@ const MetaverseBackground = ({ fade, opacity }) => {
         inset: 0,
         position: "absolute",
         opacity: opacity ? opacity : 0.4,
-        zIndex: -1,
+        zIndex: 0,
         "&:after": {
           position: "absolute",
           inset: 0,

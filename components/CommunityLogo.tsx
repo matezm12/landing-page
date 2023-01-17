@@ -31,6 +31,7 @@ const CommunityLogo = ({ link, icon, title }: CommunityProps) => {
           alt={title}
           fill
           sizes="max-width(1268px) 180px, max-width(550px) 150px"
+          style={{ objectFit: "contain" }}
         />
       </Box>
     </Link>

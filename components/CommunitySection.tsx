@@ -16,7 +16,7 @@ const CommunitySection = () => {
         alignItems: "center",
         display: "flex",
         justifyContent: "center",
-        minHeight: "100vh",
+        minHeight: "calc(var(--vh, 1vh) * 100)",
         width: "100%",
       }}
     >
@@ -42,13 +42,18 @@ const CommunitySection = () => {
                 key={i}
                 {...unknownWrapper}
                 blur={Math.random() * 24 + 10}
-                opacity={Math.random() * 0.4 + 0.3}
+                opacity={Math.random() * 0.3 + 0.2}
               />
             );
           })}
           <Box
             component="div"
-            sx={{ aspectRatio: "1182/882", position: "relative", zIndex: 0 }}
+            sx={{
+              aspectRatio: "1182/882",
+              position: "relative",
+              zIndex: 0,
+              width: "100%",
+            }}
           >
             <Image
               src={LeadingTheChargeImage}
@@ -86,7 +91,7 @@ const CommunitySection = () => {
             sx={{ justifyContent: "center" }}
           >
             {backers.map((backer, i) => (
-              <Grid key={i} item xs={12 / 5}>
+              <Grid key={i} item xs={12 / 6}>
                 <CommunityLogo {...backer} />
               </Grid>
             ))}

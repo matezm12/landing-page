@@ -13,7 +13,7 @@ const ProblemSection = () => {
         alignItems: "center",
         display: "flex",
         justifyContent: "center",
-        minHeight: "80vh",
+        minHeight: "calc(var(--vh, 1vh) * 80)",
         width: "100%",
         mb: [16, 16, 0],
         position: "relative",
@@ -23,7 +23,11 @@ const ProblemSection = () => {
       <Box
         component="div"
         sx={{
-          width: ["90vw", "70vw", "50vw"],
+          width: [
+            "calc(var(--vw, 1vw) * 90)",
+            "calc(var(--vw, 1vw) * 70)",
+            "calc(var(--vw, 1vw) * 50)",
+          ],
           right: 0,
           bottom: [0, "-10%", 0],
           position: "absolute",
@@ -40,7 +44,11 @@ const ProblemSection = () => {
           <SectionTitle top="Siloed Software" bottom="Is No Fun" />
           <Typography
             variant="body1"
-            sx={{ color: alpha(colors.white, 0.8), maxWidth: 550 }}
+            sx={{
+              color: alpha(colors.white, 0.8),
+              fontSize: 18,
+              maxWidth: 550,
+            }}
           >
             It’s hard to use, impossible to compose, and these problems are
             getting worse each and every day.
