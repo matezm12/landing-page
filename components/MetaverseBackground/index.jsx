@@ -35,13 +35,19 @@ const MetaverseBackground = ({ fade, opacity }) => {
     <Box
       component="div"
       sx={{
-        inset: 0,
+        top: 0,
+        bottom: 0,
+        left: 0,
+        right: 0,
         position: "absolute",
         opacity: opacity ? opacity : 0.4,
         zIndex: 0,
         "&:after": {
           position: "absolute",
-          inset: 0,
+          top: 0,
+          bottom: 0,
+          left: 0,
+          right: 0,
           content: fade ? `""` : null,
           background: fade ? fades[fade] : null,
           pointerEvents: "none",

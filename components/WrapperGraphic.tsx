@@ -83,7 +83,10 @@ const WrapperGraphic = ({
           background: color ? color : colors.iris[900],
           position: "absolute",
           aspectRatio: "1/1",
-          inset: 0,
+          top: 0,
+          bottom: 0,
+          left: 0,
+          right: 0,
           transform: `rotate(${position?.rot}deg)`,
         }}
       >
@@ -123,7 +126,10 @@ const WrapperGraphic = ({
               : "overlay",
             opacity: color ? 0.3 : 1,
             position: "absolute",
-            inset: 0,
+            top: 0,
+            bottom: 0,
+            left: 0,
+            right: 0,
           }}
         />
       </Box>

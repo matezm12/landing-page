@@ -182,7 +182,14 @@ const Blobs = ({ section }: BlobsProps) => {
   return (
     <Box
       component="div"
-      sx={{ position: "absolute", inset: 0, pointerEvents: "none" }}
+      sx={{
+        position: "absolute",
+        top: 0,
+        bottom: 0,
+        left: 0,
+        right: 0,
+        pointerEvents: "none",
+      }}
     >
       {blobs.map((blob, i) => (
         <Blob
