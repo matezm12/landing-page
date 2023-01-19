@@ -69,7 +69,7 @@ const WrapperGraphic = ({
         transition: `transform 0.25s ${easings.cubic}`,
         overflow: "hidden",
         opacity: opacity ? opacity : 1,
-        // aspectRatio: "1/1",
+        height: position?.r,
         zIndex: 1,
         "&:hover": {
           transform: color ? `translate(-50%,-50%) scale(1.15)` : null,
@@ -82,7 +82,6 @@ const WrapperGraphic = ({
         sx={{
           background: color ? color : colors.iris[900],
           position: "absolute",
-          aspectRatio: "1/1",
           top: 0,
           bottom: 0,
           left: 0,
