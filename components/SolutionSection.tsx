@@ -140,16 +140,21 @@ const SolutionSection = () => {
                   top: "-4.2%",
                   right: "-25.4%",
                   width: "58%",
-                  aspectRatio: "1230/1202",
+                  // aspectRatio: "1230/1202",
                   opacity: [0, 1],
                 }}
               >
-                <Image
+                <img
+                  src={SolutionsBlobCyan.src}
+                  alt=""
+                  style={{ width: "100%" }}
+                />
+                {/* <Image
                   src={SolutionsBlobCyan}
                   alt=""
                   fill
                   sizes="max-width(1200px) 464px, max-width(768px) 380px"
-                />
+                /> */}
               </Box>
               <Box
                 component="div"

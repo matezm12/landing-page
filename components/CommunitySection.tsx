@@ -49,17 +49,22 @@ const CommunitySection = () => {
           <Box
             component="div"
             sx={{
-              aspectRatio: "1182/882",
+              // aspectRatio: "1182/882",
               position: "relative",
               zIndex: 0,
               width: "100%",
             }}
           >
-            <Image
+            <img
+              src={LeadingTheChargeImage.src}
+              alt="Leading the charge background imagery"
+              style={{ width: "100%" }}
+            />
+            {/* <Image
               src={LeadingTheChargeImage}
               alt="Leading the charge background imagery"
               fill
-            />
+            /> */}
           </Box>
           {protocols.map((protocol, i) => {
             return <WrapperGraphic key={protocol.title} {...protocol} />;

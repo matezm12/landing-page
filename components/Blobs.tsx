@@ -53,11 +53,12 @@ export const Blob = ({
         left: left,
         top: top,
         position: "absolute",
-        filter: `blur(${blur})`,
-        aspectRatio: aspect,
+        filter: blur ? `blur(${blur})` : null,
+        // aspectRatio: aspect,
       }}
     >
-      <Image
+      <img src={src.src} alt="" style={{ width: "100%", height: "auto" }} />
+      {/* <Image
         src={src}
         alt=""
         fill
@@ -68,7 +69,7 @@ export const Blob = ({
             : null
         }
         // sizes={`max-width(1200px) 464px, max-width(768px) 380px`}
-      />
+      /> */}
     </Box>
   );
 };

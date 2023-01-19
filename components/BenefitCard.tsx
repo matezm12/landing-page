@@ -82,7 +82,10 @@ const BenefitCard = ({ slug, color, title, description }: BenefitCardProps) => {
           background: colors[color],
           boxShadow: shadows[24],
           borderRadius: 4,
-          inset: 6,
+          top: 6,
+          bottom: 6,
+          left: 6,
+          right: 6,
           zIndex: 0,
         }}
       />
