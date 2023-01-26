@@ -17,16 +17,20 @@ const CommunitySection = () => {
         display: "flex",
         justifyContent: "center",
         minHeight: "calc(var(--vh, 1vh) * 100)",
+        mt: [8, 0],
         width: "100%",
       }}
     >
       <Container sx={{ position: "relative" }}>
+        <SectionTitle top="The Wrapper" bottom="Ecosystem" alignment="center" />
         <Box
           component="div"
           sx={{
             width: ["100%", "100%"],
             ml: ["0%", 0],
+            mt: 8,
             position: "relative",
+            transform: ["scale(1.25)", null],
           }}
         >
           {[...Array(12)].map((unknownWrapper, i) => {
@@ -70,34 +74,22 @@ const CommunitySection = () => {
             return <WrapperGraphic key={protocol.title} {...protocol} />;
           })}
         </Box>
-        <Box
-          component="div"
-          sx={{ position: "relative", top: [-24, -48, -72, -96] }}
-        >
-          <SectionTitle top="Leading" bottom="The Charge" alignment="center" />
-          <DividerTitle>Builders</DividerTitle>
+        <Box component="div" sx={{ position: "relative", top: [-24, -48] }}>
+          <DividerTitle>Built By the Best</DividerTitle>
           <Grid
             container
-            columnSpacing={8}
-            rowSpacing={6}
-            sx={{ justifyContent: "center" }}
-          >
-            {builders.map((builder, i) => (
-              <Grid key={i} item xs={12 / 5}>
-                <CommunityLogo {...builder} />
-              </Grid>
-            ))}
-          </Grid>
-          <DividerTitle>Backers</DividerTitle>
-          <Grid
-            container
-            columnSpacing={8}
+            columnSpacing={[4, 6, 12]}
             rowSpacing={6}
             sx={{ justifyContent: "center" }}
           >
             {backers.map((backer, i) => (
-              <Grid key={i} item xs={12 / 6}>
+              <Grid key={i} item xs={4} sm={3} lg={12 / 6}>
                 <CommunityLogo {...backer} />
+              </Grid>
+            ))}
+            {builders.map((builder, i) => (
+              <Grid key={i} item xs={4} sm={3} lg={12 / 5}>
+                <CommunityLogo {...builder} />
               </Grid>
             ))}
           </Grid>

@@ -52,17 +52,17 @@ const CTASection = () => {
           >
             <Stack spacing={4} sx={{ alignItems: "start", maxWidth: 420 }}>
               <SectionTitle
-                top="Get started with the"
-                bottom="Polywrap CLI"
+                top="Get started with"
+                bottom="Polywrap"
                 size="small"
                 letterSpacing="tight"
               />
               <Typography sx={{ color: alpha(colors.white, 0.8) }}>
-                The Polywrap CLI is enables developers to create and publish
-                software wrappers securely on the Polywrap network.
+                Polywrap enables developers to create and publish wrappers to
+                the decentralized web.
               </Typography>
               <Button href="/" color="primary">
-                Start Building
+                Get Wrapped
               </Button>
             </Stack>
           </Box>

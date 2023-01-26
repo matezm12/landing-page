@@ -31,6 +31,7 @@ const DividerTitle = ({ children }: DividerTitleProps) => {
         sx={{
           px: 4,
           textTransform: "uppercase",
+          whiteSpace: "noWrap",
           ...typography.display.h6,
           fontSize: typography.fontSizes[6],
         }}

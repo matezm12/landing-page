@@ -1,8 +1,16 @@
 import { useState } from "react";
 // import ReactGA from "react-ga";
-import { Box, Button, Input, Link, TextField, Typography } from "@mui/material";
+import {
+  alpha,
+  Box,
+  Button,
+  Input,
+  Link,
+  TextField,
+  Typography,
+} from "@mui/material";
 import { colors } from "../styles/theme";
-import { ArrowForward } from "@mui/icons-material";
+import { ArrowForward, Label } from "@mui/icons-material";
 
 export const EmailForm = () => {
   const [signupSuccess, setSignupSuccess] = useState(false);
@@ -49,6 +57,9 @@ export const EmailForm = () => {
 
   return (
     <form onSubmit={onSubmit}>
+      <Typography sx={{ color: alpha(colors.white, 0.8), fontSize: 12, mb: 1 }}>
+        Subscribe to our newsletter
+      </Typography>
       <Box component="div" display="flex" alignItems="center">
         {!signupSuccess ? (
           <>

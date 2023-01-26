@@ -4,15 +4,15 @@ import Image from "next/image";
 import { CommunityProps } from "../constants/community";
 import { easings } from "../styles/theme";
 
-const CommunityLogo = ({ link, icon, title }: CommunityProps) => {
+const CommunityLogo = ({ link, icon, title, width }: CommunityProps) => {
   return (
     <Link href={link ? link : "#"} target="_blank" rel="noredirect">
       <Box
         component="div"
         sx={{
           height: 40,
-          width: "80%",
-          ml: "10%",
+          width: width ? `${width}%` : "80%",
+          ml: width ? `${(100 - width) / 2}%` : "10%",
           display: "flex",
           justifyContent: "center",
           alignItems: "center",

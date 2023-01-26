@@ -7,16 +7,8 @@ export const footerLinks = [
         url: "https://docs.polywrap.io/",
       },
       {
-        name: "Demos",
-        url: "https://github.com/polywrap/demos",
-      },
-      {
-        name: "Integrations",
-        url: "https://github.com/polywrap/integrations",
-      },
-      {
-        name: "Toolchains",
-        url: "https://github.com/polywrap/monorepo",
+        name: "Github",
+        url: "https://github.com/polywrap",
       },
     ],
   },
@@ -53,12 +45,8 @@ export const footerLinks = [
         url: "https://forum.polywrap.io/",
       },
       {
-        name: "Voting",
+        name: "Governance",
         url: "https://snapshot.org/#/polywrap.eth",
-      },
-      {
-        name: "Funds",
-        url: "https://gnosis-safe.io/app/#/safes/0x8c3FA50473065f1D90f186cA8ba1Aa76Aee409Bb/balances",
       },
     ],
   },

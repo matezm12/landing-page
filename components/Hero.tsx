@@ -62,8 +62,13 @@ const Hero = () => {
             Future
           </Box>
         </Typography>
+        <Typography sx={{ mt: 4 }}>
+          Polywrap is a new way to build endlessly extensible software that runs
+          {` `}
+          <em>anywhere</em>.
+        </Typography>
         <Button color="primary" size="large" sx={{ mt: 4 }}>
-          Try It Out
+          Start Building
         </Button>
       </Container>
     </Box>

@@ -38,9 +38,10 @@ const Header = () => {
               justifyContent: "center",
             }}
           >
-            <Navlink href="/">docs</Navlink>
-            <Navlink href="/">forum</Navlink>
-            <Navlink href="/">blog</Navlink>
+            <Navlink href="https://docs.polywrap.io/">docs</Navlink>
+            <Navlink href="https://github.com/polywrap/">github</Navlink>
+            <Navlink href="https://forum.polywrap.io/">forum</Navlink>
+            <Navlink href="https://blog.polywrap.io/">blog</Navlink>
           </Stack>
         </Box>
       </Container>

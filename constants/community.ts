@@ -24,6 +24,7 @@ import Swidge from "../public/images/community/Swidge.png"
 import Tezos from "../public/images/community/Tezos.svg"
 import TRGC from "../public/images/community/TRGC.svg"
 import TrueVentures from "../public/images/community/True-Ventures.png"
+import Uniswap from "../public/images/community/Uniswap.svg"
 import Zeeprime from "../public/images/community/Zeeprime.png"
 
 export interface CommunityProps {
@@ -32,6 +33,7 @@ export interface CommunityProps {
   title: string;
   type?: "builder" | "backer" | "protocol";
   color?: string;
+  width?: number; // percentage
   position?: ProtocolGraphicProps;
 }
 
@@ -44,11 +46,39 @@ export interface ProtocolGraphicProps {
 
 export const community: CommunityProps[] = [
   {
-    icon: AscensiveAssets,
-    link: "https://ascensiveassets.com/",
-    title: "Ascensive Assets",
+    icon: Coinfund,
+    link: "https://coinfund.io/",
+    title: "Coinfund",
     type: "backer"
   },
+  {
+    icon: Placeholder,
+    link: "https://placeholder.vc/",
+    title: "Placeholder",
+    width: 100,
+    type: "backer",
+  },
+  {
+    icon: TrueVentures,
+    link: "https://trueventures.com/",
+    title: "True Ventures",
+    width: 100,
+    type: "backer",
+  },
+  {
+    icon: Portal,
+    link: "https://portal.vc/",
+    title: "Portal",
+    width: 100,
+    type: "backer"
+  },
+  {
+    icon: Zeeprime,
+    link: "https://zeeprime.capital/",
+    title: "Zeeprime",
+    type: "backer"
+  },
+
   {
     icon: Atka,
     link: "https://atka.io/",
@@ -56,9 +86,22 @@ export const community: CommunityProps[] = [
     type: "backer"
   },
   {
-    icon: Coinfund,
-    link: "https://coinfund.io/",
-    title: "Coinfund",
+    icon: TRGC,
+    link: "https://trgc.io/",
+    title: "TRGC",
+    type: "backer"
+  },
+  {
+    icon: AscensiveAssets,
+    link: "https://ascensiveassets.com/",
+    title: "Ascensive Assets",
+    type: "backer"
+  },
+  {
+    icon: Rarestone,
+    link: "https://rarestone.capital/",
+    title: "Rarestone",
+    width: 95,
     type: "backer"
   },
   {
@@ -73,46 +116,12 @@ export const community: CommunityProps[] = [
     title: "IOSG",
     type: "backer"
   },
-  {
-    icon: Placeholder,
-    link: "https://placeholder.vc/",
-    title: "Placeholder",
-    type: "backer"
-  },
-  {
-    icon: Portal,
-    link: "https://portal.vc/",
-    title: "Portal",
-    type: "backer"
-  },
-  {
-    icon: Rarestone,
-    link: "https://rarestone.capital/",
-    title: "Rarestone",
-    type: "backer"
-  },
-  {
-    icon: TRGC,
-    link: "https://trgc.io/",
-    title: "TRGC",
-    type: "backer"
-  },
-  {
-    icon: TrueVentures,
-    link: "https://trueventures.com/",
-    title: "True Ventures",
-    type: "backer"
-  },
-  {
-    icon: Zeeprime,
-    link: "https://zeeprime.capital/",
-    title: "Zeeprime",
-    type: "backer"
-  },
+
   {
     icon: Blockwatch,
     link: "https://blockwatch.cc/",
     title: "Blockwatch",
+    width: 90,
     type: "builder"
   },
   {
@@ -125,6 +134,7 @@ export const community: CommunityProps[] = [
     icon: CIDT,
     link: "https://consideritdone.tech/",
     title: "CIDT",
+    width: 70,
     type: "builder"
   },
   {
@@ -159,7 +169,7 @@ export const community: CommunityProps[] = [
     type: "protocol",
     color: "radial-gradient(circle at 20% 100%, #a4fcf5, #82a9f9 30%, #3025af 80%)",
     position: {
-      x: 61,
+      x: 60,
       y: 18,
       r: ["calc(var(--vmin, 1vmin) * 12)","calc(var(--vmin, 1vmin) * 12)","calc(var(--vmin, 1vmin) * 12)","calc(var(--vmin, 1vmin) * 18)"],
       rot: -12,
@@ -172,8 +182,8 @@ export const community: CommunityProps[] = [
     type: "protocol",
     color: "radial-gradient(circle at 0% 80%, #f5c3a6 20%, #b45f63, #191919 95%)",
     position: {
-      x: 71,
-      y: 35,
+      x: 73,
+      y: 32,
       r: ["calc(var(--vmin, 1vmin) * 7)","calc(var(--vmin, 1vmin) * 7)","calc(var(--vmin, 1vmin) * 7)","calc(var(--vmin, 1vmin) * 11)"],
       rot: 7,
     }
@@ -185,8 +195,8 @@ export const community: CommunityProps[] = [
     type: "protocol",
     color: "radial-gradient(circle at 82% 100%, #64c3ca 15%, #266a6f 40%, #041828 90%)",
     position: {
-      x: 37,
-      y: 29,
+      x: 39,
+      y: 27,
       r: ["calc(var(--vmin, 1vmin) * 9)","calc(var(--vmin, 1vmin) * 9)","calc(var(--vmin, 1vmin) * 9)","calc(var(--vmin, 1vmin) * 13)"],
       rot: 4,
     }
@@ -198,9 +208,9 @@ export const community: CommunityProps[] = [
     type: "protocol",
     color: "radial-gradient(circle at 100% 30%, #dca656 20%, #dc5656, #02042f 90%)",
     position: {
-      x: 22,
-      y: 66,
-      r: ["calc(var(--vmin, 1vmin) * 12)","calc(var(--vmin, 1vmin) * 12)","calc(var(--vmin, 1vmin) * 12)","calc(var(--vmin, 1vmin) * 18)"],
+      x: 25,
+      y: 75,
+      r: ["calc(var(--vmin, 1vmin) * 9)","calc(var(--vmin, 1vmin) * 9)","calc(var(--vmin, 1vmin) * 9)","calc(var(--vmin, 1vmin) * 13)"],
       rot: 8,
     }
   },
@@ -225,7 +235,7 @@ export const community: CommunityProps[] = [
     color: "radial-gradient(circle at 40% 0%, #e5047a 5%, #af258b 50%, #1e1e1e 90%)",
     position: {
       x: 66,
-      y: 57,
+      y: 56,
       r: ["calc(var(--vmin, 1vmin) * 6)","calc(var(--vmin, 1vmin) * 6)","calc(var(--vmin, 1vmin) * 6)","calc(var(--vmin, 1vmin) * 11)"],
       rot: -30,
     }
@@ -250,10 +260,23 @@ export const community: CommunityProps[] = [
     type: "protocol",
     color: "radial-gradient(circle at 100% 60%, #76b4f2, #5a7afc, #112776 80%)",
     position: {
-      x: 15,
-      y: 43,
-      r: ["calc(var(--vmin, 1vmin) * 10)","calc(var(--vmin, 1vmin) * 10)","calc(var(--vmin, 1vmin) * 10)","calc(var(--vmin, 1vmin) * 16)"],
+      x: 20,
+      y: 32,
+      r: ["calc(var(--vmin, 1vmin) * 9)","calc(var(--vmin, 1vmin) * 9)","calc(var(--vmin, 1vmin) * 9)","calc(var(--vmin, 1vmin) * 13)"],
       rot: -31,
+    }
+  },
+  {
+    icon: Uniswap,
+    link: "https://uniswap.org",
+    title: "Uniswap",
+    type: "protocol",
+    color: "radial-gradient(circle at 90% 50%, #ff007a, #991a6d 70%, #243183 95%)",
+    position: {
+      x: 26,
+      y: 54,
+      r: ["calc(var(--vmin, 1vmin) * 10)","calc(var(--vmin, 1vmin) * 10)","calc(var(--vmin, 1vmin) * 10)","calc(var(--vmin, 1vmin) * 16)"],
+      rot: -4,
     }
   },
 ];
