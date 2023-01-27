@@ -8,7 +8,7 @@ import SolutionsBlobYellow1 from "../public/images/blobs/solutions-yellow.png";
 import SolutionsBlobYellow2 from "../public/images/blobs/solutions-yellow-2.png";
 import SolutionsBlobMagenta from "../public/images/blobs/solutions-magenta.png";
 import SolutionsBlobGreen from "../public/images/blobs/solutions-green.png";
-import SolutionsBlobCyan from "../public/images/blobs/solutions-cyan.png";
+import SolutionsBlobCyan from "../public/images/blobs/solutions-cyan.webp";
 import WaveLines from "../public/images/wave-lines.png";
 import WaveLines2 from "../public/images/wave-lines-2.png";
 import Image from "next/image";
@@ -137,24 +137,20 @@ const SolutionSection = () => {
                 component="div"
                 sx={{
                   position: "absolute",
-                  top: "-4.2%",
-                  right: "-25.4%",
-                  width: "58%",
+                  top: "-3.2%",
+                  right: "-22.2%",
+                  width: "55%",
                   // aspectRatio: "1230/1202",
                   opacity: [0, 1],
                 }}
               >
-                <img
-                  src={SolutionsBlobCyan.src}
-                  alt=""
-                  style={{ width: "100%" }}
-                />
-                {/* <Image
+                <Image
                   src={SolutionsBlobCyan}
                   alt=""
-                  fill
-                  sizes="max-width(1200px) 464px, max-width(768px) 380px"
-                /> */}
+                  sizes="max-width(1200px) 440px, max-width(768px) 380px"
+                  quality={50}
+                  style={{ width: "100%", height: "auto" }}
+                />
               </Box>
               <Box
                 component="div"

@@ -1,6 +1,6 @@
 import React from "react";
 import { alpha, Box, Button, Container, Typography } from "@mui/material";
-import { colors, typography } from "../styles/theme";
+import { animations, colors, typography } from "../styles/theme";
 import Blobs from "./Blobs";
 import MetaverseBackground from "./MetaverseBackground";
 
@@ -32,6 +32,9 @@ const Hero = () => {
         <Typography
           variant="h1"
           sx={{
+            ...animations.fadeUp,
+            animation: `fadeUp 1s forwards`,
+            opacity: 0,
             textAlign: "center",
             textTransform: "uppercase",
           }}
@@ -62,12 +65,28 @@ const Hero = () => {
             Future
           </Box>
         </Typography>
-        <Typography sx={{ mt: 4 }}>
+        <Typography
+          sx={{
+            ...animations.fadeUp,
+            animation: `fadeUp 1s 1s forwards`,
+            opacity: 0,
+            mt: 4,
+          }}
+        >
           Polywrap is a new way to build endlessly extensible software that runs
           {` `}
           <em>anywhere</em>.
         </Typography>
-        <Button color="primary" size="large" sx={{ mt: 4 }}>
+        <Button
+          color="primary"
+          size="large"
+          sx={{
+            ...animations.fadeUp,
+            animation: `fadeUp 1s 2s forwards`,
+            opacity: 0,
+            mt: 4,
+          }}
+        >
           Start Building
         </Button>
       </Container>

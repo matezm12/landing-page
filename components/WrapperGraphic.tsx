@@ -2,7 +2,6 @@ import React from "react";
 import { alpha, Box, Link } from "@mui/material";
 import Image from "next/image";
 import { colors, easings } from "../styles/theme";
-import Noise from "./Noise";
 import { CommunityProps } from "../constants/community";
 
 interface WrapperGraphicProps extends CommunityProps {
@@ -76,7 +75,6 @@ const WrapperGraphic = ({
         },
       }}
     >
-      <Noise opacity={0.5} />
       <Box
         component="div"
         sx={{

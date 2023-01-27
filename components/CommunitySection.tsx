@@ -5,7 +5,7 @@ import DividerTitle from "./DividerTitle";
 import CommunityLogo from "./CommunityLogo";
 import WrapperGraphic from "./WrapperGraphic";
 import SectionTitle from "./SectionTitle";
-import LeadingTheChargeImage from "../public/images/leading_bg.png";
+import LeadingTheChargeImage from "../public/images/leading_bg.webp";
 import Image from "next/image";
 
 const CommunitySection = () => {
@@ -59,16 +59,12 @@ const CommunitySection = () => {
               width: "100%",
             }}
           >
-            <img
-              src={LeadingTheChargeImage.src}
-              alt="Leading the charge background imagery"
-              style={{ width: "100%" }}
-            />
-            {/* <Image
+            <Image
               src={LeadingTheChargeImage}
-              alt="Leading the charge background imagery"
-              fill
-            /> */}
+              alt="The Wrapper Ecosystem background imagery"
+              placeholder="blur"
+              style={{ width: "100%", height: "auto" }}
+            />
           </Box>
           {protocols.map((protocol, i) => {
             return <WrapperGraphic key={protocol.title} {...protocol} />;

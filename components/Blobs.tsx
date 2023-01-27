@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Box } from "@mui/material";
 import Image, { StaticImageData } from "next/image";
+import Blob11 from "../public/images/hero/blobs/11.webp";
+import Blob12 from "../public/images/hero/blobs/12.webp";
 import Blob1 from "../public/images/hero/blobs/1.webp";
 import Blob2 from "../public/images/hero/blobs/2.webp";
 import Blob3 from "../public/images/hero/blobs/3.webp";
@@ -11,8 +13,6 @@ import Blob7 from "../public/images/hero/blobs/7.webp";
 import Blob8 from "../public/images/hero/blobs/8.webp";
 import Blob9 from "../public/images/hero/blobs/9.webp";
 import Blob10 from "../public/images/hero/blobs/10.webp";
-import Blob11 from "../public/images/hero/blobs/11.webp";
-import Blob12 from "../public/images/hero/blobs/12.webp";
 import { animations } from "../styles/theme";
 
 interface BlobsProps {
@@ -42,6 +42,16 @@ export const Blob = ({
   animationDelay,
   priority,
 }: BlobProps) => {
+  const [loaded, setLoaded] = useState(false);
+
+  const delay: number = animationDelay ? animationDelay * 400 : 0;
+
+  useEffect(() => {
+    window.setTimeout(() => {
+      setLoaded(true);
+    }, 1000 + delay);
+  }, []);
+
   return (
     <Box
       component="div"
@@ -52,24 +62,25 @@ export const Blob = ({
         width: width,
         left: left,
         top: top,
+        opacity: !loaded ? 0 : 1,
+        transition: `opacity 1s ease-in-out`,
         position: "absolute",
         filter: blur ? `blur(${blur})` : null,
-        // aspectRatio: aspect,
       }}
     >
-      <img src={src.src} alt="" style={{ width: "100%", height: "auto" }} />
-      {/* <Image
+      <Image
         src={src}
         alt=""
-        fill
+        placeholder="blur"
         priority={priority}
+        style={{ width: "100%", height: "auto" }}
+        quality={25}
         sizes={
           render
             ? `max-width(1200px) ${render[0]}px, max-width(768px) ${render[1]}px`
-            : null
+            : undefined
         }
-        // sizes={`max-width(1200px) 464px, max-width(768px) 380px`}
-      /> */}
+      />
     </Box>
   );
 };

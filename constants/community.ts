@@ -171,7 +171,7 @@ export const community: CommunityProps[] = [
     position: {
       x: 60,
       y: 18,
-      r: ["calc(var(--vmin, 1vmin) * 12)","calc(var(--vmin, 1vmin) * 12)","calc(var(--vmin, 1vmin) * 12)","calc(var(--vmin, 1vmin) * 18)"],
+      r: ["calc(var(--vmin, 1vmin) * 11)","calc(var(--vmin, 1vmin) * 11)","calc(var(--vmin, 1vmin) * 11)","calc(var(--vmin, 1vmin) * 17)"],
       rot: -12,
     }
   },

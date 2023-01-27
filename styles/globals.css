@@ -4,6 +4,7 @@
   font-stretch: normal;
   font-style: normal;
   src: url("../public/fonts/HDColton-Regular.woff");
+  font-display: swap;
 }
 @font-face {
   font-family: Colton Primary;
@@ -11,6 +12,7 @@
   font-stretch: normal;
   font-style: normal;
   src: url("../public/fonts/HDColton-Bold.woff");
+  font-display: swap;
 }
 @font-face {
   font-family: Colton Primary;
@@ -18,6 +20,7 @@
   font-stretch: normal;
   font-style: italic;
   src: url("../public/fonts/HDColton-RegularItalic.woff");
+  font-display: swap;
 }
 @font-face {
   font-family: Colton Primary;
@@ -25,6 +28,7 @@
   font-stretch: normal;
   font-style: italic;
   src: url("../public/fonts/HDColton-BoldItalic.woff");
+  font-display: swap;
 }
 @font-face {
   font-family: Colton Display;
@@ -32,6 +36,7 @@
   font-stretch: expanded;
   font-style: normal;
   src: url("../public/fonts/HDColton-XWideRegular.woff");
+  font-display: swap;
 }
 @font-face {
   font-family: Colton Display;
@@ -39,6 +44,7 @@
   font-stretch: expanded;
   font-style: normal;
   src: url("../public/fonts/HDColton-XWideBold.woff");
+  font-display: swap;
 }
 
 #__next {

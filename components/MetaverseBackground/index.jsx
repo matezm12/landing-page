@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { alpha, Box } from "@mui/material";
 import { Canvas, extend } from "@react-three/fiber";
 import { Effects } from "@react-three/drei";
@@ -26,10 +26,19 @@ const fades = {
 };
 
 const MetaverseBackground = ({ fade, opacity }) => {
+  const [loaded, setLoaded] = useState(false);
+
   const { intensity, radius } = useControls({
     intensity: { value: 2.4, min: 0, max: 4, step: 0.01 },
     radius: { value: 1.2, min: 0, max: 2, step: 0.01 },
   });
+
+  useEffect(() => {
+    // Canvas onCreate callback doesn't seem to work properly
+    window.setTimeout(() => {
+      setLoaded(true);
+    }, 1000);
+  }, []);
 
   return (
     <Box
@@ -40,7 +49,8 @@ const MetaverseBackground = ({ fade, opacity }) => {
         left: 0,
         right: 0,
         position: "absolute",
-        opacity: opacity ? opacity : 0.4,
+        opacity: !loaded ? 0 : opacity ? opacity : 0.4,
+        transition: `opacity 2s ease-in-out`,
         zIndex: 0,
         "&:after": {
           position: "absolute",
