@@ -21,10 +21,10 @@ interface BlobsProps {
 
 export interface BlobProps {
   src: StaticImageData;
-  aspect: number;
+  aspect?: number;
   render?: number[];
   width: string | string[];
-  sizes: number[];
+  sizes?: number[];
   left: string | string[];
   top: string | string[];
   animationDelay?: number;
