@@ -3,6 +3,7 @@ import { alpha, Box, Button, Container, Typography } from "@mui/material";
 import { animations, colors, typography } from "../styles/theme";
 import Blobs from "./Blobs";
 import MetaverseBackground from "./MetaverseBackground";
+import ReactGA from "react-ga";
 
 const Hero = () => {
   return (
@@ -80,6 +81,14 @@ const Hero = () => {
         <Button
           color="primary"
           size="large"
+          href="https://docs.polywrap.io/quick-start/integrate-wrappers/install-client"
+          onClick={() => {
+            ReactGA.event({
+              category: "CTA",
+              action: `goto quick start`,
+              label: "Hero",
+            });
+          }}
           sx={{
             ...animations.fadeUp,
             animation: `fadeUp 1s 2s forwards`,

@@ -18,6 +18,7 @@ import Blob2 from "../public/images/blobs/2.png";
 import Blob3 from "../public/images/blobs/3.png";
 import shadows from "@mui/material/styles/shadows";
 import MetaverseBackground from "./MetaverseBackground";
+import ReactGA from "react-ga";
 
 const CTASection = () => {
   return (
@@ -61,8 +62,18 @@ const CTASection = () => {
                 Polywrap enables developers to create and publish wrappers to
                 the decentralized web.
               </Typography>
-              <Button href="/" color="primary">
-                Get Wrapped
+              <Button
+                color="primary"
+                href="https://docs.polywrap.io/quick-start/integrate-wrappers/install-client"
+                onClick={() => {
+                  ReactGA.event({
+                    category: "CTA",
+                    action: `goto quick start`,
+                    label: "CTA Section",
+                  });
+                }}
+              >
+                Start Building
               </Button>
             </Stack>
           </Box>

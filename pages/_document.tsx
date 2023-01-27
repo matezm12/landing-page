@@ -1,6 +1,9 @@
 import * as React from "react";
 import Document, { Html, Head, Main, NextScript } from "next/document";
 import { ServerStyleSheets } from "@mui/styles";
+import ReactGA from "react-ga";
+
+ReactGA.initialize("UA-160302501-1");
 
 export default class MyDocument extends Document {
   render() {

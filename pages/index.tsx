@@ -6,8 +6,11 @@ import BenefitsSection from "../components/BenefitsSection";
 import CommunitySection from "../components/CommunitySection";
 import CTASection from "../components/CTASection";
 import Head from "next/head";
+import ReactGA from "react-ga";
 
 export default function Home() {
+  ReactGA.pageview("home");
+
   return (
     <>
       <Head>
