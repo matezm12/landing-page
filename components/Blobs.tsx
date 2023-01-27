@@ -21,9 +21,10 @@ interface BlobsProps {
 
 export interface BlobProps {
   src: StaticImageData;
-  aspect?: string;
+  aspect: number;
   render?: number[];
   width: string | string[];
+  sizes: number[];
   left: string | string[];
   top: string | string[];
   animationDelay?: number;
@@ -36,6 +37,7 @@ export const Blob = ({
   aspect,
   render,
   width,
+  sizes,
   left,
   top,
   blur,
@@ -73,13 +75,11 @@ export const Blob = ({
         alt=""
         placeholder="blur"
         priority={priority}
-        style={{ width: "100%", height: "auto" }}
-        quality={25}
-        sizes={
-          render
-            ? `max-width(1200px) ${render[0]}px, max-width(768px) ${render[1]}px`
-            : undefined
-        }
+        // style={!width ? { width: "100%", height: "auto" } : undefined}
+        // quality={25}
+        width={render ? render[1] : undefined}
+        height={render ? render[1] * (1 / aspect) : undefined}
+        sizes={`(max-width: 1200px) ${sizes[0]}, (max-width: 768px) ${sizes[1]}`}
       />
     </Box>
   );
@@ -88,103 +88,115 @@ export const Blob = ({
 const blobs = [
   {
     src: Blob1, // green
-    aspect: "711/720",
+    aspect: 711 / 720,
     render: [181, 152],
     width: ["calc(var(--vmin, 1vmin) * 33)", "calc(var(--vmin, 1vmin) * 20)"],
+    sizes: [33, 20],
     left: ["-10%", "-7%", "-6%", "-5%"],
     top: ["15%", "12%"],
   },
   {
     src: Blob5, // yellow
-    aspect: "618/616",
+    aspect: 618 / 616,
     render: [190, 160],
     width: "calc(var(--vmin, 1vmin) * 21)",
+    sizes: [21, 21],
     left: ["25%", "15%"],
     top: ["89%", "72%"],
     blur: "2px",
   },
   {
     src: Blob2, // cyan
-    aspect: "1305/1598",
+    aspect: 1305 / 1598,
     render: [453, 381],
     width: "calc(var(--vmin, 1vmin) * 50)",
+    sizes: [50, 50],
     left: "-12%",
     top: ["79%", "55%"],
   },
   {
     src: Blob3, // magenta
-    aspect: "236/236",
+    aspect: 236 / 236,
     render: [73, 61],
     width: "calc(var(--vmin, 1vmin) * 8)",
+    sizes: [8, 8],
     left: ["8%", "16%"],
     top: ["65%", "45%"],
     blur: "3px",
   },
   {
     src: Blob4, // magenta
-    aspect: "347/349",
+    aspect: 347 / 349,
     render: [91, 77],
     width: "calc(var(--vmin, 1vmin) * 10)",
+    sizes: [10, 10],
     left: ["13%", "18%"],
     top: ["68%", "50%"],
     blur: "2px",
   },
   {
     src: Blob6, // green
-    aspect: "461/447",
+    aspect: 461 / 447,
     render: [136, 114],
     width: ["calc(var(--vmin, 1vmin) * 18)", "calc(var(--vmin, 1vmin) * 15)"],
+    sizes: [18, 15],
     left: ["36%", "27%"],
     top: ["76%", "62%"],
   },
   {
     src: Blob7, // yellow
-    aspect: "502/430",
+    aspect: 502 / 430,
     render: [163, 137],
     width: ["calc(var(--vmin, 1vmin) * 29)", "calc(var(--vmin, 1vmin) * 18)"],
+    sizes: [29, 18],
     left: ["66%", "68%"],
     top: ["66%", "70%"],
   },
   {
     src: Blob8, // cyan
-    aspect: "236/242",
+    aspect: 236 / 242,
     render: [55, 53],
     width: ["calc(var(--vmin, 1vmin) * 11)", "calc(var(--vmin, 1vmin) * 6)"],
+    sizes: [11, 6],
     left: ["87%", "74%"],
     top: ["67%", "64%"],
     blur: "4px",
   },
   {
     src: Blob9, // green
-    aspect: "301/334",
+    aspect: 301 / 334,
     render: [64, 54],
     width: ["calc(var(--vmin, 1vmin) * 9)", "calc(var(--vmin, 1vmin) * 7)"],
+    sizes: [9, 7],
     left: ["93%", "74%"],
     top: ["53%", "25%"],
     blur: "3px",
   },
   {
     src: Blob11, // yellow
-    aspect: "222/230",
+    aspect: 222 / 230,
     render: [63, 54],
     width: "calc(var(--vmin, 1vmin) * 7)",
+    sizes: [7, 7],
     left: "90%",
     top: ["94%", "73%"],
     blur: "2px",
   },
   {
     src: Blob10, // magenta
-    aspect: "720/776",
+    aspect: 720 / 776,
     render: [245, 205],
     width: ["calc(var(--vmin, 1vmin) * 35)", "calc(var(--vmin, 1vmin) * 27)"],
+    sizes: [35, 27],
     left: ["64%", "79%"],
     top: ["83%", "50%"],
   },
   {
     src: Blob12, // cyan
-    aspect: "520/608",
+    aspect: 520 / 608,
     render: [227, 190],
     width: ["calc(var(--vmin, 1vmin) * 31)", "calc(var(--vmin, 1vmin) * 25)"],
+    sizes: [31, 25],
     left: ["76%", "90%"],
     top: ["16%", "20%"],
   },

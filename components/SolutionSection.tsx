@@ -27,22 +27,6 @@ const SolutionSection = () => {
         zIndex: 1,
       }}
     >
-      {/* <Box
-        component="div"
-        sx={{
-          position: "absolute",
-          width: "100%",
-          top: "20%",
-          opacity: 0.5,
-          zIndex: -1,
-        }}
-      >
-        <Image
-          src={WaveLines2}
-          alt=""
-          style={{ width: "100%", height: "auto" }}
-        />
-      </Box> */}
       <Box
         component="div"
         sx={{
@@ -57,6 +41,7 @@ const SolutionSection = () => {
           style={{ width: "100%", height: "auto" }}
           quality={5}
           placeholder="blur"
+          sizes={`min-width(600px) 100vw, min-width(900px) 100vw, min-width(1200px) 100vw`}
         />
       </Box>
       <Box
