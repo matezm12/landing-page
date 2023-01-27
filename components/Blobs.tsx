@@ -75,11 +75,13 @@ export const Blob = ({
         alt=""
         placeholder="blur"
         priority={priority}
-        // style={!width ? { width: "100%", height: "auto" } : undefined}
-        // quality={25}
-        width={render ? render[1] : undefined}
-        height={render ? render[1] * (1 / aspect) : undefined}
-        sizes={`(max-width: 1200px) ${sizes[0]}, (max-width: 768px) ${sizes[1]}`}
+        style={{ width: "100%", height: "auto" }}
+        quality={25}
+        sizes={
+          render
+            ? `max-width(1200px) ${render[0]}px, max-width(768px) ${render[1]}px`
+            : undefined
+        }
       />
     </Box>
   );

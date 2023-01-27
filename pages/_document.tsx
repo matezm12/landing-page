@@ -8,7 +8,39 @@ export default class MyDocument extends Document {
     return (
       <Html lang="en">
         <Head>
+          <link rel="icon" href="%PUBLIC_URL%/favicon.svg" />
+          <meta name="viewport" content="width=device-width, initial-scale=1" />
           <meta name="theme-color" content={colors.iris[500]} />
+          <meta
+            name="description"
+            content="Polywrap is a WebAssembly standard for building endlessly extensible software that runs anywhere."
+          />
+          <meta
+            property="og:description"
+            content="Polywrap is a WebAssembly standard for building endlessly extensible software that runs anywhere."
+          />
+
+          <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+          <title>Polywrap - Enter the Composable Future</title>
+          <meta
+            property="og:title"
+            content="Polywrap - Enter the Composable Future"
+          />
+
+          <meta property="og:image" content="%PUBLIC_URL%/polywrap-og.jpg" />
+          <meta property="og:image:width" content="2998" />
+          <meta property="og:image:height" content="1570" />
+
+          <link rel="canonical" href="https://www.polywrap.io/" />
+          <meta property="og:url" content="https://polywrap.io/" />
+          <meta property="og:type" content="website" />
+          {/* Twitter */}
+          <meta name="twitter:card" content="summary_large_image" />
+          <meta name="twitter:site" content="@polywrap_io" />
+          <meta name="twitter:creator" content="@polywrap_io" />
+          <meta name="twitter:image" content="%PUBLIC_URL%/polywrap-og.jpg" />
+          <meta name="twitter:image:width" content="2998" />
+          <meta name="twitter:image:height" content="1570" />
         </Head>
         <body>
           <Main />
