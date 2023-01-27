@@ -1,6 +1,5 @@
 import * as React from "react";
 import Document, { Html, Head, Main, NextScript } from "next/document";
-import { colors } from "../styles/theme";
 import { ServerStyleSheets } from "@mui/styles";
 
 export default class MyDocument extends Document {
@@ -8,9 +7,12 @@ export default class MyDocument extends Document {
     return (
       <Html lang="en">
         <Head>
-          <link rel="icon" href="%PUBLIC_URL%/favicon.svg" />
+          <link rel="icon" href="/favicon.svg" />
+          <link rel="icon" href="/favicon.ico" sizes="any" />
+          <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+          <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+          <meta name="theme-color" content="#5361F8"></meta>
           <meta name="viewport" content="width=device-width, initial-scale=1" />
-          <meta name="theme-color" content={colors.iris[500]} />
           <meta
             name="description"
             content="Polywrap is a WebAssembly standard for building endlessly extensible software that runs anywhere."
@@ -20,14 +22,14 @@ export default class MyDocument extends Document {
             content="Polywrap is a WebAssembly standard for building endlessly extensible software that runs anywhere."
           />
 
-          <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+          <link rel="manifest" href="/manifest.json" />
           <title>Polywrap - Enter the Composable Future</title>
           <meta
             property="og:title"
             content="Polywrap - Enter the Composable Future"
           />
 
-          <meta property="og:image" content="%PUBLIC_URL%/polywrap-og.jpg" />
+          <meta property="og:image" content="/polywrap-og.jpg" />
           <meta property="og:image:width" content="2998" />
           <meta property="og:image:height" content="1570" />
 
@@ -38,7 +40,7 @@ export default class MyDocument extends Document {
           <meta name="twitter:card" content="summary_large_image" />
           <meta name="twitter:site" content="@polywrap_io" />
           <meta name="twitter:creator" content="@polywrap_io" />
-          <meta name="twitter:image" content="%PUBLIC_URL%/polywrap-og.jpg" />
+          <meta name="twitter:image" content="/polywrap-og.jpg" />
           <meta name="twitter:image:width" content="2998" />
           <meta name="twitter:image:height" content="1570" />
         </Head>
