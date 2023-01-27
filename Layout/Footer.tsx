@@ -33,7 +33,7 @@ const Header = () => {
                 <Link href="/">
                   <Logo />
                 </Link>
-                <EmailForm />
+                {/* <EmailForm /> */}
               </Stack>
             </Grid>
             <Grid item xs={12} lg={8}>

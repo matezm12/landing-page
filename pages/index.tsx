@@ -5,16 +5,22 @@ import SolutionSection from "../components/SolutionSection";
 import BenefitsSection from "../components/BenefitsSection";
 import CommunitySection from "../components/CommunitySection";
 import CTASection from "../components/CTASection";
+import Head from "next/head";
 
 export default function Home() {
   return (
-    <main>
-      <Hero />
-      <ProblemSection />
-      <SolutionSection />
-      <BenefitsSection />
-      <CommunitySection />
-      <CTASection />
-    </main>
+    <>
+      <Head>
+        <title>Polywrap - Enter the Composable Future</title>
+      </Head>
+      <main>
+        <Hero />
+        <ProblemSection />
+        <SolutionSection />
+        <BenefitsSection />
+        <CommunitySection />
+        <CTASection />
+      </main>
+    </>
   );
 }
