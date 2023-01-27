@@ -9,8 +9,8 @@ import SolutionsBlobYellow2 from "../public/images/blobs/solutions-yellow-2.png"
 import SolutionsBlobMagenta from "../public/images/blobs/solutions-magenta.png";
 import SolutionsBlobGreen from "../public/images/blobs/solutions-green.png";
 import SolutionsBlobCyan from "../public/images/blobs/solutions-cyan.webp";
-import WaveLines from "../public/images/wave-lines.png";
-import WaveLines2 from "../public/images/wave-lines-2.png";
+import WaveLines from "../public/images/wave-lines-1.webp";
+// import WaveLines2 from "../public/images/wave-lines-2.png";
 import Image from "next/image";
 
 const SolutionSection = () => {
@@ -27,7 +27,7 @@ const SolutionSection = () => {
         zIndex: 1,
       }}
     >
-      <Box
+      {/* <Box
         component="div"
         sx={{
           position: "absolute",
@@ -42,12 +42,12 @@ const SolutionSection = () => {
           alt=""
           style={{ width: "100%", height: "auto" }}
         />
-      </Box>
+      </Box> */}
       <Box
         component="div"
         sx={{
           position: "absolute",
-          width: "100%",
+          width: "100vw",
           zIndex: -1,
         }}
       >
@@ -55,6 +55,8 @@ const SolutionSection = () => {
           src={WaveLines}
           alt=""
           style={{ width: "100%", height: "auto" }}
+          quality={5}
+          placeholder="blur"
         />
       </Box>
       <Box

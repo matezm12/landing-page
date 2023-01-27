@@ -37,6 +37,7 @@ const ProblemSection = () => {
           src={ProblemVisual}
           alt="Siloed Software illustration"
           style={{ width: "100%", height: "auto" }}
+          sizes={`min-width(0) 90vw, min-width(600px) 70vw, min-width(900px) 50vw`}
         />
       </Box>
       <Container>
