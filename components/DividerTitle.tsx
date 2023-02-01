@@ -31,7 +31,7 @@ const DividerTitle = ({ children }: DividerTitleProps) => {
     >
       <Box component="div" sx={{ ...dividerStyles }} />
       <Typography
-        variant="h6"
+        variant="h3"
         sx={{
           px: isMobile ? 0 : 4,
           textTransform: "uppercase",

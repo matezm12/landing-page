@@ -30,6 +30,7 @@ const Logo = ({ height = 48, animateBorderWidth = false }) => {
       <Button
         className="logomark"
         color="primary"
+        aria-label="Logo Button"
         sx={{
           p: 0,
           minWidth: height,

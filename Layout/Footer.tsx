@@ -30,7 +30,7 @@ const Header = () => {
           <Grid container spacing={6}>
             <Grid item xs={12} lg={4}>
               <Stack spacing={4}>
-                <Link href="/">
+                <Link href="/" aria-label="Logo Link">
                   <Logo />
                 </Link>
                 {/* <EmailForm /> */}
