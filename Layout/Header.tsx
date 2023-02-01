@@ -23,7 +23,7 @@ const Header = () => {
             justifyContent: "space-between",
           }}
         >
-          <Link href="/">
+          <Link href="/" style={{ height: 40 }}>
             {isDesktop ? (
               <Logo animateBorderWidth />
             ) : (
@@ -31,7 +31,7 @@ const Header = () => {
             )}
           </Link>
           <Stack
-            spacing={[3, 4, 5, 6]}
+            spacing={[1.5, 3, 5, 6]}
             direction="row"
             sx={{
               alignItems: "center",

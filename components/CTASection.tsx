@@ -46,66 +46,78 @@ const CTASection = () => {
               backdropFilter: "blur(8px)",
               border: `2px solid ${colors.iris[500]}`,
               borderRadius: 3,
+              justifyContent: "center",
+              display: "flex",
               px: 7,
-              mr: 4,
               py: 6,
             }}
           >
-            <Stack spacing={4} sx={{ alignItems: "start", maxWidth: 420 }}>
+            <Stack spacing={[4, 8]} sx={{ alignItems: "center" }}>
               <SectionTitle
-                top="Get started with"
-                bottom="Polywrap"
-                size="small"
+                top="Join the"
+                bottom="Composable Future"
+                alignment="center"
+                // size="small"
                 letterSpacing="tight"
               />
-              <Typography sx={{ color: alpha(colors.white, 0.8) }}>
-                Polywrap enables developers to create and publish wrappers to
-                the decentralized web.
-              </Typography>
-              <Button
-                color="primary"
-                href="https://docs.polywrap.io/quick-start/integrate-wrappers/install-client"
-                onClick={() => {
-                  ReactGA.event({
-                    category: "CTA",
-                    action: `goto quick start`,
-                    label: "CTA Section",
-                  });
-                }}
+              <Stack
+                direction={["column", "row"]}
+                // spacing={[undefined, 6]}
+                sx={{ alignItems: "center" }}
               >
-                Start Building
-              </Button>
+                <Button
+                  color="primary"
+                  href="https://docs.polywrap.io/quick-start/integrate-wrappers/install-client"
+                  onClick={() => {
+                    ReactGA.event({
+                      category: "CTA",
+                      action: `goto quick start`,
+                      label: "CTA Section",
+                    });
+                  }}
+                >
+                  Start Building
+                </Button>
+                <Box
+                  component="div"
+                  sx={{
+                    display: ["none", "block"],
+                    width: 64,
+                    height: 2,
+                    ml: 6,
+                    bgcolor: colors.iris[600],
+                  }}
+                />
+                <Button
+                  color="primary"
+                  href="https://discord.com/invite/Z5m88a5qWu"
+                  sx={{ ml: [0, 6], mt: [2, 0] }}
+                  onClick={() => {
+                    ReactGA.event({
+                      category: "CTA",
+                      action: `discord signup`,
+                      label: "CTA Section",
+                    });
+                  }}
+                >
+                  Join Discord
+                </Button>
+              </Stack>
             </Stack>
           </Box>
-          <Box
-            component="div"
-            sx={{
-              position: "absolute",
-              borderRadius: 4,
-              width: [`calc(100% - ${theme.spacing(4)})`, "50%", "40%", "50%"],
-              right: 0,
-              top: ["100%", null, "50%"],
-              transform: [
-                "translateY(-24px)",
-                "translateY(-24px)",
-                "translateY(-50%)",
-              ],
-              overflow: "hidden",
-              ...gradientBorderStyles,
-              borderWidth: 3,
-              boxShadow: shadows[24],
-            }}
-          >
-            {/* <IDE/> */}
-            <Image
-              src={IDE}
-              alt="IDE"
-              style={{ display: "block", width: "100%", height: "auto" }}
-            />
-          </Box>
-          <Blob src={Blob1} width="20%" left="-12%" top="65%" />
-          <Blob src={Blob2} width="23%" left="87%" top="61%" />
-          <Blob src={Blob3} width="9%" left="-3%" top="-15%" />
+          <Blob
+            src={Blob1}
+            width={["40%", "20%"]}
+            left="-12%"
+            top={["79%", "65%"]}
+          />
+          <Blob
+            src={Blob2}
+            width={["35%", "23%"]}
+            left={["78%", "87%"]}
+            top={["73%", "61%"]}
+          />
+          <Blob src={Blob3} width={["25%", "9%"]} left="-3%" top="-15%" />
         </Box>
       </Container>
     </Box>

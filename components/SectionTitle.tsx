@@ -52,7 +52,10 @@ const SectionTitle = ({
             ? typography.letterSpacing.PrimaryHeading
             : typography.letterSpacing.UppercaseDisplay
         }
-        sx={{ textTransform: uppercase ? "uppercase" : null }}
+        sx={{
+          textAlign: alignment === "center" ? "center" : "left",
+          textTransform: uppercase ? "uppercase" : null,
+        }}
       >
         {bottom}
       </Box>

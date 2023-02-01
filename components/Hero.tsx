@@ -72,6 +72,7 @@ const Hero = () => {
             animation: `fadeUp 1s 1s forwards`,
             opacity: 0,
             mt: 4,
+            textAlign: "center",
           }}
         >
           Polywrap is a new way to build endlessly extensible software that runs
@@ -91,7 +92,7 @@ const Hero = () => {
           }}
           sx={{
             ...animations.fadeUp,
-            animation: `fadeUp 1s 2s forwards`,
+            animation: `fadeUp 1s 1.25s forwards`,
             opacity: 0,
             mt: 4,
           }}

@@ -1,6 +1,10 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## Environment Notes
+
+The `Box` component from `@mui` which is used extensively throughout the repository has some conflicts with the `drei` `Box` component, so it's important to use `component="div"` or whatever specific DOM element you want the mui Box to render as.
 
 ## Getting Started
+
+This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 First, run the development server:
 

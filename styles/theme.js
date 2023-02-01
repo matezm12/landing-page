@@ -36,6 +36,7 @@ export const colors = {
   cyan: tokens.Primary.Cyan.value,
   iris: {
     500: tokens.Primary.Iris.value,
+    600: "#343A80",
     800: "#1E224E",
     900: tokens.Grays[900].value
   },
@@ -111,15 +112,15 @@ export const typography = {
   letterSpacing: {...letterSpacing},
   display: {
     h1: {
-      fontSize: `clamp(calc(var(--vmin, 1vmin) * 7), ${fontSizes[14]}px, calc(var(--vmin, 1vmin) * 8))`,
+      fontSize: `clamp(calc(var(--vmin, 1vmin) * 5), ${fontSizes[14]}px, calc(var(--vmin, 1vmin) * 8))`,
       ...displayHeadingProps,
     },
     h2: {
-      fontSize: `clamp(calc(var(--vmin, 1vmin) * 6), ${fontSizes[13]}px, calc(var(--vmin, 1vmin) * 7))`,
+      fontSize: `clamp(calc(var(--vmin, 1vmin) * 4.5), ${fontSizes[13]}px, calc(var(--vmin, 1vmin) * 7))`,
       ...displayHeadingProps,
     },
     h3: {
-      fontSize: `clamp(calc(var(--vmin, 1vmin) * 5), ${fontSizes[12]}px, calc(var(--vmin, 1vmin) * 6))`,
+      fontSize: `clamp(calc(var(--vmin, 1vmin) * 4), ${fontSizes[12]}px, calc(var(--vmin, 1vmin) * 6))`,
       ...displayHeadingProps,
     },
     h4: {

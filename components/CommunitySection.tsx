@@ -17,18 +17,23 @@ const CommunitySection = () => {
         display: "flex",
         justifyContent: "center",
         minHeight: "calc(var(--vh, 1vh) * 100)",
-        mt: [8, 0],
+        mt: [8, 12, 0],
         width: "100%",
       }}
     >
       <Container sx={{ position: "relative" }}>
-        <SectionTitle top="The Wrapper" bottom="Ecosystem" alignment="center" />
+        <SectionTitle
+          top="The Wrapper"
+          bottom="Ecosystem"
+          alignment="center"
+          letterSpacing="tight"
+        />
         <Box
           component="div"
           sx={{
             width: ["100%", "100%"],
             ml: ["0%", 0],
-            mt: 8,
+            mt: [4, 8],
             position: "relative",
             transform: ["scale(1.25)", null],
           }}
@@ -71,7 +76,7 @@ const CommunitySection = () => {
           })}
         </Box>
         <Box component="div" sx={{ position: "relative", top: [-24, -48] }}>
-          <DividerTitle>Built By the Best</DividerTitle>
+          <DividerTitle>Built and Backed By the Best</DividerTitle>
           <Grid
             container
             columnSpacing={[4, 6, 12]}

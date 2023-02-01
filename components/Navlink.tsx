@@ -14,9 +14,12 @@ const Navlink = ({ href, children }: NavlinkProps) => {
       sx={{
         color: alpha(colors.white, 0.8),
         fontFamily: typography.fontFamilies.extended,
-        fontSize: typography.fontSizes[4],
+        fontSize: [typography.fontSizes[3], typography.fontSizes[4]],
         letterSpacing: typography.letterSpacing.PrimaryHeading,
         textDecoration: "none",
+        "&:visited": {
+          color: alpha(colors.white, 0.8),
+        },
         "&:hover": {
           color: colors.white,
         },

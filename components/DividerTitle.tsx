@@ -1,5 +1,5 @@
 import React, { ReactNode } from "react";
-import { Box, Typography } from "@mui/material";
+import { Box, Typography, useMediaQuery, useTheme } from "@mui/material";
 import { colors, typography } from "../styles/theme";
 
 interface DividerTitleProps {
@@ -10,9 +10,13 @@ const dividerStyles = {
   bgcolor: colors.iris[500],
   height: "1px",
   width: "100%",
+  display: ["none", "block"],
 };
 
 const DividerTitle = ({ children }: DividerTitleProps) => {
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("md"));
+
   return (
     <Box
       component="div"
@@ -29,11 +33,15 @@ const DividerTitle = ({ children }: DividerTitleProps) => {
       <Typography
         variant="h6"
         sx={{
-          px: 4,
+          px: isMobile ? 0 : 4,
           textTransform: "uppercase",
-          whiteSpace: "noWrap",
+          textAlign: "center",
+          whiteSpace: isMobile ? "unset" : "noWrap",
           ...typography.display.h6,
-          fontSize: typography.fontSizes[6],
+          lineHeight: isMobile ? 1.5 : 1,
+          fontSize: isMobile
+            ? typography.fontSizes[4]
+            : typography.fontSizes[6],
         }}
       >
         {children}

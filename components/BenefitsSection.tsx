@@ -24,9 +24,10 @@ const BenefitsSection = () => {
           top="WRAPPERS ARE"
           bottom="NEXT-GEN SDKs"
           alignment="center"
+          letterSpacing="tight"
           uppercase={false}
         />
-        <Grid container spacing={[12, 10, 6]} mt={[4, 8]}>
+        <Grid container spacing={[12, 10, 6]} mt={[0, 4, 8]}>
           {benefits.map((benefit: BenefitCardProps) => (
             <Grid key={benefit.slug} item xs={12} md={4}>
               <BenefitCard {...benefit} />
