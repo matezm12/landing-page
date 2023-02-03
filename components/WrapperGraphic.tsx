@@ -61,9 +61,6 @@ const WrapperGraphic = ({
         width: position?.r,
         left: `${position?.x}%`,
         top: `${position?.y}%`,
-        filter: `drop-shadow(0 48px 48px rgba(0,0,0,0.5)) blur(${
-          blur ? blur : 0
-        }px)`,
         transform: `translate(-50%,-50%) scale(1)`,
         transition: `transform 0.25s ${easings.cubic}`,
         overflow: "hidden",

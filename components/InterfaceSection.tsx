@@ -90,7 +90,6 @@ const InterfaceSection = () => {
         <Grid
           container
           spacing={[4, 4, 4, 12]}
-          flexDirection="row-reverse"
           sx={{ alignItems: "center", justifyContent: "center" }}
         >
           <Grid

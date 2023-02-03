@@ -76,8 +76,7 @@ const Hero = () => {
           }}
         >
           Polywrap is a new way to build endlessly extensible software that runs
-          {` `}
-          <em>anywhere</em>.
+          anywhere.
         </Typography>
         <Button
           color="primary"

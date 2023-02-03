@@ -1,16 +1,15 @@
-import { alpha, Link } from "@mui/material";
+import { alpha, Link, LinkProps } from "@mui/material";
 import { ReactNode } from "react";
 import { colors, typography } from "../styles/theme";
 
-interface NavlinkProps {
+interface NavlinkProps extends LinkProps {
   href: string;
   children: ReactNode;
 }
 
-const Navlink = ({ href, children }: NavlinkProps) => {
+const Navlink = ({ children, ...props }: NavlinkProps) => {
   return (
     <Link
-      href={href}
       sx={{
         color: alpha(colors.white, 0.8),
         fontFamily: typography.fontFamilies.extended,
@@ -24,6 +23,7 @@ const Navlink = ({ href, children }: NavlinkProps) => {
           color: colors.white,
         },
       }}
+      {...props}
     >
       {children}
     </Link>

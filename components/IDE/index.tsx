@@ -4,8 +4,8 @@ import { animations, colors } from "../../styles/theme";
 import Dot from "./Dot";
 import Frame from "./Frame";
 import { frames, FrameProps } from "../../constants/IDE";
-import PolywrapBlob1 from "../../public/images/hero/blobs/7.webp";
-import PolywrapBlob2 from "../../public/images/hero/blobs/10.webp";
+import PolywrapBlobYellow from "../../public/images/hero/blobs/7.webp";
+import PolywrapBlobMagenta from "../../public/images/hero/blobs/10.webp";
 import Image from "next/image";
 
 const IDE = () => {
@@ -53,7 +53,7 @@ const IDE = () => {
         }}
       >
         <Image
-          src={PolywrapBlob1}
+          src={PolywrapBlobYellow}
           alt=""
           style={{
             width: "100%",
@@ -69,12 +69,12 @@ const IDE = () => {
           position: "absolute",
           width: "50%",
           transform: "rotate(-83deg)",
-          left: ["-15%", "-20%"],
+          left: ["-15%", "-12%"],
           bottom: ["-6%", "-20%"],
         }}
       >
         <Image
-          src={PolywrapBlob2}
+          src={PolywrapBlobMagenta}
           alt=""
           style={{
             width: "100%",
@@ -100,6 +100,7 @@ const IDE = () => {
       >
         {frames.map((_frame, i) => (
           <Frame
+            key={i}
             {...frames[activeFrame]}
             active={i === activeFrame}
             timerRunning={timerRunning}
