@@ -112,26 +112,32 @@ export const typography = {
   letterSpacing: {...letterSpacing},
   display: {
     h1: {
+      fontSize: `${fontSizes[14]}px`,
       fontSize: `clamp(calc(var(--vmin, 1vmin) * 5), ${fontSizes[14]}px, calc(var(--vmin, 1vmin) * 8))`,
       ...displayHeadingProps,
     },
     h2: {
+      fontSize: `${fontSizes[13]}px`,
       fontSize: `clamp(calc(var(--vmin, 1vmin) * 4.5), ${fontSizes[13]}px, calc(var(--vmin, 1vmin) * 7))`,
       ...displayHeadingProps,
     },
     h3: {
+      fontSize: `${fontSizes[12]}px`,
       fontSize: `clamp(calc(var(--vmin, 1vmin) * 4), ${fontSizes[12]}px, calc(var(--vmin, 1vmin) * 6))`,
       ...displayHeadingProps,
     },
     h4: {
+      fontSize: `${fontSizes[11]}px`,
       fontSize: `clamp(calc(var(--vmin, 1vmin) * 4), ${fontSizes[11]}px, calc(var(--vmin, 1vmin) * 5))`,
       ...displayHeadingProps,
     },
     h5: {
+      fontSize: `${fontSizes[10]}px`,
       fontSize: `clamp(calc(var(--vmin, 1vmin) * 3), ${fontSizes[10]}px, calc(var(--vmin, 1vmin) * 4))`,
       ...displayHeadingProps,
     },
     h6: {
+      fontSize: `${fontSizes[9]}px`,
       fontSize: `clamp(calc(var(--vmin, 1vmin) * 2), ${fontSizes[9]}px, calc(var(--vmin, 1vmin) * 3))`,
       ...displayHeadingProps,
     },
