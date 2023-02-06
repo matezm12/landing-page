@@ -9,8 +9,9 @@ import { Language } from "prism-react-renderer";
 
 interface LanguageProps {
   icon: StaticImageData;
-  name: Language;
-  slug: string;
+  type: Language;
+  name: string;
+  abbreviation: string;
 }
 
 export interface Languages {
@@ -22,75 +23,78 @@ export interface Languages {
 export const languages: Languages = {
   ts: {
     icon: TypescriptIcon,
+    type: "typescript",
     name: "typescript",
-    slug: "ts",
+    abbreviation: "ts",
   },
   rust: {
     icon: RustIcon,
-    name: "typescript",
-    slug: "rust",
+    type: "typescript",
+    name: "rust",
+    abbreviation: "rust",
   },
   py: {
     icon: PythonIcon,
+    type: "python",
     name: "python",
-    slug: "py",
+    abbreviation: "py",
   },
 }
 
 export interface LangProps {
-  slug: "ts" | "py" | "rust";
+  abbreviation: "ts" | "py" | "rust";
   code: string;
 }
 
 export interface FrameProps {
   slug: string;
-  title: string;
+  title(language: string): string;
   langs: LangProps[]
 }
 
 export const frames: FrameProps[] = [
   {
     slug: "uniswap-pool",
-    title: "Add liquidity to a uniswap pool from a Rust app.",
+    title: (language: string = "typescript") => `Add liquidity to a uniswap pool from a ${language} app.`,
     langs: [
       {
-        slug: "ts",
+        abbreviation: "ts",
         code: Uniswap.ts,
       },
       {
-        slug: "py",
+        abbreviation: "py",
         code: Uniswap.py,
       },
       {
-        slug: "rust",
+        abbreviation: "rust",
         code: Uniswap.rust,
       },
     ]
   },
   {
     slug: "near-pool",
-    title: "Add liquidity to a near pool from a Rust app.",
+    title: (language: string = "typescript") => `Add liquidity to a near pool from a ${language} app.`,
     langs: [
       {
-        slug: "py",
+        abbreviation: "py",
         code: Near.py,
       },
       {
-        slug: "rust",
+        abbreviation: "rust",
         code: Near.rust
       },
     ]
   },
   {
     slug: "tezos-pool",
-    title: "Add liquidity to a tezos pool from a Rust app.",
+    title: (language: string = "typescript") => `Add liquidity to a tezos pool from a ${language} app.`,
     langs: [
       {
-        slug: "py",
+        abbreviation: "py",
         code: Tezos.py,
       },
       {
-        slug: "rust",
+        abbreviation: "rust",
         code: Tezos.rust
       },
     ]

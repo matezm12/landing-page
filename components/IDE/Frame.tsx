@@ -1,9 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { alpha, Box, Stack, Typography, useTheme } from "@mui/material";
 import { colors, typography } from "../../styles/theme";
-import CodeLine from "./CodeLine";
 import { languages, FrameProps, LangProps } from "../../constants/IDE";
-import { Add } from "@mui/icons-material";
 import Image from "next/image";
 import Highlight, { defaultProps, Language } from "prism-react-renderer";
 import PrismTheme from "./PrismTheme";
@@ -18,8 +16,8 @@ const Frame = ({ slug, title, langs, active, maxLines }: IDEFrameProps) => {
   const [activeLangIndex, setActiveLangIndex] = useState<number>(0);
   const activeLang = langs[activeLangIndex];
 
-  // const codeLines = activeLang.code.trim().split("\n");
-  const activeLanguageName: Language = languages[activeLang.slug].name;
+  const activeLanguageName: string = languages[activeLang.abbreviation].name;
+  const activeLanguageType: Language = languages[activeLang.abbreviation].type;
 
   const theme = useTheme();
   const lineHeight: number = parseInt(theme.spacing(3));
@@ -44,12 +42,13 @@ const Frame = ({ slug, title, langs, active, maxLines }: IDEFrameProps) => {
           p: 3,
         }}
       >
-        <Typography fontWeight={600}>{title}</Typography>
+        <Typography fontWeight={600}>{title(activeLanguageName)}</Typography>
 
         <Stack>
           <Stack direction="row">
             {langs.map((lang: LangProps, i) => {
-              const activeLangSlug: LangProps["slug"] = activeLang.slug;
+              const activeLangSlug: LangProps["abbreviation"] =
+                activeLang.abbreviation;
               return (
                 <Stack
                   key={i}
@@ -59,17 +58,17 @@ const Frame = ({ slug, title, langs, active, maxLines }: IDEFrameProps) => {
                   sx={{
                     alignItems: "center",
                     bgcolor:
-                      activeLangSlug === lang.slug
+                      activeLangSlug === lang.abbreviation
                         ? colors.iris[800]
                         : "transparent",
                     borderBottom: `2px solid`,
                     borderBottomColor:
-                      activeLangSlug === lang.slug
+                      activeLangSlug === lang.abbreviation
                         ? `${colors.iris[500]}`
                         : "transparent",
                     color: alpha(
                       colors.white,
-                      activeLangSlug === lang.slug ? 1 : 0.5
+                      activeLangSlug === lang.abbreviation ? 1 : 0.5
                     ),
                     cursor: "pointer",
                     px: 2,
@@ -78,29 +77,32 @@ const Frame = ({ slug, title, langs, active, maxLines }: IDEFrameProps) => {
                     borderTopRightRadius: 4,
                     "&:hover": {
                       bgcolor:
-                        activeLangSlug !== lang.slug ? colors.iris[900] : null,
+                        activeLangSlug !== lang.abbreviation
+                          ? colors.iris[900]
+                          : null,
                       color:
-                        activeLangSlug !== lang.slug
+                        activeLangSlug !== lang.abbreviation
                           ? alpha(colors.white, 0.8)
                           : null,
                       "& .lang-icon": {
-                        opacity: activeLangSlug !== lang.slug ? 0.8 : null,
+                        opacity:
+                          activeLangSlug !== lang.abbreviation ? 0.8 : null,
                       },
                     },
                   }}
                 >
                   <Image
                     className="lang-icon"
-                    src={languages[lang.slug].icon}
-                    alt={languages[lang.slug].name}
+                    src={languages[lang.abbreviation].icon}
+                    alt={languages[lang.abbreviation].name}
                     style={{
                       height: 16,
                       width: 16,
-                      opacity: activeLangSlug === lang.slug ? 1 : 0.5,
+                      opacity: activeLangSlug === lang.abbreviation ? 1 : 0.5,
                     }}
                   />
                   <Typography sx={{ fontSize: 12 }}>
-                    {`${slug}.${lang.slug}`}
+                    {`${slug}.${lang.abbreviation}`}
                   </Typography>
                 </Stack>
               );
@@ -110,7 +112,7 @@ const Frame = ({ slug, title, langs, active, maxLines }: IDEFrameProps) => {
             {...defaultProps}
             code={activeLang.code}
             theme={PrismTheme}
-            language={activeLanguageName}
+            language={activeLanguageType}
           >
             {({ tokens, getLineProps, getTokenProps }) => {
               if (tokens[tokens.length - 1][0].empty) {

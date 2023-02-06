@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Box, Stack } from "@mui/material";
 import { animations, colors } from "../../styles/theme";
 import Dot from "./Dot";
@@ -49,7 +49,6 @@ const IDE = () => {
       .filter((line: any) => line.length >= 1).length;
     return (acc = acc > codeLength ? acc : codeLength);
   }, 0);
-  console.log(maxLines);
 
   return (
     <Stack
