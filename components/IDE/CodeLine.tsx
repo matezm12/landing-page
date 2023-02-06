@@ -3,7 +3,7 @@ import { Box, Stack, Typography } from "@mui/material";
 import { colors, typography } from "../../styles/theme";
 
 interface CodeLineProps {
-  children: React.ReactNode;
+  children: any;
   index: number;
   tabs?: number;
 }

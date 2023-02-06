@@ -5,24 +5,21 @@ import CodeLine from "./CodeLine";
 import { languages, FrameProps, LangProps } from "../../constants/IDE";
 import { Add } from "@mui/icons-material";
 import Image from "next/image";
+import Highlight, { defaultProps, Language } from "prism-react-renderer";
+import PrismTheme from "./PrismTheme";
 
 interface IDEFrameProps extends FrameProps {
   active: boolean;
   timerRunning?: boolean;
+  maxLines: number;
 }
 
-const Frame = ({ slug, title, langs, active }: IDEFrameProps) => {
+const Frame = ({ slug, title, langs, active, maxLines }: IDEFrameProps) => {
   const [activeLangIndex, setActiveLangIndex] = useState<number>(0);
   const activeLang = langs[activeLangIndex];
 
-  const codeLines = activeLang.code.trim().split("\n");
-
-  const maxLines = langs.reduce((acc, value) => {
-    const codeLength: number = value.code
-      .split("\n")
-      .filter((line) => line.length >= 1).length;
-    return (acc = acc > codeLength ? acc : codeLength);
-  }, 0);
+  // const codeLines = activeLang.code.trim().split("\n");
+  const activeLanguageName: Language = languages[activeLang.slug].name;
 
   const theme = useTheme();
   const lineHeight: number = parseInt(theme.spacing(3));
@@ -109,57 +106,86 @@ const Frame = ({ slug, title, langs, active }: IDEFrameProps) => {
               );
             })}
           </Stack>
-          <Box
-            component="div"
-            sx={{
-              position: "relative",
-              bgcolor: colors.iris[900],
-              p: 2,
-              borderRadius: 1,
-              width: "100%",
-            }}
+          <Highlight
+            {...defaultProps}
+            code={activeLang.code}
+            theme={PrismTheme}
+            language={activeLanguageName}
           >
-            <Stack
-              sx={{
-                overflow: "scroll",
-                height: "100%",
-                minHeight: lineHeight * maxLines,
-                width: "100%",
-              }}
-            >
-              {codeLines.map((codeline, i) => {
-                const tabCount = codeline.length - codeline.trim().length;
-
-                return (
-                  <CodeLine key={i} index={i + 1} tabs={tabCount}>
-                    {codeline}
-                  </CodeLine>
-                );
-              })}
-            </Stack>
-            {/* <Box
-              component="div"
-              sx={{
-                px: 1,
-                py: 0.5,
-                bgcolor: colors.iris[600],
-                borderRadius: 1,
-                color: "white",
-                fontFamily: typography.fontFamilies.extended,
-                fontWeight: 900,
-                textTransform: "uppercase",
-                lineHeight: 1,
-                letterSpacing: 1,
-                display: "inline",
-                position: "absolute",
-                top: theme.spacing(1),
-                right: theme.spacing(1),
-                fontSize: 10,
-              }}
-            >
-              Query
-            </Box> */}
-          </Box>
+            {({ tokens, getLineProps, getTokenProps }) => {
+              if (tokens[tokens.length - 1][0].empty) {
+                tokens.pop();
+              }
+              return (
+                <Box
+                  component="pre"
+                  sx={{
+                    position: "relative",
+                    bgcolor: colors.iris[900],
+                    p: 2,
+                    borderRadius: 1,
+                    borderTopLeftRadius: 0,
+                    my: 0,
+                    width: "100%",
+                  }}
+                >
+                  <Box
+                    component="div"
+                    sx={{
+                      overflow: "scroll",
+                      height: "100%",
+                      minHeight: lineHeight * maxLines,
+                      width: "100%",
+                    }}
+                  >
+                    {tokens.map((line, i) => {
+                      return (
+                        <Box
+                          component="div"
+                          {...getLineProps({ line, key: i })}
+                        >
+                          <Box
+                            component="div"
+                            sx={{
+                              display: "table-row",
+                              fontFamily: typography.fontFamilies.monospace,
+                            }}
+                          >
+                            <Box
+                              component="span"
+                              sx={{
+                                display: "table-cell",
+                                textAlign: "right",
+                                paddingRight: "1.5em",
+                                minWidth: "2.75em",
+                                userSelect: "none",
+                                opacity: "0.3",
+                              }}
+                            >
+                              {i + 1}
+                            </Box>
+                            <Box
+                              component="span"
+                              sx={{ display: "table-cell" }}
+                            >
+                              {line.map((token, key) => {
+                                return (
+                                  <Box
+                                    component="span"
+                                    {...getTokenProps({ token, key })}
+                                  />
+                                );
+                              })}
+                            </Box>
+                          </Box>
+                        </Box>
+                      );
+                    })}
+                  </Box>
+                </Box>
+              );
+            }}
+          </Highlight>
         </Stack>
       </Stack>
     </Box>

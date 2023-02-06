@@ -37,6 +37,20 @@ const IDE = () => {
   const nextFrame = activeFrame === frames.length - 1 ? 0 : activeFrame + 1;
   const prevFrame = activeFrame === 0 ? frames.length - 1 : activeFrame - 1;
 
+  const allLangs: any[] = [];
+  frames.map((frame) => {
+    frame.langs.map((lang) => {
+      allLangs.push(lang);
+    });
+  });
+  const maxLines = allLangs.reduce((acc, value) => {
+    const codeLength: number = value.code
+      .split("\n")
+      .filter((line: any) => line.length >= 1).length;
+    return (acc = acc > codeLength ? acc : codeLength);
+  }, 0);
+  console.log(maxLines);
+
   return (
     <Stack
       spacing={3}
@@ -102,14 +116,17 @@ const IDE = () => {
           },
         }}
       >
-        {frames.map((_frame, i) => (
-          <Frame
-            key={i}
-            {...frames[activeFrame]}
-            active={i === activeFrame}
-            timerRunning={timerRunning}
-          />
-        ))}
+        {frames.map((_frame, i) => {
+          return (
+            <Frame
+              key={i}
+              {...frames[activeFrame]}
+              maxLines={maxLines + 2}
+              active={i === activeFrame}
+              timerRunning={timerRunning}
+            />
+          );
+        })}
       </Box>
       <Stack
         direction="row"

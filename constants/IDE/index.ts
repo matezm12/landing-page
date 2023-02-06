@@ -5,10 +5,11 @@ import { StaticImageData } from "next/image";
 import TypescriptIcon from "../../public/images/lang-icons/typescript.png";
 import RustIcon from "../../public/images/lang-icons/rust.png";
 import PythonIcon from "../../public/images/lang-icons/python.png";
+import { Language } from "prism-react-renderer";
 
 interface LanguageProps {
   icon: StaticImageData;
-  name: string;
+  name: Language;
   slug: string;
 }
 
@@ -21,17 +22,17 @@ export interface Languages {
 export const languages: Languages = {
   ts: {
     icon: TypescriptIcon,
-    name: "Typescript",
+    name: "typescript",
     slug: "ts",
   },
   rust: {
     icon: RustIcon,
-    name: "Rust",
+    name: "typescript",
     slug: "rust",
   },
   py: {
     icon: PythonIcon,
-    name: "Python",
+    name: "python",
     slug: "py",
   },
 }
