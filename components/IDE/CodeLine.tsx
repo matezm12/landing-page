@@ -1,28 +1,34 @@
 import React from "react";
-import { Box, Typography } from "@mui/material";
-import { typography } from "../../styles/theme";
+import { Box, Stack, Typography } from "@mui/material";
+import { colors, typography } from "../../styles/theme";
 
 interface CodeLineProps {
   children: React.ReactNode;
+  index: number;
   tabs?: number;
 }
 
-const CodeLine = ({ children, tabs }: CodeLineProps) => {
+const CodeLine = ({ children, index, tabs }: CodeLineProps) => {
   const tabCount: number = tabs ? tabs : 0;
   return (
-    <Box component="div" sx={{ ml: tabCount * 0.75 }}>
-      <Typography
-        sx={{
-          fontFamily: typography.fontFamilies.monospace,
-          color: "white",
-          whiteSpace: "nowrap",
-          lineHeight: 1.55,
-          fontSize: 14,
-        }}
-      >
-        {children}
+    <Stack direction="row" sx={{ alignItems: "center" }} spacing={4}>
+      <Typography sx={{ color: colors.iris[600], width: 4 }}>
+        {index}
       </Typography>
-    </Box>
+      <Box component="div" sx={{ pl: tabCount * 1.5 }}>
+        <Typography
+          sx={{
+            fontFamily: typography.fontFamilies.monospace,
+            color: "white",
+            whiteSpace: "nowrap",
+            lineHeight: 1.55,
+            fontSize: [12, 14],
+          }}
+        >
+          {children}
+        </Typography>
+      </Box>
+    </Stack>
   );
 };
 

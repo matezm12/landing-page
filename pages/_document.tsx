@@ -15,7 +15,6 @@ export default class MyDocument extends Document {
           <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
           <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
           <meta name="theme-color" content="#5361F8"></meta>
-          <meta name="viewport" content="width=device-width, initial-scale=1" />
           <meta
             name="description"
             content="Polywrap is a WebAssembly standard for building endlessly extensible software that runs anywhere."
@@ -26,7 +25,6 @@ export default class MyDocument extends Document {
           />
 
           <link rel="manifest" href="/manifest.json" />
-          <title>Polywrap - Enter the Composable Future</title>
           <meta
             property="og:title"
             content="Polywrap - Enter the Composable Future"

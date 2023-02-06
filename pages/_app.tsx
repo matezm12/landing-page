@@ -7,6 +7,7 @@ import Header from "../Layout/Header";
 import Footer from "../Layout/Footer";
 import { useEffect } from "react";
 import Noise from "../components/Noise";
+import Head from "next/head";
 
 export default function App({ Component, pageProps }: AppProps) {
   useEffect(() => {
@@ -33,6 +34,10 @@ export default function App({ Component, pageProps }: AppProps) {
 
   return (
     <ThemeProvider theme={theme}>
+      <Head>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Polywrap - Enter the Composable Future</title>
+      </Head>
       <CssBaseline />
       <Header />
       <Noise />

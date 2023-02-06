@@ -7,6 +7,7 @@ import { frames, FrameProps } from "../../constants/IDE";
 import PolywrapBlobYellow from "../../public/images/hero/blobs/7.webp";
 import PolywrapBlobMagenta from "../../public/images/hero/blobs/10.webp";
 import Image from "next/image";
+import { ArrowBack, ArrowForward } from "@mui/icons-material";
 
 const IDE = () => {
   const [activeFrame, setActive] = useState<number>(0);
@@ -24,7 +25,7 @@ const IDE = () => {
       let incrementFrame = setInterval(() => {
         setActive(inc % frames.length);
         inc++;
-      }, 3000);
+      }, 12000);
       setIncrementFrame(incrementFrame);
     }
     return () => {
@@ -32,6 +33,9 @@ const IDE = () => {
       setTimerState(false);
     };
   }, [timerRunning]);
+
+  const nextFrame = activeFrame === frames.length - 1 ? 0 : activeFrame + 1;
+  const prevFrame = activeFrame === 0 ? frames.length - 1 : activeFrame - 1;
 
   return (
     <Stack
@@ -107,15 +111,61 @@ const IDE = () => {
           />
         ))}
       </Box>
-      <Stack direction="row" sx={{ justifyContent: "center" }}>
-        {frames.map((_frame: FrameProps, i: number) => (
-          <Dot
-            key={i}
-            instance={i}
-            active={i === activeFrame}
-            setActive={setActive}
-          />
-        ))}
+      <Stack
+        direction="row"
+        sx={{ alignItems: "center", justifyContent: "space-evenly", zIndex: 1 }}
+      >
+        <Stack
+          onClick={() => setActive(prevFrame)}
+          sx={{
+            alignItems: "center",
+            justifyContent: "center",
+            cursor: "pointer",
+            bgcolor: colors.iris[900],
+            border: `1px solid ${colors.iris[600]}`,
+            p: 1,
+            borderRadius: 999,
+            transition: "all 0.25s ease-in-out",
+            "&:hover": {
+              bgcolor: colors.iris[800],
+              transform: "scale(1.1)",
+            },
+          }}
+        >
+          <ArrowBack />
+        </Stack>
+        <Stack
+          direction="row"
+          sx={{ alignItems: "center", justifyContent: "center" }}
+        >
+          {frames.map((_frame: FrameProps, i: number) => (
+            <Dot
+              key={i}
+              instance={i}
+              active={i === activeFrame}
+              setActive={setActive}
+            />
+          ))}
+        </Stack>
+        <Stack
+          onClick={() => setActive(nextFrame)}
+          sx={{
+            alignItems: "center",
+            justifyContent: "center",
+            cursor: "pointer",
+            bgcolor: colors.iris[900],
+            border: `1px solid ${colors.iris[600]}`,
+            p: 1,
+            borderRadius: 999,
+            transition: "all 0.25s ease-in-out",
+            "&:hover": {
+              bgcolor: colors.iris[800],
+              transform: "scale(1.1)",
+            },
+          }}
+        >
+          <ArrowForward />
+        </Stack>
       </Stack>
     </Stack>
   );
