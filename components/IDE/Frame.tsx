@@ -227,7 +227,7 @@ const Frame = ({ slug, icon, title, langs, active, maxLines }: IDEFrameProps) =>
           />
         </Stack>
         <Typography sx={{ fontSize: 12 }} align="center" gutterBottom={true}>
-          {"Disclaimer: examples may not exist as shown."}
+          {"Examples are for illustrative purposes only."}
         </Typography>
       </Stack>
     </Box>
