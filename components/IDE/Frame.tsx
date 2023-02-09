@@ -8,7 +8,7 @@ import {
   ToggleButton,
   Tooltip,
 } from "@mui/material";
-import { Brush } from "@mui/icons-material";
+import { Settings } from "@mui/icons-material";
 import { colors, typography } from "../../styles/theme";
 import { languages, FrameProps, LangProps } from "../../constants/IDE";
 import Image from "next/image";
@@ -145,7 +145,7 @@ const Frame = ({
                       setCodeStyle(!codeStyle);
                     }}
                   >
-                    <Brush
+                    <Settings
                       color={codeStyle ? "primary" : undefined}
                       sx={{ color: codeStyle ? undefined : "white", width: 16 }}
                     />
@@ -172,7 +172,7 @@ const Frame = ({
                     component="pre"
                     sx={{
                       position: "relative",
-                      bgcolor: colors.iris[900],
+                      bgcolor: colors.black,
                       p: 2,
                       borderRadius: 1,
                       borderTopLeftRadius: 0,

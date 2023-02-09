@@ -52,13 +52,19 @@ const PrismTheme: PrismTheme = {
     {
       types: ["number"],
       style: {
-        color: "rgb(247, 140, 108)",
+        color: "rgb(255, 120, 88)",
       },
     },
     {
-      types: ["builtin", "char", "constant", "function"],
+      types: ["char", "constant", "function"],
       style: {
-        color: colors.iris[500],
+        color: "rgb(255, 120, 88)",
+      },
+    },
+    {
+      types: ["builtin"],
+      style: {
+        color: colors.yellow,
       },
     },
     {
