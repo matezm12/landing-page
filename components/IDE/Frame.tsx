@@ -1,5 +1,13 @@
 import React, { useState } from "react";
-import { alpha, Box, Stack, Typography, useTheme, ToggleButton, Tooltip } from "@mui/material";
+import {
+  alpha,
+  Box,
+  Stack,
+  Typography,
+  useTheme,
+  ToggleButton,
+  Tooltip,
+} from "@mui/material";
 import { Brush } from "@mui/icons-material";
 import { colors, typography } from "../../styles/theme";
 import { languages, FrameProps, LangProps } from "../../constants/IDE";
@@ -13,15 +21,22 @@ interface IDEFrameProps extends FrameProps {
   maxLines: number;
 }
 
-const Frame = ({ slug, icon, title, langs, active, maxLines }: IDEFrameProps) => {
+const Frame = ({
+  slug,
+  icon,
+  title,
+  langs,
+  active,
+  maxLines,
+}: IDEFrameProps) => {
   const [codeStyle, setCodeStyle] = useState<boolean>(false);
   const [activeLangIndex, setActiveLangIndex] = useState<number>(0);
   const activeLang = langs[activeLangIndex];
   const alternateCodeStyle = !!activeLang.code.codegen;
   const getCode = () =>
-    alternateCodeStyle && codeStyle ?
-    activeLang.code.codegen as string :
-    activeLang.code.client;
+    alternateCodeStyle && codeStyle
+      ? (activeLang.code.codegen as string)
+      : activeLang.code.client;
 
   const activeLanguageName: string = languages[activeLang.abbreviation].name;
   const activeLanguageType: Language = languages[activeLang.abbreviation].type;
@@ -108,14 +123,16 @@ const Frame = ({ slug, icon, title, langs, active, maxLines }: IDEFrameProps) =>
                         opacity: activeLangSlug === lang.abbreviation ? 1 : 0.5,
                       }}
                     />
-                    <Typography sx={{ fontSize: 12 }}>
+                    <Typography
+                      sx={{ display: ["none", "flex"], fontSize: 12 }}
+                    >
                       {`${slug}.${lang.abbreviation}`}
                     </Typography>
                   </Stack>
                 );
               })}
             </Stack>
-            {alternateCodeStyle ?
+            {alternateCodeStyle ? (
               <Stack direction="row">
                 <Tooltip title="Codegen" placement="top">
                   <ToggleButton
@@ -123,112 +140,119 @@ const Frame = ({ slug, icon, title, langs, active, maxLines }: IDEFrameProps) =>
                     color={"primary"}
                     size="small"
                     selected={codeStyle}
+                    sx={{ height: 34 }}
                     onChange={() => {
                       setCodeStyle(!codeStyle);
                     }}
                   >
                     <Brush
                       color={codeStyle ? "primary" : undefined}
-                      style={codeStyle ? undefined : { color: "white" }}
+                      sx={{ color: codeStyle ? undefined : "white", width: 16 }}
                     />
                   </ToggleButton>
                 </Tooltip>
-              </Stack> :
+              </Stack>
+            ) : (
               <></>
-            }
+            )}
           </Stack>
-          <Highlight
-            {...defaultProps}
-            code={getCode()}
-            theme={PrismTheme}
-            language={activeLanguageType}
-          >
-            {({ tokens, getLineProps, getTokenProps }) => {
-              if (tokens[tokens.length - 1][0].empty) {
-                tokens.pop();
-              }
-              return (
-                <Box
-                  component="pre"
-                  sx={{
-                    position: "relative",
-                    bgcolor: colors.iris[900],
-                    p: 2,
-                    borderRadius: 1,
-                    borderTopLeftRadius: 0,
-                    my: 0,
-                    width: "100%",
-                  }}
-                >
+          <Box component="div" sx={{ position: "relative" }}>
+            <Highlight
+              {...defaultProps}
+              code={getCode()}
+              theme={PrismTheme}
+              language={activeLanguageType}
+            >
+              {({ tokens, getLineProps, getTokenProps }) => {
+                if (tokens[tokens.length - 1][0].empty) {
+                  tokens.pop();
+                }
+                return (
                   <Box
-                    component="div"
+                    component="pre"
                     sx={{
-                      overflow: "scroll",
-                      height: "100%",
-                      minHeight: lineHeight * maxLines,
+                      position: "relative",
+                      bgcolor: colors.iris[900],
+                      p: 2,
+                      borderRadius: 1,
+                      borderTopLeftRadius: 0,
+                      my: 0,
                       width: "100%",
                     }}
                   >
-                    {tokens.map((line, i) => {
-                      return (
-                        <Box
-                          component="div"
-                          {...getLineProps({ line, key: i })}
-                        >
+                    <Box
+                      component="div"
+                      sx={{
+                        overflow: "scroll",
+                        height: "100%",
+                        minHeight: lineHeight * maxLines,
+                        width: "100%",
+                        "&::-webkit-scrollbar, &::-webkit-scrollbar-corner": {
+                          opacity: 0,
+                        },
+                      }}
+                    >
+                      {tokens.map((line, i) => {
+                        return (
                           <Box
                             component="div"
-                            sx={{
-                              display: "table-row",
-                              fontFamily: typography.fontFamilies.monospace,
-                            }}
+                            {...getLineProps({ line, key: i })}
                           >
                             <Box
-                              component="span"
+                              component="div"
                               sx={{
-                                display: "table-cell",
-                                textAlign: "right",
-                                paddingRight: "1.5em",
-                                minWidth: "2.75em",
-                                userSelect: "none",
-                                opacity: "0.3",
+                                display: "table-row",
+                                fontFamily: typography.fontFamilies.monospace,
                               }}
                             >
-                              {i + 1}
-                            </Box>
-                            <Box
-                              component="span"
-                              sx={{ display: "table-cell" }}
-                            >
-                              {line.map((token, key) => {
-                                return (
-                                  <Box
-                                    component="span"
-                                    {...getTokenProps({ token, key })}
-                                  />
-                                );
-                              })}
+                              <Box
+                                component="span"
+                                sx={{
+                                  display: "table-cell",
+                                  textAlign: "right",
+                                  paddingRight: "1.5em",
+                                  minWidth: "2.75em",
+                                  userSelect: "none",
+                                  opacity: "0.3",
+                                }}
+                              >
+                                {i + 1}
+                              </Box>
+                              <Box
+                                component="span"
+                                sx={{ display: "table-cell" }}
+                              >
+                                {line.map((token, key) => {
+                                  return (
+                                    <Box
+                                      component="span"
+                                      {...getTokenProps({ token, key })}
+                                    />
+                                  );
+                                })}
+                              </Box>
                             </Box>
                           </Box>
-                        </Box>
-                      );
-                    })}
+                        );
+                      })}
+                    </Box>
                   </Box>
-                </Box>
-              );
-            }}
-          </Highlight>
+                );
+              }}
+            </Highlight>
+            <Stack
+              sx={{
+                display: ["none", "flex"],
+                position: "absolute",
+                bottom: theme.spacing(1.5),
+                right: theme.spacing(1.5),
+                opacity: 0.8,
+              }}
+            >
+              <Image className="lang-icon" src={icon} alt={slug} height="24" />
+            </Stack>
+          </Box>
         </Stack>
-        <Stack direction="row" justifyContent={"center"}>
-          <Image
-            className="lang-icon"
-            src={icon}
-            alt={slug}
-            height="50"
-          />
-        </Stack>
-        <Typography sx={{ fontSize: 12 }} align="center" gutterBottom={true}>
-          {"Examples are for illustrative purposes only."}
-        </Typography>
       </Stack>
     </Box>
   );

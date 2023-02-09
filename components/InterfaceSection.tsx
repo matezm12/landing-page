@@ -123,6 +123,15 @@ const InterfaceSection = () => {
                 include the Polywrap client in your app to seamlessly read and
                 write to a variety of protocols from a secure WebAssembly VM.
               </Typography>
+              <Typography
+                sx={{
+                  color: alpha(colors.white, 0.5),
+                  fontSize: 12,
+                  lineHeight: 1,
+                }}
+              >
+                {"Examples are for illustrative purposes only."}
+              </Typography>
             </Stack>
           </Grid>
           <Grid item xs={12} md={10} lg={8}>

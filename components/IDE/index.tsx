@@ -25,7 +25,7 @@ const IDE = () => {
       let incrementFrame = setInterval(() => {
         setActive(inc % frames.length);
         inc++;
-      }, 12000);
+      }, 4000);
       setIncrementFrame(incrementFrame);
     }
     return () => {
