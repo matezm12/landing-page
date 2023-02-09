@@ -4,6 +4,8 @@
 /node_modules
 /.pnp
 .pnp.js
+.next
+/out
 
 # testing
 /coverage
@@ -26,6 +28,3 @@ package-lock.json
 
 # vscode
 .vscode
-
-#environment
-.env

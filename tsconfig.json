@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "declaration": true,
     "target": "es5",
     "lib": [
       "dom",
@@ -18,9 +19,11 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "react"
+    "jsx": "preserve",
+    "incremental": true
   },
-  "include": [
-    "src"
+  "include": ["src", "next-env.d.ts", "**/*.ts", "**/*.tsx", "declaration.d.ts", "components/MetaverseBackground/lib/lamina/vanilla.js"],
+  "exclude": [
+    "node_modules"
   ]
 }
