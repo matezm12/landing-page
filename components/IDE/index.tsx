@@ -3,7 +3,7 @@ import { Box, Stack } from "@mui/material";
 import { animations, colors } from "../../styles/theme";
 import Dot from "./Dot";
 import Frame from "./Frame";
-import { frames, FrameProps } from "../../constants/IDE";
+import { frames, FrameProps, LangProps } from "../../constants/IDE";
 import PolywrapBlobYellow from "../../public/images/hero/blobs/7.webp";
 import PolywrapBlobMagenta from "../../public/images/hero/blobs/10.webp";
 import Image from "next/image";
@@ -37,14 +37,14 @@ const IDE = () => {
   const nextFrame = activeFrame === frames.length - 1 ? 0 : activeFrame + 1;
   const prevFrame = activeFrame === 0 ? frames.length - 1 : activeFrame - 1;
 
-  const allLangs: any[] = [];
+  const allLangs: LangProps[] = [];
   frames.map((frame) => {
     frame.langs.map((lang) => {
       allLangs.push(lang);
     });
   });
   const maxLines = allLangs.reduce((acc, value) => {
-    const codeLength: number = value.code
+    const codeLength: number = value.code.client
       .split("\n")
       .filter((line: any) => line.length >= 1).length;
     return (acc = acc > codeLength ? acc : codeLength);

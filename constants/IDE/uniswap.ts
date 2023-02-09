@@ -1,46 +1,50 @@
-const ts: string =
-`let wrapper = Wrapper::load(
-  Uri::from("wrap://ens/uniswap:pool"),
-  &resolver
-  &mut cache
-).unwrap();
+import { CodeFormats } from ".";
 
-let pool = UniPool::from(wrapper, [
-  ethereum.clone()
-]);
-
-let tx_receipt = pool.add_liquidity(
-  &UniPool::Args::AddLiquidity {
-      pool_address: "0x...",
-      wei: "12..."
+const ts: CodeFormats = {
+  client:
+`const result = await client.invoke<TxReceipt>({
+  uri: "wrap://ens/uniswap.eth:pool@1.2.3",
+  method: "add_liquidity",
+  args: {
+    pool_address: "0x...",
+    wei: "12...",
+    ...
   }
-})
-`
-const py: string =
-`let uri = Uri::from("wrap://ens/uniswap:pool@1.2.3");
+});`,
+  codegen:
+`const result = await Uniswap.add_liquidity({
+  pool_address: "0x...",
+  wei: "12...",
+  ...
+});`
+};
 
-client.invoke::<TxReceipt>(
-  uri,
-  "add_liquidity",
-  wrap::args!({
+const py: CodeFormats = {
+  client:
+`options = InvokerOptions(
+  uri=Uri("wrap://ens/uniswap.eth:pool@1.2.3"),
+  method="add_liquidity",
+  args={
     "pool_address": "0x...",
     "wei": "12...",
     ...
-  })
-);
-`
-const rust: string =
-`let uri = Uri::from("wrap://ens/uniswap:pool@1.2.3");
+  }
+)
 
-client.invoke::<TxReceipt>(
-  uri,
-  "add_liquidity",
-  wrap::args!({
-    "pool_address": "0x...",
-    "wei": "12...",
-    ...
-  })
-);
-`
+result = await client.invoke(options)`
+};
+
+const rust: CodeFormats = {
+  client:
+`let result = client.invoke::<TxReceipt>(
+    &Uri::from("wrap://ens/uniswap.eth:pool@1.2.3"),
+    "add_liquidity",
+    wrap::args!({
+        "pool_address": "0x...",
+        "wei": "12...",
+        ...
+    })
+).await.unwrap();`
+};
 
 export default { ts, py, rust }

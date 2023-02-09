@@ -1,10 +1,16 @@
 import Uniswap from "./uniswap"
-import Near from "./near"
-import Tezos from "./tezos"
-import { StaticImageData } from "next/image";
+import Safe from "./safe";
+import Near from "./near";
+import Ipfs from "./ipfs";
 import TypescriptIcon from "../../public/images/lang-icons/typescript.png";
 import RustIcon from "../../public/images/lang-icons/rust.png";
 import PythonIcon from "../../public/images/lang-icons/python.png";
+import UniswapSvg from "../../public/images/community/Uniswap.svg";
+import SafeSvg from "../../public/images/community/Safe.svg";
+import NearSvg from "../../public/images/community/Near.svg";
+import IpfsSvg from "../../public/images/community/IPFS.svg";
+
+import { StaticImageData } from "next/image";
 import { Language } from "prism-react-renderer";
 
 interface LanguageProps {
@@ -16,7 +22,7 @@ interface LanguageProps {
 
 export interface Languages {
   ts: Readonly<LanguageProps>;
-  rust: Readonly<LanguageProps>;
+  rs: Readonly<LanguageProps>;
   py: Readonly<LanguageProps>;
 }
 
@@ -24,30 +30,36 @@ export const languages: Languages = {
   ts: {
     icon: TypescriptIcon,
     type: "typescript",
-    name: "typescript",
+    name: "TypeScript",
     abbreviation: "ts",
   },
-  rust: {
+  rs: {
     icon: RustIcon,
     type: "typescript",
-    name: "rust",
+    name: "Rust",
     abbreviation: "rust",
   },
   py: {
     icon: PythonIcon,
     type: "python",
-    name: "python",
+    name: "Python",
     abbreviation: "py",
   },
 }
 
+export interface CodeFormats {
+  client: string;
+  codegen?: string;
+}
+
 export interface LangProps {
-  abbreviation: "ts" | "py" | "rust";
-  code: string;
+  abbreviation: "ts" | "py" | "rs";
+  code: CodeFormats;
 }
 
 export interface FrameProps {
   slug: string;
+  icon: StaticImageData;
   title(language: string): string;
   langs: LangProps[]
 }
@@ -55,7 +67,8 @@ export interface FrameProps {
 export const frames: FrameProps[] = [
   {
     slug: "uniswap-pool",
-    title: (language: string = "typescript") => `Add liquidity to a uniswap pool from a ${language} app.`,
+    icon: UniswapSvg,
+    title: (language: string = "typescript") => `Add liquidity to a Uniswap pool from a ${language} app.`,
     langs: [
       {
         abbreviation: "ts",
@@ -66,37 +79,66 @@ export const frames: FrameProps[] = [
         code: Uniswap.py,
       },
       {
-        abbreviation: "rust",
+        abbreviation: "rs",
         code: Uniswap.rust,
       },
     ]
   },
   {
-    slug: "near-pool",
-    title: (language: string = "typescript") => `Add liquidity to a near pool from a ${language} app.`,
+    slug: "safe-tx-signers",
+    icon: SafeSvg,
+    title: (language: string = "typescript") => `Get all Safe signers who approved a transaction from a ${language} app.`,
     langs: [
+      {
+        abbreviation: "ts",
+        code: Safe.ts,
+      },
+      {
+        abbreviation: "py",
+        code: Safe.py,
+      },
+      {
+        abbreviation: "rs",
+        code: Safe.rust,
+      },
+    ]
+  },
+  {
+    slug: "near-deploy-contract",
+    icon: NearSvg,
+    title: (language: string = "typescript") => `Deploy a smart contract to NEAR from a ${language} app.`,
+    langs: [
+      {
+        abbreviation: "ts",
+        code: Near.ts,
+      },
       {
         abbreviation: "py",
         code: Near.py,
       },
       {
-        abbreviation: "rust",
-        code: Near.rust
+        abbreviation: "rs",
+        code: Near.rust,
       },
     ]
   },
   {
-    slug: "tezos-pool",
-    title: (language: string = "typescript") => `Add liquidity to a tezos pool from a ${language} app.`,
+    slug: "ipfs-cat-file",
+    icon: IpfsSvg,
+    title: (language: string = "typescript") => `Read a file on IPFS from a ${language} app.`,
     langs: [
       {
-        abbreviation: "py",
-        code: Tezos.py,
+        abbreviation: "ts",
+        code: Ipfs.ts,
       },
       {
-        abbreviation: "rust",
-        code: Tezos.rust
+        abbreviation: "py",
+        code: Ipfs.py,
+      },
+      {
+        abbreviation: "rs",
+        code: Ipfs.rust,
       },
     ]
-  },
+  }
 ]

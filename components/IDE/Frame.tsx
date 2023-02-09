@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { alpha, Box, Stack, Typography, useTheme } from "@mui/material";
+import { alpha, Box, Stack, Typography, useTheme, ToggleButton, Tooltip } from "@mui/material";
+import { Brush } from "@mui/icons-material";
 import { colors, typography } from "../../styles/theme";
 import { languages, FrameProps, LangProps } from "../../constants/IDE";
 import Image from "next/image";
@@ -12,9 +13,15 @@ interface IDEFrameProps extends FrameProps {
   maxLines: number;
 }
 
-const Frame = ({ slug, title, langs, active, maxLines }: IDEFrameProps) => {
+const Frame = ({ slug, icon, title, langs, active, maxLines }: IDEFrameProps) => {
+  const [codeStyle, setCodeStyle] = useState<boolean>(false);
   const [activeLangIndex, setActiveLangIndex] = useState<number>(0);
   const activeLang = langs[activeLangIndex];
+  const alternateCodeStyle = !!activeLang.code.codegen;
+  const getCode = () =>
+    alternateCodeStyle && codeStyle ?
+    activeLang.code.codegen as string :
+    activeLang.code.client;
 
   const activeLanguageName: string = languages[activeLang.abbreviation].name;
   const activeLanguageType: Language = languages[activeLang.abbreviation].type;
@@ -43,74 +50,96 @@ const Frame = ({ slug, title, langs, active, maxLines }: IDEFrameProps) => {
         }}
       >
         <Typography fontWeight={600}>{title(activeLanguageName)}</Typography>
-
         <Stack>
-          <Stack direction="row">
-            {langs.map((lang: LangProps, i) => {
-              const activeLangSlug: LangProps["abbreviation"] =
-                activeLang.abbreviation;
-              return (
-                <Stack
-                  key={i}
-                  onClick={() => setActiveLangIndex(i)}
-                  direction="row"
-                  spacing={1}
-                  sx={{
-                    alignItems: "center",
-                    bgcolor:
-                      activeLangSlug === lang.abbreviation
-                        ? colors.iris[800]
-                        : "transparent",
-                    borderBottom: `2px solid`,
-                    borderBottomColor:
-                      activeLangSlug === lang.abbreviation
-                        ? `${colors.iris[500]}`
-                        : "transparent",
-                    color: alpha(
-                      colors.white,
-                      activeLangSlug === lang.abbreviation ? 1 : 0.5
-                    ),
-                    cursor: "pointer",
-                    px: 2,
-                    py: 1,
-                    borderTopLeftRadius: 4,
-                    borderTopRightRadius: 4,
-                    "&:hover": {
+          <Stack direction="row" justifyContent={"space-around"}>
+            <Stack direction="row" width="100%">
+              {langs.map((lang: LangProps, i) => {
+                const activeLangSlug: LangProps["abbreviation"] =
+                  activeLang.abbreviation;
+                return (
+                  <Stack
+                    key={i}
+                    onClick={() => setActiveLangIndex(i)}
+                    direction="row"
+                    spacing={1}
+                    sx={{
+                      alignItems: "center",
                       bgcolor:
-                        activeLangSlug !== lang.abbreviation
-                          ? colors.iris[900]
-                          : null,
-                      color:
-                        activeLangSlug !== lang.abbreviation
-                          ? alpha(colors.white, 0.8)
-                          : null,
-                      "& .lang-icon": {
-                        opacity:
-                          activeLangSlug !== lang.abbreviation ? 0.8 : null,
+                        activeLangSlug === lang.abbreviation
+                          ? colors.iris[800]
+                          : "transparent",
+                      borderBottom: `2px solid`,
+                      borderBottomColor:
+                        activeLangSlug === lang.abbreviation
+                          ? `${colors.iris[500]}`
+                          : "transparent",
+                      color: alpha(
+                        colors.white,
+                        activeLangSlug === lang.abbreviation ? 1 : 0.5
+                      ),
+                      cursor: "pointer",
+                      px: 2,
+                      py: 1,
+                      borderTopLeftRadius: 4,
+                      borderTopRightRadius: 4,
+                      "&:hover": {
+                        bgcolor:
+                          activeLangSlug !== lang.abbreviation
+                            ? colors.iris[900]
+                            : null,
+                        color:
+                          activeLangSlug !== lang.abbreviation
+                            ? alpha(colors.white, 0.8)
+                            : null,
+                        "& .lang-icon": {
+                          opacity:
+                            activeLangSlug !== lang.abbreviation ? 0.8 : null,
+                        },
                       },
-                    },
-                  }}
-                >
-                  <Image
-                    className="lang-icon"
-                    src={languages[lang.abbreviation].icon}
-                    alt={languages[lang.abbreviation].name}
-                    style={{
-                      height: 16,
-                      width: 16,
-                      opacity: activeLangSlug === lang.abbreviation ? 1 : 0.5,
                     }}
-                  />
-                  <Typography sx={{ fontSize: 12 }}>
-                    {`${slug}.${lang.abbreviation}`}
-                  </Typography>
-                </Stack>
-              );
-            })}
+                  >
+                    <Image
+                      className="lang-icon"
+                      src={languages[lang.abbreviation].icon}
+                      alt={languages[lang.abbreviation].name}
+                      style={{
+                        height: 16,
+                        width: 16,
+                        opacity: activeLangSlug === lang.abbreviation ? 1 : 0.5,
+                      }}
+                    />
+                    <Typography sx={{ fontSize: 12 }}>
+                      {`${slug}.${lang.abbreviation}`}
+                    </Typography>
+                  </Stack>
+                );
+              })}
+            </Stack>
+            {alternateCodeStyle ?
+              <Stack direction="row">
+                <Tooltip title="Codegen" placement="top">
+                  <ToggleButton
+                    value="check"
+                    color={"primary"}
+                    size="small"
+                    selected={codeStyle}
+                    onChange={() => {
+                      setCodeStyle(!codeStyle);
+                    }}
+                  >
+                    <Brush
+                      color={codeStyle ? "primary" : undefined}
+                      style={codeStyle ? undefined : { color: "white" }}
+                    />
+                  </ToggleButton>
+                </Tooltip>
+              </Stack> :
+              <></>
+            }
           </Stack>
           <Highlight
             {...defaultProps}
-            code={activeLang.code}
+            code={getCode()}
             theme={PrismTheme}
             language={activeLanguageType}
           >
@@ -189,6 +218,17 @@ const Frame = ({ slug, title, langs, active, maxLines }: IDEFrameProps) => {
             }}
           </Highlight>
         </Stack>
+        <Stack direction="row" justifyContent={"center"}>
+          <Image
+            className="lang-icon"
+            src={icon}
+            alt={slug}
+            height="50"
+          />
+        </Stack>
+        <Typography sx={{ fontSize: 12 }} align="center" gutterBottom={true}>
+          {"Disclaimer: examples may not exist as shown."}
+        </Typography>
       </Stack>
     </Box>
   );
