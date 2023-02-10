@@ -2,7 +2,7 @@ import { CodeFormats } from ".";
 
 const ts: CodeFormats = {
   client:
-`const result = await client.invoke<string[]>({
+`await client.invoke<string[]>({
   uri: "wrap://ens/safe.eth:wrapper@1.2.3",
   method: "getOwnersWhoApprovedTx",
   args: {
@@ -10,7 +10,7 @@ const ts: CodeFormats = {
   }
 });`,
   codegen:
-`const result = await safe.getOwnersWhoApprovedTx({
+`await safe.getOwnersWhoApprovedTx({
     hash: "0x..."
 });`
 };
@@ -25,16 +25,16 @@ const py: CodeFormats = {
   }
 )
 
-result = await client.invoke(options)`,
+await client.invoke(options)`,
   codegen:
-`result = await safe.getOwnersWhoApprovedTx(
+`await safe.getOwnersWhoApprovedTx(
   hash="0x..."
 )`
 };
 
 const rust: CodeFormats = {
   client:
-`let result = client.invoke::<Vec<String>>(
+`client.invoke::<Vec<String>>(
     &Uri::from("wrap://ens/safe.eth:wrapper@1.2.3"),
     "getOwnersWhoApprovedTx",
     wrap::args!({
@@ -42,7 +42,7 @@ const rust: CodeFormats = {
     })
 ).await.unwrap();`,
   codegen:
-`let result = safe.get_owners_who_approved_tx(
+`safe.get_owners_who_approved_tx(
   "0x..."
 ).await.unwrap();`
 };

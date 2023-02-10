@@ -2,7 +2,7 @@ import { CodeFormats } from ".";
 
 const ts: CodeFormats = {
   client:
-`const result = await client.invoke({
+`await client.invoke({
   uri: "wrap://ens/near.eth:wrapper@1.2.3",
   method: "deployContract",
   args: {
@@ -12,7 +12,7 @@ const ts: CodeFormats = {
   }
 });`,
   codegen:
-`const result = await near.deployContract({
+`await near.deployContract({
   data: Uint8Array.from([...]),
   contractId: "...",
   signerId: "..."
@@ -31,7 +31,7 @@ const py: CodeFormats = {
   }
 )
 
-result = await client.invoke(options)`,
+await client.invoke(options)`,
   codegen:
 `result = await near.deployContract(
   data=[...],
@@ -42,7 +42,7 @@ result = await client.invoke(options)`,
 
 const rust: CodeFormats = {
   client:
-`let result = client.invoke(
+`client.invoke(
     &Uri::from("wrap://ens/near.eth:wrapper@1.2.3"),
     "deployContract",
     wrap::args!({
@@ -52,7 +52,7 @@ const rust: CodeFormats = {
     })
 ).await.unwrap();`,
   codegen:
-`let result = near.deploy_contract(
+`near.deploy_contract(
   [...],
   "...",
   "..."

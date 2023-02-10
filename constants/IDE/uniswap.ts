@@ -2,7 +2,7 @@ import { CodeFormats } from ".";
 
 const ts: CodeFormats = {
   client:
-`const result = await client.invoke<TxReceipt>({
+`await client.invoke<TxReceipt>({
   uri: "wrap://ens/uniswap.eth:pool@1.2.3",
   method: "add_liquidity",
   args: {
@@ -12,7 +12,7 @@ const ts: CodeFormats = {
   }
 });`,
   codegen:
-`const result = await uniswap.add_liquidity({
+`await uniswap.add_liquidity({
   pool_address: "0x...",
   wei: "12...",
   ...
@@ -31,9 +31,9 @@ const py: CodeFormats = {
   }
 )
 
-result = await client.invoke(options)`,
+await client.invoke(options)`,
   codegen:
-`result = await uniswap.add_liquidity(
+`await uniswap.add_liquidity(
   pool_address="0x...",
   wei="12...",
   ...
@@ -42,7 +42,7 @@ result = await client.invoke(options)`,
 
 const rust: CodeFormats = {
   client:
-`let result = client.invoke::<TxReceipt>(
+`client.invoke::<TxReceipt>(
     &Uri::from("wrap://ens/uniswap.eth:pool@1.2.3"),
     "add_liquidity",
     wrap::args!({
@@ -52,7 +52,7 @@ const rust: CodeFormats = {
     })
 ).await.unwrap();`,
   codegen:
-`let result = uniswap.add_liquidity(
+`uniswap.add_liquidity(
   "0x...",
   "12..."
 ).await.unwrap();`

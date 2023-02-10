@@ -2,7 +2,7 @@ import { CodeFormats } from ".";
 
 const ts: CodeFormats = {
   client:
-`const result = await client.invoke<Uint8Array>({
+`await client.invoke<Uint8Array>({
   uri: "wrap://ens/ipfs.eth:wrapper@1.2.3",
   method: "cat",
   args: {
@@ -10,7 +10,7 @@ const ts: CodeFormats = {
   }
 });`,
   codegen:
-`const result = await ipfs.cat({
+`await ipfs.cat({
   cid: "Qm..."
 });`
 };
@@ -25,16 +25,16 @@ const py: CodeFormats = {
   }
 )
 
-result = await client.invoke(options)`,
+await client.invoke(options)`,
   codegen:
-`result = await ipfs.cat(
+`await ipfs.cat(
   cid="Qm..."
 )`
 };
 
 const rust: CodeFormats = {
   client:
-`let result = client.invoke::<Vec<u8>>(
+`client.invoke::<Vec<u8>>(
     &Uri::from("wrap://ens/ipfs.eth:wrapper@1.2.3"),
     "cat",
     wrap::args!({
@@ -42,7 +42,7 @@ const rust: CodeFormats = {
     })
 ).await.unwrap();`,
   codegen:
-`let result = ipfs.cat(
+`ipfs.cat(
   "Qm..."
 ).await.unwrap();`
 };
