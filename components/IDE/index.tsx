@@ -43,8 +43,14 @@ const IDE = () => {
       allLangs.push(lang);
     });
   });
-  const maxLines = allLangs.reduce((acc, value) => {
+  const maxLinesClient = 2 + allLangs.reduce((acc, value) => {
     const codeLength: number = value.code.client
+      .split("\n")
+      .filter((line: any) => line.length >= 1).length;
+    return (acc = acc > codeLength ? acc : codeLength);
+  }, 0);
+  const maxLinesCodegen = 2 + allLangs.reduce((acc, value) => {
+    const codeLength: number = value.code.codegen
       .split("\n")
       .filter((line: any) => line.length >= 1).length;
     return (acc = acc > codeLength ? acc : codeLength);
@@ -120,7 +126,10 @@ const IDE = () => {
             <Frame
               key={i}
               {...frames[activeFrame]}
-              maxLines={maxLines + 2}
+              maxLines={{
+                client: maxLinesClient,
+                codegen: maxLinesCodegen
+              }}
               active={i === activeFrame}
               timerRunning={timerRunning}
             />

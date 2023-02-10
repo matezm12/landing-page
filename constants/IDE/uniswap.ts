@@ -12,7 +12,7 @@ const ts: CodeFormats = {
   }
 });`,
   codegen:
-`const result = await Uniswap.add_liquidity({
+`const result = await uniswap.add_liquidity({
   pool_address: "0x...",
   wei: "12...",
   ...
@@ -31,7 +31,13 @@ const py: CodeFormats = {
   }
 )
 
-result = await client.invoke(options)`
+result = await client.invoke(options)`,
+  codegen:
+`result = await uniswap.add_liquidity(
+  pool_address="0x...",
+  wei="12...",
+  ...
+)`
 };
 
 const rust: CodeFormats = {
@@ -44,6 +50,11 @@ const rust: CodeFormats = {
         "wei": "12...",
         ...
     })
+).await.unwrap();`,
+  codegen:
+`let result = uniswap.add_liquidity(
+  "0x...",
+  "12..."
 ).await.unwrap();`
 };
 

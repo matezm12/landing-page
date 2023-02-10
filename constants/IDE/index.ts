@@ -49,7 +49,7 @@ export const languages: Languages = {
 
 export interface CodeFormats {
   client: string;
-  codegen?: string;
+  codegen: string;
 }
 
 export interface LangProps {
