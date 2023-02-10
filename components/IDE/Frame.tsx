@@ -8,7 +8,7 @@ import {
   ToggleButton,
   Tooltip,
 } from "@mui/material";
-import { Settings } from "@mui/icons-material";
+import { Brush } from "@mui/icons-material";
 import { colors, typography } from "../../styles/theme";
 import { languages, FrameProps, LangProps } from "../../constants/IDE";
 import Image from "next/image";
@@ -18,7 +18,10 @@ import PrismTheme from "./PrismTheme";
 interface IDEFrameProps extends FrameProps {
   active: boolean;
   timerRunning?: boolean;
-  maxLines: number;
+  maxLines: {
+    client: number;
+    codegen: number;
+  };
 }
 
 const Frame = ({
@@ -29,7 +32,7 @@ const Frame = ({
   active,
   maxLines,
 }: IDEFrameProps) => {
-  const [codeStyle, setCodeStyle] = useState<boolean>(false);
+  const [codeStyle, setCodeStyle] = useState<boolean>(true);
   const [activeLangIndex, setActiveLangIndex] = useState<number>(0);
   const activeLang = langs[activeLangIndex];
   const alternateCodeStyle = !!activeLang.code.codegen;
@@ -145,7 +148,7 @@ const Frame = ({
                       setCodeStyle(!codeStyle);
                     }}
                   >
-                    <Settings
+                    <Brush
                       color={codeStyle ? "primary" : undefined}
                       sx={{ color: codeStyle ? undefined : "white", width: 16 }}
                     />
@@ -185,7 +188,7 @@ const Frame = ({
                       sx={{
                         overflow: "scroll",
                         height: "100%",
-                        minHeight: lineHeight * maxLines,
+                        minHeight: lineHeight * (codeStyle ? maxLines.codegen : maxLines.client),
                         width: "100%",
                         "&::-webkit-scrollbar, &::-webkit-scrollbar-corner": {
                           opacity: 0,

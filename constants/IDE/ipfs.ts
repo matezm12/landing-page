@@ -10,7 +10,7 @@ const ts: CodeFormats = {
   }
 });`,
   codegen:
-`const result = await IPFS.cat({
+`const result = await ipfs.cat({
   cid: "Qm..."
 });`
 };
@@ -25,7 +25,11 @@ const py: CodeFormats = {
   }
 )
 
-result = await client.invoke(options)`
+result = await client.invoke(options)`,
+  codegen:
+`result = await ipfs.cat(
+  cid="Qm..."
+)`
 };
 
 const rust: CodeFormats = {
@@ -36,6 +40,10 @@ const rust: CodeFormats = {
     wrap::args!({
         "cid": "Qm..."
     })
+).await.unwrap();`,
+  codegen:
+`let result = ipfs.cat(
+  "Qm..."
 ).await.unwrap();`
 };
 

@@ -12,7 +12,7 @@ const ts: CodeFormats = {
   }
 });`,
   codegen:
-`const result = await Near.deployContract({
+`const result = await near.deployContract({
   data: Uint8Array.from([...]),
   contractId: "...",
   signerId: "..."
@@ -31,7 +31,13 @@ const py: CodeFormats = {
   }
 )
 
-result = await client.invoke(options)`
+result = await client.invoke(options)`,
+  codegen:
+`result = await near.deployContract(
+  data=[...],
+  contractId="...",
+  signerId="..."
+)`
 };
 
 const rust: CodeFormats = {
@@ -44,6 +50,12 @@ const rust: CodeFormats = {
       "contractId": "...",
       "signerId": "..."
     })
+).await.unwrap();`,
+  codegen:
+`let result = near.deploy_contract(
+  [...],
+  "...",
+  "..."
 ).await.unwrap();`
 };
 

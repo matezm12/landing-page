@@ -10,7 +10,7 @@ const ts: CodeFormats = {
   }
 });`,
   codegen:
-`const result = await Safe.getOwnersWhoApprovedTx({
+`const result = await safe.getOwnersWhoApprovedTx({
     hash: "0x..."
 });`
 };
@@ -25,7 +25,11 @@ const py: CodeFormats = {
   }
 )
 
-result = await client.invoke(options)`
+result = await client.invoke(options)`,
+  codegen:
+`result = await safe.getOwnersWhoApprovedTx(
+  hash="0x..."
+)`
 };
 
 const rust: CodeFormats = {
@@ -36,6 +40,10 @@ const rust: CodeFormats = {
     wrap::args!({
         "hash": "0x..."
     })
+).await.unwrap();`,
+  codegen:
+`let result = safe.get_owners_who_approved_tx(
+  "0x..."
 ).await.unwrap();`
 };
 
