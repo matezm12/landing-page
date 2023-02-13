@@ -4,14 +4,16 @@ import { colors, easings } from "../styles/theme";
 interface LogoProps {
   height?: number;
   animateBorderWidth?: boolean;
+  marginTop?: number;
 }
 
-const Logo = ({ height = 48, animateBorderWidth = false }) => {
+const Logo = ({ height = 48, animateBorderWidth = false, marginTop = undefined}) => {
   return (
     <Box
       component="div"
       sx={{
         height: height,
+        marginTop: marginTop ? `${marginTop}px` : undefined,
         position: "relative",
         ".logotype": {
           fill: alpha(colors.white, 0.8),
