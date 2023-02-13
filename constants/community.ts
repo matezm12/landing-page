@@ -20,7 +20,6 @@ import Polkadot from "../public/images/community/Polkadot.svg"
 import Portal from "../public/images/community/Portal.svg"
 import Rarestone from "../public/images/community/Rarestone.svg"
 import Safe from "../public/images/community/Safe.svg"
-import Swidge from "../public/images/community/Swidge.png"
 import Tezos from "../public/images/community/Tezos.svg"
 import TRGC from "../public/images/community/TRGC.svg"
 import TrueVentures from "../public/images/community/True-Ventures.png"
@@ -141,12 +140,6 @@ export const community: CommunityProps[] = [
     icon: dOrg,
     link: "https://dorg.tech",
     title: "dOrg",
-    type: "builder"
-  },
-  {
-    icon: Swidge,
-    link: "https://swidge.xyz",
-    title: "Swidge",
     type: "builder"
   },
   {
