@@ -27,7 +27,7 @@ const Header = () => {
             {isDesktop ? (
               <Logo animateBorderWidth />
             ) : (
-              <Image src={Logomark} alt="Polywrap Logo" width={40} />
+              <Logo animateBorderWidth height={20} marginTop={12} />
             )}
           </Link>
           <Stack
