@@ -7,7 +7,7 @@ interface LogoProps {
   marginTop?: number;
 }
 
-const Logo = ({ height = 48, animateBorderWidth = false, marginTop = undefined}) => {
+const Logo = ({ height = 48, animateBorderWidth = false, marginTop = undefined}: LogoProps) => {
   return (
     <Box
       component="div"

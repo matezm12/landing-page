@@ -21,7 +21,7 @@ const ts: CodeFormats = {
 
 const py: CodeFormats = {
   client:
-`options = InvokerOptions(
+`await client.invoke(
   uri=Uri("wrap://ens/near.eth:wrapper@1.2.3"),
   method="deployContract",
   args={
@@ -29,11 +29,9 @@ const py: CodeFormats = {
     "contractId": "...",
     "signerId": "..."
   }
-)
-
-await client.invoke(options)`,
+)`,
   codegen:
-`result = await near.deployContract(
+`await near.deployContract(
   data=[...],
   contractId="...",
   signerId="..."
@@ -53,9 +51,9 @@ const rust: CodeFormats = {
 ).await.unwrap();`,
   codegen:
 `near.deploy_contract(
-  [...],
-  "...",
-  "..."
+    [...],
+    "...",
+    "..."
 ).await.unwrap();`
 };
 

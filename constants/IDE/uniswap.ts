@@ -21,7 +21,7 @@ const ts: CodeFormats = {
 
 const py: CodeFormats = {
   client:
-`options = InvokerOptions(
+`await client.invoke(
   uri=Uri("wrap://ens/uniswap.eth:pool@1.2.3"),
   method="add_liquidity",
   args={
@@ -29,9 +29,7 @@ const py: CodeFormats = {
     "wei": "12...",
     ...
   }
-)
-
-await client.invoke(options)`,
+)`,
   codegen:
 `await uniswap.add_liquidity(
   pool_address="0x...",
@@ -53,8 +51,8 @@ const rust: CodeFormats = {
 ).await.unwrap();`,
   codegen:
 `uniswap.add_liquidity(
-  "0x...",
-  "12..."
+    "0x...",
+    "12..."
 ).await.unwrap();`
 };
 

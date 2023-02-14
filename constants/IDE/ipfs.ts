@@ -17,15 +17,13 @@ const ts: CodeFormats = {
 
 const py: CodeFormats = {
   client:
-`options = InvokerOptions(
+`await client.invoke(
   uri=Uri("wrap://ens/ipfs.eth:wrapper@1.2.3"),
   method="cat",
   args={
     "cid": "Qm..."
   }
-)
-
-await client.invoke(options)`,
+)`,
   codegen:
 `await ipfs.cat(
   cid="Qm..."
@@ -43,7 +41,7 @@ const rust: CodeFormats = {
 ).await.unwrap();`,
   codegen:
 `ipfs.cat(
-  "Qm..."
+    "Qm..."
 ).await.unwrap();`
 };
 

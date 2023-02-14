@@ -17,15 +17,13 @@ const ts: CodeFormats = {
 
 const py: CodeFormats = {
   client:
-`options = InvokerOptions(
+`await client.invoke(
   uri=Uri("wrap://ens/safe.eth:wrapper@1.2.3"),
   method="getOwnersWhoApprovedTx",
   args={
     "hash": "0x..."
   }
-)
-
-await client.invoke(options)`,
+)`,
   codegen:
 `await safe.getOwnersWhoApprovedTx(
   hash="0x..."
@@ -43,7 +41,7 @@ const rust: CodeFormats = {
 ).await.unwrap();`,
   codegen:
 `safe.get_owners_who_approved_tx(
-  "0x..."
+    "0x..."
 ).await.unwrap();`
 };
 
