@@ -68,7 +68,7 @@ export const frames: FrameProps[] = [
   {
     slug: "uniswap-pool",
     icon: UniswapSvg,
-    title: (language: string = "typescript") => `Add liquidity to a Uniswap pool from a ${language} app.`,
+    title: (language: string = "typescript") => `Add liquidity to Uniswap in ${language}.`,
     langs: [
       {
         abbreviation: "ts",
@@ -87,7 +87,7 @@ export const frames: FrameProps[] = [
   {
     slug: "safe-tx-signers",
     icon: SafeSvg,
-    title: (language: string = "typescript") => `Get all Safe signers who approved a transaction from a ${language} app.`,
+    title: (language: string = "typescript") => `See who signed a Safe transaction in ${language}.`,
     langs: [
       {
         abbreviation: "ts",
@@ -106,7 +106,7 @@ export const frames: FrameProps[] = [
   {
     slug: "near-deploy-contract",
     icon: NearSvg,
-    title: (language: string = "typescript") => `Deploy a smart contract to NEAR from a ${language} app.`,
+    title: (language: string = "typescript") => `Deploy a NEAR contract in ${language}.`,
     langs: [
       {
         abbreviation: "ts",
@@ -125,7 +125,7 @@ export const frames: FrameProps[] = [
   {
     slug: "ipfs-cat-file",
     icon: IpfsSvg,
-    title: (language: string = "typescript") => `Read a file on IPFS from a ${language} app.`,
+    title: (language: string = "typescript") => `Read an IPFS file in ${language}.`,
     langs: [
       {
         abbreviation: "ts",

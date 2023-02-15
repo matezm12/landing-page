@@ -45,7 +45,7 @@ export const footerLinks = [
         url: "https://forum.polywrap.io/",
       },
       {
-        name: "Governance",
+        name: "Snapshot",
         url: "https://snapshot.org/#/polywrap.eth",
       },
     ],

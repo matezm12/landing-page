@@ -119,7 +119,7 @@ const InterfaceSection = () => {
                   textAlign: isDesktop ? "left" : "center",
                 }}
               >
-                Wrappers let you compose software like never before. Simply
+                Wrappers let you compose web3 like never before. Simply
                 include the Polywrap client in your app to seamlessly read and
                 write to a variety of protocols from a secure WebAssembly VM.
               </Typography>

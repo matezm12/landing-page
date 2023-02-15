@@ -11,7 +11,7 @@ export const benefits: BenefitCardProps[] = [
     color: "magenta",
     title: "Multi-Platform",
     description:
-      "Wrappers are universal, use them in any app, written in any language.",
+      "Use Wrappers in various execution environments, no matter which language they’re written in.",
   },
   {
     slug: "user-friendly",
