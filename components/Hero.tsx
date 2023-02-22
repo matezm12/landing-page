@@ -75,8 +75,7 @@ const Hero = () => {
             textAlign: "center",
           }}
         >
-          Polywrap makes it easy to endlessly extend and run web3
-          anywhere.
+          Polywrap makes it possible to run web3 anywhere.
         </Typography>
         <Button
           color="primary"
