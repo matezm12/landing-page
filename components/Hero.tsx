@@ -75,7 +75,7 @@ const Hero = () => {
             textAlign: "center",
           }}
         >
-          Polywrap makes it possible to run web3 anywhere.
+          Polywrap is a framework for building cross-platform web3 SDKs.
         </Typography>
         <Button
           color="primary"
