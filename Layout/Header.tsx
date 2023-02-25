@@ -1,10 +1,12 @@
-import React from "react";
 import { Box, Container, Stack } from "@mui/material";
+
 import Image from "next/image";
 import Link from "next/link";
-import Navlink from "../components/Navlink";
+import Login from "../components/Login";
 import Logo from "../components/Logo";
 import Logomark from "../public/images/Logomark.png";
+import Navlink from "../components/Navlink";
+import React from "react";
 import useIsDesktop from "../hooks/useIsDesktop";
 
 const Header = () => {
@@ -25,9 +27,9 @@ const Header = () => {
         >
           <Link href="/" style={{ height: 40 }}>
             {isDesktop ? (
-              <Logo animateBorderWidth />
+              <Logo />
             ) : (
-              <Logo animateBorderWidth height={20} marginTop={12} />
+              <Logo />
             )}
           </Link>
           <Stack
@@ -41,23 +43,30 @@ const Header = () => {
             <Navlink
               target="_blank"
               rel="noredirect"
-              href="https://docs.polywrap.io/"
+              href="/SignUp"
             >
-              docs
+              Sign Up
             </Navlink>
             <Navlink
               target="_blank"
               rel="noredirect"
-              href="https://github.com/polywrap/"
+              href="../pages/"
             >
-              github
+              Login
+            </Navlink>
+            <Navlink
+              target="_blank"
+              rel="noredirect , noreferrer"
+              href="https://closetheskyoverukraine.com/latest-news/donate-for-drones"
+            >
+              Donate
             </Navlink>
             <Navlink
               target="_blank"
               rel="noredirect"
-              href="https://discord.com/invite/Z5m88a5qWu"
+              href="/"
             >
-              discord
+              Shop
             </Navlink>
           </Stack>
         </Box>

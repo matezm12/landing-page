@@ -1,4 +1,3 @@
-import React from "react";
 import {
   Box,
   Container,
@@ -8,11 +7,13 @@ import {
   Stack,
   Typography,
 } from "@mui/material";
+import { colors, gradients, typography } from "../styles/theme";
+
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import { EmailForm } from "../components/EmailForm";
 import Logo from "../components/Logo";
+import React from "react";
 import { footerLinks } from "../constants/footer";
-import { colors, gradients, typography } from "../styles/theme";
 
 const GradientDivider = () => (
   <Box
@@ -33,7 +34,7 @@ const Header = () => {
                 <Link href="/" aria-label="Logo Link">
                   <Logo />
                 </Link>
-                {/* <EmailForm /> */}
+                <EmailForm />
               </Stack>
             </Grid>
             <Grid item xs={12} lg={8}>
@@ -47,9 +48,13 @@ const Header = () => {
                             component="h2"
                             fontWeight={800}
                             fontFamily={typography.fontFamilies.extended}
-                            fontSize={typography.fontSizes[7]}
+                            fontSize={typography.fontSizes[10]}
                             textTransform="uppercase"
-                            sx={{ display: "inline-block", mb: 1 }}
+                            sx={{
+                              display: "inline-block", mb: 1,
+
+                            }}
+
                           >
                             {footerCategory.name}
                           </Typography>
@@ -71,7 +76,15 @@ const Header = () => {
                                 },
                               }}
                             >
-                              <Typography sx={{ color: "inherit" }}>
+                              <Typography color="#ffd600"
+                                sx={{
+                                  "&:hover": {
+                                    color: colors.white,
+                                    fontSize: 18,
+                                  },
+
+                                }}
+                              >
                                 {link.name}
                               </Typography>
                             </Link>

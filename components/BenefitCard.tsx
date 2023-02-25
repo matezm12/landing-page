@@ -1,36 +1,47 @@
 import { Box, Stack, Typography } from "@mui/material";
-import shadows from "@mui/material/styles/shadows";
 import Image, { StaticImageData } from "next/image";
-import MagentaBlob from "../public/images/blobs/multi.png";
-import CyanBlob from "../public/images/blobs/user-friendly.png";
-import GreenBlob from "../public/images/blobs/secure.png";
 import { animations, colors } from "../styles/theme";
+
+import ArcadeBlob from "../public/images/koin_arcade.png"
 import { BenefitCardProps } from "../constants/benefits";
+import CyanBlob from "../public/images/koin_silver.png";
+import GreenBlob from "../public/images/koin_gold.png";
+import MagentaBlob from "../public/images/koin_copper.png";
+import shadows from "@mui/material/styles/shadows";
 
 interface BlobProps {
   magenta: StaticImageData;
   cyan: StaticImageData;
   green: StaticImageData;
+  arcade: StaticImageData;
 }
 
 const blobs: BlobProps = {
   magenta: MagentaBlob,
   cyan: CyanBlob,
   green: GreenBlob,
+  arcade: ArcadeBlob,
 };
-
+//todo reduce height of cards (boxes)
 const BenefitCard = ({ slug, color, title, description }: BenefitCardProps) => {
   return (
     <Box component="div" sx={{ position: "relative" }}>
       <Box
         component="div"
+
         sx={{
+
           position: "absolute",
           left: "50%",
           top: ["-20%", "-40%", -72],
           transform: "translateX(-50%)",
-          width: ["45%", "35%", "50%"],
+          width: ["80%", "55%", "70%"],
           zIndex: 1,
+          "&:hover": {
+            width: ["85%", "60%", "75%"],
+
+          },
+
         }}
       >
         <Box
@@ -48,7 +59,7 @@ const BenefitCard = ({ slug, color, title, description }: BenefitCardProps) => {
             },
             animation: `shadow 5s ease-in-out infinite`,
             animationDelay:
-              color === "cyan" ? `700ms` : color === "green" ? `1400ms` : 0,
+              color === "cyan" ? `700ms` : color === "arcade" ? `1400ms` : 0,
             position: "absolute",
             width: "110%",
             top: "-5%",
@@ -62,6 +73,7 @@ const BenefitCard = ({ slug, color, title, description }: BenefitCardProps) => {
         <Box
           component="div"
           sx={{
+
             ...animations.float,
             animation: `float 5s ease-in-out infinite`,
             animationDelay:
@@ -109,7 +121,7 @@ const BenefitCard = ({ slug, color, title, description }: BenefitCardProps) => {
           <Typography>{description}</Typography>
         </Stack>
       </Box>
-    </Box>
+    </Box >
   );
 };
 

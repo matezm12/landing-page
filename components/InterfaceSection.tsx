@@ -1,29 +1,41 @@
-import React, { ReactElement, useState } from "react";
 import {
-  alpha,
   Box,
   Container,
   Grid,
   Stack,
   Typography,
+  alpha,
   useMediaQuery,
   useTheme,
 } from "@mui/material";
-import shadows from "@mui/material/styles/shadows";
+import { BoxProps, TypographyProps } from "@mui/system";
+import React, { ReactElement, useState } from "react";
 import { colors, gradientBorderStyles, typography } from "../styles/theme";
-import SectionTitle from "./SectionTitle";
-import IDE from "./IDE";
-import PolywrapperGraphic from "../public/images/polywrap-wrapper-1.png";
-import PolywrapBlack from "../public/images/polywrap-black.png";
-import InterfaceBlobYellow1 from "../public/images/blobs/solutions-yellow.png";
-import InterfaceBlobYellow2 from "../public/images/blobs/solutions-yellow-2.png";
-import InterfaceBlobMagenta from "../public/images/blobs/solutions-magenta.png";
-import InterfaceBlobGreen from "../public/images/blobs/solutions-green.png";
-import InterfaceBlobCyan from "../public/images/blobs/solutions-cyan.webp";
-import WaveLines from "../public/images/wave-lines-1.webp";
 
 import Image from "next/image";
-import { BoxProps, TypographyProps } from "@mui/system";
+import InterfaceBlobCyan from "../public/images/blobs/solutions-cyan.webp";
+import InterfaceBlobGreen from "../public/images/blobs/solutions-green.png";
+import InterfaceBlobMagenta from "../public/images/blobs/solutions-magenta.png";
+import InterfaceBlobYellow1 from "../public/images/blobs/solutions-yellow.png";
+import InterfaceBlobYellow2 from "../public/images/blobs/solutions-yellow-2.png";
+import PolywrapBlack from "../public/images/polywrap-black.png";
+import PolywrapperGraphic from "../public/images/polywrap-wrapper-1.png";
+import SectionTitle from "./SectionTitle";
+import WaveLines from "../public/images/wave-lines-1.webp";
+import shadows from "@mui/material/styles/shadows";
+
+//import IDE from "./IDE";
+
+
+
+
+
+
+
+
+
+
+
 
 interface DotProps {
   active?: boolean;
@@ -31,7 +43,7 @@ interface DotProps {
 }
 
 const Dot = ({ active, instance }: DotProps) => {
-  const handleDotClick = () => {};
+  const handleDotClick = () => { };
 
   return (
     <Box
@@ -105,7 +117,7 @@ const InterfaceSection = () => {
             >
               <SectionTitle
                 top="A Universal"
-                bottom="Interface"
+                bottom="Help"
                 // size="small"
                 letterSpacing="tight"
                 alignment={isDesktop ? "start" : "center"}
@@ -119,9 +131,9 @@ const InterfaceSection = () => {
                   textAlign: isDesktop ? "left" : "center",
                 }}
               >
-                Wrappers let you compose software like never before. Simply
-                include the Polywrap client in your app to seamlessly read and
-                write to a variety of protocols from a secure WebAssembly VM.
+
+                Information about the Sky Over website and government donation page.
+
               </Typography>
               <Typography
                 sx={{
@@ -130,12 +142,12 @@ const InterfaceSection = () => {
                   lineHeight: 1,
                 }}
               >
-                {"Examples are for illustrative purposes only."}
+                {"Info."}
               </Typography>
             </Stack>
           </Grid>
           <Grid item xs={12} md={10} lg={8}>
-            <IDE />
+            <p>image here</p>
           </Grid>
         </Grid>
       </Container>

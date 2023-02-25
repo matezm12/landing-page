@@ -1,13 +1,14 @@
-import React, { useEffect, useState } from "react";
+import { ArrowBack, ArrowForward } from "@mui/icons-material";
 import { Box, Stack } from "@mui/material";
+import { FrameProps, LangProps, frames } from "../../constants/IDE";
+import React, { useEffect, useState } from "react";
 import { animations, colors } from "../../styles/theme";
+
 import Dot from "./Dot";
 import Frame from "./Frame";
-import { frames, FrameProps, LangProps } from "../../constants/IDE";
-import PolywrapBlobYellow from "../../public/images/hero/blobs/7.webp";
-import PolywrapBlobMagenta from "../../public/images/hero/blobs/10.webp";
 import Image from "next/image";
-import { ArrowBack, ArrowForward } from "@mui/icons-material";
+import PolywrapBlobMagenta from "../../public/images/hero/blobs/10.webp";
+import PolywrapBlobYellow from "../../public/images/hero/blobs/7.webp";
 
 const IDE = () => {
   const [activeFrame, setActive] = useState<number>(0);

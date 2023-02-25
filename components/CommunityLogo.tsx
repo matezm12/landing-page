@@ -1,7 +1,8 @@
-import React from "react";
 import { Box, Link } from "@mui/material";
-import Image from "next/image";
+
 import { CommunityProps } from "../constants/community";
+import Image from "next/image";
+import React from "react";
 import { easings } from "../styles/theme";
 
 const CommunityLogo = ({ link, icon, title, width }: CommunityProps) => {

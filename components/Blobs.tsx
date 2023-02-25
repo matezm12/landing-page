@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from "react";
-import { Box } from "@mui/material";
 import Image, { StaticImageData } from "next/image";
+import React, { useEffect, useState } from "react";
+
+import Blob1 from "../public/images/hero/blobs/1.webp";
+import Blob10 from "../public/images/hero/blobs/10.webp";
 import Blob11 from "../public/images/hero/blobs/11.webp";
 import Blob12 from "../public/images/hero/blobs/12.webp";
-import Blob1 from "../public/images/hero/blobs/1.webp";
 import Blob2 from "../public/images/hero/blobs/2.webp";
 import Blob3 from "../public/images/hero/blobs/3.webp";
 import Blob4 from "../public/images/hero/blobs/4.webp";
@@ -12,7 +13,7 @@ import Blob6 from "../public/images/hero/blobs/6.webp";
 import Blob7 from "../public/images/hero/blobs/7.webp";
 import Blob8 from "../public/images/hero/blobs/8.webp";
 import Blob9 from "../public/images/hero/blobs/9.webp";
-import Blob10 from "../public/images/hero/blobs/10.webp";
+import { Box } from "@mui/material";
 import { animations } from "../styles/theme";
 
 interface BlobsProps {
@@ -89,9 +90,9 @@ export const Blob = ({
 
 const blobs = [
   {
-    src: Blob1, // green
-    aspect: 711 / 720,
-    render: [181, 152],
+    src: Blob2, // green
+    aspect: 360 / 720,
+    render: [181, 180],
     width: ["calc(var(--vmin, 1vmin) * 33)", "calc(var(--vmin, 1vmin) * 20)"],
     sizes: [33, 20],
     left: ["-10%", "-7%", "-6%", "-5%"],
@@ -117,7 +118,7 @@ const blobs = [
     top: ["79%", "55%"],
   },
   {
-    src: Blob3, // magenta
+    src: Blob8, // magenta
     aspect: 236 / 236,
     render: [73, 61],
     width: "calc(var(--vmin, 1vmin) * 8)",
@@ -127,17 +128,17 @@ const blobs = [
     blur: "3px",
   },
   {
-    src: Blob4, // magenta
+    src: Blob8, // magenta
     aspect: 347 / 349,
     render: [91, 77],
-    width: "calc(var(--vmin, 1vmin) * 10)",
+    width: "calc(var(--vmin, 1vmin) * 12)",
     sizes: [10, 10],
-    left: ["13%", "18%"],
+    left: ["23%", "25%"],
     top: ["68%", "50%"],
-    blur: "2px",
+    blur: "1px",
   },
   {
-    src: Blob6, // green
+    src: Blob8, // green
     aspect: 461 / 447,
     render: [136, 114],
     width: ["calc(var(--vmin, 1vmin) * 18)", "calc(var(--vmin, 1vmin) * 15)"],
@@ -165,7 +166,7 @@ const blobs = [
     blur: "4px",
   },
   {
-    src: Blob9, // green
+    src: Blob7, // green
     aspect: 301 / 334,
     render: [64, 54],
     width: ["calc(var(--vmin, 1vmin) * 9)", "calc(var(--vmin, 1vmin) * 7)"],
@@ -185,7 +186,7 @@ const blobs = [
     blur: "2px",
   },
   {
-    src: Blob10, // magenta
+    src: Blob7, // magenta
     aspect: 720 / 776,
     render: [245, 205],
     width: ["calc(var(--vmin, 1vmin) * 35)", "calc(var(--vmin, 1vmin) * 27)"],

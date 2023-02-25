@@ -1,11 +1,11 @@
-import React from "react";
-import Hero from "../components/Hero";
-import ProblemSection from "../components/ProblemSection";
-import InterfaceSection from "../components/InterfaceSection";
 import BenefitsSection from "../components/BenefitsSection";
-import CommunitySection from "../components/CommunitySection";
 import CTASection from "../components/CTASection";
+import CommunitySection from "../components/CommunitySection";
 import Head from "next/head";
+import Hero from "../components/Hero";
+import InterfaceSection from "../components/InterfaceSection";
+import ProblemSection from "../components/ProblemSection";
+import React from "react";
 import ReactGA from "react-ga";
 
 export default function Home() {
@@ -14,7 +14,7 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>Polywrap - Enter the Composable Future</title>
+        <title>Theometrics Ukraine</title>
       </Head>
       <main>
         <Hero />
@@ -22,7 +22,7 @@ export default function Home() {
         <ProblemSection />
         <BenefitsSection />
         <CommunitySection />
-        <CTASection />
+
       </main>
     </>
   );

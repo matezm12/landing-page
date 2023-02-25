@@ -1,4 +1,5 @@
 import { alpha, createTheme } from "@mui/material/styles"
+
 import tokens from "./tokens.json"
 
 export const easings = {
@@ -6,6 +7,13 @@ export const easings = {
 }
 
 export const animations = {
+  rotate: {
+    "@keyframes spin": {
+      "100%": {
+        transform: "rotate(360deg)"
+      },
+    },
+  },
   float: {
     "@keyframes float": {
       "0%, 100%": {
@@ -31,9 +39,12 @@ export const animations = {
 }
 
 export const colors = {
+  blue: tokens.Primary.Blue.value,
+  YELLOW: tokens.Primary.Ukraine.value,
   white: tokens.White[1000].value,
   black: tokens.Primary.Black.value,
   cyan: tokens.Primary.Cyan.value,
+  arcade: tokens.Primary.Arcade.value,
   iris: {
     500: tokens.Primary.Iris.value,
     600: "#343A80",
@@ -62,7 +73,7 @@ export const gradientBorderStyles = {
   }
 }
 
-const fontFamilies =  {
+const fontFamilies = {
   extended: ['Colton Display', 'sans-serif'].join(','),
   sans: ['Colton Primary', 'sans-serif'].join(','),
   monospace: ['IBM Plex Mono', 'monospace'].join(','),
@@ -106,10 +117,10 @@ const displayHeadingProps = {
 }
 
 export const typography = {
-  fontFamilies:{...fontFamilies},
-  fontSizes: {...fontSizes},
-  leading: {...leading},
-  letterSpacing: {...letterSpacing},
+  fontFamilies: { ...fontFamilies },
+  fontSizes: { ...fontSizes },
+  leading: { ...leading },
+  letterSpacing: { ...letterSpacing },
   display: {
     h1: {
       fontSize: `${fontSizes[14]}px`,
@@ -148,7 +159,7 @@ const defaultTheme = createTheme({
   palette: {
     primary: {
       main: colors.iris[500],
-      dark: alpha(colors.iris[500],0.5)
+      dark: alpha(colors.iris[500], 0.5)
     },
   },
   typography: {
@@ -163,13 +174,13 @@ export const theme = createTheme(defaultTheme, {
     MuiCssBaseline: {
       styleOverrides: `
         html {
-          background-color: ${colors.black};
-          color: ${colors.white};
+          background-color: ${colors.blue};/
+          color: ${colors.yellow};
           font-family: ${fontFamilies.sans};
         }
         body {
-          background-color: ${colors.black};
-          color: ${colors.white};
+          background-color: ${colors.blue};
+          color: ${colors.yellow};
           position: relative;
           font-family: ${fontFamilies.sans};
           font-kerning: auto;

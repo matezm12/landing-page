@@ -1,13 +1,15 @@
-import React from "react";
 import "../styles/globals.css";
-import type { AppProps } from "next/app";
+
 import { Box, CssBaseline, ThemeProvider } from "@mui/material";
-import { theme } from "../styles/theme";
-import Header from "../Layout/Header";
+
+import type { AppProps } from "next/app";
 import Footer from "../Layout/Footer";
-import { useEffect } from "react";
-import Noise from "../components/Noise";
 import Head from "next/head";
+import Header from "../Layout/Header";
+import Noise from "../components/Noise";
+import React from "react";
+import { theme } from "../styles/theme";
+import { useEffect } from "react";
 
 export default function App({ Component, pageProps }: AppProps) {
   useEffect(() => {
@@ -33,10 +35,11 @@ export default function App({ Component, pageProps }: AppProps) {
   }, []);
 
   return (
+
     <ThemeProvider theme={theme}>
       <Head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <title>Polywrap - Enter the Composable Future</title>
+        <title>Theometrics Ukraine</title>
       </Head>
       <CssBaseline />
       <Header />

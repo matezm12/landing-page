@@ -1,53 +1,40 @@
 export const footerLinks = [
   {
-    name: "Code",
+    name: "About Us",
     links: [
       {
         name: "Docs",
-        url: "https://docs.polywrap.io/",
+        url: "/",
       },
       {
-        name: "Github",
-        url: "https://github.com/polywrap",
+        name: "About Us",
+        url: "Campaign",
       },
     ],
   },
+  //todo add logos as link
   {
     name: "Social",
     links: [
       {
-        name: "Discord",
-        url: "https://discord.com/invite/Z5m88a5qWu",
+        name: "Facebook",
+        url: "https://www.facebook.com/Close-The-Sky-Over-Ukraine-101051235880413",
       },
       {
         name: "Twitter",
-        url: "https://twitter.com/polywrap_io",
+        url: "https://twitter.com/CloseUkraineSky",
       },
-      {
-        name: "Blog",
-        url: "https://blog.polywrap.io/",
-      },
-      {
-        name: "Eyes",
-        url: "https://eyes.polywrap.io/",
-      },
+
     ],
   },
   {
-    name: "Governance",
+    name: "Donations",
     links: [
       {
-        name: "Handbook",
-        url: "https://handbook.polywrap.io/",
+        name: "Donate",
+        url: "https://closetheskyoverukraine.com/donate",
       },
-      {
-        name: "Forum",
-        url: "https://forum.polywrap.io/",
-      },
-      {
-        name: "Governance",
-        url: "https://snapshot.org/#/polywrap.eth",
-      },
+
     ],
   },
 ];

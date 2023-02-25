@@ -1,12 +1,13 @@
-import React from "react";
 import { Box, Container, Grid } from "@mui/material";
-import { builders, backers, protocols } from "../constants/community";
-import DividerTitle from "./DividerTitle";
+import { backers, builders, protocols } from "../constants/community";
+
 import CommunityLogo from "./CommunityLogo";
-import WrapperGraphic from "./WrapperGraphic";
-import SectionTitle from "./SectionTitle";
-import LeadingTheChargeImage from "../public/images/leading_bg.webp";
+import DividerTitle from "./DividerTitle";
 import Image from "next/image";
+import LeadingTheChargeImage from "../public/images/leading_bg.webp";
+import React from "react";
+import SectionTitle from "./SectionTitle";
+import WrapperGraphic from "./WrapperGraphic";
 
 const CommunitySection = () => {
   return (
@@ -23,7 +24,7 @@ const CommunitySection = () => {
     >
       <Container sx={{ position: "relative" }}>
         <SectionTitle
-          top="The Wrapper"
+          top="The Theo Coin"
           bottom="Ecosystem"
           alignment="center"
           letterSpacing="tight"
@@ -76,7 +77,7 @@ const CommunitySection = () => {
           })}
         </Box>
         <Box component="div" sx={{ position: "relative", top: [-24, -48] }}>
-          <DividerTitle>Built and Backed By the Best</DividerTitle>
+          <DividerTitle>SUPPORTED BY</DividerTitle>
           <Grid
             container
             columnSpacing={[4, 6, 12]}

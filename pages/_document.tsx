@@ -1,7 +1,9 @@
 import * as React from "react";
-import Document, { Html, Head, Main, NextScript } from "next/document";
-import { ServerStyleSheets } from "@mui/styles";
+
+import Document, { Head, Html, Main, NextScript } from "next/document";
+
 import ReactGA from "react-ga";
+import { ServerStyleSheets } from "@mui/styles";
 
 ReactGA.initialize("UA-160302501-1");
 
@@ -17,31 +19,31 @@ export default class MyDocument extends Document {
           <meta name="theme-color" content="#5361F8"></meta>
           <meta
             name="description"
-            content="Polywrap is a WebAssembly standard for building endlessly extensible software that runs anywhere."
+            content="Theometrics."
           />
           <meta
             property="og:description"
-            content="Polywrap is a WebAssembly standard for building endlessly extensible software that runs anywhere."
+            content="Theometrics."
           />
 
           <link rel="manifest" href="/manifest.json" />
           <meta
             property="og:title"
-            content="Polywrap - Enter the Composable Future"
+            content="Theometrics Ukraine "
           />
 
-          <meta property="og:image" content="/polywrap-og.jpg" />
+          <meta property="og:image" content="/theoukr.png" />
           <meta property="og:image:width" content="2998" />
           <meta property="og:image:height" content="1570" />
 
-          <link rel="canonical" href="https://www.polywrap.io/" />
-          <meta property="og:url" content="https://polywrap.io/" />
+          <link rel="canonical" href="/" />
+          <meta property="og:url" content="/" />
           <meta property="og:type" content="website" />
           {/* Twitter */}
           <meta name="twitter:card" content="summary_large_image" />
           <meta name="twitter:site" content="@polywrap_io" />
           <meta name="twitter:creator" content="@polywrap_io" />
-          <meta name="twitter:image" content="/polywrap-og.jpg" />
+          <meta name="twitter:image" content="/theoukr.png" />
           <meta name="twitter:image:width" content="2998" />
           <meta name="twitter:image:height" content="1570" />
         </Head>

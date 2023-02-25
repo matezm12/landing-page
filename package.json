@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "next build  && next export -o build/",
     "export": "next export",
     "start": "next start",
     "lint": "next lint",
@@ -34,7 +34,7 @@
     "react-dom": "18.2.0",
     "react-ga": "^3.3.1",
     "three": "^0.148.0",
-    "three-custom-shader-material": "^5.0.0",
+    "three-custom-shader-material": "^4.0.0",
     "typescript": "4.9.3",
     "vfx-composer-r3f": "^0.4.0"
   },

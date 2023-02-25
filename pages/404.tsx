@@ -1,8 +1,9 @@
-import React from "react";
-import Head from "next/head";
-import { alpha, Box, Button, Container, Typography } from "@mui/material";
+import { Box, Button, Container, Typography, alpha } from "@mui/material";
 import { animations, colors, typography } from "../styles/theme";
+
+import Head from "next/head";
 import MetaverseBackground from "../components/MetaverseBackground";
+import React from "react";
 import SectionTitle from "../components/SectionTitle";
 
 const Four0Four = () => {
@@ -52,7 +53,7 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>404 | Polywrap - Enter the Composable Future</title>
+        <title>404 | Theometrics</title>
       </Head>
       <main>
         <Four0Four />

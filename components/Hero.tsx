@@ -1,8 +1,9 @@
-import React from "react";
-import { alpha, Box, Button, Container, Typography } from "@mui/material";
+import { Box, Button, Container, Typography, alpha } from "@mui/material";
 import { animations, colors, typography } from "../styles/theme";
+
 import Blobs from "./Blobs";
 import MetaverseBackground from "./MetaverseBackground";
+import React from "react";
 import ReactGA from "react-ga";
 
 const Hero = () => {
@@ -20,7 +21,7 @@ const Hero = () => {
         zIndex: 1,
       }}
     >
-      <MetaverseBackground fade="bottom" opacity={0.4} />
+      <MetaverseBackground fade="bottom" opacity={0.2} />
       <Blobs section="hero" />
       <Container
         sx={{
@@ -43,17 +44,33 @@ const Hero = () => {
           <Box
             component="span"
             sx={{
-              color: alpha(colors.white, 0.7),
+              color: alpha(colors.white, 1),
               display: "block",
               ...typography.display.h4,
               mb: 0.5,
             }}
           >
-            Enter The
+            Be Part of The
           </Box>
           <Box
             component="div"
             sx={{
+              color: '#0067B9',
+              textShadow: `2px 0 #fff, -2px 0 #fff, 0 2px #fff, 0 -2px #fff,
+              1px 1px #fff, -1px -1px #fff, 1px -1px #fff, -1px 1px #fff`,
+              display: "block",
+              fontWeight: 900,
+              ...typography.display.h1,
+              lineHeight: 0.9,
+              padding: 0.5
+            }}
+          >
+            Ukranian
+          </Box>
+          <Box
+            component="div"
+            sx={{
+              color: '#FFDD00',
               textShadow: `0 4px 64px rgba(255,255,255,0.3)`,
               display: "block",
               fontWeight: 800,
@@ -61,10 +78,9 @@ const Hero = () => {
               lineHeight: 0.9,
             }}
           >
-            Composable
-            <br />
-            Future
+            Heroes
           </Box>
+
         </Typography>
         <Typography
           sx={{
@@ -75,13 +91,12 @@ const Hero = () => {
             textAlign: "center",
           }}
         >
-          Polywrap is a new way to build endlessly extensible software that runs
-          anywhere.
+          Theometrics Ukraine is a new way to be part of the frontline heroes.
         </Typography>
         <Button
           color="primary"
           size="large"
-          href="https://docs.polywrap.io/quick-start/integrate-wrappers/install-client"
+          href="https://closetheskyoverukraine.com"
           onClick={() => {
             ReactGA.event({
               category: "CTA",
@@ -96,7 +111,7 @@ const Hero = () => {
             mt: 4,
           }}
         >
-          Start Building
+          Start Contributing
         </Button>
       </Container>
     </Box>

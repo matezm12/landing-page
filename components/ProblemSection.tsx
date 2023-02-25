@@ -1,19 +1,20 @@
-import React from "react";
 import {
-  alpha,
   Box,
   Container,
   Grid,
   Stack,
   Typography,
+  alpha,
   useMediaQuery,
   useTheme,
 } from "@mui/material";
-import SectionTitle from "./SectionTitle";
 import { animations, colors } from "../styles/theme";
-import PolywrapWrapper from "../public/images/polywrap-wrapper-1.png";
-import Waves from "../public/images/wave-lines-1.webp";
+
 import Image from "next/image";
+import PolywrapWrapper from "../public/images/polywrap-wrapper-1.png";
+import React from "react";
+import SectionTitle from "./SectionTitle";
+import Waves from "../public/images/wave-lines-1.webp";
 
 const ProblemSection = () => {
   const theme = useTheme();
@@ -50,8 +51,8 @@ const ProblemSection = () => {
         <Stack spacing={6} sx={{ alignItems: "center", position: "relative" }}>
           <Stack spacing={4} sx={{ alignItems: "center" }}>
             <SectionTitle
-              top="Break Down"
-              bottom="Software Silos"
+              top="Conventional"
+              bottom="Donations"
               letterSpacing="tight"
               alignment="center"
             />
@@ -64,9 +65,9 @@ const ProblemSection = () => {
                 textAlign: "center",
               }}
             >
-              Instead of building a patchwork of SDKs in different languages,
-              just build one wrapper that developers can easily integrate
-              anywhere.
+              Description of conventional donations and how to donate.
+
+              Information about the Sky Over website and government donation page.
             </Typography>
           </Stack>
           <Box

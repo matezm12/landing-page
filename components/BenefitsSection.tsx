@@ -1,8 +1,9 @@
-import React from "react";
+import { BenefitCardProps, benefits } from "../constants/benefits";
 import { Box, Container, Grid, Stack, Typography } from "@mui/material";
-import SectionTitle from "./SectionTitle";
+
 import BenefitCard from "./BenefitCard";
-import { benefits, BenefitCardProps } from "../constants/benefits";
+import React from "react";
+import SectionTitle from "./SectionTitle";
 
 const BenefitsSection = () => {
   return (
@@ -21,15 +22,15 @@ const BenefitsSection = () => {
     >
       <Container>
         <SectionTitle
-          top="WRAPPERS ARE"
-          bottom="NEXT-GEN SDKs"
+          top="LEVEL UP"
+          bottom="INCREASE YOUR TIER"
           alignment="center"
           letterSpacing="tight"
           uppercase={false}
         />
         <Grid container spacing={[12, 10, 6]} mt={[0, 4, 8]}>
           {benefits.map((benefit: BenefitCardProps) => (
-            <Grid key={benefit.slug} item xs={12} md={4}>
+            <Grid key={benefit.slug} item xs={9} md={3}>
               <BenefitCard {...benefit} />
             </Grid>
           ))}

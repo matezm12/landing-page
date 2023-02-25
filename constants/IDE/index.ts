@@ -1,17 +1,16 @@
-import Uniswap from "./uniswap"
-import Safe from "./safe";
-import Near from "./near";
 import Ipfs from "./ipfs";
-import TypescriptIcon from "../../public/images/lang-icons/typescript.png";
-import RustIcon from "../../public/images/lang-icons/rust.png";
-import PythonIcon from "../../public/images/lang-icons/python.png";
-import UniswapSvg from "../../public/images/community/Uniswap.svg";
-import SafeSvg from "../../public/images/community/Safe.svg";
-import NearSvg from "../../public/images/community/Near.svg";
 import IpfsSvg from "../../public/images/community/IPFS.svg";
-
-import { StaticImageData } from "next/image";
 import { Language } from "prism-react-renderer";
+import Near from "./near";
+import NearSvg from "../../public/images/community/Near.svg";
+import PythonIcon from "../../public/images/lang-icons/python.png";
+import RustIcon from "../../public/images/lang-icons/rust.png";
+import Safe from "./safe";
+import SafeSvg from "../../public/images/community/Safe.svg";
+import { StaticImageData } from "next/image";
+import TypescriptIcon from "../../public/images/lang-icons/typescript.png";
+import Uniswap from "./uniswap"
+import UniswapSvg from "../../public/images/community/Uniswap.svg";
 
 interface LanguageProps {
   icon: StaticImageData;

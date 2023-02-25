@@ -1,22 +1,24 @@
-import React, { useEffect, useState } from "react";
-import { alpha, Box } from "@mui/material";
+import { Box, alpha } from "@mui/material";
 import { Canvas, extend } from "@react-three/fiber";
+import React, { useEffect, useState } from "react";
+
+import CameraRig from "./CameraRig";
 import { Effects } from "@react-three/drei";
 import ParticleLandscape from "./ParticleLandscape";
 import ParticleRising from "./ParticleRising";
-import CameraRig from "./CameraRig";
 import { UnrealBloomPass } from "three-stdlib";
-import { useControls } from "leva";
 import { colors } from "../../styles/theme";
+import { useControls } from "leva";
+
 extend({ UnrealBloomPass });
 
 const fades = {
-  bottom: `linear-gradient(to top, ${colors.black}, ${alpha(
-    colors.black,
+  bottom: `linear-gradient(to top, ${colors.blue}, ${alpha(
+    colors.blue,
     0
-  )} 15%)`,
-  top: `linear-gradient(to bottom, ${colors.black}, ${alpha(
-    colors.black,
+  )} 25%)`,
+  top: `linear-gradient(to bottom, ${colors.white}, ${alpha(
+    colors.white,
     0
   )} 15%)`,
   both: `linear-gradient(to top, ${colors.black}, ${alpha(
